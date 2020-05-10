@@ -1,0 +1,168 @@
+@keyframes opacityinc {
+	from{opacity: 0.75;}
+	to{opacity: 1;}
+}
+
+@keyframes opacitydec {
+	from{opacity: 1;}
+	to{opacity: 0.75;}
+}
+
+@keyframes slideleft {
+	from{left: 0px;}
+	to{left: 20px;}
+}
+
+@keyframes revslideleft {
+	from{left: 20px;}
+	to{left: 0px;}
+}
+
+
+@keyframes fadeinfromleft {
+	from{margin-left: 0px; opacity: 0.3}
+	to{margin-left: 80px; opacity: 0.75}
+
+}
+
+@keyframes fadeinfromright {
+	from{margin-right: 0px; opacity: 0.3}
+	to{margin-right: 50px; opacity: 0.75}
+
+}
+
+body {
+	background-image: url(bg20.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+
+.titlebar {
+	align-self: center;
+	display: flex;
+	flex-wrap: wrap;
+	padding: 20px;
+	background: linear-gradient(to right, #F3E986, #E5D003);
+	overflow: visible;
+	border: 0px solid black;
+	border-radius: 20px;
+
+	opacity: 0.75;
+	animation-name: opacitydec;
+	animation-duration: 0.3s;
+}
+
+.titlebar:hover {
+	animation-name: opacityinc;
+	animation-duration: 0.4s;
+	animation-fill-mode: forwards;
+	animation-timing-function: ease-out;
+}
+
+.titlebar a {
+	text-decoration: none;
+	position: relative;
+	font-family: 'Quicksand', sans-serif;
+	color: #3F3F3C;
+	padding: 10px 20px;
+	padding-top: 20px;
+	margin: 15px;
+	font-size: 17px;
+	border-style: dashed;
+	border-color: #3C3A03;
+	border-radius: 0.5em;
+	border-width: 3px;
+}
+
+.titlebar a:hover {
+	color: black;
+	text-decoration: none;
+	background-color: #E75E23;
+	font-style: bold;
+}
+
+#logo {
+	position: relative;
+	border-style: none;
+	border-color: #B3AE0A;
+	border-radius: 0.5em;
+	border-width: 5px;
+	padding: 2px;
+}
+
+#logo:hover {
+	top: 1px;
+	left: 1px;
+}
+
+#logo:active {
+	top: 1px;
+	left: 1px;
+}
+
+.first {
+	/*background-image: linear-gradient(to bottom, white 0%, #FFC800 100%);*/
+	/*background-color: white;*/
+	padding-top: 20px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 50px;
+
+	display: flex;
+	flex-direction: column;
+}
+
+.about {
+	background: linear-gradient(to right, #F3E986, #E5D003);
+	border-radius: 1em;
+	opacity: 0.75;
+	align-self: center;
+	width: 70%;
+
+	font-family: 'Quicksand', sans-serif;
+	font-size: 23px;
+	padding: 35px;
+	margin-top: 120px;
+	margin-bottom: 40px;
+
+	animation-name: fadeinfromleft;
+	animation-duration: 0.4s;
+	animation-timing-function: ease-out;
+	animation-fill-mode: forwards;
+}
+
+.about:hover {
+	margin-left: 80px;
+	animation-name: opacityinc;
+	animation-duration: 0.4s;
+	animation-fill-mode: forwards;
+	animation-timing-function: ease-out;
+}
+
+.about h1 {
+	font-family: 'Raleway', sans-serif;
+	font-size: 90px;
+	padding-left:15px;
+	font-weight: bold;
+	width: 50%;
+
+	background-color: #F9E310;
+	border-radius: 16px;
+	padding-left: 10px;
+
+	position: relative;
+	opacity: 1;
+
+	animation-name: revslideleft;
+	animation-duration: 0.3s;
+}
+
+.about h1:hover {
+	background-color: #E75E23;
+	animation-name: slideleft;
+	animation-duration: 0.4s;
+	animation-fill-mode: forwards;
+	animation-timing-function: ease-out;
+	animation-direction: alternate;
+}

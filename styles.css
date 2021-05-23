@@ -3,6 +3,10 @@
 }
 
 :root {
+    --monospace-font: 'JetBrains Mono', monospace;
+    --default-font: 'Chakra Petch', sans-serif;
+    --heading-font: 'Bebas Neue', cursive;
+
     --background-color: rgb(245, 245, 245);
     --background-dark-1: rgb(230, 230, 230);
     --background-dark-2: rgb(221, 221, 221);
@@ -20,6 +24,8 @@
 
 html, body {
     margin: 0;
+    background-color: var(--background-color);
+    font-family: var(--default-font);
 }
 
 .flexbox-column {
@@ -32,3 +38,23 @@ html, body {
     flex-flow: row wrap;
 }
 
+#jumbotron {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: row wrap;
+    font-family: var(--monospace-font);
+    font-size: 2rem;
+}
+
+#before, #after {
+    color: var(--primary);
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+}
+
+#before {
+    align-items: flex-end;
+}

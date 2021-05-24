@@ -11,23 +11,123 @@
         <link rel="stylesheet" href="styles.css">
     </head>
     <body>
-        <div id="jumbotron">
-            <div class="variable-text" id="before">
-                <span class="before-link">github.com/</span>
-                <span>linkedin.com/in/</span>
-                <span>instagram.com/</span>
-                <span>linktr.ee/</span>
-                <span>classberg.com/u/</span>
-            </div>
-            <div class="fixed-text">hrushikeshrv</div>
-            <div class="variable-text" id="after">@gmail.com</div>
+        <div class="flexbox-column ajc header-bar">
+            <span id="header-text" class="flexbox-column ajc">
+                <a href="https://github.com/hrushikeshrv" target="_blank">github.com/hrushikeshrv</a>
+            </span>
         </div>
-        <div class="footer-bar">
-
+        <div class="rotate">
+            <div id="jumbotron">
+                <div class="variable-text" id="before">
+                    <div id="left-wrapper">
+                        <span class="before-link" data-site="instagram" data-link-id="1" data-side="left">instagram.com/</span>
+                        <span class="before-link" data-site="linkedin" data-link-id=2" data-side="left">linkedin.com/in/</span>
+                        <span class="before-link active" data-site="github" data-link-id="3" data-side="left">github.com/</span>
+                        <span class="before-link" data-site="linktree" data-link-id="4" data-side="left">linktr.ee/</span>
+                        <span class="before-link" data-site="classberg" data-link-id="5" data-side="left">classberg.com/u/</span>
+                    </div>
+                </div>
+                <div class="fixed-text">hrushikeshrv</div>
+                <div class="variable-text" id="after">
+                    <div id="right-wrapper">
+                        <span class="after-link" data-site="gmail" data-link-id="1" data-side="right">@gmail.com</span>
+                        <span class="after-link" data-site="classberg" data-link-id="2" data-side="right">@classberg.com</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bar flexbox-row">
+            <div class="flexbox-column ajc logo" data-site="github">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+                </svg>
+                <span>GitHub</span>
+            </div>
+            <div class="flexbox-column ajc logo" data-site="linkedin">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-linkedin" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <rect x="4" y="4" width="16" height="16" rx="2" />
+                    <line x1="8" y1="11" x2="8" y2="16" />
+                    <line x1="8" y1="8" x2="8" y2="8.01" />
+                    <line x1="12" y1="16" x2="12" y2="11" />
+                    <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+                </svg>
+                <span>LinkedIn</span>
+            </div>
+            <div class="flexbox-column ajc logo" data-site="instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-instagram" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <rect x="4" y="4" width="16" height="16" rx="4" />
+                    <circle cx="12" cy="12" r="3" />
+                    <line x1="16.5" y1="7.5" x2="16.5" y2="7.501" />
+                </svg>
+                <span>Instagram</span>
+            </div>
+            <div class="flexbox-column ajc logo" data-site="linktree">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+                    <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+                </svg>
+                <span>LinkTree</span>
+            </div>
+            <div class="flexbox-column ajc logo" data-site="gmail">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-at" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <circle cx="12" cy="12" r="4" />
+                    <path d="M16 12v1.5a2.5 2.5 0 0 0 5 0v-1.5a9 9 0 1 0 -5.5 8.28" />
+                </svg>
+                <span>Email</span>
+            </div>
+            <div class="flexbox-column ajc logo" data-site="classberg">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-globe" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <circle cx="12" cy="10" r="4" />
+                    <path d="M6.75 16a8.015 8.015 0 1 0 9.25 -13" />
+                    <line x1="12" y1="18" x2="12" y2="22" />
+                    <line x1="8" y1="22" x2="16" y2="22" />
+                </svg>
+                <span>ClassBerg</span>
+            </div>
         </div>
     </body>
     <script>
         const before = document.querySelector('#before');
         const after = document.querySelector('#after');
+
+        const linkButtons = document.querySelectorAll('.logo');
+        const links = document.querySelectorAll('.before-link, .after-link');
+        const header = document.querySelector('#header-text');
+
+        const headerHTML = {
+            'github': `<a href="https://github.com/hrushikeshrv" target="_blank">github.com/hrushikeshrv</a>`,
+            'linkedin': `<a href="https://linkedin.com/in/hrushikeshrv" target="_blank">linkedin.com/in/hrushikeshrv</a>`,
+            'instagram': `<a href="https://instagram.com/hrushikeshrv" target="_blank">instagram.com/hrushikeshrv</a>`,
+            'linktree': `<a href="https://linktr.ee/hrushikeshrv" target="_blank">linktr.ee/hrushikeshrv</a>`,
+            'classberg': `<a href="https://classberg.com" target="_blank">ClassBerg</a><a href="mailto:hrushikeshrv@classberg.com" target="_blank">hrushikeshrv@classberg.com</a>`,
+            'gmail': `<a href="mailto:hrushikeshrv@gmail.com" target="_blank">hrushikeshrv@gmail.com</a>`
+        }
+
+        linkButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                let site = this.dataset.site;
+                links.forEach(link => {
+                    if (link.dataset.site === site) {
+                        link.classList.add('active');
+                        vAlign(link.dataset.siteId, link.dataset.side);
+                        header.innerHTML = headerHTML[site];
+                    }
+                    else {
+                        link.classList.remove('active');
+                    }
+                })
+
+            })
+        })
+
+        function vAlign(linkId, side) {
+
+        }
     </script>
 </html>

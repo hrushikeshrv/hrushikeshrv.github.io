@@ -231,6 +231,22 @@ a {
     margin-top: 50px
 }
 
+.mr-10 {
+    margin-right: 10px;
+}
+
+.mr-30 {
+    margin-right: 30px;
+}
+
+.ml-10 {
+    margin-left: 10px;
+}
+
+.ml-30 {
+    margin-left: 30px;
+}
+
 .mb-5 {
     margin-bottom: 5px;
 }
@@ -264,7 +280,14 @@ h1 {
     font-family: var(--monospace-font);
     font-size: 3rem;
     margin: 20px 0;
-    border-bottom: 4px solid ;
+}
+
+h1.big {
+    font-size: 4rem;
+}
+
+h2.big {
+    font-size: 3rem;
 }
 
 /*
@@ -401,6 +424,36 @@ h1 {
 */
 .page-2 {
     border-top: 3px solid var(--primary);
-    background-color: rgb(30, 30, 30);
+    background-color: var(--page-background);
     color: var(--light-font-color);
+    --page-background-light-2: rgb(1, 28, 88);
+    --page-background-light-1: rgb(4, 26, 67);
+    --page-background: rgb(0, 11, 34);
+    --page-background-dark-1: rgb(2, 9, 28);
+}
+
+.project {
+    max-width: 600px;
+    background-color: var(--page-background-light-1);
+    transition: background-color ease 0.25s;
+    border-radius: 20px;
+    flex-wrap: nowrap;
+}
+
+.project-container:hover .project {
+    background-color: var(--page-background-light-2);
+}
+
+.project h1, .project h2, .project h3 {
+    word-break: break-all;
+}
+
+.project .project-desc {
+    margin: 10px 0;
+}
+
+.project-links .link {
+    border-radius: 15px;
+    background-color: var(--page-background-dark-1);
+    padding: 5px 10px;
 }

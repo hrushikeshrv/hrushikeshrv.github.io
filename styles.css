@@ -432,6 +432,24 @@ h2.big {
     --page-background-dark-1: rgb(2, 9, 28);
 }
 
+@media (max-width: 650px) {
+    .page-2 {
+        padding: 0;
+    }
+    .page-2 #projects {
+        font-size: 3rem;
+    }
+    .page-2 .project {
+        flex-flow: column wrap;
+    }
+    .page-2 .project h2.big {
+        font-size: 2rem;
+    }
+    .page-2 .project .project-content {
+        margin-left: 0;
+    }
+}
+
 .project {
     max-width: 600px;
     background-color: var(--page-background-light-1);
@@ -456,8 +474,13 @@ h2.big {
     border-radius: 15px;
     background-color: var(--page-background-dark-1);
     padding: 5px 10px;
+    margin: 5px;
 }
 
 .project .flair svg {
     margin: 0 8px;
+}
+
+.project .project-content {
+    margin-left: 20px;
 }

@@ -58,6 +58,10 @@ a {
     text-decoration: none;
 }
 
+a.a {
+    border-bottom: 1px dotted var(--primary);
+}
+
 .icon-tabler {
     stroke: var(--muted-font);
 }
@@ -420,10 +424,40 @@ h2.big {
 
 
 /*
+    about styles
+*/
+
+.about {
+    margin-top: 50px;
+}
+
+.me {
+    border-bottom: 4px solid var(--primary);
+}
+
+.bio {
+    border-top: 4px solid var(--primary);
+    border-left: 4px solid var(--primary);
+}
+
+@media (max-width: 900px) {
+    .bio {
+        border-left: none;
+    }
+}
+
+#bio-text {
+    font-size: 1.5rem;
+    font-family: var(--monospace-font);
+}
+
+
+
+
+/*
     projects styles
 */
-.page-2 {
-    border-top: 4px solid var(--primary);
+.page-2, .bio {
     background-color: var(--page-background);
     color: var(--light-font-color);
     --page-background-light-2: rgb(1, 28, 88);

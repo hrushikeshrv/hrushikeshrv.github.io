@@ -6,6 +6,7 @@
     --monospace-font: 'JetBrains Mono', monospace;
     --default-font: 'Chakra Petch', sans-serif;
     --heading-font: 'Bebas Neue', cursive;
+    --decorative-font: 'Major Mono Display', cursive;
 
     --background-light-4: rgb(255, 255, 255);
     --background-light-3: rgb(255, 255, 255);
@@ -64,6 +65,10 @@ a.a {
 
 .icon-tabler {
     stroke: var(--muted-font);
+}
+
+.mono-font {
+    font-family: var(--monospace-font);
 }
 
 /*
@@ -449,6 +454,31 @@ h2.big {
 #bio-text {
     font-size: 1.5rem;
     font-family: var(--monospace-font);
+}
+
+.nametag {
+    font-family: var(--decorative-font);
+    text-transform: lowercase;
+    font-weight: 600;
+    font-size: 4rem;
+}
+
+@media (max-width: 1150px) {
+    .nametag {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .nametag {
+        font-size: 2rem;
+    }
+    .me {
+        padding-top: 10px;
+    }
+    .about {
+        margin-top: 20px;
+    }
 }
 
 

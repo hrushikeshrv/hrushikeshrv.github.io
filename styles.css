@@ -481,6 +481,42 @@ h2.big {
     }
 }
 
+.timeline-container {
+    border-left: 1px solid var(--muted-font);
+}
+
+.timeline-item {
+    position: relative;
+    padding-left: 0;
+}
+
+.timeline-item::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background-color: var(--background-dark-2);
+    border-radius: 50%;
+    position: absolute;
+    left: -35px;
+    top: 55px;
+    transition: background-color ease 0.25s;
+}
+
+.timeline-item:hover::before {
+    background-color: var(--primary);
+}
+
+.timeline-item h2 {
+    margin: 10px 0 0;
+}
+
+.timeline-item .timeline-year {
+    font-family: var(--monospace-font);
+    font-size: 1.1rem;
+    color: var(--muted-font);
+    margin-top: 10px;
+}
+
 
 
 

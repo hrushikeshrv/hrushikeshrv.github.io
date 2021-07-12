@@ -17,6 +17,11 @@
     --background-dark-2: rgb(181, 181, 181);
     --background-dark-3: rgb(162, 162, 162);
 
+    --dark-background-light-2: rgb(1, 28, 88);
+    --dark-background-light-1: rgb(4, 26, 67);
+    --dark-background: rgb(0, 11, 34);
+    --dark-background-dark-1: rgb(2, 9, 28);
+
     --font-color: rgb(0, 0, 0);
     --light-font-color: rgb(240, 240, 240);
     --muted-font: rgb(169, 169, 169);
@@ -299,6 +304,11 @@ h2.big {
     font-size: 3rem;
 }
 
+.decorative-heading {
+    font-family: var(--decorative-font);
+    text-transform: lowercase;
+}
+
 /*
     frontpage styles
 */
@@ -434,26 +444,48 @@ h2.big {
 
 .about {
     margin-top: 50px;
+    background-color: var(--dark-background);
+    position: relative;
 }
 
-.me {
-    border-bottom: 4px solid var(--primary);
+#bg-placeholder {
+    position: absolute;
+    top: 0;
+    bottom: 80%;
+    left: 0;
+    right: 0;
+    background-color: var(--background-color);
+    z-index: 0;
 }
 
-.bio {
-    border-top: 4px solid var(--primary);
-    border-left: 4px solid var(--primary);
+.about .bio {
+    border-top-left-radius: 22px;
+    z-index: 1;
+    box-shadow: 0 0 10px black;
 }
 
-@media (max-width: 900px) {
-    .bio {
-        border-left: none;
+@media (max-width: 600px) {
+    .about .bio {
+        box-shadow: none;
     }
 }
 
-#bio-text {
+.about .me {
+    background-color: var(--background-color);
+    border-bottom-right-radius: 22px;
+    z-index: 1;
+}
+
+.bio-text {
     font-size: 1.5rem;
     font-family: var(--monospace-font);
+    z-index: 1;
+}
+
+@media (max-width: 600px) {
+    .bio-text {
+        font-size: 1rem;
+    }
 }
 
 .nametag {
@@ -517,6 +549,15 @@ h2.big {
     margin-top: 10px;
 }
 
+.timeline-item .timeline-category, .timeline-item .timeline-comment {
+    color: var(--muted-font);
+    transition: color ease 0.25s;
+}
+
+.timeline-item:hover .timeline-category, .timeline-item:hover .timeline-comment {
+    color: var(--font-color);
+}
+
 
 
 
@@ -524,12 +565,8 @@ h2.big {
     projects styles
 */
 .page-2, .bio {
-    background-color: var(--page-background);
+    background-color: var(--dark-background);
     color: var(--light-font-color);
-    --page-background-light-2: rgb(1, 28, 88);
-    --page-background-light-1: rgb(4, 26, 67);
-    --page-background: rgb(0, 11, 34);
-    --page-background-dark-1: rgb(2, 9, 28);
 }
 
 @media (max-width: 650px) {
@@ -552,14 +589,14 @@ h2.big {
 
 .project {
     max-width: 600px;
-    background-color: var(--page-background-light-1);
+    background-color: var(--dark-background-light-1);
     transition: background-color ease 0.25s;
     border-radius: 20px;
     flex-wrap: nowrap;
 }
 
 .project-container:hover .project {
-    background-color: var(--page-background-light-2);
+    background-color: var(--dark-background-light-2);
 }
 
 .project h1, .project h2, .project h3 {
@@ -572,7 +609,7 @@ h2.big {
 
 .project-links .link {
     border-radius: 15px;
-    background-color: var(--page-background-dark-1);
+    background-color: var(--dark-background-dark-1);
     padding: 5px 10px;
     margin: 5px;
 }
@@ -583,4 +620,26 @@ h2.big {
 
 .project .project-content {
     margin-left: 20px;
+}
+
+.mini-project {
+    border: 2px solid var(--background-dark-2);
+    border-radius: 30px;
+    background-color: var(--background-dark-2);
+    color: var(--font-color);
+    max-width: 40%;
+}
+
+@media (max-width: 900px) {
+    .mini-project {
+        max-width: 90%;
+    }
+}
+
+.mini-project .link {
+    background-color: var(--background-dark-1);
+}
+
+.mini-project .link svg {
+    stroke: rgb(122, 122, 122);
 }

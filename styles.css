@@ -300,6 +300,12 @@ h1.big {
     font-size: 4rem;
 }
 
+@media (max-width: 500px) {
+    h1.big {
+        font-size: 3.5rem;
+    }
+}
+
 h2.big {
     font-size: 3rem;
 }
@@ -595,12 +601,14 @@ h2.big {
     flex-wrap: nowrap;
 }
 
-.project-container:hover .project {
-    background-color: var(--dark-background-light-2);
+@media (max-width: 400px) {
+    .project {
+        margin: 10px;
+    }
 }
 
-.project h1, .project h2, .project h3 {
-    word-break: break-all;
+.project-container:hover .project {
+    background-color: var(--dark-background-light-2);
 }
 
 .project .project-desc {

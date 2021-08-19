@@ -1,12 +1,27 @@
-const lastUpdatedContainer = document.querySelector('#last-updated');
+const lastUpdatedContainers = document.querySelectorAll('.updated-on');
 const activeCasesContainer = document.querySelector('#active-cases');
-const newCasesContainer = document.querySelector('#new-cases-date');
+const deltaCasesToday = document.querySelector('#delta-cases-today');
 const newCasesToday = document.querySelector('#new-cases-today');
 const pandemicStatusContainer = document.querySelector('#pandemic-status');
 
+const casesDownSVG = `
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-caret-down svg-success" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round" style="position: relative; top: 7px; right: -7px;">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <path d="M18 15l-6 -6l-6 6h12" transform="rotate(180 12 12)" />
+    </svg>
+`;
+
+const casesUpSVG = `
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-caret-up svg-red" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round" style="position: relative; top: 7px; right: -7px;">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <path d="M18 15l-6 -6l-6 6h12" />
+    </svg>
+`;
+const deltaIndicator = document.querySelector('#delta-indicator-svg');
+
 axios({
     method: 'get',
-    url: 'https://api.covid19india.org/data.json',
+    url: 'https://data.covid19india.org/data.json',
 })
 .then(response => {
     const data = response.data['cases_time_series'];
@@ -16,6 +31,7 @@ axios({
 
     let totalCases = 0;
     let totalRecoveries = 0;
+    let totalDeaths = 0;
     let lastUpdated = '';
 
     for (let day of data) {
@@ -25,16 +41,25 @@ axios({
 
         totalCases = day.totalconfirmed;
         totalRecoveries = day.totalrecovered;
+        totalDeaths = day.totaldeceased;
         lastUpdated = day.date;
     }
-    
-    lastUpdatedContainer.textContent = lastUpdated;
-    newCasesContainer.textContent = lastUpdated;
-    newCasesToday.textContent = parseInt(newCases[newCases.length-1]).toLocaleString();
 
-    pandemicStatusContainer.textContent = getPandemicStatus(newCases.slice(newCases.length - 20));
+    lastUpdatedContainers.forEach(container => {
+        container.textContent = lastUpdated;
+    })
+    newCasesToday.textContent = parseInt(newCases[newCases.length-1]).toLocaleString();
+    deltaCasesToday.textContent = parseInt(newCases[newCases.length-1] - newRecoveries[newCases.length-1]).toLocaleString();
+    if (newCases[newCases.length-1] - newRecoveries[newRecoveries.length-1] > 0) {
+        deltaIndicator.innerHTML = casesUpSVG;
+    }
+    else if (newCases[newCases.length-1] - newRecoveries[newRecoveries.length-1] < 0) {
+        deltaIndicator.innerHTML = casesDownSVG;
+    }
+
+    pandemicStatusContainer.textContent = getPandemicStatus(newCases.slice(newCases.length - 21));
     
-    const activeCases = totalCases - totalRecoveries;
+    const activeCases = totalCases - totalRecoveries - totalDeaths;
     activeCasesContainer.textContent = activeCases.toLocaleString();
     
 
@@ -77,6 +102,12 @@ function plotLineGraph(data, labels, title, color, id) {
             spikethickness: 2,
             spikedash: 'solid',
         },
+        margin: {
+            l: 40,
+            r: 20,
+            t: 20,
+            b: 30,
+        }
     };
     const config = {
         displayModeBar: false,

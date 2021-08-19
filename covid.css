@@ -33,8 +33,16 @@ small {
     transform: rotate(-90deg);
     font-family: var(--mono-font);
     font-size: 0.9rem;
-    top: 55px;
+    top: 65px;
     right: -39px;
+}
+
+.svg-success {
+    stroke: rgb(42, 190, 42);
+}
+
+.svg-red {
+    stroke: rgb(226, 39, 39);
 }
 
 /* LAYOUT */
@@ -107,7 +115,13 @@ h1 {
     font-size: 1.25rem;
 }
 
-.active-cases-container, .pandemic-status-container, .new-cases-today-container {
+@media (max-width: 500px) {
+    #statistic-container {
+        min-height: 100vh;
+    }
+}
+
+.stat-container {
     font-size: 1.3rem;
 }
 
@@ -123,8 +137,14 @@ h1 {
     }
 }
 
-#active-cases, #pandemic-status, #new-cases-today {
+#active-cases, #pandemic-status, #new-cases-today, #delta-cases-today {
     font-size: 3rem;
     font-family: var(--mono-font);
     border-bottom: 2px dashed rgb(247, 56, 56);
+}
+
+.graph-container {
+    width: calc(100% + 60px);
+    height: 500px;
+    margin: 0 -30px;
 }

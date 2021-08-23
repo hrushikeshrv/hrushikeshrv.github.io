@@ -430,6 +430,11 @@ h2.big {
     z-index: 2;
 }
 
+.tippy-box[data-theme~='blue-gradient'] {
+    background: linear-gradient(to right, rgb(30, 10, 200), rgb(5, 10, 150));
+    border: 1px solid rgb(30, 10, 200);
+}
+
 @media (max-width: 500px) {
     .header-bar {
         padding: 15px 15px;

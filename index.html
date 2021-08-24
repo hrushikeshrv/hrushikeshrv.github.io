@@ -244,7 +244,11 @@
                         <h2 class="big mbt-10">ClassBerg x EXED IIT</h2>
                         <span class="project-desc">
                             A customized installation of ClassBerg's source code for <a href="https://exedindia.com" class="a" target="_blank">EXED IIT's domain</a>, with features including student attendance
-                            tracking, assignment creation and submission, and automatic classroom allotment.
+                            tracking, assignment creation and submission, and test creation from uploaded .docx files using <a
+                                href="#docxlatex" class="a">docxlatex</a>.
+                        </span>
+                        <span class="project-desc">
+                            Designed specifically for serving low traffic with low compute power servers.
                         </span>
                         <span class="flexbox-row pad-10 project-links">
                             <span class="flexbox-row ajc link">
@@ -300,7 +304,7 @@
                         <img src="images/docxlatex.svg" alt="pip install docxlatex" width="100px" height="125px">
                     </div>
                     <div class="flexbox-column project-content">
-                        <h2 class="big mbt-10">docxlatex</h2>
+                        <h2 class="big mbt-10" id="docxlatex">docxlatex</h2>
                         <span class="project-desc">
                             docxlatex is a python module for extracting text from .docx files, including support for mathematical and
                             chemical equations, primarily for use with tools like MathJax.
@@ -313,7 +317,7 @@
                                 </svg>
                                 <span class="space-lr"><a href="https://github.com/hrushikeshrv/docxlatex" target="_blank">source code</a></span>
                             </span>
-                            <span class="flexbox-row ajc link space-lr">
+                            <span class="flexbox-row ajc link space-lr" id="docxlatex-documentation-inprogress">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-license" width="20" height="20" viewBox="0 0 24 24" stroke-width="1" stroke="#8f8f8f" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                   <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                   <path d="M15 21h-9a3 3 0 0 1 -3 -3v-1h10v2a2 2 0 0 0 4 0v-14a2 2 0 1 1 2 2h-2m2 -4h-11a3 3 0 0 0 -3 3v11" />
@@ -551,6 +555,13 @@
         <script>
             tippy('#classberg-static-tooltip', {
                 content: 'A static and optimized version of the same website hosted on classberg.com',
+                followCursor: true,
+                delay: 0,
+                duration: [300, 50],
+                theme: 'blue-gradient',
+            })
+            tippy('#docxlatex-documentation-inprogress', {
+                content: 'The documentation is still being written as docxlatex is still in beta',
                 followCursor: true,
                 delay: 0,
                 duration: [300, 50],

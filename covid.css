@@ -92,6 +92,22 @@ canvas {
     height: 400px;
 }
 
+#ajax-error {
+    position: fixed;
+    top: 20px;
+    z-index: 3;
+    border: 3px solid rgb(240, 20, 40);
+    background-color: rgb(240, 240, 240);
+    border-radius: 6px;
+    padding: 20px;
+    left: 50%;
+    margin-left: -150px;
+    width: 300px;
+    text-align: center;
+    font-family: var(--mono-font);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
 @media (max-width: 400px) {
     canvas {
         height: 200px;

@@ -4,6 +4,8 @@ const deltaCasesToday = document.querySelector('#delta-cases-today');
 const newCasesToday = document.querySelector('#new-cases-today');
 const pandemicStatusContainer = document.querySelector('#pandemic-status');
 
+const ajaxError = document.querySelector('#ajax-error');
+
 const casesDownSVG = `
     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-caret-down svg-success" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round" style="position: relative; top: 7px; right: -7px;">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -21,9 +23,10 @@ const deltaIndicator = document.querySelector('#delta-indicator-svg');
 
 axios({
     method: 'get',
-    url: 'https://data.covid19india.org/data.json',
+    url: 'https://api.covid19india.org/data.json',
 })
 .then(response => {
+    console.log(response.data);
     const data = response.data['cases_time_series'];
     const labels = [];
     const newCases = [];
@@ -70,6 +73,10 @@ axios({
     plotLineGraph(newRecoveries, labels, 'Daily New Cases', 'rgb(42, 190, 42)', '#daily-recoveries-start-present-container');
     plotLineGraph(newRecoveries.slice(newRecoveries.length-30), labels.slice(labels.length-30), 'Daily New Recoveries', 'rgb(42, 190, 42)', '#daily-recoveries-30-days-container');
     plotLineGraph(newRecoveries.slice(newRecoveries.length-7), labels.slice(labels.length-7), 'Daily New Recoveries', 'rgb(42, 190, 42)', '#daily-recoveries-7-days-container');
+})
+.catch(error => {
+    console.error(error);
+    ajaxError.style.display = 'block';
 })
 
 

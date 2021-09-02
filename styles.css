@@ -459,6 +459,13 @@ h2.big {
     position: relative;
 }
 
+#matter-anim-1 {
+    width: 50%;
+    height: 100%;
+    z-index: 5;
+    position: absolute;
+}
+
 #bg-placeholder {
     position: absolute;
     top: 0;

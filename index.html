@@ -26,6 +26,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Chakra+Petch:wght@300;400;500;600;700&family=JetBrains+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="styles.css">
         <link rel="icon" href="images/favicon.png" type="image/x-icon">
+        <script src="js/matter.js"></script>
     </head>
     <body>
         <div class="page" style="overflow: hidden; max-height: 100vh;">
@@ -102,6 +103,9 @@
         </div>
 
         <div class="flexbox-row page about">
+            <div id="matter-anim-1">
+                <canvas id="matter-canvas-1"></canvas>
+            </div>
             <div id="bg-placeholder"></div>
             <div class="flexbox-column column-half pad-50 ajc me">
                 <div class="flexbox-column aifs mb-50">
@@ -607,4 +611,5 @@
 
         }
     </script>
+    <script src="js/index-anim.js"></script>
 </html>

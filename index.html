@@ -26,7 +26,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Chakra+Petch:wght@300;400;500;600;700&family=JetBrains+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="styles.css">
         <link rel="icon" href="images/favicon.png" type="image/x-icon">
-        <script src="js/matter.js"></script>
+<!--        <script src="js/matter.js"></script>-->
     </head>
     <body>
         <div class="page" style="overflow: hidden; max-height: 100vh;">
@@ -103,9 +103,9 @@
         </div>
 
         <div class="flexbox-row page about">
-            <div id="matter-anim-1">
-                <canvas id="matter-canvas-1"></canvas>
-            </div>
+<!--            <div id="matter-anim-1">-->
+<!--                <canvas id="matter-canvas-1"></canvas>-->
+<!--            </div>-->
             <div id="bg-placeholder"></div>
             <div class="flexbox-column column-half pad-50 ajc me">
                 <div class="flexbox-column aifs mb-50">
@@ -161,9 +161,9 @@
                 <span class="bio-text mbt-10 pad-20">
                     I've been doing web development (using the Django-Postgres stack) since September, 2020, and I finished and sold my first web-app in June, 2021.
                 </span>
-                <span class="bio-text mbt-10 pad-20">
-                    I now aim to transition towards machine learning on the web.
-                </span>
+<!--                <span class="bio-text mbt-10 pad-20">-->
+<!--                    I now aim to transition towards machine learning on the web.-->
+<!--                </span>-->
             </div>
         </div>
 
@@ -313,6 +313,9 @@
                             docxlatex is a python module for extracting text from .docx files, including support for mathematical and
                             chemical equations, primarily for use with tools like MathJax.
                         </span>
+                        <span class="project-desc">
+                            It also includes support for extracting images and conversion of extracted equations into LaTex syntax.
+                        </span>
                         <span class="flexbox-row pad-10 project-links">
                             <span class="flexbox-row ajc link">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="20" height="20" viewBox="0 0 24 24" stroke-width="1" stroke="#8f8f8f" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -351,6 +354,52 @@
                                 <path d="M12 3a9 9 0 0 1 3.618 17.243l-2.193 -5.602a3 3 0 1 0 -2.849 0l-2.193 5.603a9 9 0 0 1 3.617 -17.244z" />
                             </svg>
                         </div>
+                    </div>
+                </div>
+                <div class="flexbox-row pad-50 mar-20 project">
+                    <div class="flexbox-column">
+                        <img src="images/mjxgui.svg" alt="ClassBerg" width="100px" height="125px">
+                    </div>
+                    <div class="flexbox-column project-content">
+                        <h2 class="big mbt-10">MJXGUI</h2>
+                        <span class="project-desc">
+                            MJXGUI is an equation editor for the web for building mathematical and chemical equations with a GUI similar to
+                            Google Docs or Microsoft Word. It supports conversion of the entered equations into LaTeX for storage and
+                            rendering using tools like MathJax.
+                        </span>
+                        <span class="project-desc">
+                            It uses MathJax as a core dependency to show users a preview of their equation as they are building it.
+                        </span>
+                        <span class="flexbox-row pad-10 project-links">
+                            <span class="flexbox-row ajc link">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="20" height="20" viewBox="0 0 24 24" stroke-width="1" stroke="#8f8f8f" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+                                </svg>
+                                <span class="space-lr"><a href="https://github.com/hrushikeshrv/mjxgui" target="_blank">source code</a></span>
+                            </span>
+                            <span class="flexbox-row ajc link">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-license" width="20" height="20" viewBox="0 0 24 24" stroke-width="1" stroke="#8f8f8f" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                  <path d="M15 21h-9a3 3 0 0 1 -3 -3v-1h10v2a2 2 0 0 0 4 0v-14a2 2 0 1 1 2 2h-2m2 -4h-11a3 3 0 0 0 -3 3v11" />
+                                  <line x1="9" y1="7" x2="13" y2="7" />
+                                  <line x1="9" y1="11" x2="13" y2="11" />
+                                </svg>
+                                <span class="space-lr"><a href="https://hrus.in/mjxgui" target="_blank">documentation</a></span>
+                            </span>
+                        </span>
+                        <span class="flexbox-row mt-10 flair">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-javascript" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                              <path d="M20 4l-2 14.5l-6 2l-6 -2l-2 -14.5z" />
+                              <path d="M7.5 8h3v8l-2 -1" />
+                              <path d="M16.5 8h-2.5a0.5 .5 0 0 0 -.5 .5v3a0.5 .5 0 0 0 .5 .5h1.423a0.5 .5 0 0 1 .495 .57l-.418 2.93l-2 .5" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-open-source" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                              <path d="M12 3a9 9 0 0 1 3.618 17.243l-2.193 -5.602a3 3 0 1 0 -2.849 0l-2.193 5.603a9 9 0 0 1 3.617 -17.244z" />
+                            </svg>
+                        </span>
                     </div>
                 </div>
             </div>
@@ -405,6 +454,7 @@
                                 <li>6.042J - Mathematics for Computer Science</li>
                                 <li>6.046J - Design and Analysis of Algorithms</li>
                                 <li>6.S095 - Programming For The Puzzled</li>
+                                <li>6.01SC - Intro To EECS 1</li>
                             </ul>
                         </div>
                         <span class="flexbox-row pad-10 project-links">
@@ -611,5 +661,5 @@
 
         }
     </script>
-    <script src="js/index-anim.js"></script>
+<!--    <script src="js/index-anim.js"></script>-->
 </html>

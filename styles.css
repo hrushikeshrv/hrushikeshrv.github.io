@@ -435,6 +435,19 @@ h2.big {
     border: 1px solid rgb(30, 10, 200);
 }
 
+.tippy-box[data-theme~='blue-gradient'][data-placement^='top'] > .tippy-arrow::before {
+    border-top-color: rgb(30, 10, 200);
+}
+.tippy-box[data-theme~='blue-gradient'][data-placement^='bottom'] > .tippy-arrow::before {
+    border-bottom-color: rgb(30, 10, 200);
+}
+.tippy-box[data-theme~='blue-gradient'][data-placement^='left'] > .tippy-arrow::before {
+    border-left-color: rgb(30, 10, 200);
+}
+.tippy-box[data-theme~='blue-gradient'][data-placement^='right'] > .tippy-arrow::before {
+    border-right-color: rgb(30, 10, 200);
+}
+
 @media (max-width: 500px) {
     .header-bar {
         padding: 15px 15px;

@@ -26,7 +26,28 @@
         <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Chakra+Petch:wght@300;400;500;600;700&family=JetBrains+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="styles.css">
         <link rel="icon" href="images/favicon.png" type="image/x-icon">
-<!--        <script src="js/matter.js"></script>-->
+
+        <script>
+            MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']],
+                    displayMath: [['$$', '$$']],
+                },
+                svg: {
+                    fontCache: 'global',
+                },
+                options: {
+                    menuOptions: {
+                        settings: {
+                            zoom: 'NoZoom',
+                            zscale: '250%',
+                        }
+                    }
+                },
+            }
+        </script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+        <script src="js/mjxgui.min.js"></script>
     </head>
     <body>
         <div class="page" style="overflow: hidden; max-height: 100vh;">
@@ -144,7 +165,7 @@
                         <span class="timeline-category">B. Tech, Engineering Physics</span>
                         <span class="timeline-comment"></span>
                     </div>
-                    <div class="flexbox-column pad-30 timeline-item aifs">
+                    <div class="flexbox-column pad-30 timeline-item aifs last-timeline-item">
                         <h2 class="mono-font">College of Engineering, Pune</h2>
                         <span class="timeline-year">2020-Present</span>
                         <span class="timeline-category">B. Tech, Electronics & Telecommunication Engineering</span>
@@ -255,15 +276,15 @@
                             Designed specifically for serving low traffic with low compute power servers.
                         </span>
                         <span class="flexbox-row pad-10 project-links">
-                            <span class="flexbox-row ajc link">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-external-link" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                  <path d="M11 7h-5a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-5" />
-                                  <line x1="10" y1="14" x2="20" y2="4" />
-                                  <polyline points="15 4 20 4 20 9" />
-                                </svg>
-                                <span class="space-lr"><a href="https://testing.exedindia.com" target="_blank">testing.exedindia.com</a></span>
-                            </span>
+<!--                            <span class="flexbox-row ajc link">-->
+<!--                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-external-link" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">-->
+<!--                                  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>-->
+<!--                                  <path d="M11 7h-5a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-5" />-->
+<!--                                  <line x1="10" y1="14" x2="20" y2="4" />-->
+<!--                                  <polyline points="15 4 20 4 20 9" />-->
+<!--                                </svg>-->
+<!--                                <span class="space-lr"><a href="https://testing.exedindia.com" target="_blank">testing.exedindia.com</a></span>-->
+<!--                            </span>-->
                         </span>
                         <span class="flexbox-row mt-10 flair">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-python" width="28" height="28" viewBox="0 0 24 24" stroke-width="1" stroke="#8f8f8f" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -368,7 +389,7 @@
                             rendering using tools like MathJax.
                         </span>
                         <span class="project-desc">
-                            It uses MathJax as a core dependency to show users a preview of their equation as they are building it.
+                            Try the demo below and create an equation. Note that MJXGUI does not work well with mobile devices yet.
                         </span>
                         <span class="flexbox-row pad-10 project-links">
                             <span class="flexbox-row ajc link">
@@ -387,6 +408,13 @@
                                 </svg>
                                 <span class="space-lr"><a href="https://hrus.in/mjxgui" target="_blank">documentation</a></span>
                             </span>
+                            <span class="flexbox-row ajc link mjxgui-demo-button">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-sum" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                  <path d="M18 16v2a1 1 0 0 1 -1 1h-11l6 -7l-6 -7h11a1 1 0 0 1 1 1v2" />
+                                </svg>
+                                <span class="space-lr">demo</span>
+                            </span>
                         </span>
                         <span class="flexbox-row mt-10 flair">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-javascript" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -400,6 +428,17 @@
                               <path d="M12 3a9 9 0 0 1 3.618 17.243l-2.193 -5.602a3 3 0 1 0 -2.849 0l-2.193 5.603a9 9 0 0 1 3.617 -17.244z" />
                             </svg>
                         </span>
+                        <div class="mt-10 flexbox-row hidden table-container" id="mjxgui-output-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <td>Equation</td>
+                                        <td>LaTeX</td>
+                                    </tr>
+                                </thead>
+                                <tbody id="mjxgui-output"></tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -661,5 +700,18 @@
 
         }
     </script>
-<!--    <script src="js/index-anim.js"></script>-->
+    <script>
+        const outputContainer = document.querySelector('#mjxgui-output-container');
+        const outputTable = document.querySelector('#mjxgui-output');
+        const gui = new MJXGUI('.mjxgui-demo-button', '$$', function() {
+            outputContainer.classList.remove('hidden');
+            let tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>$$ ${gui.getLatex()} $$</td>
+                <td>${gui.getLatex()}</td>
+            `;
+            outputTable.appendChild(tr);
+            MathJax.typesetPromise([tr]).then(() => {})
+        });
+    </script>
 </html>

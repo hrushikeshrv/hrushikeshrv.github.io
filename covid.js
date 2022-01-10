@@ -1,5 +1,3 @@
-// fetch('https://api.covid19tracker.in/data/static/data.min.json');
-
 const lastUpdatedContainers = document.querySelectorAll('.updated-on');
 const activeCasesContainer = document.querySelector('#active-cases');
 const deltaCasesToday = document.querySelector('#delta-cases-today');
@@ -53,7 +51,7 @@ axios({
     }
 
     lastUpdatedContainers.forEach(container => {
-        container.textContent = lastUpdated;
+        container.textContent = new Date(lastUpdated).toDateString();
     })
     const newCases = cases.newCases;
     const newRecoveries = cases.newRecoveries;

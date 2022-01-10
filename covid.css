@@ -28,6 +28,42 @@ small {
     font-family: var(--heading-font);
 }
 
+.square-small {
+    width: 20px;
+    height: 20px;
+}
+
+.donutSpinner {
+    display: inline-block;
+    border-radius: 50%;
+    border: 2px solid white;
+    border-left-color: var(--bg);
+    width: 100%;
+    height: 100%;
+    animation: donut-spin 1.2s linear infinite;
+}
+
+.donutSpinner.small {
+    width: 20px;
+    height: 20px;
+}
+
+.donutSpinner.medium {
+    width: 35px;
+    height: 35px;
+}
+
+.donutSpinner.large {
+    width: 60px;
+    height: 60px;
+}
+
+@keyframes donut-spin {
+    to {
+        transform: rotate(1turn);
+    }
+}
+
 #credits {
     position: absolute;
     transform: rotate(-90deg);
@@ -93,6 +129,16 @@ canvas {
 }
 
 #ajax-error {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.13);
+}
+
+#ajax-error > div {
     position: fixed;
     top: 20px;
     z-index: 3;
@@ -160,7 +206,7 @@ h1 {
 }
 
 .graph-container {
-    width: calc(100% + 60px);
+    width: calc(100% + 30px);
     height: 500px;
-    margin: 0 -30px;
+    margin: 0 -15px;
 }

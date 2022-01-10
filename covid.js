@@ -1,3 +1,5 @@
+// fetch('https://api.covid19tracker.in/data/static/data.min.json');
+
 const lastUpdatedContainers = document.querySelectorAll('.updated-on');
 const activeCasesContainer = document.querySelector('#active-cases');
 const deltaCasesToday = document.querySelector('#delta-cases-today');
@@ -21,37 +23,45 @@ const casesUpSVG = `
 `;
 const deltaIndicator = document.querySelector('#delta-indicator-svg');
 
+const labels = [];
+let cases = {
+    newCases: [],
+    newRecoveries: [],
+    totalCases: [],
+    totalRecoveries: [],
+    totalDeaths: []
+}
+let lastUpdated = '';
+
 axios({
     method: 'get',
-    url: 'https://api.covid19india.org/data.json',
+    url: 'https://api.covid19tracker.in/data/static/timeseries.min.json',
 })
 .then(response => {
+    const data = response.data;
     console.log(response.data);
-    const data = response.data['cases_time_series'];
-    const labels = [];
-    const newCases = [];
-    const newRecoveries = [];
 
-    let totalCases = 0;
-    let totalRecoveries = 0;
-    let totalDeaths = 0;
-    let lastUpdated = '';
+    for (let day in data['MH']['dates']) {
+        cases.newCases.push(data['MH']['dates'][day]['delta']['confirmed']);
+        cases.newRecoveries.push(data['MH']['dates'][day]['delta']['recovered']);
+        cases.totalCases.push(data['MH']['dates'][day]['total']['confirmed']);
+        cases.totalRecoveries.push(data['MH']['dates'][day]['total']['recovered']);
+        cases.totalDeaths.push(data['MH']['dates'][day]['total']['deceased'])
 
-    for (let day of data) {
-        labels.push(day.date);
-        newCases.push(day.dailyconfirmed);
-        newRecoveries.push(day.dailyrecovered);
-
-        totalCases = day.totalconfirmed;
-        totalRecoveries = day.totalrecovered;
-        totalDeaths = day.totaldeceased;
-        lastUpdated = day.date;
+        labels.push(day);
+        lastUpdated = day;
     }
 
     lastUpdatedContainers.forEach(container => {
         container.textContent = lastUpdated;
     })
-    newCasesToday.textContent = parseInt(newCases[newCases.length-1]).toLocaleString();
+    const newCases = cases.newCases;
+    const newRecoveries = cases.newRecoveries;
+    const totalCases = cases.totalCases;
+    const totalRecoveries = cases.totalRecoveries;
+    const totalDeaths = cases.totalDeaths;
+
+    newCasesToday.textContent = newCases[newCases.length-1].toLocaleString();
     deltaCasesToday.textContent = parseInt(newCases[newCases.length-1] - newRecoveries[newCases.length-1]).toLocaleString();
     if (newCases[newCases.length-1] - newRecoveries[newRecoveries.length-1] > 0) {
         deltaIndicator.innerHTML = casesUpSVG;
@@ -62,10 +72,10 @@ axios({
 
     pandemicStatusContainer.textContent = getPandemicStatus(newCases.slice(newCases.length - 21));
     
-    const activeCases = totalCases - totalRecoveries - totalDeaths;
+    const activeCases = totalCases[totalCases.length-1] - totalRecoveries[totalRecoveries.length-1] - totalDeaths[totalDeaths.length-1];
     activeCasesContainer.textContent = activeCases.toLocaleString();
     
-
+    console.log(newCases);
     plotLineGraph(newCases, labels, 'Daily New Cases', 'rgb(255, 90, 90)', '#daily-cases-start-present-container');
     plotLineGraph(newCases.slice(newCases.length-30), labels.slice(labels.length-30), 'Daily New Cases', 'rgb(255, 90, 90)', '#daily-cases-30-days-container');
     plotLineGraph(newCases.slice(newCases.length-7), labels.slice(labels.length-7), 'Daily New Cases', 'rgb(255, 90, 90)', '#daily-cases-7-days-container');
@@ -121,7 +131,6 @@ function plotLineGraph(data, labels, title, color, id) {
     }
     Plotly.newPlot(container,plotData, layout, config);
 }
-
 
 function getPandemicStatus(newCases) {
     const diff = [];

@@ -38,6 +38,14 @@
     --success: rgb(31, 217, 24);
 
     --error: rgb(255, 12, 32);
+
+    --warning-light-3: rgb(255, 250, 197);
+    --warning-light-2: rgb(252, 243, 174);
+    --warning-light-1: rgb(233, 211, 98);
+    --warning: rgb(246, 216, 22);
+    --warning-dark-1: rgb(186, 164, 16);
+    --warning-dark-2: rgb(107, 95, 7);
+    --warning-dark-3: rgb(79, 72, 21);
 }
 
 ::-webkit-scrollbar {
@@ -57,6 +65,7 @@ html, body {
     background-color: var(--background-color);
     font-family: var(--default-font);
     color: var(--font-color);
+    scroll-behavior: smooth;
 }
 
 a {
@@ -289,6 +298,16 @@ a.a {
     padding-top: 50px;
 }
 
+.mobile-element {
+    display: none;
+}
+
+@media (max-width: 650px) {
+    .mobile-element {
+        display: block;
+    }
+}
+
 
 /*
     base components
@@ -372,6 +391,14 @@ table tbody tr:hover td {
 
 .center {
     margin: auto auto;
+}
+
+.message-warning-dark {
+    background-color: var(--warning-dark-3);
+    color: var(--warning-light-3);
+    border-radius: 5px;
+    border-bottom: 1px solid var(--warning);
+    padding: 3px 7px;
 }
 
 /*

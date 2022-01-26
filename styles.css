@@ -806,3 +806,122 @@ table tbody tr:hover td {
 .mini-project .link svg {
     stroke: rgb(122, 122, 122);
 }
+
+/*
+    timeline-demo styles (for vis-timeline)
+*/
+
+#timeline-demo-1 {
+    background-color: var(--background-color);
+    color: var(--font-color);
+    height: 89vh;
+    width: 107%;
+    padding: 10px 0;
+    margin: 30px -14px;
+    box-shadow: inset 0 0 10px black;
+}
+
+.vis-item {
+    background-color: var(--background-color) !important;
+    border-radius: 0 !important;
+    border-width: 2px !important;
+    border-color: transparent !important;
+    border-bottom-color: var(--primary-dark-1) !important;
+    transition: border-radius 0.35s, border-color ease 0.3s;
+}
+
+.vis-item.vis-selected {
+    border-color: var(--primary-dark-1) !important;
+    border-radius: 16px !important;
+}
+
+.vis-item.vis-line {
+    border-color: var(--primary-dark-1) !important;
+}
+
+.vis-item-content > div {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: flex-start;
+}
+
+.vis-item-content > div > div {
+    width: 100%;
+    display: flex;
+}
+
+.vis-item-content h1, .vis-item-content h2, .vis-item-content h3 {
+    margin: 0;
+    /*font-size: 1.15rem;*/
+    font-family: var(--default-font);
+    font-weight: 400;
+}
+
+.vis-item-content > div > div > small {
+    border-radius: 50px;
+    /*border: 1px solid var(--primary-dark-1);*/
+    /*background-color: var(--primary-light-4);*/
+    padding: 1px 7px;
+    margin: 3px;
+    text-transform: uppercase;
+    font-family: var(--default-font);
+    text-align: center;
+    font-size: 0.8rem;
+    display: flex;
+    align-self: flex-start;
+}
+
+.vis-item-content > div > div > small > i {
+    display: none;
+}
+
+.vis-time-axis {
+    font-family: var(--decorative-font);
+    font-weight: 800;
+    text-transform: lowercase;
+}
+
+/*note card container styles*/
+.card-hidden-left {
+    position: absolute;
+    right: 100%;
+}
+
+#note-card-container .note-card, #chosen-tag-container {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 40vw;
+    height: 100vh;
+    transition: left ease 0.25s;
+    overflow-y: auto;
+    background-color: var(--background-color);
+    z-index: 2;
+    justify-content: space-between;
+}
+
+@media (max-width: 600px) {
+    #note-card-container .note-card, #chosen-tag-container {
+        width: 100vw;
+    }
+}
+
+.note-card h1 {
+    font-size: 3rem;
+}
+
+.note-card .note-card-note {
+    border-left: 2px solid var(--background-dark-2);
+    padding-left: 10px;
+}
+
+#delete-confirm-dialog {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--background-dark-1);
+    border-radius: 10px;
+    z-index: 3;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}

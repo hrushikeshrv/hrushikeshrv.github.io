@@ -85,6 +85,35 @@ a.a {
     font-family: var(--monospace-font);
 }
 
+code {
+    background-color: var(--background-dark-1);
+    border-radius: 6px;
+    font-family: var(--monospace-font);
+    font-size: 1rem;
+    padding: 1px 3px;
+}
+
+a.button-link {
+    padding: 10px 7px;
+    border: none;
+    border-radius: 6px;
+    font-family: var(--decorative-font);
+    text-transform: lowercase;
+    font-weight: 600;
+    background-color: var(--background-dark-1);
+    transition: background-color ease 0.25s;
+    font-size: 0.9rem;
+}
+
+a.button-link:hover {
+    background-color: var(--background-dark-2);
+}
+
+a.button-link:active {
+    background-color: var(--background-color);
+}
+
+
 /*
     layout styles
 */
@@ -393,12 +422,24 @@ table tbody tr:hover td {
     margin: auto auto;
 }
 
+.message-warning {
+    background-color: var(--warning-light-3);
+    color: var(--warning-dark-3);
+    border-radius: 5px;
+    border-bottom: 1px solid var(--warning);
+    padding: 3px 7px;
+}
+
 .message-warning-dark {
     background-color: var(--warning-dark-3);
     color: var(--warning-light-3);
     border-radius: 5px;
     border-bottom: 1px solid var(--warning);
     padding: 3px 7px;
+}
+
+.svg-red {
+    stroke: var(--error);
 }
 
 /*
@@ -783,6 +824,12 @@ table tbody tr:hover td {
     }
 }
 
+@media (max-width: 600px) {
+    .project-container {
+        justify-content: center;
+    }
+}
+
 .project-container:hover .project {
     background-color: var(--dark-background-light-2);
 }
@@ -841,11 +888,12 @@ table tbody tr:hover td {
 #timeline-demo-1 {
     background-color: var(--background-color);
     color: var(--font-color);
-    height: 89vh;
+    height: 80vh;
     width: 107%;
-    padding: 10px 0;
-    margin: 30px -14px;
+    padding: 10px;
+    margin: 30px 15px;
     box-shadow: inset 0 0 10px black;
+    border-radius: 20px;
 }
 
 .vis-item {
@@ -914,6 +962,17 @@ table tbody tr:hover td {
     right: 100%;
 }
 
+.tab-close-button, .note-close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+#note-card-container {
+    color: var(--font-color);
+}
+
 #note-card-container .note-card, #chosen-tag-container {
     position: fixed;
     top: 0;
@@ -951,4 +1010,17 @@ table tbody tr:hover td {
     border-radius: 10px;
     z-index: 3;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+small.helper-button {
+    border-radius: 50px;
+    border: 1px solid var(--primary-dark-1);
+    padding: 1px 7px;
+    cursor: pointer;
+    margin: 3px;
+    text-transform: uppercase;
+    font-family: var(--default-font);
+    text-align: center;
+    font-size: 0.8rem;
+    display: flex;
 }

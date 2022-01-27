@@ -18,8 +18,8 @@ class Timeline {
 
         this.notesDataset = [];
         this.timelineOptions = {
-            maxHeight: window.innerHeight - 100,
-            minHeight: window.innerHeight - 100,
+            maxHeight: window.innerHeight - 200,
+            minHeight: window.innerHeight - 200,
         };
         this.timeline = null;
     }
@@ -37,11 +37,15 @@ class Timeline {
                 className: 'timeline-note-item-card flexbox-column',
                 style: 'padding: 6px',
             })
+            // this.notes[i].className = 'timeline-note-item-card flexbox-column';
+            // this.notes[i].style = 'padding: 6px';
+            // this.notes[i].content = this.toHTML(this.notes[i]);
+            // this.notes[i].start = this.notes[i].date || this.notes[i].start;
+            // this.notesDataset.push(this.notes[i]);
         }
         if (this.timeline) {this.timeline.destroy();}
         this.timeline = new vis.Timeline(this.element, this.notesDataset, this.timelineOptions);
 
-        this.element.style.position = 'fixed';
         const tagData = this.element.querySelectorAll('i');
         tagData.forEach(tag => {
             const colors = tag.innerHTML.split(';');
@@ -249,9 +253,12 @@ function getNoteDetailHTML(noteDict) {
             </span>
             <div class="flexbox-column">
                 <h1 class="no-margin">${noteDict.title}</h1>
-                <code class="mbt-10">${dateISOToStandard(noteDict.date)}</code>
+                <code class="mbt-10">${noteDict.date ? dateISOToStandard(noteDict.date) : dateISOToStandard(noteDict.start)}</code>
                 <div class="flexbox-row mb-10">${noteTags}</div>
                 <div class="note-card-note">${noteDict.note}</div>
+                <span class="mbt-10 message-warning mobile-element">
+                    View this timeline on a device with a big screen for the best experience :)
+                </span>
             </div>
             <div class="flexbox-row mbt-10 note-control-links">
                 <a href="${noteDict.update_url}" class="button-link space-lr">Edit Note</a>
@@ -263,20 +270,68 @@ function getNoteDetailHTML(noteDict) {
     `;
 }
 
+const timelineTags = {
+    birthday: {
+        id: 1,
+        name: 'Birthday',
+        tag_color: '#FFEB3B',
+        text_color: '#000000'
+    },
+    tennis: {
+        id: 2,
+        name: 'Tennis',
+        tag_color: '#F33245',
+        text_color: '#FFFFFF'
+    },
+    college: {
+        id: 3,
+        name: 'College',
+        tag_color: '#ECBA37',
+        text_color: '#000000'
+    },
+    projects: {
+        id: 4,
+        name: 'Projects',
+        tag_color: '#C737EC',
+        text_color: '#FFFFFF',
+    }
+}
+
 const timelineNotes = [
     {
         date: '2002-01-17T00:30:00Z',
         id: 1,
         note: "<p>Birthday!</p>",
-        tags: [
-            {
-                id: 1,
-                name: 'Birthday',
-                tag_color: '#FFEB3B',
-                text_color: '#000000'
-            }
-        ],
-        title: 'Birthday',
+        tags: [timelineTags.birthday],
+        title: 'Birthday🥳',
+    },
+    {
+        date: '2006-01-17T00:30:00Z',
+        id: 2,
+        note: "<p>I stepped on a tennis court for the first time.🎾</p>",
+        tags: [timelineTags.tennis],
+        title: 'Started Playing Tennis'
+    },
+    {
+        date: '2019-07-24T00:30:00Z',
+        id: 3,
+        note: "<p>I studied Engineering Physics at National Institute of Technology, Calicut for 3 semesters. In December 2019, I took my first course in Computer Science online, and I discovered that I wanted to study computer science for the rest of my life. </p><p>I decided to leave NIT, Calicut, and took admission at the College of Engineering, Pune, where I could study electronics engineering and computer science at the same time.",
+        tags: [timelineTags.college],
+        title: 'Engg. Physics at NIT, Calicut'
+    },
+    {
+        date: '2020-12-01T00:30:00Z',
+        id: 4,
+        note: "<p>Started studying electronics engineering at College of Engineering, Pune.</p>",
+        tags: [timelineTags.college],
+        title: 'EECS at COEP'
+    },
+    {
+        date: '2020-09-20T00:30:00Z',
+        id: 5,
+        note: "<p>As I was preparing for the entrance exams I had to give to get admission into COEP, I couldn't find any place where I could practice for the exam and get some analysis of my performance (for free). I decided to start work on <a href='http://classberg.com'>classberg.com</a>, a platform where students could create their own tests from ClassBerg's database and get analytics on their performance. </p><p>ClassBerg went through 2 pivots to turn into the platform it is now, a complete educational suite.</p>",
+        tags: [timelineTags.projects],
+        title: 'Started Working on ClassBerg'
     }
 ]
 

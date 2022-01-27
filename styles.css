@@ -472,7 +472,7 @@ table tbody tr:hover td {
 
 @media (max-width: 850px) {
     #jumbotron {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
     }
 }
 
@@ -498,26 +498,30 @@ table tbody tr:hover td {
     transition: top ease 0.25s, bottom ease 0.25s;
 }
 
-#before, #after {
-    position: relative;
-}
+/*#before, #after {*/
+/*    position: relative;*/
+/*}*/
 
-#left-wrapper, #right-wrapper {
-    position: absolute;
-}
+/*#left-wrapper, #right-wrapper {*/
+/*    position: absolute;*/
+/*}*/
 
 .before-link, .after-link {
-    transition: font-size ease 0.25s;
+    transition: font-size ease .25s, opacity ease 0.25s;
     position: relative;
 }
 
 #before span:not(.active), #after span:not(.active) {
-    font-size: 1rem;
+    font-size: 0.2rem;
 }
 
 #before .active, #after .active {
     color: var(--font-color);
     z-index: 1;
+}
+
+.link-no-opacity {
+    opacity: 0;
 }
 
 .footer-bar {

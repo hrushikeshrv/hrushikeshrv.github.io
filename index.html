@@ -78,16 +78,19 @@
                 <div id="jumbotron">
                     <div class="variable-text" id="before">
                         <div id="left-wrapper">
-                            <span class="before-link" data-site="instagram" data-link-id="1" data-side="left">instagram.com/</span>
-                            <span class="before-link active" data-site="github" data-link-id="3" data-side="left">github.com/</span>
-                            <span class="before-link" data-site="linkedin" data-link-id=2" data-side="left">linkedin.com/in/</span>
+                            <span class="before-link hidden link-no-opacity" data-site="instagram" data-link-id="1" data-side="left"><a
+                                    href="https://instagram.com/hrushikeshrv">instagram.com/</a></span>
+                            <span class="before-link active" data-site="github" data-link-id="3" data-side="left"><a
+                                    href="https://github.com/hrushikeshrv" target="_blank">github.com/</a></span>
+                            <span class="before-link hidden link-no-opacity" data-site="linkedin" data-link-id=2" data-side="left"><a
+                                    href="https://linkedin.com/in/hrushikeshrv">linkedin.com/in/</a></span>
                         </div>
                     </div>
-                    <div class="fixed-text">hrushikeshrv</div>
+                    <div class="fixed-text"><a href="https://github.com/hrushikeshrv" target="_blank" id="fixed-link">hrushikeshrv</a></div>
                     <div class="variable-text" id="after">
                         <div id="right-wrapper">
-                            <span class="after-link" data-site="gmail" data-link-id="1" data-side="right">@gmail.com</span>
-                            <span class="after-link" data-site="classberg" data-link-id="2" data-side="right">@classberg.com</span>
+                            <span class="after-link hidden link-no-opacity" data-site="gmail" data-link-id="1" data-side="right">@gmail.com</span>
+                            <span class="after-link hidden link-no-opacity" data-site="classberg" data-link-id="2" data-side="right">@classberg.com</span>
                         </div>
                     </div>
                 </div>
@@ -786,6 +789,7 @@
         const before = document.querySelector('#before');
         const after = document.querySelector('#after');
 
+        const fixedLink = document.querySelector('#fixed-link');
         const linkButtons = document.querySelectorAll('.logo');
         const links = document.querySelectorAll('.before-link, .after-link');
         const header = document.querySelector('#header-text');
@@ -795,8 +799,16 @@
             'linkedin': `<a href="https://linkedin.com/in/hrushikeshrv" target="_blank">linkedin.com/in/hrushikeshrv</a>`,
             'instagram': `<a href="https://instagram.com/hrushikeshrv" target="_blank">instagram.com/hrushikeshrv</a>`,
             'linktree': `<a href="https://linktr.ee/hrushikeshrv" target="_blank">linktr.ee/hrushikeshrv</a>`,
-            'classberg': `<a href="https://classberg.com" target="_blank">ClassBerg</a><a href="mailto:hrushikeshrv@classberg.com" target="_blank">hrushikeshrv@classberg.com</a>`,
+            'classberg': `<a href="http://classberg.com" target="_blank">ClassBerg</a><a href="mailto:hrushikeshrv@classberg.com" target="_blank">hrushikeshrv@classberg.com</a>`,
             'gmail': `<a href="mailto:hrushikeshrv@gmail.com" target="_blank">hrushikeshrv@gmail.com</a>`
+        }
+
+        const headerLinks = {
+            'github': 'https://github.com/hrushikeshrv',
+            'linkedin': 'https://linkedin.com/in/hrushikeshrv',
+            'instagram': 'https://instagram.com/hrushikeshrv',
+            'classberg': 'mailto:hrushikeshrv@classberg.com,hrushikeshrv@gmail.com',
+            'gmail': 'mailto:hrushikeshrv@gmail.com'
         }
 
         linkButtons.forEach(btn => {
@@ -804,20 +816,32 @@
                 let site = this.dataset.site;
                 links.forEach(link => {
                     if (link.dataset.site === site) {
-                        link.classList.add('active');
-                        vAlign(link.dataset.siteId, link.dataset.side);
+                        showLink(link);
                         header.innerHTML = headerHTML[site];
+                        fixedLink.href = headerLinks[site];
                     }
                     else {
                         link.classList.remove('active');
+                        hideLink(link);
                     }
                 })
 
             })
         })
 
-        function vAlign(linkId, side) {
+        function showLink(link) {
+            link.classList.remove('hidden');
+            link.classList.remove('link-no-opacity');
+            setTimeout(function() {
+                link.classList.add('active');
+            }, 250);
+        }
 
+        function hideLink(link) {
+            link.classList.add('link-no-opacity');
+            setTimeout(function() {
+                link.classList.add('hidden');
+            }, 250);
         }
     </script>
     <script>

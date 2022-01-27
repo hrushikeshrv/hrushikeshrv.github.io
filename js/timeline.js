@@ -93,15 +93,6 @@ class Timeline {
                 })
             })
         })
-
-        // Show delete dialog when the user clicks the delete button on a note card
-        noteCards.forEach(card => {
-            const deleteButton = card.querySelector('button.delete-note-button');
-            deleteButton.addEventListener('click', function() {
-                deleteConfirmationDialog.classList.remove('hidden');
-                deleteConfirmationButton.dataset.deleteUrl = this.dataset.deleteUrl;
-            })
-        })
     }
 
 

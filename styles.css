@@ -815,6 +815,7 @@ table tbody tr:hover td {
 
 .project {
     max-width: 600px;
+    min-width: 600px;
     background-color: var(--dark-background-light-1);
     transition: background-color ease 0.25s;
     border-radius: 20px;
@@ -825,6 +826,7 @@ table tbody tr:hover td {
     .project {
         margin: 10px;
         max-width: 320px;
+        min-width: 320px;
     }
 }
 

@@ -337,6 +337,12 @@ a.button-link:active {
     }
 }
 
+@media (max-width: 650px) {
+    .mobile-hide {
+        display: none;
+    }
+}
+
 
 /*
     base components
@@ -894,12 +900,25 @@ table tbody tr:hover td {
 #timeline-demo-1 {
     background-color: var(--background-color);
     color: var(--font-color);
-    height: 80vh;
     width: 107%;
     padding: 10px;
     margin: 30px 15px;
     box-shadow: inset 0 0 10px black;
     border-radius: 20px;
+    position: relative;
+}
+
+#timeline-control-help {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 2;
+    cursor: pointer;
+}
+
+#timeline-control-help svg, #timeline-controls-tippy svg {
+    stroke: black;
+    margin: 0 6px;
 }
 
 .vis-item {

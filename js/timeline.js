@@ -18,8 +18,9 @@ class Timeline {
 
         this.notesDataset = [];
         this.timelineOptions = {
-            maxHeight: window.innerHeight - 200,
-            minHeight: window.innerHeight - 200,
+            maxHeight: window.innerHeight - 250,
+            minHeight: window.innerHeight - 250,
+            zoomKey: 'ctrlKey',
         };
         this.timeline = null;
     }

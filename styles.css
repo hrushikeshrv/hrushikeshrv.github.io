@@ -462,6 +462,7 @@ table tbody tr:hover td {
     font-size: 3rem;
     color: var(--primary);
     font-weight: 600;
+    flex-wrap: nowrap;
 }
 
 @media (max-width: 1300px) {

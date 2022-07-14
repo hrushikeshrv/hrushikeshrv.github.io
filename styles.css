@@ -563,6 +563,21 @@ table tbody tr:hover td {
     cursor: pointer;
     user-select: none;
     font-size: 1.1rem;
+    background-color: transparent;
+    transition: background-color ease 0.25s;
+    padding: 7px;
+    border-radius: 6px;
+    outline: none;
+    border-color: transparent;
+    font-family: var(--default-font);
+}
+
+.logo:hover, .logo:active, .logo:focus {
+    background-color: var(--background-dark-1);
+}
+
+.logo:hover svg, .logo:active svg, .logo:focus svg {
+    stroke: black;
 }
 
 .footer-bar .logo {

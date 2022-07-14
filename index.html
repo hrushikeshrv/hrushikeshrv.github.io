@@ -48,6 +48,7 @@
         </script>
         <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
         <script src="js/mjxgui.min.js"></script>
+        <script src="js/matter.js"></script>
 
         <link href="https://unpkg.com/vis-timeline@latest/styles/vis-timeline-graph2d.min.css" rel="stylesheet" type="text/css" />
         <script type="text/javascript" src="https://unpkg.com/vis-timeline@latest/standalone/umd/vis-timeline-graph2d.min.js"></script>
@@ -69,10 +70,13 @@
             </div>
         </div>
         <div class="page" style="overflow: hidden; max-height: 100vh;">
+            <div id="matter-anim-1">
+                <canvas id="matter-canvas-1"></canvas>
+            </div>
             <div class="flexbox-column ajc header-bar">
-            <span id="header-text" class="flexbox-column ajc">
-                <a href="https://github.com/hrushikeshrv" target="_blank">github.com/hrushikeshrv</a>
-            </span>
+                <span id="header-text" class="flexbox-column ajc">
+                    <a href="https://github.com/hrushikeshrv" target="_blank">github.com/hrushikeshrv</a>
+                </span>
             </div>
             <div class="rotate">
                 <div id="jumbotron">
@@ -147,9 +151,6 @@
         </div>
 
         <div class="flexbox-row page about">
-<!--            <div id="matter-anim-1">-->
-<!--                <canvas id="matter-canvas-1"></canvas>-->
-<!--            </div>-->
             <div id="bg-placeholder"></div>
             <div class="flexbox-column column-half pad-50 ajc me">
                 <div class="flexbox-column aifs mb-50">
@@ -904,79 +905,103 @@
                 hideOnClick: true,
             })
         </script>
-    </body>
-    <script>
-        const before = document.querySelector('#before');
-        const after = document.querySelector('#after');
 
-        const fixedLink = document.querySelector('#fixed-link');
-        const linkButtons = document.querySelectorAll('.logo');
-        const links = document.querySelectorAll('.before-link, .after-link');
-        const header = document.querySelector('#header-text');
+        <script src="js/index-anim.js"></script>
+        <script>
+            const before = document.querySelector('#before');
+            const after = document.querySelector('#after');
 
-        const headerHTML = {
-            'github': `<a href="https://github.com/hrushikeshrv" target="_blank">github.com/hrushikeshrv</a>`,
-            'linkedin': `<a href="https://linkedin.com/in/hrushikeshrv" target="_blank">linkedin.com/in/hrushikeshrv</a>`,
-            'instagram': `<a href="https://instagram.com/hrushikeshrv" target="_blank">instagram.com/hrushikeshrv</a>`,
-            'linktree': `<a href="https://linktr.ee/hrushikeshrv" target="_blank">linktr.ee/hrushikeshrv</a>`,
-            'classberg': `<a href="http://classberg.com" target="_blank">ClassBerg</a><a href="mailto:hrushikeshrv@classberg.com" target="_blank">hrushikeshrv@classberg.com</a>`,
-            'gmail': `<a href="mailto:hrushikeshrv@gmail.com" target="_blank">hrushikeshrv@gmail.com</a>`
-        }
+            const fixedLink = document.querySelector('#fixed-link');
+            const linkButtons = document.querySelectorAll('.logo');
+            const links = document.querySelectorAll('.before-link, .after-link');
+            const header = document.querySelector('#header-text');
 
-        const headerLinks = {
-            'github': 'https://github.com/hrushikeshrv',
-            'linkedin': 'https://linkedin.com/in/hrushikeshrv',
-            'instagram': 'https://instagram.com/hrushikeshrv',
-            'classberg': 'mailto:hrushikeshrv@classberg.com,hrushikeshrv@gmail.com',
-            'gmail': 'mailto:hrushikeshrv@gmail.com'
-        }
+            const buttonDataMap = {
+                'github': {
+                    html: `<a href="https://github.com/hrushikeshrv" target="_blank">github.com/hrushikeshrv</a>`,
+                    link: 'https://github.com/hrushikeshrv',
+                    spritesAdded: true,
+                    spritePath: './images/sprites/github.svg',
+                },
+                'linkedin': {
+                    html: `<a href="https://linkedin.com/in/hrushikeshrv" target="_blank">linkedin.com/in/hrushikeshrv</a>`,
+                    link: 'https://linkedin.com/in/hrushikeshrv',
+                    spritesAdded: false,
+                    spritePath: './images/sprites/linkedin.svg',
+                },
+                'instagram': {
+                    html: `<a href="https://instagram.com/hrushikeshrv" target="_blank">instagram.com/hrushikeshrv</a>`,
+                    link: 'https://instagram.com/hrushikeshrv',
+                    spritesAdded: false,
+                    spritePath: './images/sprites/instagram.svg',
+                },
+                'gmail': {
+                    html: `<a href="mailto:hrushikeshrv@gmail.com" target="_blank">hrushikeshrv@gmail.com</a>`,
+                    link: 'mailto:hrushikeshrv@gmail.com',
+                    spritesAdded: false,
+                    spritePath: './images/sprites/gmail.svg',
+                },
+                'classberg': {
+                    html: `<a href="http://classberg.com" target="_blank">ClassBerg</a><a href="mailto:hrushikeshrv@classberg.com" target="_blank">hrushikeshrv@classberg.com</a>`,
+                    link: 'mailto:hrushikeshrv@classberg.com,hrushikeshrv@gmail.com',
+                    spritesAdded: false,
+                    spritePath: './images/sprites/classberg.svg',
+                }
+            }
 
-        linkButtons.forEach(btn => {
-            btn.addEventListener('click', function() {
-                let site = this.dataset.site;
-                links.forEach(link => {
-                    if (link.dataset.site === site) {
-                        showLink(link);
-                        header.innerHTML = headerHTML[site];
-                        fixedLink.href = headerLinks[site];
-                    }
-                    else {
-                        link.classList.remove('active');
-                        hideLink(link);
-                    }
+            addSprites(5, './images/sprites/github.svg');
+
+            linkButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    let site = this.dataset.site;
+                    links.forEach(link => {
+                        if (link.dataset.site === site) {
+                            showLink(link);
+                            header.innerHTML = buttonDataMap[site].html;
+                            fixedLink.href = buttonDataMap[site].link;
+                            if (!buttonDataMap[site].spritesAdded) {
+                                buttonDataMap[site].spritesAdded = true;
+                                addSprites(5, buttonDataMap[site].spritePath);
+                            }
+                        }
+                        else {
+                            link.classList.remove('active');
+                            hideLink(link);
+                        }
+                    })
+
                 })
-
             })
-        })
 
-        function showLink(link) {
-            link.classList.remove('hidden');
-            link.classList.remove('link-no-opacity');
-            setTimeout(function() {
-                link.classList.add('active');
-            }, 250);
-        }
+            function showLink(link) {
+                link.classList.remove('hidden');
+                link.classList.remove('link-no-opacity');
+                setTimeout(function() {
+                    link.classList.add('active');
+                }, 250);
+            }
 
-        function hideLink(link) {
-            link.classList.add('link-no-opacity');
-            setTimeout(function() {
-                link.classList.add('hidden');
-            }, 250);
-        }
-    </script>
-    <script>
-        const outputContainer = document.querySelector('#mjxgui-output-container');
-        const outputTable = document.querySelector('#mjxgui-output');
-        const gui = new MJXGUI('.mjxgui-demo-button', '$$', function() {
-            outputContainer.classList.remove('hidden');
-            let tr = document.createElement('tr');
-            tr.innerHTML = `
+            function hideLink(link) {
+                link.classList.add('link-no-opacity');
+                setTimeout(function() {
+                    link.classList.add('hidden');
+                }, 250);
+            }
+        </script>
+        <script>
+            const outputContainer = document.querySelector('#mjxgui-output-container');
+            const outputTable = document.querySelector('#mjxgui-output');
+            const gui = new MJXGUI('.mjxgui-demo-button', '$$', function() {
+                outputContainer.classList.remove('hidden');
+                let tr = document.createElement('tr');
+                tr.innerHTML = `
                 <td>$$ ${gui.getLatex()} $$</td>
                 <td>${gui.getLatex()}</td>
             `;
-            outputTable.appendChild(tr);
-            MathJax.typesetPromise([tr]).then(() => {})
-        });
-    </script>
-    <script src="js/timeline.js"></script>
+                outputTable.appendChild(tr);
+                MathJax.typesetPromise([tr]).then(() => {})
+            });
+        </script>
+        <script src="js/timeline.js"></script>
+    </body>
 </html>

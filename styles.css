@@ -518,6 +518,10 @@ table tbody tr:hover td {
     position: relative;
 }
 
+.fixed-text {
+    z-index: 2;
+}
+
 #before span:not(.active), #after span:not(.active) {
     font-size: 0.2rem;
 }
@@ -538,6 +542,7 @@ table tbody tr:hover td {
     width: 100%;
     align-items: center;
     justify-content: space-between;
+    z-index: 1;
 }
 
 @media (max-width: 700px) {
@@ -560,11 +565,18 @@ table tbody tr:hover td {
     font-size: 1.1rem;
 }
 
+.footer-bar .logo {
+    z-index: 2;
+}
+
 .header-bar {
     position: absolute;
     top: 0;
     padding: 25px 100px;
     width: 100%;
+}
+
+.header-bar a {
     z-index: 2;
 }
 
@@ -611,9 +623,9 @@ table tbody tr:hover td {
 }
 
 #matter-anim-1 {
-    width: 50%;
+    width: 100%;
     height: 100%;
-    z-index: 5;
+    z-index: 1;
     position: absolute;
 }
 

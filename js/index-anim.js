@@ -1,6 +1,7 @@
 const Engine = Matter.Engine;
 const Render = Matter.Render;
 const Runner = Matter.Runner;
+const Body = Matter.Body;
 const Bodies = Matter.Bodies;
 const Composite = Matter.Composite;
 const Composites = Matter.Composites;
@@ -8,11 +9,9 @@ const Common = Matter.Common;
 const Mouse = Matter.Mouse;
 const MouseConstraint = Matter.MouseConstraint;
 
-let worldWidth = window.innerWidth/2;
-if (worldWidth < 200) worldWidth *= 2;
-
 const matterCanvas = document.querySelector('#matter-canvas-1');
-const worldHeight = matterCanvas.parentElement.offsetHeight;
+const worldWidth = window.innerWidth * 0.99;
+const worldHeight = matterCanvas.parentElement.offsetHeight * 0.99;
 
 const engine = Engine.create();
 const world = engine.world;
@@ -32,28 +31,50 @@ const runner = Runner.create();
 Runner.run(runner, engine);
 
 Composite.add(world, [
-    Bodies.rectangle(0, 0, worldWidth*2, 10, { isStatic: true, render: {fillStyle: 'transparent'} }),
-    Bodies.rectangle(400, worldHeight, 800, 10, { isStatic: true, render: {fillStyle: 'transparent'} }),
-    Bodies.rectangle(worldWidth, worldHeight, 10, worldHeight*2, { isStatic: true, render: {fillStyle: 'transparent'} }),
-    Bodies.rectangle(0, 0, 10, worldHeight*2, { isStatic: true, render: {fillStyle: 'transparent'} }),
+    Bodies.rectangle(0, 0, worldWidth*2, 20, { isStatic: true, render: {fillStyle: 'transparent'} }),
+    Bodies.rectangle(400, worldHeight, worldWidth*2, 20, { isStatic: true, render: {fillStyle: 'transparent'} }),
+    Bodies.rectangle(worldWidth, worldHeight, 20, worldHeight*2, { isStatic: true, render: {fillStyle: 'transparent'} }),
+    Bodies.rectangle(0, 0, 20, worldHeight*2, { isStatic: true, render: {fillStyle: 'transparent'} }),
 ]);
-engine.gravity.x = -0.05;
+engine.gravity.x = 0;
 engine.gravity.y = 0;
 
-const stack = Composites.stack(50, 120, 11, 1, 0, 0, function(x, y) {
-    switch (Math.round(Common.random(0, 1))) {
-        case 0:
-            if (Common.random() < 0.6) {
-                return Bodies.rectangle(x, y, Common.random(20, 50), Common.random(20, 50));
-            } else {
-                return Bodies.rectangle(x, y, Common.random(80, 120), Common.random(20, 30));
+// Return an options object for an SVG sprite
+function getSpriteOptions(path) {
+    return {
+        render: {
+            strokeStyle: '#333333',
+            sprite: {
+                texture: path
             }
-        case 1:
-            return Bodies.polygon(x, y, Math.round(Common.random(1, 8)), Common.random(20, 50));
-
+        },
+        friction: 0.05,
+        frictionAir: 0.0025,
     }
-});
-Composite.add(world, stack);
+}
+
+// Apply a random force on some body
+function applyRandomForce(body) {
+    Body.applyForce(
+        body,
+        {
+            x: body.position.x,
+            y: body.position.y,
+        },
+        {
+            x: (Math.random() - 0.5)/100,
+            y: (Math.random() - 0.5)/100,
+        }
+    )
+}
+
+function addSprites(n, path) {
+    for (let i = 0; i < n; i++) {
+        const body = Bodies.rectangle(worldWidth/2, worldHeight/2, 30, 30, getSpriteOptions(path));
+        applyRandomForce(body);
+        Composite.add(world, body);
+    }
+}
 
 const mouse = Mouse.create(render.canvas);
 const mouseConstraint = MouseConstraint.create(engine, {

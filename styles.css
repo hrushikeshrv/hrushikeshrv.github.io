@@ -822,7 +822,8 @@ table tbody tr:hover td {
 .project {
     max-width: 600px;
     min-width: 600px;
-    background-color: var(--dark-background-light-1);
+    background-color: var(--background-dark-1);
+    color: var(--font-color);
     transition: background-color ease 0.25s;
     border-radius: 20px;
     flex-wrap: nowrap;
@@ -842,10 +843,6 @@ table tbody tr:hover td {
     }
 }
 
-.project-container:hover .project {
-    background-color: var(--dark-background-light-2);
-}
-
 .project .project-desc {
     margin: 10px 0;
 }
@@ -853,6 +850,7 @@ table tbody tr:hover td {
 .project-links .link {
     border-radius: 15px;
     background-color: var(--dark-background-dark-1);
+    color: var(--light-font-color);
     padding: 5px 10px;
     margin: 5px;
 }
@@ -883,10 +881,6 @@ table tbody tr:hover td {
     .mini-project {
         max-width: 90%;
     }
-}
-
-.mini-project .link {
-    background-color: var(--background-dark-1);
 }
 
 .mini-project .link svg {

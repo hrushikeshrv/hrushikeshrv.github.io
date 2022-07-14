@@ -78,7 +78,7 @@ a.a {
 }
 
 .icon-tabler {
-    stroke: var(--muted-font);
+    stroke: rgb(80, 80, 80);
 }
 
 .mono-font {
@@ -570,6 +570,7 @@ table tbody tr:hover td {
     outline: none;
     border-color: transparent;
     font-family: var(--default-font);
+    stroke: rgb(60, 60, 60);
 }
 
 .logo:hover, .logo:active, .logo:focus {

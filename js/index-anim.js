@@ -30,12 +30,12 @@ Render.run(render);
 const runner = Runner.create();
 Runner.run(runner, engine);
 
-Composite.add(world, [
-    Bodies.rectangle(0, 0, worldWidth*2, 20, { isStatic: true, render: {fillStyle: 'transparent'} }),
-    Bodies.rectangle(400, worldHeight, worldWidth*2, 20, { isStatic: true, render: {fillStyle: 'transparent'} }),
-    Bodies.rectangle(worldWidth, worldHeight, 20, worldHeight*2, { isStatic: true, render: {fillStyle: 'transparent'} }),
-    Bodies.rectangle(0, 0, 20, worldHeight*2, { isStatic: true, render: {fillStyle: 'transparent'} }),
-]);
+// Composite.add(world, [
+//     Bodies.rectangle(0, 0, worldWidth*2, 20, { isStatic: true, render: {fillStyle: 'transparent'} }),
+//     Bodies.rectangle(400, worldHeight, worldWidth*2, 20, { isStatic: true, render: {fillStyle: 'transparent'} }),
+//     Bodies.rectangle(worldWidth, worldHeight, 20, worldHeight*2, { isStatic: true, render: {fillStyle: 'transparent'} }),
+//     Bodies.rectangle(0, 0, 20, worldHeight*2, { isStatic: true, render: {fillStyle: 'transparent'} }),
+// ]);
 engine.gravity.x = 0;
 engine.gravity.y = 0;
 
@@ -49,7 +49,7 @@ function getSpriteOptions(path) {
             }
         },
         friction: 0.05,
-        frictionAir: 0.0025,
+        frictionAir: 0.001,
     }
 }
 
@@ -62,8 +62,8 @@ function applyRandomForce(body) {
             y: body.position.y,
         },
         {
-            x: (Math.random() - 0.5)/100,
-            y: (Math.random() - 0.5)/100,
+            x: (Math.random() - 0.5)/90,
+            y: (Math.random() - 0.5)/90,
         }
     )
 }
@@ -76,20 +76,20 @@ function addSprites(n, path) {
     }
 }
 
-const mouse = Mouse.create(render.canvas);
-const mouseConstraint = MouseConstraint.create(engine, {
-    mouse: mouse,
-    constraint: {
-        stiffness: 0.2,
-        render: {
-            visible: false,
-        }
-    }
-});
-mouseConstraint.mouse.element.removeEventListener("mousewheel", mouseConstraint.mouse.mousewheel);
-mouseConstraint.mouse.element.removeEventListener("DOMMouseScroll", mouseConstraint.mouse.mousewheel);
-Composite.add(world, mouseConstraint);
-render.mouse = mouse;
+// const mouse = Mouse.create(render.canvas);
+// const mouseConstraint = MouseConstraint.create(engine, {
+//     mouse: mouse,
+//     constraint: {
+//         stiffness: 0.2,
+//         render: {
+//             visible: false,
+//         }
+//     }
+// });
+// mouseConstraint.mouse.element.removeEventListener("mousewheel", mouseConstraint.mouse.mousewheel);
+// mouseConstraint.mouse.element.removeEventListener("DOMMouseScroll", mouseConstraint.mouse.mousewheel);
+// Composite.add(world, mouseConstraint);
+// render.mouse = mouse;
 
 Render.lookAt(render, {
     min: {x: 0, y: 0},

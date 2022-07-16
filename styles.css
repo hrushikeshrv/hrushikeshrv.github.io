@@ -837,9 +837,6 @@ table tbody tr:hover td {
     .page-projects #projects {
         font-size: 3rem;
     }
-    .page-projects .project {
-        flex-flow: column wrap;
-    }
     .page-projects .project h2.big {
         font-size: 2rem;
     }
@@ -871,15 +868,40 @@ table tbody tr:hover td {
     right: 5%;
 }
 
+#project-navbar {
+    width: 100%;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+#project-navbar::-webkit-scrollbar {
+    display: none;
+}
+
+.project-nav-link {
+    border-radius: 30px;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-color: var(--background-dark-1);
+    color: var(--font-color);
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color ease 0.2s;
+    flex-wrap: nowrap;
+}
+
+.project-nav-link:hover {
+    border-color: var(--primary-dark-1);
+}
+
 .project {
     max-width: 80%;
-    min-width: 600px;
-    height: 70vh;
+    height: 55vh;
     background-color: var(--background-dark-1);
     color: var(--font-color);
     transition: background-color ease 0.25s;
     border-radius: 20px;
-    flex-wrap: nowrap;
     overflow-y: auto;
 }
 
@@ -914,7 +936,13 @@ table tbody tr:hover td {
 
 .project .project-content {
     margin-left: 20px;
-    max-width: 100%;
+    max-width: 80%;
+}
+
+@media (max-width: 600px) {
+    .project .project-content {
+        max-width: 100%;
+    }
 }
 
 .mjxgui-demo-button {

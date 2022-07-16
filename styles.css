@@ -848,14 +848,39 @@ table tbody tr:hover td {
     }
 }
 
+.project-container {
+    justify-content: center;
+    position: relative;
+}
+
+#project-nav-left, #project-nav-right {
+    position: absolute;
+    top: 50%;
+}
+
+#project-nav-left svg, #project-nav-right svg {
+    stroke: var(--light-font-color);
+    cursor: pointer;
+}
+
+#project-nav-left {
+    left: 5%;
+}
+
+#project-nav-right {
+    right: 5%;
+}
+
 .project {
-    max-width: 600px;
+    max-width: 80%;
     min-width: 600px;
+    height: 70vh;
     background-color: var(--background-dark-1);
     color: var(--font-color);
     transition: background-color ease 0.25s;
     border-radius: 20px;
     flex-wrap: nowrap;
+    overflow-y: auto;
 }
 
 @media (max-width: 400px) {
@@ -866,14 +891,9 @@ table tbody tr:hover td {
     }
 }
 
-@media (max-width: 600px) {
-    .project-container {
-        justify-content: center;
-    }
-}
-
 .project .project-desc {
     margin: 10px 0;
+    max-width: 80%;
 }
 
 .project-links .link {
@@ -886,6 +906,10 @@ table tbody tr:hover td {
 
 .project .flair svg {
     margin: 0 8px;
+}
+
+.project-links .link svg {
+    stroke: var(--muted-font);
 }
 
 .project .project-content {

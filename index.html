@@ -204,10 +204,10 @@
                     by day, and a self-taught computer science student the rest of the time.
                 </span>
                 <span class="bio-text mbt-10 pad-20">
-                    I've been doing web development (using the Django-Postgres stack) since September, 2020, and I finished and sold my first web-app in June, 2021.
+                    I've been doing web development (using the Django-Postgres stack) since September 2020, and I finished and sold my first web app in June 2021.
                 </span>
                 <span class="bio-text mbt-10 pad-20">
-                    Everyday, I learn more about <a href="https://ocw.hrus.in" class="a" target="_blank">computer science and programming</a>
+                    Every day, I learn more about <a href="https://ocw.hrus.in" class="a" target="_blank">computer science and programming</a>
                     and work on projects of my own.
                 </span>
                 <span class="bio-text mbt-10 pad-20 message-warning-dark mobile-element">
@@ -246,7 +246,27 @@
 
         <div class="flexbox-column page pad-30 page-projects">
             <h1 class="mt-30 ml-30 big decorative-heading" id="projects">Projects</h1>
+            <span class="mbt-10 pad-10" id="project-navbar">
+
+            </span>
+
             <div class="flexbox-row pad-10 project-container">
+                <span id="project-nav-left">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-left" width="50" height="50" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                      <line x1="5" y1="12" x2="19" y2="12" />
+                      <line x1="5" y1="12" x2="11" y2="18" />
+                      <line x1="5" y1="12" x2="11" y2="6" />
+                    </svg>
+                </span>
+                <span id="project-nav-right">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-right" width="50" height="50" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                      <line x1="5" y1="12" x2="19" y2="12" />
+                      <line x1="13" y1="18" x2="19" y2="12" />
+                      <line x1="13" y1="6" x2="19" y2="12" />
+                    </svg>
+                </span>
                 <div class="flexbox-row pad-50 mar-20 project">
                     <div class="flexbox-column">
                         <img src="images/classberg-logo.svg" alt="ClassBerg" width="100px" height="125px">
@@ -1003,5 +1023,7 @@
             });
         </script>
         <script src="js/timeline.js"></script>
+        <script src="data/project-data.json" type="application/json" id="project-data"></script>
+        <script src="js/project-renderer.js"></script>
     </body>
 </html>

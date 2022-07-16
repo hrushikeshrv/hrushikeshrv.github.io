@@ -7,18 +7,6 @@ const fetchedJSON = fetch(projectJSON)
     .then(json => {
         for (let project in json) {
             addProjectToNavigation(json[project]);
-            addProjectToNavigation(json[project]);
-            addProjectToNavigation(json[project]);
-            addProjectToNavigation(json[project]);
-            addProjectToNavigation(json[project]);
-            addProjectToNavigation(json[project]);
-            addProjectToNavigation(json[project]);
-            addProjectToNavigation(json[project]);
-            addProjectToNavigation(json[project]);
-            addProjectToNavigation(json[project]);
-            addProjectToNavigation(json[project]);
-            addProjectToNavigation(json[project]);
-            addProjectToNavigation(json[project]);
             renderProject(json[project]);
         }
     });

@@ -34,4 +34,5 @@ function addProjectToNavigation(project) {
 
 function renderProject(project) {
     console.log(project);
+    // TODO - ! Make sure you add support for props like id, classname, and extraHTML
 }

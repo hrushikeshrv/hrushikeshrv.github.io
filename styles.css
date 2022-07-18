@@ -896,7 +896,7 @@ table tbody tr:hover td {
 }
 
 .project {
-    max-width: 80%;
+    width: 80%;
     height: 55vh;
     background-color: var(--background-dark-1);
     color: var(--font-color);
@@ -975,7 +975,6 @@ table tbody tr:hover td {
 #timeline-demo-1 {
     background-color: var(--background-color);
     color: var(--font-color);
-    width: 107%;
     padding: 10px;
     margin: 30px 15px;
     box-shadow: inset 0 0 10px black;

@@ -10,8 +10,8 @@ const Mouse = Matter.Mouse;
 const MouseConstraint = Matter.MouseConstraint;
 
 const matterCanvas = document.querySelector('#matter-canvas-1');
-const worldWidth = window.innerWidth * 0.99;
-const worldHeight = matterCanvas.parentElement.offsetHeight * 0.99;
+const worldWidth = window.innerWidth * 0.98;
+const worldHeight = matterCanvas.parentElement.offsetHeight * 0.98;
 
 const engine = Engine.create();
 const world = engine.world;

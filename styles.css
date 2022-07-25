@@ -387,6 +387,7 @@ table {
     width: 100%;
     border-collapse: collapse;
     border: 2px solid var(--light-font-color);
+    color: var(--light-font-color);
 }
 
 table td, table th {
@@ -852,24 +853,6 @@ table tbody tr:hover td {
 .project-container {
     justify-content: center;
     position: relative;
-}
-
-#project-nav-left, #project-nav-right {
-    position: absolute;
-    top: 50%;
-}
-
-#project-nav-left svg, #project-nav-right svg {
-    stroke: var(--light-font-color);
-    cursor: pointer;
-}
-
-#project-nav-left {
-    left: 5%;
-}
-
-#project-nav-right {
-    right: 5%;
 }
 
 #project-navbar {

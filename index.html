@@ -246,12 +246,13 @@
 
         <div class="flexbox-column page pad-30 page-projects">
             <h1 class="mt-30 ml-30 big decorative-heading" id="projects">Projects</h1>
-            <span class="mbt-10 pad-10 flexbox-row aic jcfs" id="project-navbar">
+            <div>
+                <span class="mbt-10 pad-10 flexbox-row aic jcfs" id="project-navbar">
 
-            </span>
+                </span>
+                <div class="flexbox-row pad-10 project-container">
 
-            <div class="flexbox-row pad-10 project-container">
-
+                </div>
             </div>
             <div class="timeline-demo" id="timeline-demo-1">
                 <div id="timeline-controls-tippy" class="hidden">
@@ -647,12 +648,23 @@
                 }, 250);
             }
         </script>
+        <script>
+            let gui;
+            function initMJXGUIDemo() {
+                const outputContainer = document.querySelector('#mjxgui-output-container');
+                const outputTable = document.querySelector('#mjxgui-output');
+                gui = new MJXGUI('.mjxgui-demo-button', '$$', function() {
+                    outputContainer.classList.remove('hidden');
+                    let tr = document.createElement('tr');
+                    tr.innerHTML = `<td>$$ ${gui.getLatex()} $$</td><td>${gui.getLatex()}</td>`;
+                    outputTable.appendChild(tr);
+                    MathJax.typesetPromise([tr]).then(() => {})
+                });
+            }
+        </script>
         <script src="js/timeline.js"></script>
         <script src="data/project-data.json" type="application/json" id="project-data"></script>
         <script src="js/project-renderer.js"></script>
-        <script>
-
-        </script>
         <script src="https://unpkg.com/@popperjs/core@2"></script>
         <script src="https://unpkg.com/tippy.js@6"></script>
         <script>

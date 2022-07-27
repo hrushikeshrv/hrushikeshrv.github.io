@@ -1,6 +1,10 @@
 const projectContainer = document.querySelector('.project-container');
 const projectListNavbar = document.querySelector('#project-navbar');
 
+const projects = {};
+const currentProject = 'ClassBerg';
+let currentProjectElement;
+
 const projectJSON = document.querySelector('#project-data').src;
 fetch(projectJSON)
     .then(response => response.json())
@@ -12,21 +16,16 @@ fetch(projectJSON)
         projectListNavbar.firstElementChild.classList.add('current-project');
     })
     .then(() => {
-        const outputContainer = document.querySelector('#mjxgui-output-container');
-        const outputTable = document.querySelector('#mjxgui-output');
-        const gui = new MJXGUI('.mjxgui-demo-button', '$$', function() {
-            outputContainer.classList.remove('hidden');
-            let tr = document.createElement('tr');
-            tr.innerHTML = `<td>$$ ${gui.getLatex()} $$</td><td>${gui.getLatex()}</td>`;
-            outputTable.appendChild(tr);
-            MathJax.typesetPromise([tr]).then(() => {})
-        });
+        initMJXGUIDemo();
+        projects[currentProject].classList.add('active-project');
+        currentProjectElement = projects[currentProject];
     });
 
 
 function addProjectToNavigation(project) {
     const navElement = document.createElement('button');
     navElement.classList.add('flexbox-row', 'ajc', 'project-nav-link');
+    navElement.dataset.projectHeading = project.heading;
 
     if (project.logo) {
         const projectLogo = document.createElement('img');
@@ -44,6 +43,11 @@ function addProjectToNavigation(project) {
 
     navElement.appendChild(projectName);
     projectListNavbar.appendChild(navElement);
+    navElement.addEventListener('click', (evt) => {
+        showProject(navElement.dataset.projectHeading);
+        document.querySelector('button.current-project').classList.remove('current-project');
+        navElement.classList.add('current-project');
+    })
 }
 
 function renderProject(project) {
@@ -72,19 +76,34 @@ function renderProject(project) {
         projectLogo += `<img src="${project.logo.path}" alt="${project.logo.alt}" width="${project.logo.width}" height="${project.logo.height}">`
     }
 
-    let projectHTML = `
-    <div class="flexbox-row pad-50 mar-20 project">
-        <div class="flexbox-column">
-            ${projectLogo}
-        </div>
-        <div class="flexbox-column project-content">
-            <h2 class="big mbt-10">${project.heading}</h2>
-            ${projectDescription}
-            <span class="flexbox-row pad-10 project-links">${projectLinks}</span>
-            <span class="flexbox-row mt-10 flair">${project.flair}</span>
-        </div>
-        ${project.extraHTML ? project.extraHTML : ''}
+    const projectElement = document.createElement('div');
+    projectElement.classList.add('flexbox-row', 'pad-50', 'mar-20', 'project');
+    projectElement.id = `project-${project.heading}`;
+
+    projectElement.innerHTML = `
+    <div class="flexbox-column">
+        ${projectLogo}
     </div>
-    `;
-    projectContainer.innerHTML += projectHTML;
+    <div class="flexbox-column project-content">
+        <h2 class="big mbt-10">${project.heading}</h2>
+        ${projectDescription}
+        <span class="flexbox-row pad-10 project-links">${projectLinks}</span>
+        <span class="flexbox-row mt-10 flair">${project.flair}</span>
+    </div>
+    ${project.extraHTML ? project.extraHTML : ''}`;
+    projectContainer.appendChild(projectElement);
+
+    projects[project.heading] = projectElement;
+}
+
+function showProject(projectHeading) {
+    currentProjectElement.classList.remove('active-project');
+    for (let p in projects) {
+        let project =  projects[p];
+        if (p === projectHeading) {
+            project.classList.add('active-project');
+            currentProjectElement = project;
+            break;
+        }
+    }
 }

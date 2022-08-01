@@ -660,14 +660,14 @@ table tbody tr:hover td {
     z-index: 0;
 }
 
-.about .bio {
+.about #bio {
     border-top-left-radius: 22px;
     z-index: 1;
     box-shadow: 0 0 10px black;
 }
 
 @media (max-width: 600px) {
-    .about .bio {
+    .about #bio {
         box-shadow: none;
     }
 }
@@ -830,7 +830,7 @@ table tbody tr:hover td {
 /*
     projects styles
 */
-.page-projects, .bio {
+.page-projects, #bio {
     background-color: var(--dark-background);
     color: var(--light-font-color);
 }
@@ -861,7 +861,7 @@ table tbody tr:hover td {
     -ms-overflow-style: none;
     scrollbar-width: none;
     position: sticky;
-    top: 0;
+    top: 70px;
     z-index: 2;
 }
 
@@ -888,17 +888,19 @@ table tbody tr:hover td {
 
 .project-nav-link::before {
     position: absolute;
-    bottom: -10px;
+    bottom: -17px;
     content: '';
     height: 3px;
     width: 10px;
     background-color: transparent;
     border-radius: 2px;
-    transition: background-color ease 0.2s;
+    transition: background-color ease 0.2s, bottom ease 0.2s;
 }
 
-.project-nav-link.current-project::before, .project-nav-link:hover::before {
+.project-nav-link.current-project::before,
+.project-nav-link:hover::before {
     background-color: var(--background-dark-1);
+    bottom: -10px;
 }
 
 .project {
@@ -1135,4 +1137,39 @@ small.helper-button {
     text-align: center;
     font-size: 0.8rem;
     display: flex;
+}
+
+/*
+    quick nav styles
+*/
+nav#quick-nav {
+    position: sticky;
+    top: 0;
+    background-color: var(--dark-background);
+    color: var(--light-font-color);
+    font-size: 1.5rem;
+    font-family: var(--monospace-font);
+    z-index: 3;
+    padding-top: 20px;
+    padding-bottom: 15px;
+}
+
+nav#quick-nav .section-link {
+    margin: 0 20px;
+    position: relative;
+}
+
+#quick-nav .section-link::before {
+    position: absolute;
+    bottom: -12px;
+    content: '';
+    background-color: transparent;
+    height: 3px;
+    width: 100%;
+    transition: background-color ease 0.2s, bottom ease 0.2s;
+}
+
+#quick-nav .section-link:hover::before {
+    bottom: -7px;
+    background-color: var(--light-font-color);
 }

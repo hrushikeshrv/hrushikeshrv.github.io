@@ -1096,7 +1096,7 @@ table tbody tr:hover td {
     transition: left ease 0.25s;
     overflow-y: auto;
     background-color: var(--background-color);
-    z-index: 2;
+    z-index: 3;
     justify-content: space-between;
 }
 
@@ -1172,4 +1172,9 @@ nav#quick-nav .section-link {
 #quick-nav .section-link:hover::before {
     bottom: -7px;
     background-color: var(--light-font-color);
+}
+
+#quick-nav .section-link svg {
+    top: 5px;
+    stroke: rgb(150, 150, 150);
 }

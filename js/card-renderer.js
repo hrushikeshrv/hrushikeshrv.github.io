@@ -3,44 +3,44 @@ class CardRenderer {
         this.data = data;
         this.containerElement = container;
         this.navigationElement = navigation;
-        this.projects = {};
-        this.currentProject = this.data[Object.keys(this.data)[0]].heading;
-        this.currentProjectElement = null;
+        this.cards = {};
+        this.currentCard = this.data[Object.keys(this.data)[0]].heading;
+        this.currentCardElement = null;
 
         this.render();
     }
 
-    addProjectToNavigation(project) {
+    addCardToNavigation(card) {
         const navElement = document.createElement('button');
         navElement.classList.add('flexbox-row', 'ajc', 'project-nav-link');
-        navElement.dataset.projectHeading = project.heading;
+        navElement.dataset.projectHeading = card.heading;
 
-        if (project.logo) {
+        if (card.logo) {
             const projectLogo = document.createElement('img');
             projectLogo.classList.add('space-lr');
-            projectLogo.src = project.logo.path;
-            projectLogo.width = project.logo.width / 5;
-            projectLogo.height = project.logo.height / 5;
+            projectLogo.src = card.logo.path;
+            projectLogo.width = card.logo.width / 5;
+            projectLogo.height = card.logo.height / 5;
 
             navElement.appendChild(projectLogo);
         }
 
-        const projectName = document.createElement('span');
-        projectName.classList.add('space-lr');
-        projectName.textContent = project.heading;
+        const cardName = document.createElement('span');
+        cardName.classList.add('space-lr');
+        cardName.textContent = card.heading;
 
-        navElement.appendChild(projectName);
+        navElement.appendChild(cardName);
         this.navigationElement.appendChild(navElement);
         navElement.addEventListener('click', (evt) => {
-            this.showProject(navElement.dataset.projectHeading);
+            this.showCard(navElement.dataset.projectHeading);
             document.querySelector('button.current-project').classList.remove('current-project');
             navElement.classList.add('current-project');
         })
     }
 
-    renderProject(project) {
+    renderCard(card) {
         let projectDescription = '';
-        for (let desc of project.description) {
+        for (let desc of card.description) {
             if (desc instanceof Array) {
                 projectDescription += `<span class="project-desc ${desc.slice(1).join(' ')}">${desc[0]}</span>`;
             }
@@ -50,7 +50,7 @@ class CardRenderer {
         }
 
         let projectLinks = '';
-        for (let link of project.links) {
+        for (let link of card.links) {
             projectLinks += `
         <span class="flexbox-row ajc link ${link.className ? link.className : ''}" ${link.id ? `id=${link.id}` : ''}>
             ${link.svg}
@@ -60,36 +60,36 @@ class CardRenderer {
         }
 
         let projectLogo = '';
-        if (project.logo) {
-            projectLogo += `<img src="${project.logo.path}" alt="${project.logo.alt}" width="${project.logo.width}" height="${project.logo.height}">`
+        if (card.logo) {
+            projectLogo += `<img src="${card.logo.path}" alt="${card.logo.alt}" width="${card.logo.width}" height="${card.logo.height}">`
         }
 
         const projectElement = document.createElement('div');
         projectElement.classList.add('flexbox-row', 'pad-50', 'mar-20', 'project');
-        projectElement.id = `project-${project.heading}`;
+        projectElement.id = `project-${card.heading}`;
 
         projectElement.innerHTML = `
         <div class="flexbox-column">
             ${projectLogo}
         </div>
         <div class="flexbox-column project-content">
-            <h2 class="big mbt-10">${project.heading}</h2>
+            <h2 class="big mbt-10">${card.heading}</h2>
             ${projectDescription}
             <span class="flexbox-row pad-10 project-links">${projectLinks}</span>
-            <span class="flexbox-row mt-10 flair">${project.flair}</span>
+            <span class="flexbox-row mt-10 flair">${card.flair}</span>
         </div>
-        ${project.extraHTML ? project.extraHTML : ''}`;
+        ${card.extraHTML ? card.extraHTML : ''}`;
         this.containerElement.appendChild(projectElement);
-        this.projects[project.heading] = projectElement;
+        this.cards[card.heading] = projectElement;
     }
 
-    showProject(projectHeading) {
-        this.currentProjectElement.classList.remove('active-project');
-        for (let p in this.projects) {
-            let project =  this.projects[p];
-            if (p === projectHeading) {
+    showCard(cardHeading) {
+        this.currentCardElement.classList.remove('active-project');
+        for (let p in this.cards) {
+            let project =  this.cards[p];
+            if (p === cardHeading) {
                 project.classList.add('active-project');
-                this.currentProjectElement = project;
+                this.currentCardElement = project;
                 break;
             }
         }
@@ -97,14 +97,12 @@ class CardRenderer {
 
     render() {
         for (let project in this.data) {
-            this.addProjectToNavigation(this.data[project]);
-            this.renderProject(this.data[project]);
+            this.addCardToNavigation(this.data[project]);
+            this.renderCard(this.data[project]);
         }
-        console.log(this.projects);
-        console.log(this.currentProject);
         this.navigationElement.firstElementChild.classList.add('current-project');
-        this.projects[this.currentProject].classList.add('active-project');
-        this.currentProjectElement = this.projects[this.currentProject];
+        this.cards[this.currentCard].classList.add('active-project');
+        this.currentCardElement = this.cards[this.currentCard];
     }
 }
 
@@ -115,8 +113,19 @@ const projectJSON = document.querySelector('#project-data').src;
 fetch(projectJSON)
     .then(response => response.json())
     .then(json => {
-        const projects = new CardRenderer(json, projectContainer, projectListNavbar);
+        const projectCardRenderer    = new CardRenderer(json, projectContainer, projectListNavbar);
     })
     .then(() => {
         initMJXGUIDemo();
     });
+
+
+const workContainer = document.querySelector('#work-card-container');
+const workCardNavbar = document.querySelector('#work-navbar');
+
+const workJSON = document.querySelector('#work-data').src;
+fetch(workJSON)
+    .then(response => response.json())
+    .then(json => {
+        const workCardRenderer = new CardRenderer(json, workContainer, workCardNavbar);
+    })

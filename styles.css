@@ -856,7 +856,7 @@ table tbody tr:hover td {
     overflow-x: hidden;
 }
 
-#project-navbar {
+.sticky-navbar {
     width: 100%;
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -865,7 +865,7 @@ table tbody tr:hover td {
     z-index: 2;
 }
 
-#project-navbar::-webkit-scrollbar {
+.sticky-navbar::-webkit-scrollbar {
     display: none;
 }
 

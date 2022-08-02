@@ -106,7 +106,7 @@ class CardRenderer {
     }
 }
 
-const projectContainer = document.querySelector('.project-container');
+const projectContainer = document.querySelector('#project-card-container');
 const projectListNavbar = document.querySelector('#project-navbar');
 
 const projectJSON = document.querySelector('#project-data').src;

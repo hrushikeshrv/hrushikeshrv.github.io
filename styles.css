@@ -132,6 +132,10 @@ a.button-link:active {
     flex-flow: column wrap;
 }
 
+.full-height {
+    height: 100%;
+}
+
 .column-full {
     width: 100%;
 }
@@ -275,6 +279,11 @@ a.button-link:active {
     margin-bottom: 10px;
 }
 
+.mbt-20 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
 .mt-10 {
     margin-top: 10px;
 }
@@ -353,8 +362,9 @@ a.button-link:active {
 */
 
 h1 {
-    font-family: var(--monospace-font);
-    font-size: 3rem;
+    font-family: var(--decorative-font);
+    font-size: 2.4rem;
+    text-transform: lowercase;
     margin: 20px 0;
 }
 
@@ -1145,9 +1155,9 @@ small.helper-button {
 nav#quick-nav {
     position: sticky;
     top: 0;
-    background-color: var(--dark-background);
-    color: var(--light-font-color);
-    font-size: 1.5rem;
+    background-color: transparent;
+    color: var(--font-color);
+    font-size: 1rem;
     font-family: var(--monospace-font);
     z-index: 3;
     padding-top: 20px;
@@ -1177,5 +1187,5 @@ nav#quick-nav .section-link {
 
 #quick-nav .section-link svg {
     top: 5px;
-    stroke: rgb(150, 150, 150);
+    stroke: rgb(70, 70, 70);
 }

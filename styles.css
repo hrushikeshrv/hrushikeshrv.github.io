@@ -696,6 +696,39 @@ table tbody tr:hover td {
     }
 }
 
+#my-photo-mobile, #my-photo-large-screen {
+    background-color: red;
+}
+
+#my-photo-mobile {
+    display: none;
+}
+
+@media(max-width: 900px) {
+    #my-photo-mobile {
+        display: block;
+    }
+}
+
+#name-card {
+    align-items: flex-end;
+}
+
+@media(max-width: 900px) {
+    #name-card {
+        align-items: center;
+    }
+}
+
+@media(max-width: 500px) {
+    #name-card > div {
+        align-items: center;
+    }
+    #name-card .contact-links {
+        justify-content: center;
+    }
+}
+
 .nametag {
     font-family: var(--decorative-font);
     text-transform: lowercase;
@@ -1160,6 +1193,24 @@ nav#quick-nav {
     z-index: 3;
     padding-top: 20px;
     padding-bottom: 15px;
+}
+
+@media (max-width: 630px) {
+    nav#quick-nav svg {
+        display: none;
+    }
+}
+
+@media(max-width: 480px) {
+    nav#quick-nav {
+        font-size: 0.8rem;
+    }
+}
+
+@media(max-width: 400px) {
+    nav#quick-nav {
+        font-size: 0.7rem;
+    }
 }
 
 nav#quick-nav .section-link {

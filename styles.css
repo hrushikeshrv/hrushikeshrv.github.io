@@ -898,15 +898,19 @@ table tbody tr:hover td {
     justify-content: center;
     position: relative;
     overflow-x: hidden;
+    max-width: 100vw;
 }
 
 .sticky-navbar {
-    width: 100%;
+    width: 95vw;
     -ms-overflow-style: none;
     scrollbar-width: none;
     position: sticky;
     top: 0;
     z-index: 2;
+    overflow: auto;
+    flex-wrap: nowrap;
+    white-space: nowrap;
 }
 
 .sticky-navbar::-webkit-scrollbar {
@@ -949,7 +953,7 @@ table tbody tr:hover td {
 
 .project {
     width: 80%;
-    height: 55vh;
+    height: 400px;
     background-color: var(--background-dark-1);
     color: var(--font-color);
     transition: left ease 0.25s;
@@ -958,6 +962,12 @@ table tbody tr:hover td {
     position: relative;
     left: 100%;
     display: none;
+}
+
+@media(max-width: 600px) {
+    .project {
+        height: 600px;
+    }
 }
 
 .project.active-project {
@@ -1003,6 +1013,10 @@ table tbody tr:hover td {
     .project .project-content {
         max-width: 100%;
     }
+}
+
+.project-content h2 {
+    word-break: break-all;
 }
 
 .mjxgui-demo-button {

@@ -132,6 +132,10 @@ a.button-link:active {
     flex-flow: column wrap;
 }
 
+.full-height {
+    height: 100%;
+}
+
 .column-full {
     width: 100%;
 }
@@ -200,7 +204,7 @@ a.button-link:active {
 }
 
 .center {
-    margin: 0 auto;
+    margin: auto auto;
 }
 
 .pad-5 {
@@ -273,6 +277,11 @@ a.button-link:active {
 .mbt-10 {
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+.mbt-20 {
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .mt-10 {
@@ -353,18 +362,19 @@ a.button-link:active {
 */
 
 h1 {
-    font-family: var(--monospace-font);
-    font-size: 3rem;
+    font-family: var(--decorative-font);
+    font-size: 2.4rem;
+    text-transform: lowercase;
     margin: 20px 0;
 }
 
 h1.big {
-    font-size: 4rem;
+    font-size: 3rem;
 }
 
 @media (max-width: 500px) {
     h1.big {
-        font-size: 3.5rem;
+        font-size: 3rem;
     }
 }
 
@@ -427,10 +437,6 @@ table tbody tr:hover td {
 
 .hidden {
     display: none;
-}
-
-.center {
-    margin: auto auto;
 }
 
 .message-warning {
@@ -679,7 +685,7 @@ table tbody tr:hover td {
 }
 
 .bio-text {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-family: var(--monospace-font);
     z-index: 1;
 }
@@ -719,6 +725,10 @@ table tbody tr:hover td {
     border-left: 1px solid var(--muted-font);
 }
 
+#timeline-demo-button-1 {
+    cursor: pointer;
+}
+
 .first-timeline-item {
     margin-top: -86px;
 }
@@ -756,6 +766,7 @@ table tbody tr:hover td {
 
 .timeline-item h2 {
     margin: 10px 0 0;
+    font-size: 1.2rem;
 }
 
 .timeline-item .timeline-year {
@@ -861,7 +872,7 @@ table tbody tr:hover td {
     -ms-overflow-style: none;
     scrollbar-width: none;
     position: sticky;
-    top: 70px;
+    top: 0;
     z-index: 2;
 }
 
@@ -1143,11 +1154,8 @@ small.helper-button {
     quick nav styles
 */
 nav#quick-nav {
-    position: sticky;
-    top: 0;
-    background-color: var(--dark-background);
-    color: var(--light-font-color);
-    font-size: 1.5rem;
+    color: var(--font-color);
+    font-size: 1rem;
     font-family: var(--monospace-font);
     z-index: 3;
     padding-top: 20px;
@@ -1172,10 +1180,10 @@ nav#quick-nav .section-link {
 
 #quick-nav .section-link:hover::before {
     bottom: -7px;
-    background-color: var(--light-font-color);
+    background-color: var(--dark-background);
 }
 
 #quick-nav .section-link svg {
     top: 5px;
-    stroke: rgb(150, 150, 150);
+    stroke: rgb(70, 70, 70);
 }

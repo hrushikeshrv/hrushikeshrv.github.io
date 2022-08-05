@@ -6,6 +6,7 @@ class CardRenderer {
         this.cards = {};
         this.currentCard = this.data[Object.keys(this.data)[0]].heading;
         this.currentCardElement = null;
+        this.currentNavElement = null;
 
         this.render();
     }
@@ -33,8 +34,9 @@ class CardRenderer {
         this.navigationElement.appendChild(navElement);
         navElement.addEventListener('click', (evt) => {
             this.showCard(navElement.dataset.projectHeading);
-            document.querySelector('button.current-project').classList.remove('current-project');
+            this.currentNavElement.classList.remove('current-project');
             navElement.classList.add('current-project');
+            this.currentNavElement = navElement;
         })
     }
 
@@ -103,6 +105,7 @@ class CardRenderer {
         this.navigationElement.firstElementChild.classList.add('current-project');
         this.cards[this.currentCard].classList.add('active-project');
         this.currentCardElement = this.cards[this.currentCard];
+        this.currentNavElement = this.navigationElement.firstElementChild;
     }
 }
 
@@ -117,6 +120,7 @@ fetch(projectJSON)
     })
     .then(() => {
         initMJXGUIDemo();
+        initTimelineDemo();
     });
 
 

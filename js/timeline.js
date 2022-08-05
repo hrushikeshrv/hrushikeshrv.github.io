@@ -322,103 +322,22 @@ const timelineNotes = [
 ]
 
 const timelineElement = document.querySelector('#timeline-demo-1');
-const timeline = new Timeline(timelineElement, timelineNotes);
-timeline.render();
-timeline.element.removeAttribute('style');
+let timeline;
+let timelineInitialized = false;
 
-// document.addEventListener('DOMContentLoaded', function() {
-//     progressMessageContainer.classList.remove('hidden');
-//     progressMessage.innerHTML = 'Welcome, fetching your notes :)';
-//
-//     const notes = timeline.fetchNotes([]);
-//     notes.then(response => {
-//         // console.log(response.data);
-//         timeline.notes = response.data;
-//
-//         progressMessage.innerHTML = '';
-//         progressMessageContainer.classList.add('hidden');
-//
-//         timeline.render();
-//
-//     })
-//         .catch(error => {
-//             console.error(error);
-//             progressMessage.innerHTML = 'We ran into an error :/';
-//             progressMessageContainer.classList.add('error-container');
-//         })
-// })
-
-// // The first set contains tag IDs, the second set contains tag names - (ID, Name).
-// const chosenTagsList = [new Set(), new Set()];
-//
-// const chosenTagsContainer = document.querySelector('#chosen-tag-container');
-// const chosenTagsInputs = chosenTagsContainer.querySelectorAll('#chosen-tags input[type="checkbox"]');
-// function updateChosenTagsSidebar() {
-//     if (chosenTagsList[0].size > 0) {
-//         chosenTagsInputs.forEach(input => {
-//             input.checked = chosenTagsList[0].has(input.id);
-//         })
-//     }
-//     nChosenTags.innerHTML = chosenTagsList[0].size.toString();
-// }
-//
-// const chosenTagsShowButton = document.querySelector('#selected-tags-show-button');
-// const nChosenTags = chosenTagsShowButton.querySelector('#n-selected-tags');
-// chosenTagsShowButton.addEventListener('click', function() {
-//     if (chosenTagsList[0].length === 0) return;
-//     chosenTagsContainer.style.left = '0';
-// })
-// chosenTagsContainer.querySelector('.note-close-button').addEventListener('click', function() {
-//     chosenTagsContainer.style.left = '-100%';
-// })
-//
-//
-// // Filter buttons to choose all or choose no tags
-// const chooseAllButton = document.querySelector('#choose-all-tags');
-// const chooseNoneButton = document.querySelector('#choose-none-tags');
-// const excludePrivateButton = document.querySelector('#exclude-private-tags');
-//
-// chooseAllButton.addEventListener('click', function() {
-//     chosenTagsInputs.forEach(input => {
-//         input.checked = true;
-//     })
-// })
-//
-// chooseNoneButton.addEventListener('click', function() {
-//     chosenTagsInputs.forEach(input => {
-//         input.checked = false;
-//     })
-// })
-//
-// excludePrivateButton.addEventListener('click', function() {
-//     chosenTagsInputs.forEach(input => {
-//         input.checked = input.dataset.isPrivate !== 'true';
-//     })
-// })
-//
-// // Filter notes from chosen tags
-// const filterNotesSearchButton = document.querySelector('#filter-notes-from-chosen-tags');
-// filterNotesSearchButton.addEventListener('click', function() {
-//     // Parse the checkboxes and find the selected notes
-//     chosenTagsList[0].clear();
-//     chosenTagsList[1].clear();
-//
-//     let getPrivate = false;
-//     chosenTagsInputs.forEach(input => {
-//         if (input.checked) {
-//             chosenTagsList[0].add(input.id);
-//             chosenTagsList[1].add(input.name);
-//             if (input.dataset.isPrivate === 'true') {
-//                 getPrivate = true;
-//             }
-//         }
-//     });
-//
-//     if (chosenTagsList[0].length === 0) return;
-//
-//     // Show loading message
-//     progressMessageContainer.classList.remove('hidden', 'error-container');
-//     progressMessage.innerHTML = `Finding notes matching ${chosenTagsList[0].size} tags`;
-//
-//     timeline.fetchNotesWithTags(chosenTagsList[0], getPrivate);
-// })
+function initTimelineDemo() {
+    const showTimelineButton = document.querySelector('#timeline-demo-button-1');
+    const timelineContainer = document.querySelector('#timeline-demo-1');
+    showTimelineButton.addEventListener('click', function() {
+        if (timelineInitialized) {
+            timelineContainer.scrollIntoView();
+            return;
+        };
+        timelineInitialized = true;
+        timelineContainer.classList.remove('hidden');
+        timelineContainer.scrollIntoView();
+        timeline = new Timeline(timelineElement, timelineNotes);
+        timeline.render();
+        timeline.element.removeAttribute('style');
+    })
+}

@@ -953,7 +953,7 @@ table tbody tr:hover td {
 
 .project {
     width: 80%;
-    height: 400px;
+    height: 450px;
     background-color: var(--background-dark-1);
     color: var(--font-color);
     transition: left ease 0.25s;

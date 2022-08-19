@@ -8,7 +8,7 @@
     },
     "heading": "ClassBerg",
     "description": [
-      "ClassBerg was meant to be a SaaS which provided JEE, CET, and NEET coaching classes with a student testing framework, virtual classrooms, and a question database.",
+      "ClassBerg was meant to be a SaaS which provided engineering coaching classes with a student testing framework, virtual classrooms, and a question database.",
       "ClassBerg is now a freelance project which I customize as per individual classes' requirements and provision servers for on their behalf, usually using <a href=\"https://heroku.com\" class=\"a\" target=\"_blank\">Heroku</a> and <a href=\"https://aws.amazon.com\" class=\"a\" target=\"_blank\">AWS</a>."
     ],
     "links": [
@@ -76,7 +76,7 @@
     "heading": "MJXGUI",
     "description": [
       "MJXGUI is an equation editor for the web for building mathematical and chemical equations with a GUI similar to Google Docs or Microsoft Word. It supports conversion of the entered equations into LaTeX for storage and rendering using tools like MathJax.",
-      "Try the demo below to create an equation.",
+      ["Try the demo below to create an equation.", "mobile-hide"],
       ["MJXGUI is still in beta and does not support all of its features on mobile devices yet.", "message-warning-dark", "mobile-element"]
     ],
     "links": [

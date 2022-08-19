@@ -103,7 +103,7 @@
     "description": [
       "LifeNotes is a timeline web app that allows you to create interactive, shareable timelines in the browser.",
       "You can tag notes and search and filter between different tags to find notes faster.",
-      "It uses vis-timeline as the timeline renderer, and shows you an responsive, interactive horizontal timeline.",
+      "It uses vis-timeline as the timeline renderer, and shows you a responsive, interactive horizontal timeline.",
       ["The LifeNotes timeline works best on devices with bigger screens", "message-warning-dark", "mobile-element"]
     ],
     "links": [

@@ -81,6 +81,10 @@ a.a {
     stroke: rgb(80, 80, 80);
 }
 
+.icon-tabler-x {
+    cursor: pointer;
+}
+
 .mono-font {
     font-family: var(--monospace-font);
 }
@@ -1009,6 +1013,34 @@ table tbody tr:hover td {
     .project .project-story-column {
         padding-left: 0;
     }
+}
+
+.project-story-button {
+    background-color: var(--background-dark-1);
+    color: var(--font-color);
+    border: none;
+    border-bottom: 3px dashed var(--font-color);
+    padding: 3px;
+    font-size: 0.8rem;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+.project-story-card {
+    position: fixed;
+    width: 80vw;
+    height: 80vh;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--dark-background);
+    color: var(--light-font-color);
+    z-index: 3;
+    border-radius: 10px;
+}
+
+.story-card-close-button .icon-tabler-x {
+    stroke: var(--light-font-color);
 }
 
 .project-links .link {

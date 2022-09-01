@@ -42,10 +42,6 @@ class CardRenderer {
 
     renderCard(card) {
         let projectDescription = '';
-        // If there is a story to the card, show the heading and story separately
-        if (card.story) {
-            projectDescription = `<h2 class="project-desc-about">About ${card.heading}</h2>`;
-        }
         for (let desc of card.description) {
             if (desc instanceof Array) {
                 projectDescription += `<span class="project-desc ${desc.slice(1).join(' ')}">${desc[0]}</span>`;
@@ -53,12 +49,6 @@ class CardRenderer {
             else {
                 projectDescription += `<span class="project-desc">${desc}</span>`;
             }
-        }
-
-        let projectStory = '';
-        // Only initialize the story heading if the project has a story
-        if (card.story) {
-            projectStory = `<h2 class="project-desc-story">Story behind ${card.heading}</h2>`;
         }
 
         let projectLinks = '';
@@ -80,17 +70,37 @@ class CardRenderer {
         projectElement.classList.add('flexbox-row', 'pad-50', 'mar-20', 'project');
         projectElement.id = `project-${card.heading}`;
 
+        let projectStoryButton = '';
+        if (card.story) {
+            projectStoryButton = `<button class="project-story-button mb-10" data-project="${card.id}">Story behind ${card.heading}</button>`
+            let projectStoryCard = document.createElement('div');
+            projectStoryCard.classList.add('flexbox-column', 'pad-30', 'project-story-card', 'hidden');
+            projectStoryCard.id = `story-card-${card.id}`;
+            let storyText = `
+                <span class="story-card-close-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                      <line x1="18" y1="6" x2="6" y2="18" />
+                      <line x1="6" y1="6" x2="18" y2="18" />
+                    </svg>
+                </span>`;
+            for (let s of card.story) {
+                storyText += `<span class="project-desc">${s}</span>`;
+            }
+            projectStoryCard.innerHTML = storyText;
+
+            this.containerElement.appendChild(projectStoryCard);
+        }
+
         projectElement.innerHTML = `
         <div class="flexbox-column">
             ${projectLogo}
         </div>
-        <div class="flexbox-column project-content">
-            <h1 class="big mbt-10">${card.heading}</h1>
-            <div class="flexbox-row">
-                <div class="flexbox-column column-half ${card.story ? 'project-desc-column' : ''}">${projectDescription}</div>
-                <div class="flexbox-column column-half ${card.story ? 'project-story-column' : ''}">${projectStory}</div>
-            </div>
-            <span class="flexbox-row pad-10 mt-10 project-links">${projectLinks}</span>
+        <div class="flexbox-column project-content aifs">
+            <h2 class="big mbt-10">${card.heading}</h2>
+            ${projectStoryButton}
+            ${projectDescription}
+            <span class="flexbox-row pad-10 project-links">${projectLinks}</span>
             <span class="flexbox-row mt-10 flair">${card.flair}</span>
         </div>
         ${card.extraHTML ? card.extraHTML : ''}`;
@@ -122,6 +132,23 @@ class CardRenderer {
     }
 }
 
+// Function to show the respective project's story cards when the Story behind... button is clicked
+function showProjectStoryCards() {
+    const showStoryButtons = document.querySelectorAll('.project-story-button');
+    showStoryButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const storyCardID = `#story-card-${btn.dataset.project}`;
+            document.querySelector(storyCardID).classList.remove('hidden');
+        })
+    })
+    const projectStoryCards = document.querySelectorAll('.project-story-card');
+    projectStoryCards.forEach(card => {
+        card.querySelector('.story-card-close-button').addEventListener('click', function() {
+            card.classList.add('hidden');
+        });
+    })
+}
+
 const projectContainer = document.querySelector('#project-card-container');
 const projectListNavbar = document.querySelector('#project-navbar');
 
@@ -134,6 +161,7 @@ fetch(projectJSON)
     .then(() => {
         initMJXGUIDemo();
         initTimelineDemo();
+        showProjectStoryCards();
     });
 
 

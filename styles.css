@@ -989,7 +989,26 @@ table tbody tr:hover td {
 
 .project .project-desc {
     margin: 10px 0;
-    max-width: 80%;
+}
+
+.project .project-desc-column {
+    border-right: 1px solid var(--background-dark-2);
+    padding-right: 20px;
+}
+
+.project .project-story-column {
+    padding-left: 30px;
+}
+
+@media (max-width: 900px) {
+    .project .project-desc-column {
+        border-right: none;
+        padding-right: 0;
+    }
+
+    .project .project-story-column {
+        padding-left: 0;
+    }
 }
 
 .project-links .link {
@@ -1019,8 +1038,10 @@ table tbody tr:hover td {
     }
 }
 
-.project-content h2 {
+.project-content h1 {
     word-break: break-all;
+    font-family: var(--default-font);
+    text-transform: none;
 }
 
 .mjxgui-demo-button {

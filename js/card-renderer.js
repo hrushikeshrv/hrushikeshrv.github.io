@@ -42,6 +42,10 @@ class CardRenderer {
 
     renderCard(card) {
         let projectDescription = '';
+        // If there is a story to the card, show the heading and story separately
+        if (card.story) {
+            projectDescription = `<h2 class="project-desc-about">About ${card.heading}</h2>`;
+        }
         for (let desc of card.description) {
             if (desc instanceof Array) {
                 projectDescription += `<span class="project-desc ${desc.slice(1).join(' ')}">${desc[0]}</span>`;
@@ -49,6 +53,12 @@ class CardRenderer {
             else {
                 projectDescription += `<span class="project-desc">${desc}</span>`;
             }
+        }
+
+        let projectStory = '';
+        // Only initialize the story heading if the project has a story
+        if (card.story) {
+            projectStory = `<h2 class="project-desc-story">Story behind ${card.heading}</h2>`;
         }
 
         let projectLinks = '';
@@ -75,9 +85,12 @@ class CardRenderer {
             ${projectLogo}
         </div>
         <div class="flexbox-column project-content">
-            <h2 class="big mbt-10">${card.heading}</h2>
-            ${projectDescription}
-            <span class="flexbox-row pad-10 project-links">${projectLinks}</span>
+            <h1 class="big mbt-10">${card.heading}</h1>
+            <div class="flexbox-row">
+                <div class="flexbox-column column-half ${card.story ? 'project-desc-column' : ''}">${projectDescription}</div>
+                <div class="flexbox-column column-half ${card.story ? 'project-story-column' : ''}">${projectStory}</div>
+            </div>
+            <span class="flexbox-row pad-10 mt-10 project-links">${projectLinks}</span>
             <span class="flexbox-row mt-10 flair">${card.flair}</span>
         </div>
         ${card.extraHTML ? card.extraHTML : ''}`;

@@ -1019,7 +1019,7 @@ table tbody tr:hover td {
     background-color: var(--background-dark-1);
     color: var(--font-color);
     border: none;
-    border-bottom: 3px dashed var(--font-color);
+    border-bottom: 2px dashed var(--font-color);
     padding: 3px;
     font-size: 0.8rem;
     font-weight: bolder;
@@ -1029,14 +1029,18 @@ table tbody tr:hover td {
 .project-story-card {
     position: fixed;
     width: 80vw;
+    max-width: 800px;
     height: 80vh;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    background-color: var(--dark-background);
+    background-color: var(--dark-background-light-1);
     color: var(--light-font-color);
     z-index: 3;
     border-radius: 10px;
+    overflow-y: auto;
+    padding: 30px 60px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
 
 .story-card-close-button .icon-tabler-x {

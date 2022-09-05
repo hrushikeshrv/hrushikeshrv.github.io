@@ -9,7 +9,10 @@
     },
     "heading": "ClassBerg",
     "story": [
-      "When I was preparing for the MHT-CET, which is an engineering entrance exam, I was studying independently"
+      "When I was preparing for the MHT-CET, which is an engineering entrance exam, I was studying independently. I was looking for platforms where I could practice for the exam and get some feedback about my perfomance. However, all of the platforms I found were either inadequate or very costly.",
+      "So I decided to create a community-driven platform which would give students practice, performance analytics, and much more, and would moreover be free for students. The idea was that I would sell coaching classes access to the platform as a subscription, and that would help keep the platform free for independent students.",
+      "I worked on the website for around 9 months, after which I approached my old coaching class. I conducted extensive beta-testing with their teachers and students, and got some important feedback that I incorporated into the website. I also sold them a customized installation of the website on their internal network.",
+      "Following this, I approached the technology incubator at the College of Engineering, Pune, and presented my idea to them. They agreed to incubate my platform, and I worked with them for the next few months."
     ],
     "description": [
       "ClassBerg was meant to be a SaaS which provided engineering coaching classes with a student testing framework, virtual classrooms, and a question database.",

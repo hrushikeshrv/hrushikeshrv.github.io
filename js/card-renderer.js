@@ -74,7 +74,7 @@ class CardRenderer {
         if (card.story) {
             projectStoryButton = `<button class="project-story-button mb-10" data-project="${card.id}">Story behind ${card.heading}</button>`
             let projectStoryCard = document.createElement('div');
-            projectStoryCard.classList.add('flexbox-column', 'pad-30', 'project-story-card', 'hidden');
+            projectStoryCard.classList.add('flexbox-column', 'project-story-card', 'hidden');
             projectStoryCard.id = `story-card-${card.id}`;
             let storyText = `
                 <span class="story-card-close-button">
@@ -85,7 +85,7 @@ class CardRenderer {
                     </svg>
                 </span>`;
             for (let s of card.story) {
-                storyText += `<span class="project-desc">${s}</span>`;
+                storyText += `<p class="flexbox-column column-twothird center aifs">${s}</p>`;
             }
             projectStoryCard.innerHTML = storyText;
 

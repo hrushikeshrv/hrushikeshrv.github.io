@@ -97,7 +97,7 @@ class CardRenderer {
             ${projectLogo}
         </div>
         <div class="flexbox-column project-content aifs">
-            <h2 class="big mbt-10">${card.heading}</h2>
+            <h1 class="big mbt-10">${card.heading}</h1>
             ${projectStoryButton}
             ${projectDescription}
             <span class="flexbox-row pad-10 project-links">${projectLinks}</span>

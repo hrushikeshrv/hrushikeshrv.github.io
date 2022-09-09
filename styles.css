@@ -4,8 +4,7 @@
 
 :root {
     --monospace-font: 'JetBrains Mono', monospace;
-    --default-font: 'Chakra Petch', sans-serif;
-    --heading-font: 'Bebas Neue', cursive;
+    --default-font: 'IBM Plex Mono', sans-serif;
     --decorative-font: 'Major Mono Display', cursive;
 
     --background-light-4: rgb(255, 255, 255);
@@ -694,8 +693,7 @@ table tbody tr:hover td {
 }
 
 .bio-text {
-    font-size: 1.2rem;
-    font-family: var(--monospace-font);
+    font-size: 1.3rem;
     z-index: 1;
 }
 
@@ -938,6 +936,7 @@ table tbody tr:hover td {
     user-select: none;
     margin: 5px 10px;
     font-size: 1rem;
+    font-weight: 600;
     height: 100%;
     position: relative;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
@@ -956,7 +955,7 @@ table tbody tr:hover td {
 
 .project-nav-link.current-project::before,
 .project-nav-link:hover::before {
-    background-color: var(--background-dark-1);
+    background-color: var(--dark-background-light-2);
     bottom: -10px;
 }
 
@@ -965,6 +964,7 @@ table tbody tr:hover td {
     height: 450px;
     background-color: var(--dark-background-dark-1);
     color: var(--light-font-color);
+    font-weight: 600;
     transition: left ease 0.25s;
     border-radius: 20px;
     overflow-y: auto;
@@ -1065,7 +1065,7 @@ table tbody tr:hover td {
 }
 
 .project .project-content {
-    margin-left: 20px;
+    margin-left: 30px;
     max-width: 80%;
 }
 
@@ -1077,8 +1077,6 @@ table tbody tr:hover td {
 
 .project-content h1 {
     word-break: break-all;
-    font-family: var(--default-font);
-    text-transform: none;
 }
 
 .mjxgui-demo-button {

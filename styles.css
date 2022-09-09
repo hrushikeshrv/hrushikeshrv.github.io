@@ -17,13 +17,14 @@
     --background-dark-2: rgb(181, 181, 181);
     --background-dark-3: rgb(162, 162, 162);
 
-    --dark-background-light-2: rgb(1, 28, 88);
-    --dark-background-light-1: rgb(4, 26, 67);
-    --dark-background: rgb(0, 11, 34);
-    --dark-background-dark-1: rgb(2, 9, 28);
+    --dark-background-light-2: rgb(73, 93, 105);
+    --dark-background-light-1: rgb(61, 77, 87);
+    --dark-background: rgb(38, 50, 56);
+    --dark-background-dark-1: rgb(25, 33, 36);
+    --dark-background-dark-2: rgb(12, 16, 18);
 
     --font-color: rgb(0, 0, 0);
-    --light-font-color: rgb(240, 240, 240);
+    --light-font-color: rgb(214, 214, 214);
     --muted-font: rgb(169, 169, 169);
     --light-muted-font: rgb(200, 200, 200);
 
@@ -78,7 +79,7 @@ a.a {
 }
 
 .icon-tabler {
-    stroke: rgb(80, 80, 80);
+    stroke: rgb(134, 134, 134);
 }
 
 .icon-tabler-x {
@@ -677,7 +678,7 @@ table tbody tr:hover td {
 .about #bio {
     border-top-left-radius: 22px;
     z-index: 1;
-    box-shadow: 0 0 10px black;
+    box-shadow: -5px -5px 10px rgba(0,0,0,0.3);
 }
 
 @media (max-width: 600px) {
@@ -928,8 +929,8 @@ table tbody tr:hover td {
 .project-nav-link {
     border-radius: 30px;
     padding: 10px;
-    background-color: var(--background-dark-1);
-    color: var(--font-color);
+    background-color: var(--dark-background-dark-1);
+    color: var(--light-font-color);
     cursor: pointer;
     border: 2px solid transparent;
     transition: border-color ease 0.2s;
@@ -962,8 +963,8 @@ table tbody tr:hover td {
 .project {
     width: 80%;
     height: 450px;
-    background-color: var(--background-dark-1);
-    color: var(--font-color);
+    background-color: var(--dark-background-dark-1);
+    color: var(--light-font-color);
     transition: left ease 0.25s;
     border-radius: 20px;
     overflow-y: auto;
@@ -1016,10 +1017,10 @@ table tbody tr:hover td {
 }
 
 .project-story-button {
-    background-color: var(--background-dark-1);
-    color: var(--font-color);
+    background-color: var(--dark-background-dark-1);
+    color: var(--light-font-color);
     border: none;
-    border-bottom: 2px dashed var(--font-color);
+    border-bottom: 2px dashed var(--light-font-color);
     padding: 3px;
     font-size: 0.8rem;
     font-weight: bolder;
@@ -1049,7 +1050,7 @@ table tbody tr:hover td {
 
 .project-links .link {
     border-radius: 15px;
-    background-color: var(--dark-background-dark-1);
+    background-color: var(--dark-background-dark-2);
     color: var(--light-font-color);
     padding: 5px 10px;
     margin: 5px;
@@ -1086,10 +1087,10 @@ table tbody tr:hover td {
 }
 
 .mini-project {
-    border: 2px solid var(--background-dark-2);
+    border: 2px solid var(--dark-background-light-1);
     border-radius: 30px;
-    background-color: var(--background-dark-2);
-    color: var(--font-color);
+    background-color: var(--dark-background-light-1);
+    color: var(--light-font-color);
     max-width: 40%;
 }
 

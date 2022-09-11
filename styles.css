@@ -4,8 +4,9 @@
 
 :root {
     --monospace-font: 'JetBrains Mono', monospace;
-    --default-font: 'IBM Plex Mono', sans-serif;
+    --default-font: 'Poppins', sans-serif;
     --decorative-font: 'Major Mono Display', cursive;
+    --decorative-mono: 'IBM Plex Mono', monospace;
 
     --background-light-4: rgb(255, 255, 255);
     --background-light-3: rgb(255, 255, 255);
@@ -23,17 +24,17 @@
     --dark-background-dark-2: rgb(12, 16, 18);
 
     --font-color: rgb(0, 0, 0);
-    --light-font-color: rgb(214, 214, 214);
-    --muted-font: rgb(169, 169, 169);
+    --light-font-color: rgb(229, 229, 229);
+    --muted-font: rgb(150, 150, 150);
     --light-muted-font: rgb(200, 200, 200);
 
-    --primary-light-3: rgb(118, 167, 255);
-    --primary-light-2: rgb(79, 142, 255);
-    --primary-light-1: rgb(40, 116, 255);
-    --primary: rgb(0, 94, 255);
-    --primary-dark-1: rgb(7, 53, 140);
-    --primary-dark-2: rgb(166, 110, 15);
-    --primary-dark-3: rgb(105, 70, 9);
+    --primary-light-3: rgb(245, 203, 166);
+    --primary-light-2: rgb(255, 188, 93);
+    --primary-light-1: rgb(250, 155, 37);
+    --primary: rgb(243, 137, 4);
+    --primary-dark-1: rgb(215, 119, 0);
+    --primary-dark-2: rgb(165, 92, 0);
+    --primary-dark-3: rgb(121, 70, 0);
 
     --success: rgb(31, 217, 24);
 
@@ -49,7 +50,7 @@
 }
 
 ::-webkit-scrollbar {
-    width: 1em;
+    width: 0.85em;
 }
 
 ::-webkit-scrollbar-track {
@@ -58,6 +59,11 @@
 
 ::-webkit-scrollbar-thumb {
     background-color: var(--background-dark-2);
+    transition: background-color ease 0.2s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--background-dark-3);
 }
 
 html, body {
@@ -615,22 +621,23 @@ table tbody tr:hover td {
     z-index: 2;
 }
 
-.tippy-box[data-theme~='blue-gradient'] {
-    background: linear-gradient(to right, rgb(30, 10, 200), rgb(5, 10, 150));
-    border: 1px solid rgb(30, 10, 200);
+.tippy-box[data-theme~='orange-gradient'] {
+    background: rgb(243, 137, 4);
+    border: 1px solid rgb(243, 137, 4);
+    color: black;
 }
 
-.tippy-box[data-theme~='blue-gradient'][data-placement^='top'] > .tippy-arrow::before {
-    border-top-color: rgb(30, 10, 200);
+.tippy-box[data-theme~='orange-gradient'][data-placement^='top'] > .tippy-arrow::before {
+    border-top-color: rgb(243, 137, 4);
 }
-.tippy-box[data-theme~='blue-gradient'][data-placement^='bottom'] > .tippy-arrow::before {
-    border-bottom-color: rgb(30, 10, 200);
+.tippy-box[data-theme~='orange-gradient'][data-placement^='bottom'] > .tippy-arrow::before {
+    border-bottom-color: rgb(243, 137, 4);
 }
-.tippy-box[data-theme~='blue-gradient'][data-placement^='left'] > .tippy-arrow::before {
-    border-left-color: rgb(30, 10, 200);
+.tippy-box[data-theme~='orange-gradient'][data-placement^='left'] > .tippy-arrow::before {
+    border-left-color: rgb(243, 137, 4);
 }
-.tippy-box[data-theme~='blue-gradient'][data-placement^='right'] > .tippy-arrow::before {
-    border-right-color: rgb(30, 10, 200);
+.tippy-box[data-theme~='orange-gradient'][data-placement^='right'] > .tippy-arrow::before {
+    border-right-color: rgb(243, 137, 4);
 }
 
 @media (max-width: 500px) {
@@ -693,7 +700,7 @@ table tbody tr:hover td {
 }
 
 .bio-text {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     z-index: 1;
 }
 
@@ -967,7 +974,8 @@ table tbody tr:hover td {
     height: 450px;
     background-color: var(--dark-background-dark-1);
     color: var(--light-font-color);
-    font-weight: 600;
+    /*font-family: var(--decorative-mono);*/
+    font-weight: 500;
     transition: left ease 0.25s;
     border-radius: 20px;
     overflow-y: auto;
@@ -1057,6 +1065,8 @@ table tbody tr:hover td {
     color: var(--light-font-color);
     padding: 5px 10px;
     margin: 5px;
+    font-family: var(--decorative-mono);
+    font-weight: 500;
 }
 
 .project .flair svg {

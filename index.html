@@ -23,7 +23,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=JetBrains+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Poppins&family=JetBrains+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="styles.css">
         <link rel="icon" href="images/favicon.png" type="image/x-icon">
 
@@ -85,7 +85,7 @@
 
                     <h1 class="mt-30 nametag" style="margin-bottom: 0;">Hrushikesh</h1>
                     <h1 class="mb-30 nametag" style="margin-top: 0;">Vaidya</h1>
-                    <div class="flexbox-row ajc mono-font">
+                    <div class="flexbox-row ajc">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-server" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#8f8f8f" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                             <rect x="3" y="4" width="18" height="8" rx="3" />
@@ -95,7 +95,7 @@
                         </svg>
                         <span style="margin-left: 5px;">Backend Developer</span>
                     </div>
-                    <div class="flexbox-row ajc mono-font">
+                    <div class="flexbox-row ajc">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-python" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#8f8f8f" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                             <path d="M12 9h-7a2 2 0 0 0 -2 2v4a2 2 0 0 0 2 2h3" />
@@ -146,12 +146,14 @@
                         <h2 class="mono-font">National Institute of Technology, Calicut</h2>
                         <span class="timeline-year">2019-2020</span>
                         <span class="timeline-category">B. Tech, Engineering Physics</span>
+                        <span class="timeline-category">(3 semesters)</span>
                         <span class="timeline-comment"></span>
                     </div>
                     <div class="flexbox-column pad-30 timeline-item aifs last-timeline-item">
                         <h2 class="mono-font">College of Engineering, Pune</h2>
-                        <span class="timeline-year">2020-Present</span>
+                        <span class="timeline-year">2020-2024</span>
                         <span class="timeline-category">B. Tech, Electronics & Telecommunication Engineering</span>
+                        <span class="timeline-category">Minor in Computer Engineering</span>
                         <span class="timeline-comment"></span>
                     </div>
                 </div>
@@ -563,14 +565,14 @@
                 followCursor: true,
                 delay: 0,
                 duration: [300, 50],
-                theme: 'blue-gradient',
+                theme: 'orange-gradient',
             })
             tippy('#docxlatex-documentation-inprogress', {
                 content: 'The documentation is still being written as docxlatex is still in beta',
                 followCursor: true,
                 delay: 0,
                 duration: [300, 50],
-                theme: 'blue-gradient',
+                theme: 'orange-gradient',
             })
             const template = document.querySelector('#timeline-controls-tippy').innerHTML;
             tippy('#timeline-control-help', {

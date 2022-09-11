@@ -73,9 +73,11 @@ class CardRenderer {
         let projectStoryButton = '';
         if (card.story) {
             projectStoryButton = `<button class="project-story-button mb-10" data-project="${card.id}">Story behind ${card.heading}</button>`
+            let projectStoryCardContainer = document.createElement('div');
+            projectStoryCardContainer.classList.add('project-story-card-container', 'hidden');
+            projectStoryCardContainer.id = `story-card-${card.id}`;
             let projectStoryCard = document.createElement('div');
-            projectStoryCard.classList.add('project-story-card', 'hidden');
-            projectStoryCard.id = `story-card-${card.id}`;
+            projectStoryCard.classList.add('project-story-card');
             let storyText = `
                 <span class="story-card-close-button">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -83,14 +85,18 @@ class CardRenderer {
                       <line x1="18" y1="6" x2="6" y2="18" />
                       <line x1="6" y1="6" x2="18" y2="18" />
                     </svg>
-                </span><div class="flexbox-row jcc">`;
+                </span>
+                <div class="flexbox-row jcc">
+                    <h1>The story behind ${card.heading}</h1>
+            `;
             for (let s of card.story) {
                 storyText += `<p class="column-twothird">${s}</p>`;
             }
             storyText += '</div>';
             projectStoryCard.innerHTML = storyText;
 
-            this.containerElement.appendChild(projectStoryCard);
+            projectStoryCardContainer.appendChild(projectStoryCard);
+            this.containerElement.appendChild(projectStoryCardContainer);
         }
 
         projectElement.innerHTML = `
@@ -145,7 +151,7 @@ function showProjectStoryCards() {
     const projectStoryCards = document.querySelectorAll('.project-story-card');
     projectStoryCards.forEach(card => {
         card.querySelector('.story-card-close-button').addEventListener('click', function() {
-            card.classList.add('hidden');
+            card.parentElement.classList.add('hidden');
         });
     })
 }

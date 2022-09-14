@@ -42,7 +42,11 @@
     },
     "heading": "ClassBerg x EXED IIT",
     "story": [
-
+      "After working on ClassBerg for around 9 months, I approached my old tuition class and pitched my platform to them. They liked the idea and wanted to use it for internal student testing.",
+      "For the next 4 months, I worked with them, conducted beta testing, and received feedback about all aspects of the software. I identified two significant shortcomings for which I had to design my own solutions, which resulted in two open-source libraries - MJXGUI and docxlatex.",
+      "The first shortcoming was that being an engineering class, they frequently needed to insert mathematical and chemical equations into their questions, but there was no easy way to do so in a web form. I searched for solutions, but I couldn't find any that fit my use case and requirements. So I developed MJXGUI, which solved precisely that problem.",
+      "The second shortcoming was that they already had a considerable collection of question banks and tests stored as Microsoft Word (.docx) files, and they wanted to be able to use those files directly to create tests on the platform. The existing .docx parsers for python didn't support extraction of mathematical equations, so I created docxlatex.",
+      "After working with them, gathering feedback, and incorporating it iteratively, I sold them a customized installation on their local network for personal use."
     ],
     "description": [
       "A customized installation of ClassBerg's source code for <a href=\"https://exedindia.com\" class=\"a\" target=\"_blank\">EXED IIT's domain</a>, with features including student attendance tracking, assignment creation and submission, and test creation from uploaded .docx files using <a href=\"#docxlatex\" class=\"a\">docxlatex</a>.",

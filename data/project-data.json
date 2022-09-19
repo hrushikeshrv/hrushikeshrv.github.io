@@ -65,12 +65,10 @@
       "height": 125
     },
     "heading": "Chess Engine",
-    "story": [
-
-    ],
     "description": [
       "A python implementation of a chess engine from scratch.",
-      "Features a bitboard representation and API, move generation API, PGN parsing, and alpha-beta pruned search with move ordering."
+      "Features a bitboard representation and API, move generation API, PGN parsing, and alpha-beta pruned search with move ordering.",
+      "I'm currently working on a cartesian robot that integrates with this chess engine to play a game of chess against a human player."
     ],
     "links": [
       {
@@ -90,9 +88,6 @@
       "height": 125
     },
     "heading": "docxlatex",
-    "story": [
-
-    ],
     "description": [
       "docxlatex is a python module for extracting text from .docx files, including support for mathematical and chemical equations, primarily for use with tools like MathJax.",
       "It also includes support for extracting images and conversion of extracted equations into LaTeX syntax."
@@ -120,9 +115,6 @@
       "height": 125
     },
     "heading": "MJXGUI",
-    "story": [
-
-    ],
     "description": [
       "MJXGUI is an equation editor for the web for building mathematical and chemical equations with a GUI similar to Google Docs or Microsoft Word. It supports conversion of the entered equations into LaTeX for storage and rendering using tools like MathJax.",
       ["Try the demo below to create an equation.", "mobile-hide"],
@@ -151,9 +143,6 @@
     "id": 6,
     "logo": null,
     "heading": "LifeNotes",
-    "story": [
-
-    ],
     "description": [
       "LifeNotes is a timeline web app that allows you to create interactive, shareable timelines in the browser.",
       "You can tag notes and search and filter between different tags to find notes faster.",
@@ -178,9 +167,6 @@
     "id": 7,
     "logo": null,
     "heading": "OTShare",
-    "story": [
-
-    ],
     "description": [
       "OTShare allows you to send data securely from a public computer to your devices, or for other users to send you anonymous messages",
       "It uses one time passwords to eliminate the need for you to log into any service, but at the same time allows you to control who can send you messages."

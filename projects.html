@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TGM5F6WJNV"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-TGM5F6WJNV');
+    </script>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="author" content="Hrushikesh Vaidya | @hrushikeshrv on GitHub">
+    <meta name="theme-color" content="rgb(243, 137, 4)">
+    <meta name="description" content="Hi, I'm Hrushikesh, a computer science student and web developer.">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hrushikesh Vaidya</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Poppins&family=JetBrains+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="images/favicon.png" type="image/x-icon">
+
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$']],
+            },
+            svg: {
+                fontCache: 'global',
+            },
+            options: {
+                menuOptions: {
+                    settings: {
+                        zoom: 'NoZoom',
+                        zscale: '250%',
+                    }
+                }
+            },
+        }
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <script src="js/mjxgui.min.js"></script>
+    <script src="js/matter.js"></script>
+
+    <link href="https://unpkg.com/vis-timeline@latest/styles/vis-timeline-graph2d.min.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="https://unpkg.com/vis-timeline@latest/standalone/umd/vis-timeline-graph2d.min.js"></script>
+</head>
+<body>
+<div id="delete-confirm-dialog" class="flexbox-column pad-30 hidden">
+            <span class="note-close-button">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+            </span>
+    <span class="mb-10 mt-30">Are you sure you want to delete this note?</span>
+    <input type="submit" value="Yes, delete it." class="mbt-10 error-button" id="delete-confirm-button" data-delete-url="">
+    <div class="flexbox-row ajc error-container mt-10 hidden">
+        <span class="donutSpinner smallSpinner space-lr"></span>
+        <span>Deleting</span>
+    </div>
+</div>
+
+<div class="page flexbox-column pad-30 column-half aifs center" id="projects">
+    <nav id="quick-nav" class="flexbox-row jcc aifs">
+        <a href="index.html" class="section-link flexbox-row ajc">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-left" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <line x1="5" y1="12" x2="11" y2="18" />
+                <line x1="5" y1="12" x2="11" y2="6" />
+            </svg>
+            <span>Back</span>
+        </a>
+    </nav>
+    <h1 class="big">Projects</h1>
+    <div id="project-card-container"></div>
+</div>
+
+<div class="timeline-demo hidden" id="timeline-demo-1">
+    <div id="timeline-controls-tippy" class="hidden">
+        <div class="flexbox-column pad-10 aifs">
+            <h1 class="mbt-10">Controls</h1>
+            <span class="flexbox-row ajc">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-narrow-left" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <line x1="5" y1="12" x2="19" y2="12" />
+                                    <line x1="5" y1="12" x2="9" y2="16" />
+                                    <line x1="5" y1="12" x2="9" y2="8" />
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-narrow-right space-lr" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <line x1="5" y1="12" x2="19" y2="12" />
+                                    <line x1="15" y1="16" x2="19" y2="12" />
+                                    <line x1="15" y1="8" x2="19" y2="12" />
+                                </svg>
+                                <span>Drag the timeline left and right</span>
+                            </span>
+            <span class="flexbox-row ajc mobile-element">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrows-horizontal" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                  <polyline points="7 8 3 12 7 16" />
+                                  <polyline points="17 8 21 12 17 16" />
+                                  <line x1="3" y1="12" x2="21" y2="12" />
+                                </svg>
+                                <span>Pinch to zoom</span>
+                            </span>
+            <span class="flexbox-row ajc mobile-hide">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrows-horizontal space-lr" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                  <polyline points="7 8 3 12 7 16" />
+                                  <polyline points="17 8 21 12 17 16" />
+                                  <line x1="3" y1="12" x2="21" y2="12" />
+                                </svg>
+                                <span>Press ctrl + scroll to zoom</span>
+                            </span>
+            <span class="flexbox-row ajc">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-click space-lr" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                  <line x1="3" y1="12" x2="6" y2="12" />
+                                  <line x1="12" y1="3" x2="12" y2="6" />
+                                  <line x1="7.8" y1="7.8" x2="5.6" y2="5.6" />
+                                  <line x1="16.2" y1="7.8" x2="18.4" y2="5.6" />
+                                  <line x1="7.8" y1="16.2" x2="5.6" y2="18.4" />
+                                  <path d="M12 12l9 3l-4 2l-2 4l-3 -9" />
+                                </svg>
+                                <span>Click on a note to read more</span>
+                            </span>
+        </div>
+    </div>
+    <span id="timeline-control-help">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-help" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                      <circle cx="12" cy="12" r="9" />
+                      <line x1="12" y1="17" x2="12" y2="17.01" />
+                      <path d="M12 13.5a1.5 1.5 0 0 1 1 -1.5a2.6 2.6 0 1 0 -3 -4" />
+                    </svg>
+                </span>
+    <div id="note-card-container" class="card-hidden-left"></div>
+</div>
+
+
+<script>
+    let gui;
+    function initMJXGUIDemo() {
+        const outputContainer = document.querySelector('#mjxgui-output-container');
+        const outputTable = document.querySelector('#mjxgui-output');
+        gui = new MJXGUI('.mjxgui-demo-button', '$$', function() {
+            outputContainer.classList.remove('hidden');
+            let tr = document.createElement('tr');
+            tr.innerHTML = `<td>$$ ${gui.getLatex()} $$</td><td>${gui.getLatex()}</td>`;
+            outputTable.appendChild(tr);
+            MathJax.typesetPromise([tr]).then(() => {})
+        });
+    }
+</script>
+<script src="data/project-data.json" type="application/json" id="project-data"></script>
+<script src="data/work-data.json" type="application/json" id="work-data"></script>
+<script src="js/card-renderer.js"></script>
+<script src="js/timeline.js"></script>
+<script>
+    const projectContainer = document.querySelector('#project-card-container');
+    const projectJSON = document.querySelector('#project-data').src;
+    fetch(projectJSON)
+        .then(response => response.json())
+        .then(json => {
+            const projectCardRenderer    = new CardRenderer(json, projectContainer);
+            projectCardRenderer.render();
+        })
+        .then(() => {
+            initMJXGUIDemo();
+            initTimelineDemo();
+        });
+</script>
+<script>
+
+</script>
+</body>
+</html>

@@ -332,12 +332,13 @@ function initTimelineDemo() {
         if (timelineInitialized) {
             timelineContainer.scrollIntoView();
             return;
-        };
+        }
         timelineInitialized = true;
         timelineContainer.classList.remove('hidden');
         timelineContainer.scrollIntoView();
         timeline = new Timeline(timelineElement, timelineNotes);
         timeline.render();
         timeline.element.removeAttribute('style');
+        timeline.element.scrollIntoView();
     })
 }

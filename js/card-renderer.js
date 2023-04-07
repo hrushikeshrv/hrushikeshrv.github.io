@@ -43,6 +43,12 @@ class CardRenderer {
         `;
         this.container.appendChild(cardElement);
     }
+
+    render() {
+        for (let card in this.data) {
+            this.renderCard(this.data[card]);
+        }
+    }
 }
 
 

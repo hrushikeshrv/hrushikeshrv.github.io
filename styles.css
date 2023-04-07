@@ -931,6 +931,7 @@ nav#quick-nav .section-link {
 .link {
     margin-top: 10px;
     user-select: none;
+    margin-left: 10px;
 }
 
 .link svg {

@@ -152,6 +152,10 @@
 
         <div class="page flexbox-column pad-30 column-half aifs center" id="projects">
             <h1 class="big">Projects</h1>
+            <div id="project-card-container"></div>
+            <span class="mbt-10">
+                <a href="projects.html" class="a">... and more</a>
+            </span>
         </div>
 
         <div class="page flexbox-column pad-30 column-half aifs center" id="work">
@@ -176,6 +180,21 @@
         <script src="data/work-data.json" type="application/json" id="work-data"></script>
         <script src="js/card-renderer.js"></script>
         <script src="js/timeline.js"></script>
+        <script>
+            const projectContainer = document.querySelector('#project-card-container');
+            const projectJSON = document.querySelector('#project-data').src;
+            fetch(projectJSON)
+                .then(response => response.json())
+                .then(json => {
+                    const projectCardRenderer    = new CardRenderer(json, projectContainer);
+                    projectCardRenderer.renderCard(json.chessengine);
+                    projectCardRenderer.renderCard(json.docxlatex);
+                    projectCardRenderer.renderCard(json.mjxgui)
+                })
+                .then(() => {
+                    initMJXGUIDemo();
+                });
+        </script>
         <script src="https://unpkg.com/@popperjs/core@2"></script>
         <script src="https://unpkg.com/tippy.js@6"></script>
         <script>
@@ -192,13 +211,6 @@
                 delay: 0,
                 duration: [300, 50],
                 theme: 'orange-gradient',
-            })
-            const template = document.querySelector('#timeline-controls-tippy').innerHTML;
-            tippy('#timeline-control-help', {
-                content: template,
-                allowHTML: true,
-                trigger: 'click mouseenter',
-                hideOnClick: true,
             })
         </script>
     </body>

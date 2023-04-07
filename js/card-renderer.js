@@ -11,28 +11,40 @@ class CardRenderer {
         if (data.logo) {
             cardLogo += `<img src="${data.logo.path}" alt="${data.logo.alt}" width="${data.logo.width}" height="${data.logo.height}">`
         }
+        let projectDescription = '';
+        for (let desc of data.description) {
+            if (desc instanceof Array) {
+                projectDescription += `<span class="project-desc ${desc.slice(1).join(' ')}">${desc[0]}</span>`;
+            }
+            else {
+                projectDescription += `<span class="project-desc">${desc}</span>`;
+            }
+        }
+
+        let projectLinks = '';
+        for (let link of data.links) {
+            projectLinks += `
+            <span class="flexbox-row ajc link ${link.className ? link.className : ''}" ${link.id ? `id=${link.id}` : ''}>
+                ${link.svg}
+                <span class="space-lr">${link.link}</span>
+            </span>
+            `;
+        }
         cardElement.innerHTML = `
             <div class="flexbox-column card-logo">
                 ${cardLogo}
             </div>
             <div class="flexbox-column card-content aifs">
-                <h1 class="mbt-10">${data.heading}</h1>
+                <h2 class="mbt-10">${data.heading}</h2>
+                ${projectDescription}
+                <span class="flexbox-row pad-10 project-links">${projectLinks}</span>
+                ${data.extraHTML ? data.extraHTML : ''}
             </div>
-        `
+        `;
+        this.container.appendChild(cardElement);
     }
 }
 
-const projectContainer = document.querySelector('#project-card-container');
-const projectJSON = document.querySelector('#project-data').src;
-fetch(projectJSON)
-    .then(response => response.json())
-    .then(json => {
-        const projectCardRenderer    = new CardRenderer(json, projectContainer);
-    })
-    .then(() => {
-        initMJXGUIDemo();
-        initTimelineDemo();
-    });
 
 
 const workContainer = document.querySelector('#work-card-container');

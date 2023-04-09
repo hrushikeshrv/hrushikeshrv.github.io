@@ -1,48 +1,18 @@
 class CardRenderer {
-    constructor(data, container, navigation) {
+    constructor(data, container) {
         this.data = data;
-        this.containerElement = container;
-        this.navigationElement = navigation;
-        this.cards = {};
-        this.currentCard = this.data[Object.keys(this.data)[0]].heading;
-        this.currentCardElement = null;
-        this.currentNavElement = null;
-
-        this.render();
+        this.container = container;
     }
 
-    addCardToNavigation(card) {
-        const navElement = document.createElement('button');
-        navElement.classList.add('flexbox-row', 'ajc', 'project-nav-link');
-        navElement.dataset.projectHeading = card.heading;
-
-        if (card.logo) {
-            const projectLogo = document.createElement('img');
-            projectLogo.classList.add('space-lr');
-            projectLogo.src = card.logo.path;
-            projectLogo.width = card.logo.width / 5;
-            projectLogo.height = card.logo.height / 5;
-
-            navElement.appendChild(projectLogo);
+    renderCard(data) {
+        const cardElement = document.createElement('div');
+        cardElement.classList.add('card', 'flexbox-row', 'no-pad-20', 'mar-20');
+        let cardLogo = '';
+        if (data.logo) {
+            cardLogo += `<img src="${data.logo.path}" alt="${data.logo.alt}" width="${data.logo.width}" height="${data.logo.height}">`
         }
-
-        const cardName = document.createElement('span');
-        cardName.classList.add('space-lr');
-        cardName.textContent = card.heading;
-
-        navElement.appendChild(cardName);
-        this.navigationElement.appendChild(navElement);
-        navElement.addEventListener('click', (evt) => {
-            this.showCard(navElement.dataset.projectHeading);
-            this.currentNavElement.classList.remove('current-project');
-            navElement.classList.add('current-project');
-            this.currentNavElement = navElement;
-        })
-    }
-
-    renderCard(card) {
         let projectDescription = '';
-        for (let desc of card.description) {
+        for (let desc of data.description) {
             if (desc instanceof Array) {
                 projectDescription += `<span class="project-desc ${desc.slice(1).join(' ')}">${desc[0]}</span>`;
             }
@@ -52,132 +22,44 @@ class CardRenderer {
         }
 
         let projectLinks = '';
-        for (let link of card.links) {
-            projectLinks += `
-        <span class="flexbox-row ajc link ${link.className ? link.className : ''}" ${link.id ? `id=${link.id}` : ''}>
-            ${link.svg}
-            <span class="space-lr">${link.link}</span>
-        </span>
-        `;
-        }
-
-        let projectLogo = '';
-        if (card.logo) {
-            projectLogo += `<img src="${card.logo.path}" alt="${card.logo.alt}" width="${card.logo.width}" height="${card.logo.height}">`
-        }
-
-        const projectElement = document.createElement('div');
-        projectElement.classList.add('flexbox-row', 'pad-50', 'mar-20', 'project');
-        projectElement.id = `project-${card.heading}`;
-
-        let projectStoryButton = '';
-        if (card.story) {
-            projectStoryButton = `<button class="project-story-button mb-10" data-project="${card.id}">Story behind ${card.heading}</button>`
-            let projectStoryCardContainer = document.createElement('div');
-            projectStoryCardContainer.classList.add('project-story-card-container', 'hidden');
-            projectStoryCardContainer.id = `story-card-${card.id}`;
-            let projectStoryCard = document.createElement('div');
-            projectStoryCard.classList.add('project-story-card');
-            let storyText = `
-                <span class="story-card-close-button">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                      <line x1="18" y1="6" x2="6" y2="18" />
-                      <line x1="6" y1="6" x2="18" y2="18" />
-                    </svg>
-                </span>
-                <div class="flexbox-row jcc">
-                    <h1>The story behind ${card.heading}</h1>
+        if (data.links) {
+            for (let link of data.links) {
+                projectLinks += `
+            <span class="flexbox-row ajc link ${link.className ? link.className : ''}" ${link.id ? `id=${link.id}` : ''}>
+                ${link.svg}
+                <span class="space-lr">${link.link}</span>
+            </span>
             `;
-            for (let s of card.story) {
-                storyText += `<p class="column-twothird">${s}</p>`;
-            }
-            storyText += '</div>';
-            projectStoryCard.innerHTML = storyText;
-
-            projectStoryCardContainer.appendChild(projectStoryCard);
-            this.containerElement.appendChild(projectStoryCardContainer);
-        }
-
-        projectElement.innerHTML = `
-        <div class="flexbox-column">
-            ${projectLogo}
-        </div>
-        <div class="flexbox-column project-content aifs">
-            <h1 class="big mbt-10">${card.heading}</h1>
-            ${projectStoryButton}
-            ${projectDescription}
-            <span class="flexbox-row pad-10 project-links">${projectLinks}</span>
-            <span class="flexbox-row mt-10 flair">${card.flair}</span>
-        </div>
-        ${card.extraHTML ? card.extraHTML : ''}`;
-        this.containerElement.appendChild(projectElement);
-        this.cards[card.heading] = projectElement;
-    }
-
-    showCard(cardHeading) {
-        this.currentCardElement.classList.remove('active-project');
-        for (let p in this.cards) {
-            let project =  this.cards[p];
-            if (p === cardHeading) {
-                project.classList.add('active-project');
-                this.currentCardElement = project;
-                break;
             }
         }
+
+        let cardTimeline = '';
+        if (data.startDate) {
+            cardTimeline += `
+            <i class="card-timeline mb-10">
+                ${data.startDate} - ${data.endDate ? data.endDate : 'Present'}
+            </i>
+            `;
+        }
+
+        cardElement.innerHTML = `
+            <div class="flexbox-column card-logo">
+                ${cardLogo}
+            </div>
+            <div class="flexbox-column card-content aifs">
+                <h2 class="mbt-10">${data.heading}</h2>
+                ${cardTimeline}
+                ${projectDescription}
+                <span class="flexbox-row pad-10 project-links">${projectLinks}</span>
+                ${data.extraHTML ? data.extraHTML : ''}
+            </div>
+        `;
+        this.container.appendChild(cardElement);
     }
 
     render() {
-        for (let project in this.data) {
-            this.addCardToNavigation(this.data[project]);
-            this.renderCard(this.data[project]);
+        for (let card in this.data) {
+            this.renderCard(this.data[card]);
         }
-        this.navigationElement.firstElementChild.classList.add('current-project');
-        this.cards[this.currentCard].classList.add('active-project');
-        this.currentCardElement = this.cards[this.currentCard];
-        this.currentNavElement = this.navigationElement.firstElementChild;
     }
 }
-
-// Function to show the respective project's story cards when the Story behind... button is clicked
-function showProjectStoryCards() {
-    const showStoryButtons = document.querySelectorAll('.project-story-button');
-    showStoryButtons.forEach(btn => {
-        btn.addEventListener('click', function() {
-            const storyCardID = `#story-card-${btn.dataset.project}`;
-            document.querySelector(storyCardID).classList.remove('hidden');
-        })
-    })
-    const projectStoryCards = document.querySelectorAll('.project-story-card');
-    projectStoryCards.forEach(card => {
-        card.querySelector('.story-card-close-button').addEventListener('click', function() {
-            card.parentElement.classList.add('hidden');
-        });
-    })
-}
-
-const projectContainer = document.querySelector('#project-card-container');
-const projectListNavbar = document.querySelector('#project-navbar');
-
-const projectJSON = document.querySelector('#project-data').src;
-fetch(projectJSON)
-    .then(response => response.json())
-    .then(json => {
-        const projectCardRenderer    = new CardRenderer(json, projectContainer, projectListNavbar);
-    })
-    .then(() => {
-        initMJXGUIDemo();
-        initTimelineDemo();
-        showProjectStoryCards();
-    });
-
-
-const workContainer = document.querySelector('#work-card-container');
-const workCardNavbar = document.querySelector('#work-navbar');
-
-const workJSON = document.querySelector('#work-data').src;
-fetch(workJSON)
-    .then(response => response.json())
-    .then(json => {
-        const workCardRenderer = new CardRenderer(json, workContainer, workCardNavbar);
-    })

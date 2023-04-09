@@ -150,16 +150,20 @@
             </p>
         </div>
 
+        <div class="page flexbox-column pad-30 column-half aifs center" id="work">
+            <h1 class="big">Work & Study</h1>
+            <div id="work-card-container"></div>
+            <span class="mbt-10">
+                <a href="work.html" class="a">... and more</a>
+            </span>
+        </div>
+
         <div class="page flexbox-column pad-30 column-half aifs center" id="projects">
             <h1 class="big">Projects</h1>
             <div id="project-card-container"></div>
             <span class="mbt-10">
                 <a href="projects.html" class="a">... and more</a>
             </span>
-        </div>
-
-        <div class="page flexbox-column pad-30 column-half aifs center" id="work">
-            <h1 class="big">Work & Study</h1>
         </div>
 
         <script>
@@ -194,6 +198,17 @@
                 .then(() => {
                     initMJXGUIDemo();
                 });
+
+            const workContainer = document.querySelector('#work-card-container');
+            const workJSON = document.querySelector('#work-data').src;
+            fetch(workJSON)
+                .then(response => response.json())
+                .then(json => {
+                    const workCardRenderer = new CardRenderer(json, workContainer);
+                    workCardRenderer.renderCard(json.mastercard);
+                    workCardRenderer.renderCard(json.coepweb);
+                    workCardRenderer.renderCard(json.django);
+                })
         </script>
         <script src="https://unpkg.com/@popperjs/core@2"></script>
         <script src="https://unpkg.com/tippy.js@6"></script>

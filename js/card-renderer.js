@@ -6,7 +6,7 @@ class CardRenderer {
 
     renderCard(data) {
         const cardElement = document.createElement('div');
-        cardElement.classList.add('card', 'flexbox-row', 'pad-20', 'mar-20');
+        cardElement.classList.add('card', 'flexbox-row', 'no-pad-20', 'mar-20');
         let cardLogo = '';
         if (data.logo) {
             cardLogo += `<img src="${data.logo.path}" alt="${data.logo.alt}" width="${data.logo.width}" height="${data.logo.height}">`
@@ -22,20 +22,33 @@ class CardRenderer {
         }
 
         let projectLinks = '';
-        for (let link of data.links) {
-            projectLinks += `
+        if (data.links) {
+            for (let link of data.links) {
+                projectLinks += `
             <span class="flexbox-row ajc link ${link.className ? link.className : ''}" ${link.id ? `id=${link.id}` : ''}>
                 ${link.svg}
                 <span class="space-lr">${link.link}</span>
             </span>
             `;
+            }
         }
+
+        let cardTimeline = '';
+        if (data.startDate) {
+            cardTimeline += `
+            <i class="card-timeline mb-10">
+                ${data.startDate} - ${data.endDate ? data.endDate : 'Present'}
+            </i>
+            `;
+        }
+
         cardElement.innerHTML = `
             <div class="flexbox-column card-logo">
                 ${cardLogo}
             </div>
             <div class="flexbox-column card-content aifs">
                 <h2 class="mbt-10">${data.heading}</h2>
+                ${cardTimeline}
                 ${projectDescription}
                 <span class="flexbox-row pad-10 project-links">${projectLinks}</span>
                 ${data.extraHTML ? data.extraHTML : ''}
@@ -50,13 +63,3 @@ class CardRenderer {
         }
     }
 }
-
-
-
-const workContainer = document.querySelector('#work-card-container');
-const workJSON = document.querySelector('#work-data').src;
-fetch(workJSON)
-    .then(response => response.json())
-    .then(json => {
-        const workCardRenderer = new CardRenderer(json, workContainer);
-    })

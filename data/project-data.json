@@ -155,7 +155,7 @@
     "description": [
       "MJXGUI is an equation editor for the web for building mathematical and chemical equations with a GUI similar to Google Docs or Microsoft Word. It supports conversion of the entered equations into LaTeX for storage and rendering using tools like MathJax.",
       ["Try the demo below to create an equation.", "mobile-hide"],
-      ["MJXGUI is still in beta and does not support all of its features on mobile devices yet.", "message-warning-dark", "mobile-element"]
+      ["MJXGUI does not support all of its features on mobile devices.", "message-warning", "mobile-element", "mt-20"]
     ],
     "links": [
       {

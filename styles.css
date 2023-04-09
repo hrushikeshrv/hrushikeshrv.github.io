@@ -25,7 +25,7 @@
 
     --font-color: rgb(0, 0, 0);
     --light-font-color: rgb(229, 229, 229);
-    --muted-font: rgb(150, 150, 150);
+    --muted-font: rgb(102, 102, 102);
     --light-muted-font: rgb(200, 200, 200);
 
     --primary-light-3: rgb(245, 203, 166);
@@ -249,9 +249,23 @@ a.button-link:active {
     padding: 50px;
 }
 
+.no-pad-30 {
+    padding: 30px;
+}
+
+.no-pad-20 {
+    padding: 20px;
+}
+
 @media (max-width: 900px) {
     .no-pad-50 {
         padding: 10px;
+    }
+    .no-pad-30 {
+        padding: 5px;
+    }
+    .no-pad-20 {
+        padding: 5px;
     }
 }
 
@@ -300,6 +314,10 @@ a.button-link:active {
 
 .mt-10 {
     margin-top: 10px;
+}
+
+.mt-20 {
+    margin-top: 20px;
 }
 
 .mt-30 {
@@ -940,4 +958,10 @@ nav#quick-nav .section-link {
 
 .mjxgui-demo-button {
     cursor: pointer;
+}
+
+.card-timeline {
+    color: var(--muted-font);
+    font-size: 0.9rem;
+    font-family: var(--monospace-font);
 }

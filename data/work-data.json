@@ -13,6 +13,18 @@
     "startDate": "May 2023",
     "endDate": "July 2023"
   },
+  "coepidealabs": {
+    "logo": {
+      "path": "images/coep.png",
+      "alt": "COEP Idea Labs",
+      "width": 65,
+      "height": 75
+    },
+    "heading": "COEP Idea Labs Research Project",
+    "description": [
+      "Worked in an interdisciplinary team to build data acquisition robots for collecting leaf and soil data for soyabean plants in Indian farms."
+    ]
+  },
   "django": {
     "logo": {
       "path": "images/django-logo-negative.svg",
@@ -22,7 +34,7 @@
     },
     "heading": "Django",
     "description": [
-      "A repository of my contributions to <a class=\"a\" href=\"https://github.com/django/django\" target=\"_blank\">django</a>"
+      "Contributed patches, new features, and bug fixes to <a class=\"a\" href=\"https://github.com/django/django\" target=\"_blank\">django</a>."
     ],
     "links": [
       {

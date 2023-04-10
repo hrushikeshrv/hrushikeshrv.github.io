@@ -1,0 +1,32 @@
+{
+  "coep": {
+    "logo": {
+      "path": "images/coep.png",
+      "alt": "College of Engineering, Pune",
+      "width": 65,
+      "height": 75
+    },
+    "heading": "College of Engineering, Pune",
+    "description": [
+      "Bachelor of Technology, Electronics & Telecommunication Engineering"
+    ],
+    "startDate": "January 2021",
+    "endDate": "May 2024",
+    "extraHTML": "<span class=\"education-gpa\">Overall GPA - 8.95 / 10</span>"
+  },
+  "nitc": {
+    "logo": {
+      "path": "images/nitc.svg",
+      "alt": "National Institute of Technology, Calicut",
+      "width": 60,
+      "height": 71
+    },
+    "heading": "National Institute of Technology, Calicut",
+    "description": [
+      "Bachelor of Technology, Engineering Physics (3 semesters)"
+    ],
+    "startDate": "August 2019",
+    "endDate": "January 2021",
+    "extraHTML": "<span class=\"education-gpa\">Overall GPA - 8.17 / 10</span>"
+  }
+}

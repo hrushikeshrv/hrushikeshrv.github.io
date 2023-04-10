@@ -886,6 +886,7 @@ small.helper-button {
 nav#quick-nav {
     color: var(--font-color);
     font-size: 1rem;
+    font-weight: 500;
     font-family: var(--decorative-mono);
     z-index: 3;
     padding-top: 20px;
@@ -964,4 +965,10 @@ nav#quick-nav .section-link {
     color: var(--muted-font);
     font-size: 0.9rem;
     font-family: var(--monospace-font);
+}
+
+.education-gpa {
+    font-style: italic;
+    color: var(--muted-font);
+    margin-top: -10px;
 }

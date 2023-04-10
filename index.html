@@ -71,8 +71,8 @@
         </div>
         <nav id="quick-nav" class="flexbox-row jcc aifs">
             <a href="#bio" class="section-link flexbox-row aic" id="bio-tooltip"><span>About</span></a>
-            <a href="#projects" class="section-link flexbox-row aic" id="projects-tooltip"><span>Projects</span></a>
             <a href="#work" class="section-link flexbox-row aic" id="work-tooltip"><span>Work</span></a>
+            <a href="#projects" class="section-link flexbox-row aic" id="projects-tooltip"><span>Projects</span></a>
             <a href="https://resume.hrus.in" class="section-link flexbox-row ajc" id="resume-tooltip"><span>Resume</span></a>
         </nav>
         <div class="page flexbox-row" style="height: 90vh;">
@@ -151,11 +151,16 @@
         </div>
 
         <div class="page flexbox-column pad-30 column-half aifs center" id="work">
-            <h1 class="big">Work & Study</h1>
+            <h1 class="big">Work</h1>
             <div id="work-card-container"></div>
             <span class="mbt-10">
                 <a href="work.html" class="a">... and more</a>
             </span>
+        </div>
+
+        <div class="page flexbox-column pad-30 column-half aifs center" id="education">
+            <h1 class="big">Study</h1>
+            <div id="education-container"></div>
         </div>
 
         <div class="page flexbox-column pad-30 column-half aifs center" id="projects">
@@ -182,6 +187,7 @@
         </script>
         <script src="data/project-data.json" type="application/json" id="project-data"></script>
         <script src="data/work-data.json" type="application/json" id="work-data"></script>
+        <script src="data/education-data.json" type="application/json" id="education-data"></script>
         <script src="js/card-renderer.js"></script>
         <script src="js/timeline.js"></script>
         <script>
@@ -208,6 +214,15 @@
                     workCardRenderer.renderCard(json.mastercard);
                     workCardRenderer.renderCard(json.coepweb);
                     workCardRenderer.renderCard(json.django);
+                });
+
+            const eduContainer = document.querySelector('#education-container');
+            const eduJSON = document.querySelector('#education-data').src;
+            fetch(eduJSON)
+                .then(response => response.json())
+                .then(json => {
+                    const eduCardRenderer = new CardRenderer(json, eduContainer);
+                    eduCardRenderer.render();
                 })
         </script>
         <script src="https://unpkg.com/@popperjs/core@2"></script>

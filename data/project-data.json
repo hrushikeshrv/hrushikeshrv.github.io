@@ -93,7 +93,7 @@
     "heading": "Chess Engine",
     "description": [
       "A python implementation of a chess engine with no dependencies.",
-      "Features a bitboard representation and API, move generation API, PGN parsing, and alpha-beta pruned search with move ordering."
+      "Features a bitboard representation and API, move generation API, PGN parsing support, and alpha-beta pruned search with move ordering."
     ],
     "links": [
       {

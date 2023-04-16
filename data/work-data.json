@@ -23,7 +23,9 @@
     "heading": "COEP Idea Labs Research Project",
     "description": [
       "Worked in an interdisciplinary team to build data acquisition robots for collecting leaf and soil data for soyabean plants in Indian farms."
-    ]
+    ],
+    "startDate": "September 2022",
+    "endDate": "February 2023"
   },
   "django": {
     "logo": {

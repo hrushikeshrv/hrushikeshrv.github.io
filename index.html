@@ -150,24 +150,24 @@
             </p>
         </div>
 
+        <div class="page flexbox-column pad-30 column-half aifs center" id="education">
+            <h1 class="big">Study</h1>
+            <div id="education-container"></div>
+        </div>
+
         <div class="page flexbox-column pad-30 column-half aifs center" id="work">
             <h1 class="big">Work</h1>
             <div id="work-card-container"></div>
             <span class="mbt-10">
-                <a href="work.html" class="a">... and more</a>
+                <a href="work.html" class="a">... and <span id="more-work-count"></span> more</a>
             </span>
-        </div>
-
-        <div class="page flexbox-column pad-30 column-half aifs center" id="education">
-            <h1 class="big">Study</h1>
-            <div id="education-container"></div>
         </div>
 
         <div class="page flexbox-column pad-30 column-half aifs center" id="projects">
             <h1 class="big">Projects</h1>
             <div id="project-card-container"></div>
             <span class="mbt-10">
-                <a href="projects.html" class="a">... and more</a>
+                <a href="projects.html" class="a">... and <span id="more-projects-count"></span> more</a>
             </span>
         </div>
 
@@ -199,7 +199,9 @@
                     const projectCardRenderer    = new CardRenderer(json, projectContainer);
                     projectCardRenderer.renderCard(json.chessengine);
                     projectCardRenderer.renderCard(json.docxlatex);
-                    projectCardRenderer.renderCard(json.mjxgui)
+                    projectCardRenderer.renderCard(json.mjxgui);
+
+                    document.querySelector('#more-projects-count').textContent = Object.keys(json).length - 3;
                 })
                 .then(() => {
                     initMJXGUIDemo();
@@ -214,6 +216,8 @@
                     workCardRenderer.renderCard(json.mastercard);
                     workCardRenderer.renderCard(json.coepidealabs);
                     workCardRenderer.renderCard(json.django);
+
+                    document.querySelector('#more-work-count').textContent = Object.keys(json).length - 3;
                 });
 
             const eduContainer = document.querySelector('#education-container');

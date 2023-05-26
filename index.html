@@ -164,6 +164,14 @@
             </span>
         </div>
 
+        <div class="page flexbox-column pad-30 column-half aifs center" id="co-curricular">
+            <h1 class="big">Co-curricular</h1>
+            <div id="co-curricular-card-container"></div>
+            <span class="mbt-10">
+                <a href="co-curricular.html" class="a">... and <span id="more-co-curricular-count"></span> more</a>
+            </span>
+        </div>
+
         <div class="page flexbox-column pad-30 column-half aifs center" id="projects">
             <h1 class="big">Projects</h1>
             <div id="project-card-container"></div>
@@ -188,6 +196,7 @@
         </script>
         <script src="data/project-data.json" type="application/json" id="project-data"></script>
         <script src="data/work-data.json" type="application/json" id="work-data"></script>
+        <script src="data/co-curricular-data.json" type="application/json" id="co-curricular-data"></script>
         <script src="data/education-data.json" type="application/json" id="education-data"></script>
         <script src="js/card-renderer.js"></script>
         <script src="js/timeline.js"></script>
@@ -216,10 +225,24 @@
                     const workCardRenderer = new CardRenderer(json, workContainer);
                     workCardRenderer.renderCard(json.mastercard);
                     workCardRenderer.renderCard(json.coepidealabs);
-                    workCardRenderer.renderCard(json.django);
+                    workCardRenderer.renderCard(json.coepweb);
 
-                    document.querySelector('#more-work-count').textContent = Object.keys(json).length - 3;
+                    if (Object.keys(json).length > 3)
+                        document.querySelector('#more-work-count').textContent = Object.keys(json).length - 3;
+                    else
+                        document.querySelector('#more-work-count').textContent = '';
                 });
+
+            const coCurricularContainer = document.querySelector('#co-curricular-card-container');
+            const coCurricularJSON = document.querySelector('#co-curricular-data').src;
+            fetch(coCurricularJSON)
+                .then(response => response.json())
+                .then(json => {
+                    const coCurricularCardRenderer = new CardRenderer(json, coCurricularContainer);
+                    coCurricularCardRenderer.renderCard(json.django);
+
+                    document.querySelector('#more-co-curricular-count').textContent = Object.keys(json).length - 1;
+                })
 
             const eduContainer = document.querySelector('#education-container');
             const eduJSON = document.querySelector('#education-data').src;

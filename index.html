@@ -208,8 +208,8 @@
                 .then(json => {
                     const projectCardRenderer    = new CardRenderer(json, projectContainer);
                     projectCardRenderer.renderCard(json.chessengine);
-                    projectCardRenderer.renderCard(json.docxlatex);
                     projectCardRenderer.renderCard(json.mjxgui);
+                    projectCardRenderer.renderCard(json.docxlatex);
 
                     document.querySelector('#more-projects-count').textContent = Object.keys(json).length - 3;
                 })

@@ -59,8 +59,8 @@ html.dark-theme {
 
     --font-color: rgb(234, 234, 234);
     --light-font-color: rgb(28, 28, 28);
-    --muted-font: rgb(125, 125, 125);
-    --light-muted-font: rgb(60, 60, 60);
+    --muted-font: rgb(172, 172, 172);
+    --light-muted-font: rgb(107, 107, 107);
 
     --primary-dark-3: rgb(245, 203, 166);
     --primary-dark-2: rgb(255, 188, 93);

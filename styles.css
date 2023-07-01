@@ -8,6 +8,10 @@
     --decorative-font: 'Major Mono Display', cursive;
     --decorative-mono: 'IBM Plex Mono', monospace;
 
+
+}
+
+html {
     --background-light-4: rgb(255, 255, 255);
     --background-light-3: rgb(255, 255, 255);
     --background-light-2: rgb(250, 250, 250);
@@ -16,12 +20,6 @@
     --background-dark-1: rgb(219, 219, 219);
     --background-dark-2: rgb(181, 181, 181);
     --background-dark-3: rgb(162, 162, 162);
-
-    --dark-background-light-2: rgb(73, 93, 105);
-    --dark-background-light-1: rgb(61, 77, 87);
-    --dark-background: rgb(38, 50, 56);
-    --dark-background-dark-1: rgb(25, 33, 36);
-    --dark-background-dark-2: rgb(12, 16, 18);
 
     --font-color: rgb(0, 0, 0);
     --light-font-color: rgb(229, 229, 229);
@@ -47,6 +45,42 @@
     --warning-dark-1: rgb(186, 164, 16);
     --warning-dark-2: rgb(107, 95, 7);
     --warning-dark-3: rgb(79, 72, 21);
+}
+
+html.dark-theme {
+    --background-light-4: rgb(113, 118, 128);
+    --background-light-3: rgb(89, 92, 99);
+    --background-light-2: rgb(79, 83, 89);
+    --background-light-1: rgb(63, 67, 71);
+    --background-color: rgb(46, 48, 51);
+    --background-dark-1: rgb(32, 34, 36);
+    --background-dark-2: rgb(19, 20, 20);
+    --background-dark-3: rgb(11, 12, 13);
+
+    --font-color: rgb(234, 234, 234);
+    --light-font-color: rgb(28, 28, 28);
+    --muted-font: rgb(125, 125, 125);
+    --light-muted-font: rgb(60, 60, 60);
+
+    --primary-dark-3: rgb(245, 203, 166);
+    --primary-dark-2: rgb(255, 188, 93);
+    --primary-dark-1: rgb(250, 155, 37);
+    --primary: rgb(243, 137, 4);
+    --primary-light-1: rgb(215, 119, 0);
+    --primary-light-2: rgb(165, 92, 0);
+    --primary-light-3: rgb(121, 70, 0);
+
+    --success: rgb(31, 217, 24);
+
+    --error: rgb(255, 12, 32);
+
+    --warning-dark-3: rgb(255, 250, 197);
+    --warning-dark-2: rgb(252, 243, 174);
+    --warning-dark-1: rgb(233, 211, 98);
+    --warning: rgb(246, 216, 22);
+    --warning-light-1: rgb(186, 164, 16);
+    --warning-light-2: rgb(107, 95, 7);
+    --warning-light-3: rgb(79, 72, 21);
 }
 
 ::-webkit-scrollbar {
@@ -102,6 +136,12 @@ a.a:hover {
 
 .mono-font {
     font-family: var(--monospace-font);
+}
+
+button {
+    outline: none;
+    border: none;
+    background-color: var(--background-color);
 }
 
 input, button {
@@ -482,6 +522,18 @@ tbody {
     stroke: var(--error);
 }
 
+button#change-theme-button {
+    cursor: pointer;
+}
+
+#change-theme-button svg.light-theme-button {
+    stroke: rgb(230, 230, 230);
+}
+
+#change-theme-button svg.dark-theme-button {
+    stroke: rgb(30, 30, 30);
+}
+
 /*
     frontpage styles
 */
@@ -606,6 +658,13 @@ tbody {
 
 #my-photo-mobile, #my-photo-large-screen {
     background: grey;
+    border-radius: 10px;
+    box-shadow: 0 0 10px var(--background-dark-1);
+}
+
+html.light-theme #my-photo-mobile,
+html.light-theme #my-photo-large-screen {
+    box-shadow: 0 0 20px var(--background-dark-3);
 }
 
 #my-photo-mobile {

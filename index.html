@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="light-theme">
     <head>
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-TGM5F6WJNV"></script>
@@ -53,6 +53,7 @@
         <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
         <script src="js/mjxgui.min.js"></script>
         <script src="js/matter.js"></script>
+        <script src="js/theme-selector.js"></script>
 
         <link href="https://unpkg.com/vis-timeline@latest/styles/vis-timeline-graph2d.min.css" rel="stylesheet" type="text/css" />
         <script type="text/javascript" src="https://unpkg.com/vis-timeline@latest/standalone/umd/vis-timeline-graph2d.min.js"></script>
@@ -73,15 +74,21 @@
                 <span>Deleting</span>
             </div>
         </div>
-        <nav id="quick-nav" class="flexbox-row jcc aifs">
+        <nav id="quick-nav" class="flexbox-row ajc">
             <a href="#bio" class="section-link flexbox-row aic" id="bio-tooltip"><span>About</span></a>
             <a href="#work" class="section-link flexbox-row aic" id="work-tooltip"><span>Work</span></a>
             <a href="#projects" class="section-link flexbox-row aic" id="projects-tooltip"><span>Projects</span></a>
             <a href="/data/resume-hrushikesh-vaidya.pdf" target="_blank" class="section-link flexbox-row ajc" id="resume-tooltip"><span>Resume</span></a>
+            <button id="change-theme-button" class="flexbox-row aic">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler dark-theme-button icon-tabler-moon" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+                </svg>
+            </button>
         </nav>
         <div class="page flexbox-row" style="height: 90vh;">
             <div class="flexbox-column column-half pad-30 jcc" id="name-card">
-                <div class="flexbox-column aifs mb-50">
+                <div class="flexbox-column aifs">
 
                     <div class="my-photo-container">
                         <img src="./images/profile-photo-square.jpg" alt="Placeholder photo" width="200" height="200" id="my-photo-mobile" class="center">

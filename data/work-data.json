@@ -8,7 +8,8 @@
     },
     "heading": "MasterCard",
     "description": [
-      "Software development intern at MasterCard."
+      "Software development intern at MasterCard.",
+      "Wrote a Java application to facilitate event serialization format translation between protocol buffers and AVRO-based schemas for event-driven applications."
     ],
     "startDate": "May 2023",
     "endDate": "July 2023"

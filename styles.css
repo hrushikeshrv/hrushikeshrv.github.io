@@ -957,12 +957,6 @@ nav#quick-nav {
     padding-bottom: 15px;
 }
 
-@media (max-width: 630px) {
-    nav#quick-nav svg {
-        display: none;
-    }
-}
-
 @media(max-width: 480px) {
     nav#quick-nav {
         font-size: 0.8rem;

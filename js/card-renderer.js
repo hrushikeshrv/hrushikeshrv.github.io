@@ -14,10 +14,10 @@ class CardRenderer {
         let projectDescription = '';
         for (let desc of data.description) {
             if (desc instanceof Array) {
-                projectDescription += `<span class="project-desc ${desc.slice(1).join(' ')}">${desc[0]}</span>`;
+                projectDescription += `<p class="project-desc ${desc.slice(1).join(' ')}">${desc[0]}</p>`;
             }
             else {
-                projectDescription += `<span class="project-desc">${desc}</span>`;
+                projectDescription += `<p class="project-desc">${desc}</p>`;
             }
         }
 

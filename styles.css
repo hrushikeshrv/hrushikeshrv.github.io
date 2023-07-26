@@ -467,6 +467,10 @@ h2 {
     width: 100%;
 }
 
+p {
+    margin: 10px 0;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -527,11 +531,11 @@ button#change-theme-button {
 }
 
 #change-theme-button svg.light-theme-button {
-    stroke: rgb(230, 230, 230);
+    stroke: var(--warning);
 }
 
 #change-theme-button svg.dark-theme-button {
-    stroke: rgb(30, 30, 30);
+    stroke: rgb(28, 41, 76);
 }
 
 /*

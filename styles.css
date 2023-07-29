@@ -5,7 +5,7 @@
 :root {
     --monospace-font: 'JetBrains Mono', monospace;
     --default-font: 'Poppins', sans-serif;
-    --decorative-font: 'Major Mono Display', cursive;
+    --decorative-font: 'Major Mono Display', sans-serif;
     --decorative-mono: 'IBM Plex Mono', monospace;
 
 
@@ -541,6 +541,10 @@ button#change-theme-button {
 /*
     frontpage styles
 */
+
+.page {
+    max-width: 900px;
+}
 
 #jumbotron {
     height: 100vh;

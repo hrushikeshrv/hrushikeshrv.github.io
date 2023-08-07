@@ -1,4 +1,21 @@
 {
+  "widewings": {
+    "logo": {
+      "path": "images/wide-wings-logo.png",
+      "alt": "Wide Wings Media",
+      "width": 75,
+      "height": 54
+    },
+    "heading": "Wide Wings Media",
+    "description": [
+      "Fullstack Developer, DevOps, UI/UX.",
+      "Hired as a freelance fullstack developer to redesign the existing website for <a href=\"https://ticketkhidakee.com\" target=\"_blank\" class=\"a\">ticketkhidakee.com</a>, managed by Wide Wings Media. Replaced their existing PHP-Laravel stack with a Python-Django stack.",
+      "Implemented a ticket booking system, payment gateway, and event management system.",
+      "Designed a cloud architecture to handle extreme bursts in traffic, deployed on AWS resources."
+    ],
+    "startDate": "July 2023",
+    "endDate": "September 2023"
+  },
   "mastercard": {
     "logo": {
       "path": "images/mastercard.png",
@@ -8,8 +25,8 @@
     },
     "heading": "MasterCard",
     "description": [
-      "Software development intern at MasterCard.",
-      "Wrote a Java application to facilitate event serialization format translation between protocol buffers and AVRO-based schemas for event-driven applications."
+      "Software development intern.",
+      "Wrote an internal protocol to facilitate event serialization format translation between protocol buffers and AVRO-based schemas for event-driven applications."
     ],
     "startDate": "May 2023",
     "endDate": "July 2023"
@@ -21,9 +38,11 @@
       "width": 65,
       "height": 75
     },
-    "heading": "COEP Idea Labs Research Project",
+    "heading": "Student Researcher, COEP IDEA Labs",
     "description": [
-      "Worked in an interdisciplinary team to build data acquisition robots for collecting leaf and soil data for soyabean plants in Indian farms."
+      "Data Acquisition & Robotics Team.",
+      "Worked in an interdisciplinary team to build data acquisition robots for collecting leaf and soil data for soyabean plants in Indian farms.",
+      "Designed a rover-like robot to be driven between rows of crops, and a hand-held device to capture data for farms too dense for the rover."
     ],
     "startDate": "September 2022",
     "endDate": "February 2023"

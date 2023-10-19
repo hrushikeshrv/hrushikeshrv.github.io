@@ -1,0 +1,64 @@
+input {
+    padding: 10px;
+}
+
+button {
+    background-color: var(--background-dark-1);
+    transition: background-color ease 0.2s, border ease 0.2s;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 2px solid transparent;
+}
+
+button:hover, button:focus {
+    background-color: var(--background-dark-2);
+}
+
+button:focus {
+    border: 2px solid var(--font-color);
+}
+
+button.cta-button {
+    background-color: var(--primary);
+}
+
+button.cta-button:hover, button.cta-button:focus {
+    background-color: var(--primary-dark-1);
+}
+
+.big-text {
+    font-size: 1.5rem;
+}
+
+@media (max-width: 700px) {
+    .big-text {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .big-text {
+        font-size: 1rem;
+    }
+}
+
+.sem-heading {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid var(--font-color);
+}
+
+.semester-row {
+    width: 100%;
+}
+
+@media (max-width: 900px) {
+    .semester-row .column-half {
+        width: 50%;
+    }
+}
+
+.semester-row input {
+    max-width: 100%;
+}

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculate Your CGPA</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="author" content="Hrushikesh Vaidya | @hrushikeshrv on GitHub">
+    <meta name="theme-color" content="rgb(46, 48, 51)">
+    <meta property="og:title" content="Hrushikesh Vaidya">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://hrus.in/images/profile-photo-square.jpg">
+    <meta property="og:url" content="https://hrus.in">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Poppins&family=JetBrains+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="css/calc-cgpa.css">
+    <link rel="icon" href="../images/favicon.png" type="image/x-icon">
+</head>
+<body>
+    <div class="flexbox-column column-half pad-30 center">
+        <h1>Calculate CGPA</h1>
+
+        <strong><label for="name">Your Name:</label></strong>
+        <div class="flexbox-row">
+            <div class="column-half pad-10 flexbox-column">
+                <input type="text" name="name" id="name" placeholder="Your Name" class="big-text">
+            </div>
+            <div class="column-half pad-10 flexbox-column">
+                <button class="cta-button space-lr big-text" id="get-saved-sgpas">Get Saved SGPAs</button>
+            </div>
+        </div>
+
+        <div class="flexbox-column mt-20 aifs">
+            <strong class="sem-heading">Semester 1</strong>
+            <div class="flexbox-row semester-row">
+                <div class="flexbox-column column-half pad-10">
+                    <label for="sem-1-sgpa">SGPA:</label>
+                    <input type="number" name="sem-1-sgpa" id="sem-1-sgpa" placeholder="Semester 1 SGPA" class="sgpa-input big-text">
+                </div>
+                <div class="flexbox-column column-half pad-10">
+                    <label for="sem-1-credits">Credits:</label>
+                    <input type="number" name="sem-1-credits" id="sem-1-credits" placeholder="Semester 1 credits" class="credit-input big-text">
+                </div>
+            </div>
+            <strong class="sem-heading">Semester 2</strong>
+            <div class="flexbox-row semester-row">
+                <div class="flexbox-column column-half pad-10">
+                    <label for="sem-2-sgpa">SGPA:</label>
+                    <input type="number" name="sem-2-sgpa" id="sem-2-sgpa" placeholder="Semester 2 SGPA" class="sgpa-input big-text">
+                </div>
+                <div class="flexbox-column column-half pad-10">
+                    <label for="sem-2-credits">Credits:</label>
+                    <input type="number" name="sem-2-credits" id="sem-2-credits" placeholder="Semester 2 credits" class="credit-input big-text">
+                </div>
+            </div>
+            <strong class="sem-heading">Semester 3</strong>
+            <div class="flexbox-row semester-row">
+                <div class="flexbox-column column-half pad-10">
+                    <label for="sem-3-sgpa">SGPA:</label>
+                    <input type="number" name="sem-3-sgpa" id="sem-3-sgpa" placeholder="Semester 3 SGPA" class="sgpa-input big-text">
+                </div>
+                <div class="flexbox-column column-half pad-10">
+                    <label for="sem-3-credits">Credits:</label>
+                    <input type="number" name="sem-3-credits" id="sem-3-credits" placeholder="Semester 3 credits" class="credit-input big-text">
+                </div>
+            </div>
+            <strong class="sem-heading">Semester 4</strong>
+            <div class="flexbox-row semester-row">
+                <div class="flexbox-column column-half pad-10">
+                    <label for="sem-4-sgpa">SGPA:</label>
+                    <input type="number" name="sem-4-sgpa" id="sem-4-sgpa" placeholder="Semester 4 SGPA" class="sgpa-input big-text">
+                </div>
+                <div class="flexbox-column column-half pad-10">
+                    <label for="sem-4-credits">Credits:</label>
+                    <input type="number" name="sem-4-credits" id="sem-4-credits" placeholder="Semester 4 credits" class="credit-input big-text">
+                </div>
+            </div>
+            <strong class="sem-heading">Semester 5</strong>
+            <div class="flexbox-row semester-row">
+                <div class="flexbox-column column-half pad-10">
+                    <label for="sem-5-sgpa">SGPA:</label>
+                    <input type="number" name="sem-5-sgpa" id="sem-5-sgpa" placeholder="Semester 5 SGPA" class="sgpa-input big-text">
+                </div>
+                <div class="flexbox-column column-half pad-10">
+                    <label for="sem-5-credits">Credits:</label>
+                    <input type="number" name="sem-5-credits" id="sem-5-credits" placeholder="Semester 5 credits" class="credit-input big-text">
+                </div>
+            </div>
+            <strong class="sem-heading">Semester 6</strong>
+            <div class="flexbox-row semester-row">
+                <div class="flexbox-column column-half pad-10">
+                    <label for="sem-6-sgpa">SGPA:</label>
+                    <input type="number" name="sem-6-sgpa" id="sem-6-sgpa" placeholder="Semester 6 SGPA" class="sgpa-input big-text">
+                </div>
+                <div class="flexbox-column column-half pad-10">
+                    <label for="sem-6-credits">Credits:</label>
+                    <input type="number" name="sem-6-credits" id="sem-6-credits" placeholder="Semester 6 credits" class="credit-input big-text">
+                </div>
+            </div>
+            <strong class="sem-heading">Semester 7</strong>
+            <div class="flexbox-row semester-row">
+                <div class="flexbox-column column-half pad-10">
+                    <label for="sem-7-sgpa">SGPA:</label>
+                    <input type="number" name="sem-7-sgpa" id="sem-7-sgpa" placeholder="Semester 7 SGPA" class="sgpa-input big-text">
+                </div>
+                <div class="flexbox-column column-half pad-10">
+                    <label for="sem-7-credits">Credits:</label>
+                    <input type="number" name="sem-7-credits" id="sem-7-credits" placeholder="Semester 7 credits" class="credit-input big-text">
+                </div>
+            </div>
+            <strong class="sem-heading">Semester 8</strong>
+            <div class="flexbox-row semester-row">
+                <div class="flexbox-column column-half pad-10">
+                    <label for="sem-8-sgpa">SGPA:</label>
+                    <input type="number" name="sem-8-sgpa" id="sem-8-sgpa" placeholder="Semester 8 SGPA" class="sgpa-input big-text">
+                </div>
+                <div class="flexbox-column column-half pad-10">
+                    <label for="sem-8-credits">Credits:</label>
+                    <input type="number" name="sem-8-credits" id="sem-8-credits" placeholder="Semester 8 credits" class="credit-input big-text">
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-20 flexbox-column">
+            <div class="flexbox-row aic">
+                <strong style="font-size: 2rem; margin-right: 20px;">CGPA:</strong>
+                <span class="mono-font" style="font-size: 2rem; border-bottom: 2px solid var(--success);" id="cgpa-result"></span>
+            </div>
+            <button class="cta-button mt-20" id="calculate-button">Calculate CGPA</button>
+        </div>
+    </div>
+
+    <script src="js/calc-cgpa.js"></script>
+</body>
+</html>

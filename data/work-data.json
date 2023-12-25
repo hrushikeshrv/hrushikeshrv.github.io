@@ -9,12 +9,12 @@
     "heading": "Wide Wings Media",
     "description": [
       "Fullstack Developer, DevOps, UI/UX.",
-      "Hired as a freelance fullstack developer to redesign the existing website for <a href=\"https://ticketkhidakee.com\" target=\"_blank\" class=\"a\">ticketkhidakee.com</a>, managed by Wide Wings Media. Replaced their existing PHP-Laravel stack with a Python-Django stack.",
+      "Hired as a freelance fullstack developer to redesign <a href=\"https://ticketkhidakee.com\" target=\"_blank\" class=\"a\">ticketkhidakee.com</a>, managed by Wide Wings Media. Replaced their existing PHP-Laravel stack with a Python-Django stack.",
       "Implemented a ticket booking system, payment gateway, and event management system.",
       "Designed a cloud architecture to handle extreme bursts in traffic, deployed on AWS resources."
     ],
     "startDate": "July 2023",
-    "endDate": "November 2023"
+    "endDate": "October 2023"
   },
   "mastercard": {
     "logo": {

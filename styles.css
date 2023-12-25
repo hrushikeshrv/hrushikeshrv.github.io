@@ -1034,7 +1034,7 @@ nav#quick-nav .section-link {
 }
 
 .education-gpa {
-    font-style: italic;
     color: var(--muted-font);
-    margin-top: -10px;
+    font-size: 0.9rem;
+    margin-top: -5px;
 }

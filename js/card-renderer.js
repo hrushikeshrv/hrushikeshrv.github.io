@@ -23,6 +23,7 @@ class CardRenderer {
 
         let projectLinks = '';
         if (data.links) {
+            projectLinks = '<span class="flexbox-row pad-10 project-links">';
             for (let link of data.links) {
                 projectLinks += `
             <span class="flexbox-row ajc link ${link.className ? link.className : ''}" ${link.id ? `id=${link.id}` : ''}>
@@ -31,6 +32,7 @@ class CardRenderer {
             </span>
             `;
             }
+            projectLinks += '</span>';
         }
 
         let cardTimeline = '';
@@ -50,7 +52,7 @@ class CardRenderer {
                 <h2 class="mbt-10">${data.heading}</h2>
                 ${cardTimeline}
                 ${projectDescription}
-                <span class="flexbox-row pad-10 project-links">${projectLinks}</span>
+                ${projectLinks}
                 ${data.extraHTML ? data.extraHTML : ''}
             </div>
         `;

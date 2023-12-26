@@ -23,7 +23,7 @@ html {
 
     --font-color: rgb(0, 0, 0);
     --light-font-color: rgb(229, 229, 229);
-    --muted-font: rgb(102, 102, 102);
+    --muted-font: rgb(77, 77, 77);
     --light-muted-font: rgb(200, 200, 200);
 
     --primary-light-3: rgb(245, 203, 166);
@@ -59,7 +59,7 @@ html.dark-theme {
 
     --font-color: rgb(234, 234, 234);
     --light-font-color: rgb(28, 28, 28);
-    --muted-font: rgb(172, 172, 172);
+    --muted-font: rgb(188, 188, 188);
     --light-muted-font: rgb(107, 107, 107);
 
     --primary-dark-3: rgb(245, 203, 166);
@@ -128,6 +128,10 @@ a.a:hover {
 
 .icon-tabler {
     stroke: rgb(134, 134, 134);
+}
+
+.dark-theme .icon-tabler {
+    stroke: rgb(197, 197, 197);
 }
 
 .icon-tabler-x {
@@ -469,6 +473,7 @@ h2 {
 
 p {
     margin: 10px 0;
+    line-height: 1.7;
 }
 
 table {
@@ -1037,4 +1042,11 @@ nav#quick-nav .section-link {
     color: var(--muted-font);
     font-size: 0.9rem;
     margin-top: -5px;
+}
+
+a.see-more-link {
+    /*border-bottom-style: solid;*/
+    position: relative;
+    margin-top: -10px;
+    margin-bottom: 10px;
 }

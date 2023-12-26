@@ -28,7 +28,8 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Poppins&family=JetBrains+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="css/mjxgui.css">
         <link rel="icon" href="images/favicon.png" type="image/x-icon">
 
         <script>
@@ -59,21 +60,6 @@
         <script type="text/javascript" src="https://unpkg.com/vis-timeline@latest/standalone/umd/vis-timeline-graph2d.min.js"></script>
     </head>
     <body>
-        <div id="delete-confirm-dialog" class="flexbox-column pad-30 hidden">
-            <span class="note-close-button">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                  <line x1="18" y1="6" x2="6" y2="18" />
-                  <line x1="6" y1="6" x2="18" y2="18" />
-                </svg>
-            </span>
-            <span class="mb-10 mt-30">Are you sure you want to delete this note?</span>
-            <input type="submit" value="Yes, delete it." class="mbt-10 error-button" id="delete-confirm-button" data-delete-url="">
-            <div class="flexbox-row ajc error-container mt-10 hidden">
-                <span class="donutSpinner smallSpinner space-lr"></span>
-                <span>Deleting</span>
-            </div>
-        </div>
         <nav id="quick-nav" class="flexbox-row ajc">
             <a href="#bio" class="section-link flexbox-row aic" id="bio-tooltip"><span>About</span></a>
             <a href="#work" class="section-link flexbox-row aic" id="work-tooltip"><span>Work</span></a>
@@ -86,7 +72,8 @@
                 </svg>
             </button>
         </nav>
-        <div class="page flexbox-row center" style="height: 90vh;">
+
+        <section class="page flexbox-row center" style="height: 90vh;">
             <div class="flexbox-column column-half pad-30 jcc" id="name-card">
                 <div class="flexbox-column aifs">
 
@@ -153,15 +140,13 @@
                     <img src="./images/profile-photo-square.jpg" alt="Profile Photo" id="my-photo-large-screen" height="300" width="300">
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="page flexbox-column pad-30 column-half aifs center" id="bio">
+        <section class="page flexbox-column pad-30 column-half aifs center" id="bio">
             <h1 class="big">About</h1>
             <p class="bio-text">
                 I'm an electronics engineering student at the College of Engineering, Pune, by day, and
                 a self-taught computer science student the rest of the time.
-            </p>
-            <p class="bio-text">
                 I wrote my first Python program in December 2019, and since then I've been in
                 love with <a class="a" href="https://hrus.in/ocw">learning more</a> about computer science and
                 programming every day.
@@ -171,48 +156,50 @@
                 <a class="a" href="https://github.com/hrushikeshrv">open source projects</a> of my own,
                 and contributing to <a href="https://github.com/django/django" class="a">Django</a> from time to time.
             </p>
-        </div>
+        </section>
 
-        <div class="page flexbox-column pad-30 column-half aifs center" id="education">
+        <section class="page flexbox-column pad-30 column-half aifs center" id="education">
             <h1 class="big">Study</h1>
             <div id="education-container"></div>
-        </div>
+        </section>
 
-        <div class="page flexbox-column pad-30 column-half aifs center" id="work">
-            <h1 class="big">Work</h1>
+        <section class="page flexbox-column pad-30 column-half aifs center" id="work">
+            <div class="flexbox-column aifs">
+                <h1 class="big">Work</h1>
+                <a href="work.html" class="a see-more-link">See all work</a>
+            </div>
             <div id="work-card-container"></div>
-            <span class="mbt-10">
-                <a href="work.html" class="a">... and <span id="more-work-count"></span> more</a>
-            </span>
-        </div>
+        </section>
 
-        <div class="page flexbox-column pad-30 column-half aifs center" id="co-curricular">
-            <h1 class="big">Co-curricular</h1>
+        <section class="page flexbox-column pad-30 column-half aifs center" id="co-curricular">
+            <div class="flexbox-column aifs">
+                <h1 class="big">Co-curricular</h1>
+                <a href="co-curricular.html" class="a see-more-link">See all co-curriculars</a>
+            </div>
             <div id="co-curricular-card-container"></div>
-            <span class="mbt-10">
-                <a href="co-curricular.html" class="a">... and <span id="more-co-curricular-count"></span> more</a>
-            </span>
-        </div>
+        </section>
 
-        <div class="page flexbox-column pad-30 column-half aifs center" id="projects">
-            <h1 class="big">Projects</h1>
+        <section class="page flexbox-column pad-30 column-half aifs center" id="projects">
+            <div class="flexbox-column aifs">
+                <h1 class="big">Projects</h1>
+                <a href="projects.html" class="a see-more-link">See all projects</a>
+            </div>
             <div id="project-card-container"></div>
-            <span class="mbt-10">
-                <a href="projects.html" class="a">... and <span id="more-projects-count"></span> more</a>
-            </span>
-        </div>
+        </section>
 
         <script>
             let gui;
             function initMJXGUIDemo() {
                 const outputContainer = document.querySelector('#mjxgui-output-container');
                 const outputTable = document.querySelector('#mjxgui-output');
-                gui = new MJXGUI('.mjxgui-demo-button', '$$', function() {
+                gui = new MJXGUI('.mjxgui-demo-button', function() {
                     outputContainer.classList.remove('hidden');
                     let tr = document.createElement('tr');
                     tr.innerHTML = `<td>$$ ${gui.getLatex()} $$</td><td>${gui.getLatex()}</td>`;
                     outputTable.appendChild(tr);
                     MathJax.typesetPromise([tr]).then(() => {})
+                }, {
+                    theme: 'dark'
                 });
             }
         </script>
@@ -221,7 +208,6 @@
         <script src="data/co-curricular-data.json" type="application/json" id="co-curricular-data"></script>
         <script src="data/education-data.json" type="application/json" id="education-data"></script>
         <script src="js/card-renderer.js"></script>
-        <script src="js/timeline.js"></script>
         <script>
             const projectContainer = document.querySelector('#project-card-container');
             const projectJSON = document.querySelector('#project-data').src;
@@ -232,8 +218,6 @@
                     projectCardRenderer.renderCard(json.chessengine);
                     projectCardRenderer.renderCard(json.mjxgui);
                     projectCardRenderer.renderCard(json.docxlatex);
-
-                    document.querySelector('#more-projects-count').textContent = Object.keys(json).length - 3;
                 })
                 .then(() => {
                     initMJXGUIDemo();
@@ -248,11 +232,6 @@
                     workCardRenderer.renderCard(json.widewings);
                     workCardRenderer.renderCard(json.mastercard);
                     workCardRenderer.renderCard(json.coepweb);
-
-                    if (Object.keys(json).length > 3)
-                        document.querySelector('#more-work-count').textContent = Object.keys(json).length - 3;
-                    else
-                        document.querySelector('#more-work-count').textContent = '';
                 });
 
             const coCurricularContainer = document.querySelector('#co-curricular-card-container');
@@ -262,8 +241,6 @@
                 .then(json => {
                     const coCurricularCardRenderer = new CardRenderer(json, coCurricularContainer);
                     coCurricularCardRenderer.renderCard(json.django);
-
-                    document.querySelector('#more-co-curricular-count').textContent = Object.keys(json).length - 1;
                 })
 
             const eduContainer = document.querySelector('#education-container');

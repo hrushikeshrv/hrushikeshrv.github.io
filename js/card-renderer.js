@@ -6,7 +6,7 @@ class CardRenderer {
 
     renderCard(data) {
         const cardElement = document.createElement('div');
-        cardElement.classList.add('card', 'flexbox-row', 'no-pad-20', 'mar-20');
+        cardElement.classList.add('card', 'flexbox-column', 'no-pad-20');
         let cardLogo = '';
         if (data.logo) {
             cardLogo += `<img src="${data.logo.path}" alt="${data.logo.alt}" width="${data.logo.width}" height="${data.logo.height}">`

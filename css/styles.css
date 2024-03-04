@@ -443,21 +443,20 @@ a.button-link:active {
 */
 
 h1 {
-    font-family: var(--decorative-font);
     font-size: 2rem;
-    text-transform: lowercase;
     margin: 20px 0;
-}
-
-h2 {
-    font-family: var(--decorative-font);
-    text-transform: lowercase;
 }
 
 @media (max-width: 500px) {
     h1 {
         font-size: 1.6rem;
     }
+}
+
+h1, h2, h3 {
+    font-weight: 600;
+    font-family: var(--decorative-font);
+    text-transform: lowercase;
 }
 
 .decorative-heading {
@@ -1013,9 +1012,14 @@ nav#quick-nav .section-link {
     Card styles
 */
 
-.card-content {
-    max-width: 80%;
-    margin-left: 20px;
+.card {
+    margin: 20px;
+}
+
+@media (max-width: 600px) {
+    .card {
+        margin: 20px 0;
+    }
 }
 
 .link {

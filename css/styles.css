@@ -574,7 +574,7 @@ button#change-theme-button {
 /*
     quick nav styles
 */
-nav#quick-nav {
+#quick-nav {
     color: var(--font-color);
     font-size: 1rem;
     font-weight: 500;
@@ -589,18 +589,18 @@ nav#quick-nav {
     }
 }
 
-@media(max-width: 400px) {
-    nav#quick-nav {
-        font-size: 0.7rem;
-    }
-}
-
-nav#quick-nav .section-link {
+.section-link {
     margin: 0 20px;
     position: relative;
 }
 
-#quick-nav .section-link::before {
+@media (max-width: 500px) {
+    .section-link {
+        margin: 0 10px;
+    }
+}
+
+.section-link::before {
     position: absolute;
     bottom: -12px;
     content: '';
@@ -608,17 +608,26 @@ nav#quick-nav .section-link {
     height: 3px;
     width: 100%;
     transition: background-color ease 0.2s, bottom ease 0.2s;
-    border-radius: 2px;
 }
 
-#quick-nav .section-link:hover::before {
+.section-link:hover::before {
     bottom: -7px;
     background-color: var(--primary);
 }
 
-#quick-nav .section-link svg {
+.section-link svg {
     top: 5px;
     stroke: rgb(70, 70, 70);
+}
+
+@media (max-width: 500px) {
+    footer {
+        font-size: 0.9rem;
+    }
+    .icon-tabler {
+        width: 20px;
+        height: 20px;
+    }
 }
 
 /*
@@ -627,6 +636,18 @@ nav#quick-nav .section-link {
 
 #profile-column {
     height: 100vh;
+}
+
+#main-column {
+    height: 100vh;
+    flex-wrap: nowrap;
+    overflow-y: auto;
+}
+
+@media (max-width: 900px) {
+    #main-column, #profile-column {
+        height: auto;
+    }
 }
 
 #profile-photo {
@@ -645,3 +666,97 @@ html.dark-theme #profile-photo {
 #nametag {
     font-size: 3.5rem;
 }
+
+@media (max-width: 1400px) {
+    #nametag {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 1200px) {
+    #nametag {
+        font-size: 2.7rem;
+    }
+}
+
+@media (max-width: 1100px) {
+    #nametag {
+        font-size: 2.3rem;
+    }
+}
+
+@media (max-width: 600px) {
+    #nametag {
+        font-size: 2.7rem;
+    }
+}
+
+@media (max-width: 450px) {
+    #nametag {
+        font-size: 2.2rem;
+    }
+}
+
+/*
+    card styles
+*/
+
+.card {
+    max-width: 850px;
+    flex-wrap: nowrap;
+    margin-top: 20px;
+}
+
+@media (max-width: 500px) {
+    .card {
+        flex-wrap: wrap;
+    }
+    #study-section .card {
+        flex-wrap: nowrap;
+    }
+}
+
+.card-logo {
+    margin-right: 23px;
+}
+
+/*.card h1, .card h2 {*/
+/*    font-family: var(--default-font);*/
+/*    text-transform: none;*/
+/*}*/
+
+#education-container p {
+    margin-top: 0;
+    font-weight: bolder;
+}
+
+section {
+    margin: 30px 0;
+}
+
+.section-heading {
+    padding-bottom: 2px;
+    border-bottom: 4px solid var(--primary);
+}
+
+.section-heading::before {
+    content: '#';
+    font-size: 1.5rem;
+    margin-right: 6px;
+}
+
+/*.section-link {*/
+/*    margin-left: 20px;*/
+/*    display: flex;*/
+/*}*/
+
+/*.section-link::before {*/
+/*    content: '';*/
+/*    width: 4px;*/
+/*    height: 4px;*/
+/*    border-radius: 4px;*/
+/*    background-color: var(--primary-dark-1);*/
+/*    position: relative;*/
+/*    left: -10px;*/
+/*    top: 10px;*/
+/*}*/

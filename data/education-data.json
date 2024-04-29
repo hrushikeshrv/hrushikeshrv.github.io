@@ -1,4 +1,18 @@
 {
+  "usc": {
+    "logo": {
+      "path": "images/usc.png",
+      "alt": "University of Southern California",
+      "width": 65,
+      "height": 75
+    },
+    "heading": "University of Southern California",
+    "description": [
+      "Master of Science, Computer Engineering"
+    ],
+    "startDate": "August 2024",
+    "endDate": "June 2026"
+  },
   "coep": {
     "logo": {
       "path": "images/coep.png",

@@ -4,7 +4,8 @@
       "path": "images/wide-wings-logo.png",
       "alt": "Wide Wings Media",
       "width": 75,
-      "height": 54
+      "height": 54,
+      "id": "wide-wings-logo"
     },
     "heading": "Wide Wings Media",
     "description": [
@@ -14,7 +15,7 @@
       "Designed a cloud architecture to handle extreme bursts in traffic, deployed on AWS resources."
     ],
     "startDate": "July 2023",
-    "endDate": "October 2023"
+    "endDate": "June 2024"
   },
   "mastercard": {
     "logo": {

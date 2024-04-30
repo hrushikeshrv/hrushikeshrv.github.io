@@ -4,7 +4,8 @@
       "path": "images/usc.png",
       "alt": "University of Southern California",
       "width": 65,
-      "height": 75
+      "height": 75,
+      "id": "usc-logo"
     },
     "heading": "University of Southern California",
     "description": [

@@ -71,7 +71,7 @@
         <script type="text/javascript" src="https://unpkg.com/vis-timeline@latest/standalone/umd/vis-timeline-graph2d.min.js"></script>
     </head>
     <body>
-        <div class="flexbox-row">
+        <div class="flexbox-row center" style="max-width: 2500px;">
             <div id="profile-column" class="flexbox-column column-third jcsb pad-30 hide-scrollbar">
                 <div class="column-full">
                     <header>
@@ -128,28 +128,60 @@
                 </div>
             </div>
             <div id="main-column" class="flexbox-column column-twothird pad-30">
+                <section id="about-section" class="flexbox-column aifs jcfs">
+                    <div class="flexbox-row aic column-full section-heading-container">
+                        <h1 class="section-heading">About</h1>
+                    </div>
+                    <div id="about-stats" class="flexbox-row column-full aic jcse mt-20 mobile-hide">
+                        <span class="flexbox-row aic mt-10">
+                            <span class="material-symbols-outlined">location_on</span>
+                            <span>Los Angeles, CA</span>
+                        </span>
+                        <span class="flexbox-row aic mt-10">
+                            <span class="material-symbols-outlined">schedule</span>
+                            <span id="my-time"></span>
+                        </span>
+                        <span class="flexbox-row aic mt-10">
+                            <span class="material-symbols-outlined">mail</span>
+                            <a href="mailto:hrushikeshrv@gmail.com">hrushikeshrv@gmail.com</a>
+                        </span>
+                    </div>
+                    <div id="about-container" class="mt-30">
+                        <p>
+                            Hi, I'm Hrushikesh, a Computer Engineering student at the University of Southern California.
+                            I wrote my first Python program in December 2019, and since then I've been in love with <a
+                                href="https://hrus.in/ocw" class="a">learning more</a> about computer science and programming
+                            every day.
+                        </p>
+                        <p>
+                            Currently, I'm working on a <a href="https://github.com/hrushikeshrv/charm" class="a">chess-playing robotic arm</a>,
+                            a few other <a href="https://github.com/hrushikeshrv" class="a">open source projects</a> of my
+                            own, and contributing to <a href="https://github.com/django/django" class="a">Django</a> from time to time.
+                        </p>
+                    </div>
+                </section>
                 <section id="study-section" class="flexbox-column aifs jcfs">
-                    <div class="flexbox-row aic">
+                    <div class="flexbox-row aic column-full section-heading-container">
                         <h1 class="section-heading">Study</h1>
                     </div>
                     <div id="education-container"></div>
                 </section>
                 <section id="work-section" class="flexbox-column aifs jcfs">
-                    <div class="flexbox-row aic">
+                    <div class="flexbox-row aic column-full section-heading-container">
                         <h1 class="section-heading">Work</h1>
                         <a href="work.html" class="section-link">see all</a>
                     </div>
                     <div id="work-container"></div>
                 </section>
                 <section id="co-curricular-section" class="flexbox-column aifs jcfs">
-                    <div class="flexbox-row aic">
+                    <div class="flexbox-row aic column-full section-heading-container">
                         <h1 class="section-heading">Co-curricular</h1>
                         <a href="co-curricular.html" class="section-link">see all</a>
                     </div>
                     <div id="co-curricular-container"></div>
                 </section>
                 <section id="projects-section" class="flexbox-column aifs jcfs">
-                    <div class="flexbox-row aic">
+                    <div class="flexbox-row aic column-full section-heading-container">
                         <h1 class="section-heading">Projects</h1>
                         <a href="projects.html" class="section-link">see all</a>
                     </div>
@@ -265,6 +297,17 @@
         </script>
         <script>
             document.querySelectorAll('.copyright-year').forEach(el => { el.innerHTML = new Date().getFullYear().toString() })
+        </script>
+        <script>
+            const myTime = document.querySelector('#my-time');
+            const options = {
+                timeZone: 'America/Los_Angeles',
+                weekday: 'long',
+                hour: 'numeric',
+                minute: 'numeric',
+            }
+            const formatter = new Intl.DateTimeFormat([], options);
+            myTime.textContent = formatter.format(new Date());
         </script>
     </body>
 </html>

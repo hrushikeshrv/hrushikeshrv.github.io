@@ -54,10 +54,34 @@ function setDarkTheme() {
     themeToggleHook('dark');
 }
 
+function waitForElement(selector) {
+    return new Promise((resolve) => {
+        if (document.querySelector(selector)) return resolve(document.querySelector(selector));
+        const observer = new MutationObserver(mutations => {
+            if (document.querySelector(selector)) {
+                observer.disconnect();
+                resolve(document.querySelector(selector));
+            }
+            observer.observe(document.body, {
+                childList: true,
+                subtree: true,
+            })
+        })
+    })
+}
+
 function themeToggleHook(theme) {
-    setTimeout(() => {
-        const uscLogo = document.querySelector('#usc-logo');
+    console.log('Calling theme toggle hook');
+    waitForElement('#usc-logo').then(uscLogo => {
         if (theme === 'dark') uscLogo.style.filter = 'invert(1)';
         else uscLogo.style.filter = 'invert(0)';
-    }, 100);
+    })
+    waitForElement('#wide-wings-logo').then(wideWingsLogo => {
+        if (theme === 'dark') wideWingsLogo.style.filter = 'invert(1)';
+        else wideWingsLogo.style.filter = 'invert(0)';
+    })
+    waitForElement('#mjxgui-logo').then(mjxguiLogo => {
+        if (theme === 'dark') mjxguiLogo.style.filter = 'invert(0)';
+        else mjxguiLogo.style.filter = 'invert(1)';
+    })
 }

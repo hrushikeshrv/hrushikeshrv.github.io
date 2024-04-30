@@ -658,6 +658,7 @@ button#change-theme-button {
 #profile-photo {
     width: 100%;
     border-radius: 10px;
+    max-width: 500px;
 }
 
 html.light-theme #profile-photo {

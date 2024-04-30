@@ -150,7 +150,8 @@
       "path": "images/mjxgui.svg",
       "alt": "MJXGUI.js",
       "width": 60,
-      "height": 75
+      "height": 75,
+      "id": "mjxgui-logo"
     },
     "heading": "MJXGUI",
     "description": [

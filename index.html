@@ -73,7 +73,7 @@
     <body>
         <div class="flexbox-row center" style="max-width: 2500px;">
             <div id="profile-column" class="flexbox-column column-third jcsb pad-30 hide-scrollbar">
-                <div class="column-full">
+                <div class="flexbox-column column-full">
                     <header>
                         <nav id="quick-nav" class="flexbox-row ajc">
                             <a href="#study-section" class="section-link flexbox-row aic" id="bio-tooltip"><span>Study</span></a>
@@ -154,7 +154,11 @@
                             every day.
                         </p>
                         <p>
-                            Currently, I'm working on a <a href="https://github.com/hrushikeshrv/charm" class="a">chess-playing robotic arm</a>,
+                            I primarily work as a backend developer with a Python-Django-Postgres stack. I also have experience with fullstack development,
+                            including DevOps and AWS.
+                        </p>
+                        <p>
+                            In my free time, I'm currently working on a <a href="https://github.com/hrushikeshrv/charm" class="a">chess-playing robotic arm</a>,
                             a few other <a href="https://github.com/hrushikeshrv" class="a">open source projects</a> of my
                             own, and contributing to <a href="https://github.com/django/django" class="a">Django</a> from time to time.
                         </p>
@@ -308,6 +312,9 @@
             }
             const formatter = new Intl.DateTimeFormat([], options);
             myTime.textContent = formatter.format(new Date());
+            setInterval(() => {
+                myTime.textContent = formatter.format(new Date());
+            }, 1000);
         </script>
     </body>
 </html>

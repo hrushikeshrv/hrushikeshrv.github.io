@@ -127,11 +127,7 @@ a.a:hover {
 }
 
 .icon-tabler {
-    stroke: rgb(134, 134, 134);
-}
-
-.dark-theme .icon-tabler {
-    stroke: rgb(197, 197, 197);
+    stroke: var(--font-color);
 }
 
 .icon-tabler-x {
@@ -703,6 +699,12 @@ html.dark-theme #profile-photo {
     }
 }
 
+.stat-container {
+    padding: 10px 17px 10px 10px;
+    border-radius: 50px;
+    background-color: var(--background-dark-1);
+}
+
 /*
     card styles
 */
@@ -724,6 +726,22 @@ html.dark-theme #profile-photo {
 
 .card-logo {
     margin-right: 23px;
+}
+
+.card .project-links {
+    padding-top: 0;
+}
+
+.card .link {
+    margin: 5px;
+    border-radius: 15px;
+    background-color: var(--background-dark-1);
+    padding: 2px 6px;
+    transition: background-color ease 0.04s;
+}
+
+.card .link:hover {
+    background-color: var(--background-dark-2);
 }
 
 #education-container p {

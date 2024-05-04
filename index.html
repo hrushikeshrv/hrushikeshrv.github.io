@@ -75,7 +75,7 @@
             <div id="profile-column" class="flexbox-column column-third jcsb pad-30 hide-scrollbar">
                 <div class="flexbox-column column-full">
                     <header>
-                        <nav id="quick-nav" class="flexbox-row ajc">
+                        <nav id="quick-nav" class="flexbox-row ajc pageload-fade-in pageload-delay-1">
                             <a href="#study-section" class="section-link flexbox-row aic" id="bio-tooltip"><span>Study</span></a>
                             <a href="#work-section" class="section-link flexbox-row aic" id="work-tooltip"><span>Work</span></a>
                             <a href="#projects-section" class="section-link flexbox-row aic" id="projects-tooltip"><span>Projects</span></a>
@@ -86,9 +86,10 @@
                         </nav>
                     </header>
 
-                    <img src="images/profile-photo.jpg" alt="Hrushikesh Vaidya" id="profile-photo" class="mt-10 center">
+                    <img src="images/profile-photo.jpg" alt="Hrushikesh Vaidya" id="profile-photo" class="mt-10 center pageload-fade-in">
+
                     <div class="flexbox-column aifs jcfs" style="padding-left: 10px;">
-                        <h1 id="nametag">Hrushikesh Vaidya</h1>
+                        <h1 id="nametag" class="pageload-slide-up">Hrushikesh Vaidya</h1>
                         <span>MS Computer Engineering student at the University of Southern California.</span>
                         <div class="flexbox-row ajc mt-10">
                             <span class="contact-link flexbox-row aic space-lr" style="margin-left: 0;">
@@ -127,7 +128,7 @@
                     </div>
                 </div>
             </div>
-            <div id="main-column" class="flexbox-column column-twothird pad-30">
+            <div id="main-column" class="flexbox-column column-twothird pad-30 pageload-fade-in pageload-delay-1">
                 <section id="about-section" class="flexbox-column aifs jcfs">
                     <div class="flexbox-row aic column-full section-heading-container">
                         <h1 class="section-heading">About</h1>
@@ -139,7 +140,7 @@
                         </span>
                         <span class="flexbox-row aic mt-10 stat-container">
                             <span class="material-symbols-outlined">schedule</span>
-                            <span id="my-time" data-tippy-content="Pacific Time, GMT-7"></span>
+                            <span id="my-time" data-tippy-content="Pacific Standard Time, GMT-7"></span>
                         </span>
                         <span class="flexbox-row aic mt-10 stat-container">
                             <span class="material-symbols-outlined">mail</span>
@@ -316,5 +317,6 @@
                 myTime.textContent = formatter.format(new Date());
             }, 1000);
         </script>
+        <script src="js/pageload-animations.js"></script>
     </body>
 </html>

@@ -14,14 +14,21 @@
         <meta charset="UTF-8">
         <meta name="viewport"
               content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta name="language" content="en">
         <meta name="author" content="Hrushikesh Vaidya | @hrushikeshrv on GitHub">
         <meta name="theme-color" content="rgb(46, 48, 51)">
+        <meta name="description" content="Hi, I'm Hrushikesh, a full-stack web developer based in Los Angeles.">
+        <meta name="keywords" content="web developer, fullstack developer, los angeles, pune, web developer in la, web developer in pune">
+        <meta name="robots" content="index, follow">
+
         <meta property="og:title" content="Hrushikesh Vaidya">
         <meta property="og:type" content="website">
         <meta property="og:image" content="https://hrus.in/images/profile-photo-square.jpg">
         <meta property="og:url" content="https://hrus.in">
-        <meta name="description" content="Hi, I'm Hrushikesh, a computer science student and web developer.">
+        <meta property="og:description" content="Hi, I'm Hrushikesh, a full-stack web developer based in Los Angeles.">
+
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="canonical" href="https://hrus.in">
         <title>Hrushikesh Vaidya</title>
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -86,7 +93,7 @@
                         </nav>
                     </header>
 
-                    <img src="images/profile-photo.jpg" alt="Hrushikesh Vaidya" id="profile-photo" class="mt-10 center pageload-fade-in">
+                    <img src="images/profile-photo-light.jpg" alt="Hrushikesh Vaidya" id="profile-photo" class="mt-10 center pageload-fade-in">
 
                     <div class="flexbox-column aifs jcfs" style="padding-left: 10px;">
                         <h1 id="nametag" class="pageload-slide-up">Hrushikesh Vaidya</h1>
@@ -128,7 +135,7 @@
                     </div>
                 </div>
             </div>
-            <div id="main-column" class="flexbox-column column-twothird pad-30 pageload-fade-in pageload-delay-1">
+            <div id="main-column" class="flexbox-column column-twothird pageload-fade-in pageload-delay-1">
                 <section id="about-section" class="flexbox-column aifs jcfs">
                     <div class="flexbox-row aic column-full section-heading-container">
                         <h1 class="section-heading">About</h1>
@@ -159,9 +166,12 @@
                             including DevOps and AWS.
                         </p>
                         <p>
-                            In my free time, I'm currently working on a <a href="https://github.com/hrushikeshrv/charm" class="a">chess-playing robotic arm</a>,
-                            a few other <a href="https://github.com/hrushikeshrv" class="a">open source projects</a> of my
-                            own, and contributing to <a href="https://github.com/django/django" class="a">Django</a> from time to time.
+                            In my free time, I'm currently working on a <a href="https://github.com/hrushikeshrv/money-warden" class="a" target="_blank">spreadsheet-based budgeting app</a>,
+                            a few other <a href="https://github.com/hrushikeshrv" class="a" target="_blank">open source projects</a> of my
+                            own, and contributing to <a href="https://github.com/django/django" class="a" target="_blank">Django</a> from time to time.
+                        </p>
+                        <p>
+                            I'm also a tennis player and amateur powerlifter ️🏋🏻‍♂️.
                         </p>
                     </div>
                 </section>
@@ -193,7 +203,7 @@
                     <div id="project-container"></div>
                 </section>
 
-                <footer class="flexbox-row mt-20 ajc" style="margin-bottom: -10px;">
+                <footer class="flexbox-row mbt-20 ajc">
                     <span style="color: var(--muted-font);">&copy; <span class="copyright-year"></span>, Hrushikesh Vaidya</span>
                     <nav class="flexbox-row ajc" style="margin-left: 10px;">
                         <span class="contact-link flexbox-row aic space-lr">
@@ -292,7 +302,8 @@
                 .then(response => response.json())
                 .then(json => {
                     const eduCardRenderer = new CardRenderer(json, eduContainer);
-                    eduCardRenderer.render();
+                    eduCardRenderer.renderCard(json.usc);
+                    eduCardRenderer.renderCard(json.coep);
                 })
         </script>
         <script src="https://unpkg.com/@popperjs/core@2"></script>

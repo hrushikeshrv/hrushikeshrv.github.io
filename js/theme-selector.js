@@ -84,4 +84,10 @@ function themeToggleHook(theme) {
         if (theme === 'dark') mjxguiLogo.style.filter = 'invert(0)';
         else mjxguiLogo.style.filter = 'invert(1)';
     })
+
+    // Change the profile photo path on light and dark theme
+    const profilePhoto = document.querySelector('#profile-photo');
+    console.log(profilePhoto, theme);
+    if (theme === 'dark') profilePhoto.src = '/images/profile-photo-dark.jpg';
+    else profilePhoto.src = '/images/profile-photo-light.jpg';
 }

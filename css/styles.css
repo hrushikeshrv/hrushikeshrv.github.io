@@ -636,7 +636,7 @@ button#change-theme-button {
     position: relative;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 1300px) {
     .section-link {
         margin: 0 10px;
     }
@@ -678,6 +678,7 @@ button#change-theme-button {
 
 #profile-column {
     height: 100vh;
+    border-right: 3px solid var(--font-color);
 }
 
 #main-column {
@@ -689,6 +690,12 @@ button#change-theme-button {
 @media (max-width: 900px) {
     #main-column, #profile-column {
         height: auto;
+        overflow-y: scroll;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    }
+    #profile-column {
+        border-right-color: transparent;
     }
 }
 
@@ -703,7 +710,7 @@ html.light-theme #profile-photo {
 }
 
 html.dark-theme #profile-photo {
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 15px rgb(0, 0, 0);
 }
 
 #nametag {
@@ -790,18 +797,18 @@ html.dark-theme #profile-photo {
     font-weight: bolder;
 }
 
-section {
-    margin: 30px 0;
+#main-column section {
+    padding: 30px 30px 60px;
+    border-bottom: 3px solid var(--font-color);
 }
 
 .section-heading {
     padding-bottom: 2px;
-    border-bottom: 4px solid var(--primary);
 }
 
 .section-heading::before {
     content: '#';
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     margin-right: 6px;
 }
 

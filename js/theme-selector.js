@@ -71,7 +71,7 @@ function waitForElement(selector) {
 }
 
 function themeToggleHook(theme) {
-    console.log('Calling theme toggle hook');
+    console.log('Calling theme toggle hook -', theme);
     waitForElement('#usc-logo').then(uscLogo => {
         if (theme === 'dark') uscLogo.style.filter = 'invert(1)';
         else uscLogo.style.filter = 'invert(0)';
@@ -87,7 +87,6 @@ function themeToggleHook(theme) {
 
     // Change the profile photo path on light and dark theme
     const profilePhoto = document.querySelector('#profile-photo');
-    console.log(profilePhoto, theme);
     if (theme === 'dark') profilePhoto.src = '/images/profile-photo-dark.jpg';
     else profilePhoto.src = '/images/profile-photo-light.jpg';
 }

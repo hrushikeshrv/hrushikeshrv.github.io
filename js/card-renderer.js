@@ -9,7 +9,7 @@ class CardRenderer {
         cardElement.classList.add('card', 'flexbox-row', 'no-pad-20');
         let cardLogo = '';
         if (data.logo) {
-            cardLogo += `<img src="${data.logo.path}" alt="${data.logo.alt}" width="${data.logo.width}" height="${data.logo.height}" ${data.logo.id ? `id="${data.logo.id}"` : ''}>`
+            cardLogo += `<img src="${data.logo.path}" alt="${data.logo.alt}" width="${data.logo.width}" height="${data.logo.height}" ${data.logo.id ? `id="${data.logo.id}"` : ''} ${data.logo.classList ? `class="${data.logo.classList}"` : ''}>`
         }
         let projectDescription = '';
         for (let desc of data.description) {

@@ -72,19 +72,6 @@ function waitForElement(selector) {
 
 function themeToggleHook(theme) {
     console.log('Calling theme toggle hook -', theme);
-    waitForElement('#usc-logo').then(uscLogo => {
-        if (theme === 'dark') uscLogo.style.filter = 'invert(1)';
-        else uscLogo.style.filter = 'invert(0)';
-    })
-    waitForElement('#wide-wings-logo').then(wideWingsLogo => {
-        if (theme === 'dark') wideWingsLogo.style.filter = 'invert(1)';
-        else wideWingsLogo.style.filter = 'invert(0)';
-    })
-    waitForElement('#mjxgui-logo').then(mjxguiLogo => {
-        if (theme === 'dark') mjxguiLogo.style.filter = 'invert(0)';
-        else mjxguiLogo.style.filter = 'invert(1)';
-    })
-
     // Change the profile photo path on light and dark theme
     const profilePhoto = document.querySelector('#profile-photo');
     if (theme === 'dark') profilePhoto.src = '/images/profile-photo-dark.jpg';

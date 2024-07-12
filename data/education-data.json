@@ -5,7 +5,8 @@
       "alt": "University of Southern California",
       "width": 65,
       "height": 75,
-      "id": "usc-logo"
+      "id": "usc-logo",
+      "classList": "dark-theme-invert"
     },
     "heading": "University of Southern California",
     "description": [
@@ -19,7 +20,9 @@
       "path": "images/coep.png",
       "alt": "College of Engineering, Pune",
       "width": 65,
-      "height": 75
+      "height": 75,
+      "id": "coep-logo",
+      "classList": "dark-theme-invert"
     },
     "heading": "College of Engineering, Pune",
     "description": [

@@ -5,7 +5,8 @@
       "alt": "Wide Wings Media",
       "width": 75,
       "height": 54,
-      "id": "wide-wings-logo"
+      "id": "wide-wings-logo",
+      "classList": "dark-theme-invert"
     },
     "heading": "Wide Wings Media",
     "description": [
@@ -37,7 +38,8 @@
       "path": "images/coep.png",
       "alt": "COEP Idea Labs",
       "width": 65,
-      "height": 75
+      "height": 75,
+      "classList": "dark-theme-invert"
     },
     "heading": "Student Researcher, COEP IDEA Labs",
     "description": [
@@ -53,7 +55,9 @@
       "path": "images/coep.png",
       "alt": "College of Engineering, Pune Webteam",
       "width": 65,
-      "height": 75
+      "height": 75,
+      "id": "coep-webteam-logo",
+      "classList": "dark-theme-invert"
     },
     "heading": "COEP Webteam",
     "description": [

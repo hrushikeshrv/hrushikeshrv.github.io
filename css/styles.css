@@ -495,6 +495,25 @@ a.button-link:active {
 }
 
 /*
+    Invert images on dark theme
+*/
+html.light-theme .light-theme-invert {
+    filter: invert(1);
+}
+
+html.dark-theme .light-theme-invert {
+    filter: invert(0);
+}
+
+html.dark-theme .dark-theme-invert {
+    filter: invert(1);
+}
+
+html.light-theme .dark-theme-invert {
+    filter: invert(0);
+}
+
+/*
     base components
 */
 

@@ -151,7 +151,8 @@
       "alt": "MJXGUI.js",
       "width": 60,
       "height": 75,
-      "id": "mjxgui-logo"
+      "id": "mjxgui-logo",
+      "classList": "light-theme-invert"
     },
     "heading": "MJXGUI",
     "description": [

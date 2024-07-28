@@ -881,3 +881,15 @@ html.dark-theme #profile-photo {
         margin-left: 10px;
     }
 }
+
+/*
+    Sprite styles
+*/
+
+.content-section {
+    position: relative;
+}
+
+.section-sprite {
+    position: absolute;
+}

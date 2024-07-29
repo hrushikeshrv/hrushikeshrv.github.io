@@ -237,7 +237,7 @@
                 .then(response => response.json())
                 .then(json => {
                     const projectCardRenderer    = new CardRenderer(json, projectContainer);
-                    projectCardRenderer.renderCard(json.chessengine);
+                    projectCardRenderer.renderCard(json['money-warden']);
                     projectCardRenderer.renderCard(json.mjxgui);
                     projectCardRenderer.renderCard(json.docxlatex);
                 })

@@ -2,7 +2,7 @@
   "classberg": {
     "id": 1,
     "logo": {
-      "path": "images/classberg-logo.svg",
+      "path": "images/projects/classberg-logo.svg",
       "alt": "ClassBerg.com",
       "width": 60,
       "height": 75
@@ -36,7 +36,7 @@
   "classberg-exed": {
     "id": 2,
     "logo": {
-      "path": "images/classberg-exed.svg",
+      "path": "images/projects/classberg-exed.svg",
       "alt": "ClassBerg x EXED IIT",
       "width": 60,
       "height": 75
@@ -60,7 +60,7 @@
   "chessengine": {
     "id": 3,
     "logo": {
-      "path": "images/chessengine.svg",
+      "path": "images/projects/chessengine.svg",
       "alt": "Chess Engine",
       "width": 60,
       "height": 75
@@ -90,7 +90,7 @@
   "trak": {
     "id": 8,
     "logo": {
-      "path": "images/trak.png",
+      "path": "images/projects/trak.png",
       "alt": "TRAK logo",
       "width": 60,
       "height": 60
@@ -116,7 +116,7 @@
   "docxlatex": {
     "id": 4,
     "logo": {
-      "path": "images/docxlatex.svg",
+      "path": "images/projects/docxlatex.svg",
       "alt": "pip install docxlatex",
       "width": 60,
       "height": 75
@@ -147,7 +147,7 @@
   "mjxgui": {
     "id": 5,
     "logo": {
-      "path": "images/mjxgui.svg",
+      "path": "images/projects/mjxgui.svg",
       "alt": "MJXGUI.js",
       "width": 60,
       "height": 75,

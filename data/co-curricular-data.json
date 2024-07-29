@@ -1,7 +1,7 @@
 {
   "django": {
     "logo": {
-      "path": "images/django-logo-negative.svg",
+      "path": "images/co-curricular/django-logo-negative.svg",
       "alt": "Django Software Foundation",
       "width": 60,
       "height": 75
@@ -33,7 +33,7 @@
   },
   "mitocw": {
     "logo": {
-      "path": "images/mitocw.svg",
+      "path": "images/co-curricular/mitocw.svg",
       "alt": "MIT OCW Logo",
       "width": 60,
       "height": 60
@@ -61,7 +61,7 @@
   },
   "deeplearning": {
     "logo": {
-      "path": "images/dlai.svg",
+      "path": "images/co-curricular/dlai.svg",
       "alt": "Deep Learning Notes",
       "width": 60,
       "height": 60
@@ -82,7 +82,7 @@
   },
   "aoc": {
     "logo": {
-      "path": "images/hrushikeshrv-aoc.svg",
+      "path": "images/co-curricular/hrushikeshrv-aoc.svg",
       "alt": "Advent of Code",
       "width": 60,
       "height": 75,

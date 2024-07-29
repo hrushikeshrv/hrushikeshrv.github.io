@@ -1,7 +1,7 @@
 {
   "usc": {
     "logo": {
-      "path": "images/usc.png",
+      "path": "images/education/usc.png",
       "alt": "University of Southern California",
       "width": 65,
       "height": 75,
@@ -17,7 +17,7 @@
   },
   "coep": {
     "logo": {
-      "path": "images/coep.png",
+      "path": "images/education/coep.png",
       "alt": "College of Engineering, Pune",
       "width": 65,
       "height": 75,
@@ -34,7 +34,7 @@
   },
   "nitc": {
     "logo": {
-      "path": "images/nitc.svg",
+      "path": "images/education/nitc.svg",
       "alt": "National Institute of Technology, Calicut",
       "width": 60,
       "height": 71

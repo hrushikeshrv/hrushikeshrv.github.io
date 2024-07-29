@@ -1,7 +1,7 @@
 {
   "widewings": {
     "logo": {
-      "path": "images/wide-wings-logo.png",
+      "path": "images/work/wide-wings-logo.png",
       "alt": "Wide Wings Media",
       "width": 75,
       "height": 54,
@@ -20,7 +20,7 @@
   },
   "mastercard": {
     "logo": {
-      "path": "images/mastercard.png",
+      "path": "images/work/mastercard.png",
       "alt": "Mastercard",
       "width": 75,
       "height": 60
@@ -35,7 +35,7 @@
   },
   "coepidealabs": {
     "logo": {
-      "path": "images/coep.png",
+      "path": "images/education/coep.png",
       "alt": "COEP Idea Labs",
       "width": 65,
       "height": 75,
@@ -52,7 +52,7 @@
   },
   "coepweb": {
     "logo": {
-      "path": "images/coep.png",
+      "path": "images/education/coep.png",
       "alt": "College of Engineering, Pune Webteam",
       "width": 65,
       "height": 75,

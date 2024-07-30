@@ -161,10 +161,41 @@ button {
     outline: none;
     border: none;
     background-color: var(--background-color);
+    color: var(--default-font-color);
+}
+
+button.cta-button {
+    font-size: 1rem;
+    padding: 10px 20px;
+    background-color: var(--primary);
+    border-radius: 4px;
+    border: 3px solid var(--primary);
+    transition: box-shadow ease 0.2s, background-color ease 0.2s;
+    color: black;
+}
+button.cta-button:hover {
+    box-shadow: 4px 4px var(--primary-dark-2);
+}
+
+button.cta-button:active {
+    box-shadow: 0 0 var(--primary-dark-2);
+}
+
+button.cta-button .material-symbols-outlined {
+    color: black;
 }
 
 input, button {
     font-family: var(--default-font);
+}
+
+input, textarea {
+    border: 2px solid transparent;
+    background-color: var(--background-dark-1);
+    padding: 10px;
+    color: var(--font-color);
+    font-size: 1rem;
+    border-radius: 4px;
 }
 
 code {
@@ -452,6 +483,32 @@ a.button-link:active {
     }
 }
 
+.floating-popup-container {
+    position: fixed;
+    z-index: 9;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+}
+
+.floating-popup {
+    position: fixed;
+    z-index: 10;
+    background-color: var(--background-color);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3), 5px 5px 10px rgba(0, 0, 0, 0.45);
+    max-height: min(90svh, 800px);
+    max-width: 90vw;
+    display: flex;
+    flex-flow: column nowrap;
+    overflow-y: auto;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
 /*
     pageload animations
 */
@@ -668,12 +725,6 @@ button#change-theme-button {
     padding-bottom: 20px;
 }
 
-@media(max-width: 480px) {
-    nav#quick-nav {
-        font-size: 0.75rem;
-    }
-}
-
 .section-link {
     margin: 0 20px;
     position: relative;
@@ -704,6 +755,10 @@ button#change-theme-button {
 .section-link svg {
     top: 5px;
     stroke: rgb(70, 70, 70);
+}
+
+.dark-theme .section-link svg {
+    stroke: rgb(200, 200, 200);
 }
 
 @media (max-width: 500px) {
@@ -791,16 +846,29 @@ html.dark-theme #profile-photo {
     }
 }
 
-#resume-link {
-    background-color: var(--inverse-background-color);
-    color: var(--inverse-font-color);
-    padding: 2px 6px;
-    border-radius: 4px;
-}
+/*#resume-link {*/
+/*    background-color: var(--inverse-background-color);*/
+/*    color: var(--inverse-font-color);*/
+/*    padding: 2px 6px;*/
+/*    border-radius: 4px;*/
+/*}*/
 
 .stat-container {
     padding: 10px 17px 10px 10px;
     border-radius: 50px;
+}
+
+.contact-link,
+.contact-link .material-symbols-outlined {
+    transition: background-color ease 0.3s, color ease 0.3s;
+    background-color: var(--background-color);
+    color: var(--default-font-color);
+}
+
+.contact-link:hover,
+.contact-link:hover .material-symbols-outlined {
+    background-color: var(--inverse-background-color);
+    color: var(--inverse-font-color);
 }
 
 /*
@@ -892,4 +960,24 @@ html.dark-theme #profile-photo {
 
 .section-sprite {
     position: absolute;
+}
+
+/*
+    contact page styles
+*/
+
+#contact-form-container {
+    border: 3px solid var(--font-color);
+    width: min(90%, 800px);
+    position: fixed;
+}
+
+#contact-form-container label {
+    margin-top: 20px;
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+
+#contact-form-container input {
+    font-size: 1.2rem;
 }

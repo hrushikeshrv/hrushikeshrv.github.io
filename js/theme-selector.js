@@ -74,6 +74,8 @@ function themeToggleHook(theme) {
     console.log('Calling theme toggle hook -', theme);
     // Change the profile photo path on light and dark theme
     const profilePhoto = document.querySelector('#profile-photo');
-    if (theme === 'dark') profilePhoto.src = '/images/profile-photo-dark.jpg';
-    else profilePhoto.src = '/images/profile-photo-light.jpg';
+    if (profilePhoto) {
+        if (theme === 'dark') profilePhoto.src = '/images/profile-photo-dark.jpg';
+        else profilePhoto.src = '/images/profile-photo-light.jpg';
+    }
 }

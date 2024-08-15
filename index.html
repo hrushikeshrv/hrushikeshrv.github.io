@@ -90,11 +90,22 @@
                         <span class="space-lr">Back</span>
                     </button>
                 </nav>
-                <h1 class="pageload-fade-in">Send a Message</h1>
+                <div id="send-message-spinner" class="hidden flexbox-row ajc" style="height: min(90svh, 800px);">
+                    <span class="donutSpinner smallSpinner"></span>
+                    <span class="space-lr">Sending your message</span>
+                </div>
 
-                <form action="" id="contact-form" class="flexbox-column pageload-slide-up pageload-delay-1">
-                    <label for="id_name">Your Name:</label>
-                    <input type="text" name="name" id="id_name" required>
+                <span class="success-message mb-10 mt-20 hidden" id="message-sent-successfully">
+                    Thank you for your message, I'll get back to you soon!
+                </span>
+                <span class="error-message mb-10 mt-20 hidden" id="message-send-error">
+                    An error occurred while sending your message :/
+                </span>
+
+                <form action="" id="contact-form" class="flexbox-column pageload-slide-up">
+                    <h1 class="pageload-fade-in">Send a Message</h1>
+                    <label for="id_name">Your Name (optional):</label>
+                    <input type="text" name="name" id="id_name">
 
                     <label for="id_email">Your Email:</label>
                     <input type="email" name="email" id="id_email" required>
@@ -340,6 +351,10 @@
                 }
             }
         </script>
+        <script>
+            // Global variable to get CKEditor instance for the contact message.
+            let messageEditor;
+        </script>
         <script type="module">
             import {
                 ClassicEditor,
@@ -364,7 +379,6 @@
                 TextTransformation,
             } from 'ckeditor5';
 
-            let messageEditor;
 
             ClassicEditor
                 .create( document.querySelector( '#id_message' ), {

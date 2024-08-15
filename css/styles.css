@@ -44,9 +44,25 @@ html {
     --primary-dark-2: rgb(165, 92, 0);
     --primary-dark-3: rgb(121, 70, 0);
 
+    --success-light-4: rgb(214, 255, 226);
+    --success-light-3: rgb(189, 255, 209);
+    --success-light-2: rgb(143, 255, 176);
+    --success-light-1: rgb(92, 255, 141);
     --success: rgb(31, 217, 24);
+    --success-dark-1: rgb(10, 255, 84);
+    --success-dark-2: rgb(0, 209, 63);
+    --success-dark-3: rgb(0, 77, 23);
+    --success-dark-4: rgb(0, 51, 15);
 
+    --error-light-4: rgb(255, 199, 208);
+    --error-light-3: rgb(255, 158, 174);
+    --error-light-2: rgb(255, 102, 128);
+    --error-light-1: rgb(255, 56, 89);
     --error: rgb(255, 12, 32);
+    --error-dark-1: rgb(219, 0, 37);
+    --error-dark-2: rgb(163, 0, 27);
+    --error-dark-3: rgb(107, 0, 18);
+    --error-dark-4: rgb(46, 0, 8);
 
     --warning-light-3: rgb(255, 250, 197);
     --warning-light-2: rgb(252, 243, 174);
@@ -508,6 +524,75 @@ a.button-link:active {
     top: 50%;
     transform: translate(-50%, -50%);
 }
+
+.warning-message {
+    color: rgb(139, 83, 10);
+    font-size: 0.8rem;
+    background-color: var(--warning-light-3);
+    border-radius: 4px;
+    padding: 2px 4px;
+}
+
+.error-message {
+    color: var(--error-dark-4);
+    font-size: 0.8rem;
+    background-color: var(--error-light-3);
+    border-radius: 4px;
+    padding: 2px 4px;
+}
+
+.success-message {
+    color: var(--success-dark-3);
+    font-size: 0.8rem;
+    background-color: var(--success-light-3);
+    border-radius: 4px;
+    padding: 2px 4px;
+}
+
+.spin-animation {
+    animation: donut-spin 1.2s linear infinite;
+}
+
+.donutSpinner {
+    display: inline-block;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    border-left-color: var(--primary-dark-1);
+    animation: donut-spin 1.2s linear infinite;
+    transition: border-left-color ease 0.25s;
+}
+
+.cta-button .donutSpinner {
+    border-left-color: var(--primary-dark-1);
+}
+
+.smallSpinner, .mediumSpinner, .largeSpinner {
+    width: 0;
+    height: 0;
+}
+
+.donutSpinner.smallSpinner {
+    width: 20px;
+    height: 20px;
+}
+
+.donutSpinner.mediumSpinner {
+    width: 30px;
+    height: 30px;
+}
+
+.donutSpinner.largeSpinner {
+    width: 50px;
+    height: 50px;
+    border-width: 3px;
+}
+
+@keyframes donut-spin {
+    to {
+        transform: rotate(1turn);
+    }
+}
+
 
 /*
     pageload animations
@@ -980,4 +1065,9 @@ html.dark-theme #profile-photo {
 
 #contact-form-container input {
     font-size: 1.2rem;
+}
+
+#send-message-spinner {
+    background-color: var(--background-color);
+    z-index: 5;
 }

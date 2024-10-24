@@ -699,8 +699,12 @@ table {
     color: var(--font-color);
 }
 
-table td, table th {
+table th {
     padding: 15px;
+}
+
+table td {
+    padding: 0;
 }
 
 table thead {

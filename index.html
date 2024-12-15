@@ -215,7 +215,7 @@
                         <p>
                             In my free time, I'm currently working on a <a href="https://github.com/hrushikeshrv/money-warden" class="a" target="_blank">spreadsheet-based budgeting app</a>,
                             a few other <a href="https://github.com/hrushikeshrv" class="a" target="_blank">open source projects</a> of my
-                            own, and contributing to <a href="https://github.com/django/django" class="a" target="_blank">Django</a> from time to time.
+                            own, and contributing to <a href="#co-curricular-container" class="a">Django</a> from time to time.
                         </p>
                         <p>
                             I'm also a tennis player and amateur powerlifter ️🏋🏻‍♂️
@@ -308,6 +308,7 @@
                 .then(response => response.json())
                 .then(json => {
                     const coCurricularCardRenderer = new CardRenderer(json, coCurricularContainer);
+                    coCurricularCardRenderer.renderCard(json.aceatusc);
                     coCurricularCardRenderer.renderCard(json.django);
                 })
 
@@ -318,7 +319,6 @@
                 .then(json => {
                     const eduCardRenderer = new CardRenderer(json, eduContainer);
                     eduCardRenderer.renderCard(json.usc);
-                    eduCardRenderer.renderCard(json.coep);
                 })
         </script>
         <script src="https://unpkg.com/@popperjs/core@2"></script>

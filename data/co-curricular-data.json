@@ -1,4 +1,18 @@
 {
+  "aceatusc": {
+    "logo": {
+      "path": "images/co-curricular/ace.svg",
+      "width": 60,
+      "height": 60,
+      "alt": "Adaptive Computing Experiences Lab"
+    },
+    "heading": "Adaptive Computing Experiences Lab",
+    "description": [
+      "Worked under Prof. Souti Chattopadhyay as a Research Assistant at the Adaptive Computing Experiences Lab (ACE) at USC",
+      "Published a paper titled “SciSO: Mining Science in StackOverflow” in the Mining Software Repositories '25 Conference"
+    ],
+    "startDate": "October 2024"
+  },
   "django": {
     "logo": {
       "path": "images/co-curricular/django-logo-negative.svg",

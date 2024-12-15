@@ -947,17 +947,19 @@ html.dark-theme #profile-photo {
     border-radius: 50px;
 }
 
-.contact-link,
-.contact-link .material-symbols-outlined {
-    transition: background-color ease 0.3s, color ease 0.3s;
+#contact-link,
+#contact-link .material-symbols-outlined {
+    transition: background-color ease 0.2s, color ease 0.2s;
     background-color: var(--background-color);
     color: var(--default-font-color);
 }
 
-.contact-link:hover,
-.contact-link:hover .material-symbols-outlined {
+#contact-link:hover,
+#contact-link:hover .icon-tabler,
+#contact-link:hover .material-symbols-outlined {
     background-color: var(--inverse-background-color);
     color: var(--inverse-font-color);
+    stroke: var(--inverse-font-color);
 }
 
 /*

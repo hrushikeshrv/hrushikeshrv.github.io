@@ -11,7 +11,7 @@ function findGetParameter(parameterName) {
 }
 
 const contactForm = document.querySelector('#contact-form');
-const contactLinks = document.querySelectorAll('#contact-link');
+const contactLinks = document.querySelectorAll('.contact-me-button');
 const contactFormContainer = document.querySelector('#contact-form-popup-container');
 const contactFormCloseButton = document.querySelector('#contact-form-popup-container .close-popup-button');
 const submitButton = document.querySelector('#submit');

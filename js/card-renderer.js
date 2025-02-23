@@ -43,6 +43,10 @@ class CardRenderer {
             </i>
             `;
         }
+        let workRole = '';
+        if (data.workRole) {
+            workRole += `<strong style="margin-bottom: 2px;">${data.workRole}</strong>`;
+        }
 
         cardElement.innerHTML = `
             <div class="flexbox-column card-logo">
@@ -50,6 +54,7 @@ class CardRenderer {
             </div>
             <div class="flexbox-column card-content aifs">
                 <h2 class="mbt-10">${data.heading}</h2>
+                ${workRole}
                 ${cardTimeline}
                 ${projectDescription}
                 ${projectLinks}

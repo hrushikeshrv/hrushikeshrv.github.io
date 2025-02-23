@@ -9,8 +9,8 @@
       "classList": "dark-theme-invert"
     },
     "heading": "Wide Wings Media",
+    "workRole": "Fullstack Developer, DevOps, UI/UX",
     "description": [
-      "Fullstack Developer, DevOps, UI/UX.",
       "Hired as a freelance fullstack developer to redesign <a href=\"https://ticketkhidakee.com\" target=\"_blank\" class=\"a\">ticketkhidakee.com</a>, managed by Wide Wings Media. Replaced their existing PHP-Laravel stack with a Python-Django stack.",
       "Implemented a ticket booking system, payment gateway, and event management system.",
       "Designed a cloud architecture to handle extreme bursts in traffic, deployed on AWS resources."
@@ -26,8 +26,8 @@
       "height": 60
     },
     "heading": "MasterCard",
+    "workRole": "Software Development Intern",
     "description": [
-      "Software development intern.",
       "Wrote an internal protocol to facilitate event serialization format translation between protocol buffers and AVRO-based schemas for event-driven applications."
     ],
     "startDate": "May 2023",
@@ -42,8 +42,8 @@
       "classList": "dark-theme-invert"
     },
     "heading": "Student Researcher, COEP IDEA Labs",
+    "workRole": "Data Acquisition & Robotics Team",
     "description": [
-      "Data Acquisition & Robotics Team.",
       "Worked in an interdisciplinary team to build data acquisition robots for collecting leaf and soil data for soyabean plants in Indian farms.",
       "Designed a rover-like robot to be driven between rows of crops, and a hand-held device to capture data for farms too dense for the rover."
     ],
@@ -60,6 +60,7 @@
       "classList": "dark-theme-invert"
     },
     "heading": "COEP Webteam",
+    "workRole": "Student Contributor",
     "description": [
       "Maintained the college website and its on-prem servers. Managed a Drupal based CMS and coordinated with various other clubs, faculty, and staff to keep the website up to date."
     ],

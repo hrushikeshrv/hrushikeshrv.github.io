@@ -8,8 +8,9 @@
     },
     "heading": "Adaptive Computing Experiences Lab",
     "description": [
-      "Worked under Prof. Souti Chattopadhyay as a Research Assistant at the Adaptive Computing Experiences Lab (ACE) at USC",
-      "Published a paper titled “SciSO: Mining Science in StackOverflow” in the Mining Software Repositories '25 Conference"
+      "Developed SciSO – an end-to-end pipeline for extracting scientific citation graphs from StackOverflow, studying the dissemination of theoretical research and the impact of scientific citations on modern trends in software development",
+      "Authored “SciSO: Mining Science in StackOverflow”, submitted to the Mining Software Repositories ’25 Conference",
+      "Designed and developed TSAR (Tracing Sustainability in ARchitectures), a tool for analyzing sustainable software architectures"
     ],
     "startDate": "October 2024"
   },

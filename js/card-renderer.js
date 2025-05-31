@@ -14,10 +14,10 @@ class CardRenderer {
         let projectDescription = '';
         for (let desc of data.description) {
             if (desc instanceof Array) {
-                projectDescription += `<p class="project-desc ${desc.slice(1).join(' ')}">${desc[0]}</p>`;
+                projectDescription += `<li class="project-desc ${desc.slice(1).join(' ')}">${desc[0]}</li>`;
             }
             else {
-                projectDescription += `<p class="project-desc">${desc}</p>`;
+                projectDescription += `<li class="project-desc">${desc}</li>`;
             }
         }
 
@@ -56,7 +56,9 @@ class CardRenderer {
                 <h2 class="mbt-10">${data.heading}</h2>
                 ${workRole}
                 ${cardTimeline}
-                ${projectDescription}
+                ${projectDescription ? "<ul class='project-desc-list'>" : ""}
+                    ${projectDescription}
+                ${projectDescription ? "</ul>" : ""}
                 ${projectLinks}
                 ${data.extraHTML ? data.extraHTML : ''}
             </div>

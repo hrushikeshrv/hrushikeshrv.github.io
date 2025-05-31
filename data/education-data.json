@@ -9,11 +9,12 @@
       "classList": "dark-theme-invert"
     },
     "heading": "University of Southern California",
+    "workRole": "Master of Science, Computer Engineering",
     "description": [
-      "Master of Science, Computer Engineering"
     ],
     "startDate": "August 2024",
-    "endDate": "June 2026"
+    "endDate": "June 2026",
+    "extraHTML": "<span class=\"education-gpa\">GPA - 3.93</span>"
   },
   "coep": {
     "logo": {

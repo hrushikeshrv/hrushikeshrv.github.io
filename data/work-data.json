@@ -11,9 +11,9 @@
     "heading": "Wide Wings Media",
     "workRole": "Fullstack Developer, DevOps, UI/UX",
     "description": [
-      "Hired as a freelance fullstack developer to redesign <a href=\"https://ticketkhidakee.com\" target=\"_blank\" class=\"a\">ticketkhidakee.com</a>, managed by Wide Wings Media. Replaced their existing PHP-Laravel stack with a Python-Django stack.",
-      "Implemented a ticket booking system, payment gateway, and event management system.",
-      "Designed a cloud architecture to handle extreme bursts in traffic, deployed on AWS resources."
+      "Fully redesigned the existing website for <a href=\\\"https://ticketkhidakee.com\\\" target=\\\"_blank\\\" class=\\\"a\\\">ticketkhidakee.com</a>, replacing the existing LAMP stack with a Django-Postgres stack, leading to a ∼45% increase in traffic and ∼30% increase in user retention over 6 months",
+      "Designed a robust cloud architecture on AWS, maintaining P95 latency below 100ms with ∼10,000 concurrent users",
+      "Configured global CDN on AWS CloudFront and designed a caching policy successfully handling ∼500,000 daily users"
     ],
     "startDate": "July 2023",
     "endDate": "June 2024"
@@ -28,7 +28,9 @@
     "heading": "MasterCard",
     "workRole": "Software Development Intern",
     "description": [
-      "Wrote an internal protocol to facilitate event serialization format translation between protocol buffers and AVRO-based schemas for event-driven applications."
+      "Wrote a serde protocol to translate between protocol buffers and AVRO-based schemas for event-driven applications",
+      "Facilitated communication between heterogenous serialization format apps, reducing the data transformation delay by ∼50%",
+      "Wrote a proof-of-concept Spring application for the implemented protocol, hosted on the internal Mastercard repository"
     ],
     "startDate": "May 2023",
     "endDate": "July 2023"

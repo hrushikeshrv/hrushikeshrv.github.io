@@ -1001,6 +1001,16 @@ html.dark-theme #profile-photo {
     background-color: var(--background-dark-2);
 }
 
+.card-content .project-desc-list {
+    margin: 0;
+    padding-inline-start: 1rem;
+}
+
+.card-content li.project-desc {
+    font-size: 1rem;
+    margin: 10px 0 20px 0;
+}
+
 #education-container p {
     margin-top: 0;
     font-weight: bolder;

@@ -13,7 +13,7 @@ function getNewSpeed() {
 }
 
 const SPEED_CHANGE_PROBABILITY = 0.005;
-const DIRECTION_CHANGE_PROBABILITY = 0.005;
+const DIRECTION_CHANGE_PROBABILITY = 0.007;
 const COLOR_CHANGE_PROBABILITY = 0.001;
 const ball = {
     x: Math.random() * canvas.width,
@@ -34,28 +34,29 @@ function drawBall() {
 
 function updateBallPosition() {
     if (!playing) return;
+    let randomNum = Math.random();
 
     ball.x += ball.dx;
     ball.y += ball.dy;
 
     // Randomly change direction
-    if (Math.random() < DIRECTION_CHANGE_PROBABILITY) {  // 1% chance to change direction
+    if (randomNum < DIRECTION_CHANGE_PROBABILITY) {  // 1% chance to change direction
         ball.dx *= -1;
     }
-    if (Math.random() < DIRECTION_CHANGE_PROBABILITY) {  // 1% chance to change direction
+    if (randomNum < DIRECTION_CHANGE_PROBABILITY) {  // 1% chance to change direction
         ball.dy *= -1;
     }
 
     // Randomly change speed
-    if (Math.random() < SPEED_CHANGE_PROBABILITY) {  // 1% chance to change speed
+    if (randomNum < SPEED_CHANGE_PROBABILITY) {  // 1% chance to change speed
         ball.dx = getNewSpeed()
     }
-    if (Math.random() < SPEED_CHANGE_PROBABILITY) {
+    if (randomNum < SPEED_CHANGE_PROBABILITY) {
         ball.dy = getNewSpeed()
     }
 
     // Randomly change color
-    if (Math.random() < COLOR_CHANGE_PROBABILITY) {  // 1% chance to change color
+    if (randomNum < COLOR_CHANGE_PROBABILITY) {  // 1% chance to change color
         ball.color = `hsl(${Math.random() * 360}, 100%, 50%)`;
     }
 

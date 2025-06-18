@@ -1,0 +1,22 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M11 19C11 16.7909 12.7909 15 15 15H20V47H11V19Z" fill="black"/>
+<path d="M11 24V19C11 16.7909 12.7909 15 15 15L43 15V24L11 24Z" fill="black"/>
+<circle cx="42.5" cy="19.5" r="4.5" fill="black"/>
+<circle cx="15.5" cy="46.5" r="4.5" fill="black"/>
+<rect x="38" y="42" width="47" height="47" rx="3" fill="#F2C52D"/>
+<path d="M15 114C12.7909 114 11 112.209 11 110V105H43V114H15Z" fill="black"/>
+<path d="M20 114H15C12.7909 114 11 112.209 11 110L11 82H20L20 114Z" fill="black"/>
+<circle cx="15.5" cy="82.5" r="4.5" transform="rotate(-90 15.5 82.5)" fill="black"/>
+<circle cx="42.5" cy="109.5" r="4.5" transform="rotate(-90 42.5 109.5)" fill="black"/>
+<circle cx="91" cy="65" r="4" transform="rotate(-90 91 65)" fill="black"/>
+<circle cx="32" cy="65" r="4" transform="rotate(-90 32 65)" fill="black"/>
+<path d="M113 15C115.209 15 117 16.7909 117 19V24L85 24V15L113 15Z" fill="black"/>
+<path d="M108 15L113 15C115.209 15 117 16.7909 117 19L117 47H108L108 15Z" fill="black"/>
+<circle cx="112.5" cy="46.5" r="4.5" transform="rotate(90 112.5 46.5)" fill="black"/>
+<circle cx="85.5" cy="19.5" r="4.5" transform="rotate(90 85.5 19.5)" fill="black"/>
+<path d="M117 110C117 112.209 115.209 114 113 114H108V82H117V110Z" fill="black"/>
+<path d="M117 105V110C117 112.209 115.209 114 113 114H85V105H117Z" fill="black"/>
+<circle cx="85.5" cy="109.5" r="4.5" transform="rotate(-180 85.5 109.5)" fill="black"/>
+<circle cx="112.5" cy="82.5" r="4.5" transform="rotate(-180 112.5 82.5)" fill="black"/>
+<rect x="32" y="61" width="59" height="8" fill="black"/>
+</svg>

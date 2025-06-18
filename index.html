@@ -298,6 +298,7 @@
                 .then(response => response.json())
                 .then(json => {
                     const workCardRenderer = new CardRenderer(json, workContainer);
+                    workCardRenderer.renderCard(json.tugoz);
                     workCardRenderer.renderCard(json.widewings);
                     workCardRenderer.renderCard(json.mastercard);
                 });

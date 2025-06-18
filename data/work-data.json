@@ -1,4 +1,18 @@
 {
+  "tugoz": {
+    "logo": {
+      "path": "images/work/tugoz.svg",
+      "width": 75,
+      "height": 75
+    },
+    "heading": "Tugoz LLC",
+    "workRole": "Software Development Engineering Intern",
+    "description":[
+      "Designed RESTful API endpoints to support user authentication, real-time push notifications, and event data retrieval",
+      "Developed software architecture for an event-management Flutter app, including corresponding backend architecture, supporting dynamic event maps, event scheduling, user management, and real-time notifications",
+      "Collaborated with backend teams and stakeholders to define data models, API contracts, and integration strategies"
+    ]
+  },
   "widewings": {
     "logo": {
       "path": "images/work/wide-wings-logo.png",
@@ -29,7 +43,7 @@
     "workRole": "Software Development Intern",
     "description": [
       "Wrote a serde protocol to translate between protocol buffers and AVRO-based schemas for event-driven applications",
-      "Facilitated communication between heterogenous serialization format apps, reducing the data transformation delay by ∼50%",
+      "Facilitated communication between heterogenous serialization format apps, reducing the data transformation delay by ∼15%",
       "Wrote a proof-of-concept Spring application for the implemented protocol, hosted on the internal Mastercard repository"
     ],
     "startDate": "May 2023",

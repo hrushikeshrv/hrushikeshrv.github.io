@@ -8,10 +8,14 @@
     "heading": "Tugoz LLC",
     "workRole": "Software Development Engineering Intern",
     "description":[
-      "Designed RESTful API endpoints to support user authentication, real-time push notifications, and event data retrieval",
-      "Developed software architecture for an event-management Flutter app, including corresponding backend architecture, supporting dynamic event maps, event scheduling, user management, and real-time notifications",
-      "Collaborated with backend teams and stakeholders to define data models, API contracts, and integration strategies"
-    ]
+      "Independently developed a Flutter app for their web-based event management platform, Tugoz, owning the entire project development cycle from ideation to deployment on app stores",
+      "Developed software architecture for the Flutter app, including corresponding backend architecture, supporting dynamic event maps, event scheduling, user management, and real-time notifications",
+      "Published the app on Google Play Store and Apple App Store",
+      "Collaborated with backend teams and stakeholders to define data models, API contracts, and integration strategies",
+      "Designed RESTful API endpoints to support user authentication, real-time push notifications, and event data retrieval"
+    ],
+    "startDate": "June 2025",
+    "endDate": "August 2025"
   },
   "widewings": {
     "logo": {
@@ -25,7 +29,7 @@
     "heading": "Wide Wings Media",
     "workRole": "Fullstack Developer, DevOps, UI/UX",
     "description": [
-      "Fully redesigned the existing website for <a href=\\\"https://ticketkhidakee.com\\\" target=\\\"_blank\\\" class=\\\"a\\\">ticketkhidakee.com</a>, replacing the existing LAMP stack with a Django-Postgres stack, leading to a ∼45% increase in traffic and ∼30% increase in user retention over 6 months",
+      "Fully redesigned and replaced the existing website for <a href=\\\"https://ticketkhidakee.com\\\" target=\\\"_blank\\\" class=\\\"a\\\">ticketkhidakee.com</a>, replacing the existing LAMP stack with a Django-Postgres stack, leading to a ∼100% increase in new user traffic and ∼30% increase in user retention over 6 months",
       "Designed a robust cloud architecture on AWS, maintaining P95 latency below 100ms with ∼10,000 concurrent users",
       "Configured global CDN on AWS CloudFront and designed a caching policy successfully handling ∼500,000 daily users"
     ],

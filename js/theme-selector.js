@@ -1,5 +1,5 @@
 const sunSVG = `<span class="material-symbols-outlined light-theme-button" style="color: var(--warning-dark-1);">light_mode</span>`;
-const moonSVG = `<span class="material-symbols-outlined dark-theme-button">dark_mode</span>`;
+const moonSVG = `<span class="material-symbols-outlined dark-theme-button">moon_stars</span>`;
 
 let themePreference;
 

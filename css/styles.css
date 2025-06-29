@@ -956,6 +956,17 @@ h1.section-heading {
     font-size: 1rem;
     margin: 10px 0;
     cursor: pointer;
+    transition: color ease 0.2s, font-weight ease 0.2s;
+    color: var(--muted-font);
+}
+
+.inter-section-nav-item.active-nav-item {
+    font-weight: bold;
+    color: var(--primary-dark-1);
+}
+
+html.dark-theme .inter-section-nav-item.active-nav-item {
+    color: var(--primary);
 }
 
 /*

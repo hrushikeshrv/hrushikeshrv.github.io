@@ -13,6 +13,8 @@ class PageNavigator {
             }
         }
 
+        this.navigationItems = {};
+
         // An index into this.sectionNames
         this.currentSection = 0;
         // An index into this.sections[this.sectionNames[this.currentSection]]
@@ -45,6 +47,7 @@ class PageNavigator {
         });
 
         this.renderNavigation();
+        this.navigationItems[this.currentSectionName].root.classList.add('active-nav-item');
     }
 
     get currentSectionName() {
@@ -64,6 +67,7 @@ class PageNavigator {
         if (this.currentSubsection >= this.sections[this.currentSectionName].length - 1) {
             // If no more sections, return
             if (this.currentSection >= this.sectionNames.length - 1) return;
+            this.navigationItems[this.currentSectionName].root.classList.remove('active-nav-item');
             this.currentSectionElement.classList.add('hidden');
             this.currentSection++;
             this.currentSectionElement.classList.remove('hidden');
@@ -74,10 +78,12 @@ class PageNavigator {
                 console.error("Current subsection element is undefined. This may be due to an incorrect section or subsection index.");
                 return;
             }
+            this.navigationItems[this.currentSectionName].root.classList.remove('active-nav-item');
             this.currentSubsectionElement.classList.add('hidden');
             this.currentSubsection++;
             this.currentSubsectionElement.classList.remove('hidden');
         }
+        this.navigationItems[this.currentSectionName].root.classList.add('active-nav-item');
     }
 
     showPreviousSubsection() {
@@ -85,6 +91,7 @@ class PageNavigator {
         if (this.currentSubsection === 0) {
             // If no more sections, return
             if (this.currentSection <= 0) return;
+            this.navigationItems[this.currentSectionName].root.classList.remove('active-nav-item');
             this.currentSectionElement.classList.add('hidden');
             this.currentSection--;
             this.currentSectionElement.classList.remove('hidden');
@@ -95,10 +102,12 @@ class PageNavigator {
                 console.error("Current subsection element is undefined. This may be due to an incorrect section or subsection index.");
                 return;
             }
+            this.navigationItems[this.currentSectionName].root.classList.remove('active-nav-item');
             this.currentSubsectionElement.classList.add('hidden');
             this.currentSubsection--;
             this.currentSubsectionElement.classList.remove('hidden');
         }
+        this.navigationItems[this.currentSectionName].root.classList.add('active-nav-item');
     }
 
     showSection(sectionName) {
@@ -107,12 +116,14 @@ class PageNavigator {
             console.error(`Section "${sectionName}" not found.`);
             return;
         }
+        this.navigationItems[this.currentSectionName].root.classList.remove('active-nav-item');
         this.currentSectionElement.classList.add('hidden');
         this.currentSection = sectionIndex;
         this.currentSectionElement.classList.remove('hidden');
         this.currentSubsection = 0;
         if (this.sections[sectionName].length > 0)
             this.sections[sectionName][0].classList.remove('hidden');
+        this.navigationItems[this.currentSectionName].root.classList.add('active-nav-item');
     }
 
     renderNavigation() {
@@ -130,11 +141,23 @@ class PageNavigator {
             navItem.addEventListener('click', (e) => {
                 this.showSection(navItem.dataset.sectionName);
             })
+            this.navigationItems[sectionName] = {root: navItem, subsections: []};
         }
         const showNextSubsectionButton = document.createElement('button');
         showNextSubsectionButton.id = 'show-next-subsection';
         showNextSubsectionButton.classList.add('inter-section-nav-item');
         showNextSubsectionButton.innerHTML = '<span class="material-symbols-outlined">keyboard_arrow_down</span>';
         navContainer.appendChild(showNextSubsectionButton);
+        showNextSubsectionButton.addEventListener('click', () => {
+            this.showNextSubsection();
+        });
+        const showPreviousSubsectionButton = document.createElement('button');
+        showPreviousSubsectionButton.id = 'show-previous-subsection';
+        showPreviousSubsectionButton.classList.add('inter-section-nav-item');
+        showPreviousSubsectionButton.innerHTML = '<span class="material-symbols-outlined">keyboard_arrow_up</span>';
+        navContainer.prepend(showPreviousSubsectionButton);
+        showPreviousSubsectionButton.addEventListener('click', () => {
+            this.showPreviousSubsection();
+        });
     }
 }

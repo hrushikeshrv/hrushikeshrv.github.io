@@ -614,14 +614,14 @@ a.button-link:active {
     position: relative;
     top: 20px;
     opacity: 0;
-    animation: slide-up 0.8s forwards;
-    animation-delay: 0.2s;
+    animation: slide-up 0.65s forwards;
+    animation-delay: 0.1s;
 }
 
 @keyframes slide-up {
     from {
         opacity: 0;
-        top: 40px;
+        top: 30px;
     }
     to {
         top: 0;
@@ -726,7 +726,7 @@ tbody {
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 .material-symbols-outlined {
@@ -889,6 +889,7 @@ h1.section-heading {
 .section-title {
     font-size: 5rem;
     margin: -10px 0;
+    flex-wrap: nowrap;
 }
 
 .section-title img {
@@ -941,6 +942,20 @@ h1.section-heading {
 .section-content-container li {
     font-size: 1.3rem;
     margin: 1.8rem 0;
+}
+
+.section-content-container .work-role {
+    margin-bottom: 10px;
+}
+
+.section-content-container .work-location-dates {
+    margin: 10px 0;
+}
+
+.inter-section-nav-item {
+    font-size: 1rem;
+    margin: 10px 0;
+    cursor: pointer;
 }
 
 /*

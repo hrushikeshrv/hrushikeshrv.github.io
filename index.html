@@ -75,6 +75,7 @@
         <link rel="stylesheet" href="css/ck-theme.css">
     </head>
     <body class="hide-scrollbar">
+        <div id="top"></div>
         <div class="floating-popup-container hidden hide-scrollbar" id="contact-form-popup-container">
             <div class="flexbox-column pad-30 floating-popup hide-scrollbar" id="contact-form-container">
                 <form action="" id="contact-form" class="flexbox-column pageload-slide-up">
@@ -126,6 +127,7 @@
             <main class="flexbox-column hide-scrollbar">
                 <header class="flexbox-row ajc pad-20">
                     <nav class="flexbox-row ajc">
+                        <a href="#top" class="section-link">About</a>
                         <a href="#study" class="section-link">Study</a>
                         <a href="#work" class="section-link">Work</a>
                         <a href="#projects" class="section-link">Projects</a>
@@ -137,7 +139,7 @@
                     </nav>
                 </header>
 
-                <section id="hero">
+                <section id="hero" data-name="About">
                     <h1 id="nametag" class="pageload-slide-up pageload-delay-1">Hrushikesh Vaidya</h1>
                     <div class="flexbox-row column-full section-content">
                         <div class="flexbox-column column-half pad-20">
@@ -166,18 +168,18 @@
                     </div>
                 </section>
 
-                <section id="study">
-                    <h1 class="section-heading">Education</h1>
+                <section class="hidden" id="study" data-name="Education">
+                    <h1 class="section-heading pageload-fade-in">Education</h1>
                     <div class="section-card" id="education-usc">
-                        <h2 class="section-title">University <span style="font-family: var(--fancy-font);">of</span> Southern California</h2>
+                        <h2 class="section-title pageload-slide-up">University <span style="font-family: var(--fancy-font);">of</span> Southern California</h2>
                         <div class="flexbox-row column-full mt-20 section-content">
-                            <div class="flexbox-column column-half">
+                            <div class="flexbox-column column-half pageload-fade-in">
                                 <div class="section-image-container section-image-count-2">
                                     <img src="./images/education/usc-3.jpg" class="section-image-1" alt="">
                                     <img src="./images/education/usc-2.jpg" class="section-image-2" alt="">
                                 </div>
                             </div>
-                            <div class="flexbox-column column-half section-content-container">
+                            <div class="flexbox-column column-half section-content-container pageload-fade-in pageload-delay-1">
                                 <span>
                                     <strong>M.S. Computer Engineering</strong>, August 2024 - May 2026
                                 </span>
@@ -188,40 +190,15 @@
                         </div>
                     </div>
                 </section>
-                <section id="work">
-                    <h1 class="section-heading">Work experience</h1>
-                    <div class="section-card" id="tugoz">
-                        <h2 class="section-title flexbox-row aic">
-                            <img src="./images/work/tugoz.svg" height="100" alt="">
-                            <span>Tugoz</span>
-                        </h2>
-                        <div class="flexbox-row column-full section-content">
-                            <div class="flexbox-column column-half section-content-container" style="padding-left: 0;">
-                                <span style="margin-bottom: 10px;"><strong style="margin-bottom: 10px;">Software Development Engineering Intern</strong></span>
-                                <span style="margin: 10px 0;">Los Angeles, CA &centerdot; June 2025 - August 2025</span>
-                                <ul>
-                                    <li>Independently developed a Flutter app for their web-based event management platform, Tugoz, owning the entire project development cycle from ideation to deployment on app stores</li>
-                                    <li>Developed software architecture for the Flutter app, including corresponding backend architecture, supporting dynamic event maps, event scheduling, user management, and real-time notifications</li>
-                                    <li>Published the app on Google Play Store and Apple App Store</li>
-                                    <li>Collaborated with backend teams and stakeholders to define data models, API contracts, and integration strategies</li>
-                                    <li>Designed RESTful API endpoints to support user authentication, real-time push notifications, and event data retrieval</li>
-                                </ul>
-                            </div>
-                            <div class="flexbox-column column-half section-content-container">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi debitis deserunt dolorem eos explicabo harum illo iure laboriosam, modi natus officia, quam quasi recusandae repellendus soluta ullam voluptate. A, quidem?</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad amet consequuntur culpa cum debitis, dolores error exercitationem facere illum, iusto magni molestiae necessitatibus nesciunt officiis omnis qui quibusdam sed voluptatem?</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias consequuntur magni nihil quae vero? Accusantium autem consectetur consequuntur cupiditate deleniti earum enim est hic laudantium nemo nihil praesentium, reprehenderit! Animi!</p>
-                            </div>
-                        </div>
-                    </div>
+                <section class="hidden" id="work" data-name="Work">
+                    <h1 class="section-heading pageload-fade-in">Work experience</h1>
                 </section>
-                <section id="projects">
-                    <h1 class="section-heading">Projects</h1>
+                <section class="hidden" id="projects" data-name="Projects">
+                    <h1 class="section-heading pageload-fade-in">Projects</h1>
                 </section>
             </main>
             <nav id="inter-section-nav" class="flexbox-column ajc">
-                <span class="material-symbols-outlined">keyboard_arrow_up</span>
-                <span class="material-symbols-outlined">keyboard_arrow_down</span>
+                <button class="inter-section-nav-item" id="show-previous-subsection"><span class="material-symbols-outlined">keyboard_arrow_up</span></button>
             </nav>
         </div>
         
@@ -300,6 +277,7 @@
         <script>
             document.querySelectorAll('.copyright-year').forEach(el => { el.innerHTML = new Date().getFullYear().toString() })
         </script>
+
         <script type="importmap">
             {
                 "imports": {

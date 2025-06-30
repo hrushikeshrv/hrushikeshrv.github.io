@@ -7,11 +7,6 @@ class PageNavigator {
             this.sectionNames.push(section.dataset.name);
             this.sections[section.dataset.name] = section.querySelectorAll('.section-card');
         }
-        for (const sectionName in this.sections) {
-            if (this.sections[sectionName].length > 0) {
-                this.sections[sectionName][0].classList.remove('hidden');
-            }
-        }
 
         this.navigationItems = {};
 
@@ -31,6 +26,13 @@ class PageNavigator {
                 this.isThrottled = false;
             }, 500); // Throttle for 500 ms
         }, { passive: true });
+        window.addEventListener('keyup', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+                this.showNextSubsection();
+            } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+                this.showPreviousSubsection();
+            }
+        });
 
         this.touchStartY = 0;
         this.touchEndY = 0;
@@ -62,68 +64,76 @@ class PageNavigator {
         return this.sections[this.currentSectionName][this.currentSubsection];
     }
 
+    get currentSectionNavElement() {
+        return this.navigationItems[this.currentSectionName].root;
+    }
+
+    get currentSubsectionNavContainerElement() {
+        return this.navigationItems[this.currentSectionName].subsectionContainer;
+    }
+
+    get currentSubsectionNavElement() {
+        return this.navigationItems[this.currentSectionName].subsections[this.currentSubsection];
+    }
+
     showNextSubsection() {
-        // If we are at the last subsection of the current section, move to the next section
+        if (
+            this.currentSubsection >= this.sections[this.currentSectionName].length - 1
+            && this.currentSection >= this.sectionNames.length
+        ) return;
         if (this.currentSubsection >= this.sections[this.currentSectionName].length - 1) {
-            // If no more sections, return
-            if (this.currentSection >= this.sectionNames.length - 1) return;
-            this.navigationItems[this.currentSectionName].root.classList.remove('active-nav-item');
-            this.currentSectionElement.classList.add('hidden');
             this.currentSection++;
-            this.currentSectionElement.classList.remove('hidden');
             this.currentSubsection = 0;
         }
-        else {
-            if (this.currentSubsectionElement === undefined) {
-                console.error("Current subsection element is undefined. This may be due to an incorrect section or subsection index.");
-                return;
-            }
-            this.navigationItems[this.currentSectionName].root.classList.remove('active-nav-item');
-            this.currentSubsectionElement.classList.add('hidden');
-            this.currentSubsection++;
-            this.currentSubsectionElement.classList.remove('hidden');
-        }
-        this.navigationItems[this.currentSectionName].root.classList.add('active-nav-item');
+        else this.currentSubsection++;
+        this.showSection(this.currentSectionName);
+        this.showSubsection(this.currentSubsection);
     }
 
     showPreviousSubsection() {
-        // If we are at the first subsection of the current section, move to the previous section
-        if (this.currentSubsection === 0) {
-            // If no more sections, return
-            if (this.currentSection <= 0) return;
-            this.navigationItems[this.currentSectionName].root.classList.remove('active-nav-item');
-            this.currentSectionElement.classList.add('hidden');
+        if (this.currentSection === 0 && this.currentSubsection <= 0) return;
+        if (this.currentSubsection <= 0) {
             this.currentSection--;
-            this.currentSectionElement.classList.remove('hidden');
-            this.currentSubsection = Math.max(0, this.sections[this.sectionNames[this.currentSection]].length - 1);
+            this.currentSubsection = this.sections[this.sectionNames[this.currentSection]].length - 1;
         }
-        else {
-            if (this.currentSubsectionElement === undefined) {
-                console.error("Current subsection element is undefined. This may be due to an incorrect section or subsection index.");
-                return;
-            }
-            this.navigationItems[this.currentSectionName].root.classList.remove('active-nav-item');
-            this.currentSubsectionElement.classList.add('hidden');
-            this.currentSubsection--;
-            this.currentSubsectionElement.classList.remove('hidden');
-        }
-        this.navigationItems[this.currentSectionName].root.classList.add('active-nav-item');
+        else this.currentSubsection--;
+        this.showSection(this.currentSectionName);
+        this.showSubsection(this.currentSubsection);
     }
 
     showSection(sectionName) {
+        console.log(`Showing section: ${sectionName}`);
         const sectionIndex = this.sectionNames.indexOf(sectionName);
         if (sectionIndex === -1) {
             console.error(`Section "${sectionName}" not found.`);
             return;
         }
-        this.navigationItems[this.currentSectionName].root.classList.remove('active-nav-item');
+        this.currentSectionNavElement.classList.remove('active-nav-item');
+        this.currentSubsectionNavContainerElement?.classList.remove('shown');
         this.currentSectionElement.classList.add('hidden');
+        this.currentSubsectionElement?.classList.add('hidden');
         this.currentSection = sectionIndex;
         this.currentSectionElement.classList.remove('hidden');
         this.currentSubsection = 0;
         if (this.sections[sectionName].length > 0)
             this.sections[sectionName][0].classList.remove('hidden');
-        this.navigationItems[this.currentSectionName].root.classList.add('active-nav-item');
+        this.currentSectionNavElement.classList.add('active-nav-item');
+        this.currentSubsectionNavContainerElement?.classList.add('shown');
+        this.currentSubsectionElement.classList.remove('hidden');
+        this.currentSubsectionNavElement?.classList.add('active-nav-item');
+    }
+
+    showSubsection(index) {
+        console.log(`Showing subsection at index: ${index} in section "${this.currentSectionName}"`);
+        if (index < 0 || index >= this.sections[this.currentSectionName].length) {
+            console.error(`Subsection index ${index} is out of bounds for section "${this.currentSectionName}".`);
+            return;
+        }
+        this.currentSubsectionNavElement?.classList.remove('active-nav-item');
+        this.currentSubsectionElement.classList.add('hidden');
+        this.currentSubsection = index;
+        this.currentSubsectionElement.classList.remove('hidden');
+        this.currentSubsectionNavElement?.classList.add('active-nav-item');
     }
 
     renderNavigation() {
@@ -141,7 +151,26 @@ class PageNavigator {
             navItem.addEventListener('click', (e) => {
                 this.showSection(navItem.dataset.sectionName);
             })
-            this.navigationItems[sectionName] = {root: navItem, subsections: []};
+            this.navigationItems[sectionName] = {root: navItem, subsectionContainer: null, subsections: []};
+            if (this.sections[sectionName].length > 0) {
+                const subNavContainer = document.createElement('div');
+                subNavContainer.classList.add('inter-section-sub-nav', 'flexbox-column', 'hide-scrollbar', 'aife');
+                this.navigationItems[sectionName].subsectionContainer = subNavContainer;
+                navContainer.appendChild(subNavContainer);
+                for (let i = 0; i < this.sections[sectionName].length; i++) {
+                    const subsection = this.sections[sectionName][i];
+                    const subsectionItem = document.createElement('button');
+                    subsectionItem.classList.add('inter-section-sub-nav-item');
+                    subsectionItem.textContent = subsection.dataset.shortName || subsection.dataset.name;
+                    subsectionItem.dataset.sectionName = sectionName;
+                    subsectionItem.dataset.subsectionId = subsection.id;
+                    subNavContainer.appendChild(subsectionItem);
+                    subsectionItem.addEventListener('click', (e) => {
+                        this.showSubsection(i);
+                    });
+                    this.navigationItems[sectionName].subsections.push(subsectionItem);
+                }
+            }
         }
         const showNextSubsectionButton = document.createElement('button');
         showNextSubsectionButton.id = 'show-next-subsection';

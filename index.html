@@ -170,7 +170,7 @@
 
                 <section class="hidden" id="study" data-name="Education">
                     <h1 class="section-heading pageload-fade-in">Education</h1>
-                    <div class="section-card" id="education-usc">
+                    <div class="section-card" id="education-usc" data-name="USC">
                         <h2 class="section-title pageload-slide-up">University <span style="font-family: var(--fancy-font);">of</span> Southern California</h2>
                         <div class="flexbox-row column-full mt-20 section-content">
                             <div class="flexbox-column column-half pageload-fade-in">
@@ -193,11 +193,14 @@
                 <section class="hidden" id="work" data-name="Work">
                     <h1 class="section-heading pageload-fade-in">Work experience</h1>
                 </section>
+                <section class="hidden" id="co-curricular" data-name="Co-curricular">
+                    <h1 class="section-heading pageload-fade-in">Co-curricular Work</h1>
+                </section>
                 <section class="hidden" id="projects" data-name="Projects">
                     <h1 class="section-heading pageload-fade-in">Projects</h1>
                 </section>
             </main>
-            <nav id="inter-section-nav" class="flexbox-column jcc aife"></nav>
+            <nav id="inter-section-nav" class="flexbox-column jcc aife hide-scrollbar"></nav>
         </div>
         
         <script>
@@ -222,50 +225,32 @@
         <script src="data/education-data.json" type="application/json" id="education-data"></script>
         <script src="js/card-renderer.js"></script>
         <script>
-            const projectContainer = document.querySelector('#project-container');
-            const projectJSON = document.querySelector('#project-data').src;
-            fetch(projectJSON)
-                .then(response => response.json())
-                .then(json => {
-                    const projectCardRenderer    = new CardRenderer(json, projectContainer);
-                    projectCardRenderer.renderCard(json['money-warden']);
-                    projectCardRenderer.renderCard(json.guimath);
-                    projectCardRenderer.renderCard(json.docxlatex);
-                })
-                .then(() => {
-                    initGUIMathDemo();
-                });
+            let pageNavigator;
+            async function init() {
+                const workContainer = document.querySelector('#work');
+                const workJSON = document.querySelector('#work-data').src;
+                const workResponse = await fetch(workJSON);
+                const workData = await workResponse.json();
+                const workCardRenderer = new CardRenderer(workData, workContainer, 'work');
+                workCardRenderer.render();
 
-            const workContainer = document.querySelector('#work-container');
-            const workJSON = document.querySelector('#work-data').src;
-            fetch(workJSON)
-                .then(response => response.json())
-                .then(json => {
-                    const workCardRenderer = new CardRenderer(json, workContainer);
-                    workCardRenderer.renderCard(json['tugoz-co-op']);
-                    workCardRenderer.renderCard(json.tugoz);
-                    workCardRenderer.renderCard(json.widewings);
-                    workCardRenderer.renderCard(json.mastercard);
-                });
+                const coCurricularContainer = document.querySelector('#co-curricular');
+                const coCurricularJSON = document.querySelector('#co-curricular-data').src;
+                const coCurricularResponse = await fetch(coCurricularJSON);
+                const coCurricularData = await coCurricularResponse.json();
+                const coCurricularCardRenderer = new CardRenderer(coCurricularData, coCurricularContainer, 'co-curricular');
+                coCurricularCardRenderer.render();
 
-            const coCurricularContainer = document.querySelector('#co-curricular-container');
-            const coCurricularJSON = document.querySelector('#co-curricular-data').src;
-            fetch(coCurricularJSON)
-                .then(response => response.json())
-                .then(json => {
-                    const coCurricularCardRenderer = new CardRenderer(json, coCurricularContainer);
-                    coCurricularCardRenderer.renderCard(json.aceatusc);
-                    coCurricularCardRenderer.renderCard(json.django);
-                })
+                const projectsContainer = document.querySelector('#projects');
+                const projectsJSON = document.querySelector('#project-data').src;
+                const projectsResponse = await fetch(projectsJSON);
+                const projectsData = await projectsResponse.json();
+                const projectsCardRenderer = new CardRenderer(projectsData, projectsContainer, 'projects');
+                projectsCardRenderer.render();
 
-            const eduContainer = document.querySelector('#education-container');
-            const eduJSON = document.querySelector('#education-data').src;
-            fetch(eduJSON)
-                .then(response => response.json())
-                .then(json => {
-                    const eduCardRenderer = new CardRenderer(json, eduContainer);
-                    eduCardRenderer.renderCard(json.usc);
-                })
+                pageNavigator = new PageNavigator();
+            }
+            init();
         </script>
         <script src="https://unpkg.com/@popperjs/core@2"></script>
         <script src="https://unpkg.com/tippy.js@6"></script>

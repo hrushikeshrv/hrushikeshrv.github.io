@@ -28,6 +28,8 @@ class CardRenderer {
 
         const container = document.createElement('div');
         container.classList.add('section-card', 'hidden');
+        container.dataset.name = data.heading;
+        container.dataset.shortName = data.shortName || data.heading;
         container.id = name;
         container.innerHTML = `
             <h2 class="section-title flexbox-row aic pageload-slide-up">

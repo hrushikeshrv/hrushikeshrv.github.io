@@ -7,7 +7,7 @@
       "alt": "Adaptive Computing Experiences Lab"
     },
     "heading": "Adaptive Computing Experiences Lab",
-    "workRole": "University of Southern California",
+    "shortName": "ACE Lab",
     "description": [
       "Developed SciSO – an end-to-end pipeline for extracting scientific citation graphs from StackOverflow, studying the dissemination of theoretical research and the impact of scientific citations on modern trends in software development",
       "Authored “SciSO: Mining Science in StackOverflow”, submitted to the Mining Software Repositories ’25 Conference",
@@ -24,6 +24,7 @@
       "height": 75
     },
     "heading": "Django",
+    "shortName": "Django",
     "description": [
       "Contributed patches, new features, and bug fixes to <a class=\"a\" href=\"https://github.com/django/django\" target=\"_blank\">django</a>."
     ],
@@ -56,6 +57,7 @@
       "height": 60
     },
     "heading": "Open CourseWare Notes",
+    "shortName": "OCW Notes",
     "description": [
       "A repository containing my notes for all the online courses I have taken, updated daily"
     ],
@@ -84,6 +86,7 @@
       "height": 60
     },
     "heading": "Deep Learning Notes",
+    "shortName": "ML/DL Notes",
     "description": [
       "A Google Doc containing my notes for deeplearning.ai's deep learning courses and specializations on <a href=\"https://coursera.org\" target=\"_blank\">coursera</a>.",
       "<ul>\n                                <li>Deep Learning and Neural Networks</li>\n                                <li>Improving Deep Neural Networks</li>\n                                <li>Structuring Machine Learning Projects</li>\n                                <li>Convolutional Neural Networks</li>\n                                <li>Sequence Models</li>\n                                <li>TensorFlow Developer Certificate</li>\n                            </ul>"
@@ -106,6 +109,7 @@
       "classList": "light-theme-invert"
     },
     "heading": "AOC",
+    "shortName": "Advent of Code",
     "description": [
       "A repository of my attempts at Advent of Code, a competitive programming advent calendar held every December"
     ],

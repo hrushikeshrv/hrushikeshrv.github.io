@@ -10,6 +10,7 @@
       "classList": "light-theme-invert"
     },
     "heading": "GUIMath",
+    "shortName": "GUIMath.js",
     "description": [
       ["Try the demo below to create an equation!", "mobile-hide"],
       "GUIMath is an equation editor for the web for building mathematical and chemical equations with a GUI similar to Google Docs or Microsoft Word. It supports conversion of the entered equations into LaTeX for storage and rendering using tools like MathJax.",
@@ -43,6 +44,7 @@
       "height": 75
     },
     "heading": "docxlatex",
+    "shortName": "docxlatex",
     "description": [
       "docxlatex is a python module for extracting text from .docx files, including support for mathematical and chemical equations, primarily for use with tools like MathJax.",
       "It also includes support for extracting images and conversion of extracted equations into LaTeX syntax."
@@ -73,6 +75,7 @@
       "height": 60
     },
     "heading": "Money Warden",
+    "shortName": "Money Warden",
     "description": [
       "Money Warden is a budgeting app that uses Google Sheets as a backing store.",
       "All your budget data is stored on Google Sheets, allowing you to define your own custom analytics in addition to those offered by the app.",
@@ -95,6 +98,7 @@
       "height": 75
     },
     "heading": "Chess Engine",
+    "shortName": "Chess Engine",
     "description": [
       "A python implementation of a chess engine with no dependencies.",
       "Features a bitboard representation and API, move generation API, PGN parsing support, and alpha-beta pruned search with move ordering."
@@ -125,6 +129,7 @@
       "height": 60
     },
     "heading": "TRAK",
+    "shortName": "TRAK",
     "description": [
       "A React Native application to record and visualize your progress",
       "Source code available on GitHub and available for download on Google Play Store"
@@ -151,6 +156,7 @@
       "height": 75
     },
     "heading": "ClassBerg",
+    "shortName": "ClassBerg",
     "story": [
       "When I was preparing for the MHT-CET, which is an engineering entrance exam, I was studying independently. I was looking for platforms where I could practice for the exam and get some feedback about my perfomance. However, all of the platforms I found were either inadequate or very costly.",
       "So I decided to create a community-driven platform which would give students practice, performance analytics, and much more, and would moreover be free for students. The idea was that I would sell coaching classes access to the platform as a subscription, and that would help keep the platform free for independent students.",

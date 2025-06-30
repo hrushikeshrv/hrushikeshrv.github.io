@@ -23,6 +23,7 @@
     },
     "heading": "Tugoz LLC",
     "workRole": "Software Engineering Intern",
+    "shortName": "Tugoz LLC",
     "location": "Los Angeles, CA",
     "responsibilities":[
       "Independently developed a Flutter app for their web-based event management platform, Tugoz, owning the entire project development cycle from ideation to deployment on app stores",
@@ -51,6 +52,7 @@
       "classList": "dark-theme-invert"
     },
     "heading": "Wide Wings Media",
+    "shortName": "Wide Wings",
     "workRole": "Fullstack Developer, DevOps, UI/UX",
     "responsibilities": [
       "Fully redesigned and replaced the existing website for <a href=\\\"https://ticketkhidakee.com\\\" target=\\\"_blank\\\" class=\\\"a\\\">ticketkhidakee.com</a>, replacing the existing LAMP stack with a Django-Postgres stack, leading to a ∼100% increase in new user traffic and ∼30% increase in user retention over 6 months",
@@ -73,6 +75,7 @@
       "height": 60
     },
     "heading": "Mastercard",
+    "shortName": "Mastercard",
     "workRole": "Software Development Intern",
     "responsibilities": [
       "Wrote a serde protocol to translate between protocol buffers and AVRO-based schemas for event-driven applications",
@@ -96,6 +99,7 @@
       "classList": "dark-theme-invert"
     },
     "heading": "Student Researcher, COEP IDEA Labs",
+    "shortName": "IDEA Labs",
     "workRole": "Data Acquisition & Robotics Team",
     "responsibilities": [
       "Worked in an interdisciplinary team to build data acquisition robots for collecting leaf and soil data for soyabean plants in Indian farms.",
@@ -118,6 +122,7 @@
       "classList": "dark-theme-invert"
     },
     "heading": "COEP Webteam",
+    "shortName": "Webteam",
     "workRole": "Student Contributor",
     "responsibilities": [
       "Maintained the college website and its on-prem servers. Managed a Drupal based CMS and coordinated with various other clubs, faculty, and staff to keep the website up to date."

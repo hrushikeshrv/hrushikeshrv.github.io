@@ -102,33 +102,35 @@ class PageNavigator {
     }
 
     showSection(sectionName) {
-        console.log(`Showing section: ${sectionName}`);
         const sectionIndex = this.sectionNames.indexOf(sectionName);
         if (sectionIndex === -1) {
             console.error(`Section "${sectionName}" not found.`);
             return;
         }
-        this.currentSectionNavElement.classList.remove('active-nav-item');
-        this.currentSubsectionNavContainerElement?.classList.remove('shown');
-        this.currentSectionElement.classList.add('hidden');
-        this.currentSubsectionElement?.classList.add('hidden');
+        for (const section of this.sectionElements) {
+            section.classList.add('hidden');
+            for (const subsection of this.sections[section.dataset.name]) {
+                subsection.classList.add('hidden');
+            }
+        }
+        for (const navItem in this.navigationItems) {
+            this.navigationItems[navItem].root.classList.remove('active-nav-item');
+            this.navigationItems[navItem].subsectionContainer?.classList.remove('shown');
+            for (const subsectionItem of this.navigationItems[navItem].subsections) {
+                subsectionItem.classList.remove('active-nav-item');
+            }
+        }
+
         this.currentSection = sectionIndex;
-        this.currentSectionElement.classList.remove('hidden');
-        this.currentSubsection = 0;
-        if (this.sections[sectionName].length > 0)
-            this.sections[sectionName][0].classList.remove('hidden');
         this.currentSectionNavElement.classList.add('active-nav-item');
+        this.currentSectionElement.classList.remove('hidden');
         this.currentSubsectionNavContainerElement?.classList.add('shown');
-        this.currentSubsectionElement.classList.remove('hidden');
+        this.currentSubsectionElement?.classList.remove('hidden');
         this.currentSubsectionNavElement?.classList.add('active-nav-item');
     }
 
     showSubsection(index) {
-        console.log(`Showing subsection at index: ${index} in section "${this.currentSectionName}"`);
-        if (index < 0 || index >= this.sections[this.currentSectionName].length) {
-            console.error(`Subsection index ${index} is out of bounds for section "${this.currentSectionName}".`);
-            return;
-        }
+        if (index < 0 || index >= this.sections[this.currentSectionName].length) return;
         this.currentSubsectionNavElement?.classList.remove('active-nav-item');
         this.currentSubsectionElement.classList.add('hidden');
         this.currentSubsection = index;
@@ -150,6 +152,7 @@ class PageNavigator {
             navContainer.appendChild(navItem);
             navItem.addEventListener('click', (e) => {
                 this.showSection(navItem.dataset.sectionName);
+                this.showSubsection(0);
             })
             this.navigationItems[sectionName] = {root: navItem, subsectionContainer: null, subsections: []};
             if (this.sections[sectionName].length > 0) {
@@ -166,6 +169,7 @@ class PageNavigator {
                     subsectionItem.dataset.subsectionId = subsection.id;
                     subNavContainer.appendChild(subsectionItem);
                     subsectionItem.addEventListener('click', (e) => {
+                        this.showSection(sectionName);
                         this.showSubsection(i);
                     });
                     this.navigationItems[sectionName].subsections.push(subsectionItem);

@@ -4,11 +4,13 @@ class CardRenderer {
      * @param data - The JSON data containing all entries for a particular section.
      * @param container - The DOM element where all cards will be rendered.
      * @param cardType - The type of card to be rendered. Should be one of `'work'`, `'education'`, `'projects'`, or `'co-curricular'`.
+     * @param hiddenKeys - An array of keys that should not be rendered when rendering all cards. Defaults to an empty array.
      */
-    constructor(data, container, cardType) {
+    constructor(data, container, cardType, hiddenKeys = []) {
         this.data = data;
         this.container = container;
         this.cardType = cardType;
+        this.hiddenKeys = hiddenKeys;
     }
 
     renderCard(name) {
@@ -60,7 +62,8 @@ class CardRenderer {
 
     render() {
         for (const name in this.data) {
-            this.renderCard(name);
+            if (!this.hiddenKeys.includes(name))
+                this.renderCard(name);
         }
     }
 }

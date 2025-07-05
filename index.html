@@ -231,21 +231,36 @@
                 const workJSON = document.querySelector('#work-data').src;
                 const workResponse = await fetch(workJSON);
                 const workData = await workResponse.json();
-                const workCardRenderer = new CardRenderer(workData, workContainer, 'work');
+                const workCardRenderer = new CardRenderer(
+                    workData,
+                    workContainer,
+                    'work',
+                    hiddenKeys=['coepweb', 'coepidealabs']
+                );
                 workCardRenderer.render();
 
                 const coCurricularContainer = document.querySelector('#co-curricular');
                 const coCurricularJSON = document.querySelector('#co-curricular-data').src;
                 const coCurricularResponse = await fetch(coCurricularJSON);
                 const coCurricularData = await coCurricularResponse.json();
-                const coCurricularCardRenderer = new CardRenderer(coCurricularData, coCurricularContainer, 'co-curricular');
+                const coCurricularCardRenderer = new CardRenderer(
+                    coCurricularData,
+                    coCurricularContainer,
+                    'co-curricular',
+                    hiddenKeys=['deeplearning']
+                );
                 coCurricularCardRenderer.render();
 
                 const projectsContainer = document.querySelector('#projects');
                 const projectsJSON = document.querySelector('#project-data').src;
                 const projectsResponse = await fetch(projectsJSON);
                 const projectsData = await projectsResponse.json();
-                const projectsCardRenderer = new CardRenderer(projectsData, projectsContainer, 'projects');
+                const projectsCardRenderer = new CardRenderer(
+                    projectsData,
+                    projectsContainer,
+                    'projects',
+                    hiddenKeys=['trak', 'classberg', 'classberg-exed', 'chainrxn']
+                );
                 projectsCardRenderer.render();
 
                 pageNavigator = new PageNavigator();

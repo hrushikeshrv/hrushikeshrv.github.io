@@ -941,10 +941,13 @@ h1.section-heading {
 
 .section-content-container p,
 .section-content-container strong,
-.section-content-container span,
-.section-content-container li {
+.section-content-container span {
     font-size: 1.3rem;
-    margin: 1.8rem 0;
+    margin: 1.2rem 0;
+}
+
+.section-content-container li {
+    margin: 1.5rem 0;
 }
 
 .section-content-container .work-role {
@@ -957,7 +960,6 @@ h1.section-heading {
 
 .inter-section-nav-item {
     font-size: 1.1rem;
-    /*font-weight: bold;*/
 }
 
 .inter-section-sub-nav {

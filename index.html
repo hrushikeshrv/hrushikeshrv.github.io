@@ -139,7 +139,7 @@
                     </nav>
                 </header>
 
-                <section id="hero" data-name="About">
+                <section id="about" data-name="About">
                     <h1 id="nametag" class="pageload-slide-up pageload-delay-1">Hrushikesh Vaidya</h1>
                     <div class="flexbox-row column-full section-content">
                         <div class="flexbox-column column-half pad-20">
@@ -193,7 +193,7 @@
                 <section class="hidden" id="work" data-name="Work">
                     <h1 class="section-heading pageload-fade-in">Work experience</h1>
                 </section>
-                <section class="hidden" id="co-curricular" data-name="Co-curricular">
+                <section class="hidden" id="cocurricular" data-name="Co-curricular">
                     <h1 class="section-heading pageload-fade-in">Co-curricular Work</h1>
                 </section>
                 <section class="hidden" id="projects" data-name="Projects">
@@ -239,7 +239,7 @@
                 );
                 workCardRenderer.render();
 
-                const coCurricularContainer = document.querySelector('#co-curricular');
+                const coCurricularContainer = document.querySelector('#cocurricular');
                 const coCurricularJSON = document.querySelector('#co-curricular-data').src;
                 const coCurricularResponse = await fetch(coCurricularJSON);
                 const coCurricularData = await coCurricularResponse.json();

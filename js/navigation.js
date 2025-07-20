@@ -50,6 +50,23 @@ class PageNavigator {
 
         this.renderNavigation();
         this.navigationItems[this.currentSectionName].root.classList.add('active-nav-item');
+
+        const fragment = window.location.hash.substring(1);
+        if (fragment) {
+            const sectionId = fragment.split('-')[0];
+            const sectionName = document.querySelector(`#${sectionId}`).dataset.name;
+            const subsectionIdx = parseInt(fragment.split('-')[1]);
+            if (this.sectionNames.includes(sectionName)) {
+                this.showSection(sectionName);
+                if (subsectionIdx && subsectionIdx >= 0 && subsectionIdx < this.sections[sectionName].length) {
+                    this.showSubsection(subsectionIdx);
+                }
+            } else {
+                console.warn(`Section "${sectionName}" not found in the document.`);
+            }
+        }
+
+        const mainNavLinks = document.querySelectorAll('a.section-link');
     }
 
     get currentSectionName() {
@@ -127,6 +144,7 @@ class PageNavigator {
         this.currentSubsectionNavContainerElement?.classList.add('shown');
         this.currentSubsectionElement?.classList.remove('hidden');
         this.currentSubsectionNavElement?.classList.add('active-nav-item');
+        window.location.hash = `${this.currentSectionElement.id}`;
     }
 
     showSubsection(index) {
@@ -136,6 +154,7 @@ class PageNavigator {
         this.currentSubsection = index;
         this.currentSubsectionElement.classList.remove('hidden');
         this.currentSubsectionNavElement?.classList.add('active-nav-item');
+        window.location.hash = `${this.currentSectionElement.id}-${this.currentSubsection}`;
     }
 
     renderNavigation() {

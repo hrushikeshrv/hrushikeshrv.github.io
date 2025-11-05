@@ -1,4 +1,20 @@
 {
+  "tugoz-co-op": {
+    "logo": {
+      "path": "images/work/tugoz.svg",
+      "width": 75,
+      "height": 75
+    },
+    "heading": "Tugoz LLC",
+    "workRole": "Software Engineering Co-op",
+    "description":[
+      "Created testing and production environment for Flutter applications, integrating Firebase Test Lab and AWS Device Farm",
+      "Implemented CI/CD pipelines for automated building, testing, and publishing of Flutter apps to Play Store and App Store",
+      "Built test suites using Dart and Mockito, conducted physical and simulated tests, achieving over 90% code coverage"
+    ],
+    "startDate": "August 2025",
+    "endDate": "December 2025"
+  },
   "tugoz": {
     "logo": {
       "path": "images/work/tugoz.svg",
@@ -6,7 +22,7 @@
       "height": 75
     },
     "heading": "Tugoz LLC",
-    "workRole": "Software Development Engineering Intern",
+    "workRole": "Software Engineering Intern",
     "description":[
       "Independently developed a Flutter app for their web-based event management platform, Tugoz, owning the entire project development cycle from ideation to deployment on app stores",
       "Developed software architecture for the Flutter app, including corresponding backend architecture, supporting dynamic event maps, event scheduling, user management, and real-time notifications",

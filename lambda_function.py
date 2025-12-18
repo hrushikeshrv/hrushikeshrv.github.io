@@ -17,6 +17,11 @@ def lambda_handler(event, context):
         request = event['body']
         is_minimal = True
     if is_minimal:
+        # Ignore requests from Assetnote (automated vulnerability scanning)
+        if 'assetnote' in event.get('headers', {}).get('User-Agent', '').lower():
+            return {
+                'statusCode': 200
+            }
         print(f'Received minimal request from event: {event}')
         if isinstance(request, bytes):
             request = request.decode('utf-8', errors='ignore')

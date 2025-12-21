@@ -47,7 +47,6 @@
             }
         </style>
         <link rel="stylesheet" href="css/styles.css">
-        <link rel="stylesheet" href="css/mjxgui.css">
         <link rel="icon" href="images/favicon.png" type="image/x-icon">
 
         <script>
@@ -70,8 +69,9 @@
             }
         </script>
         <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-        <script src="js/mjxgui.min.js"></script>
         <script src="js/matter.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/guimath@0.2.0/dist/guimath.umd.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/guimath@0.2.0/dist/guimath.min.css">
         <script src="js/theme-selector.js"></script>
         <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/42.0.2/ckeditor5.css" />
         <link rel="stylesheet" href="css/ck-theme.css">
@@ -144,7 +144,7 @@
 
                     <div class="flexbox-column aifs jcfs" style="padding-left: 10px;">
                         <h1 id="nametag" class="pageload-slide-up">Hrushikesh Vaidya</h1>
-                        <span>Computer Engineering student at the University of Southern California.</span>
+                        <span>Incoming Software Engineer at Bloomberg NYC<br>MS Computer Engineering at the University of Southern California</span>
                         <div class="flexbox-row ajc mt-10">
                             <span class="contact-link flexbox-row aic space-lr" style="margin-left: 0;">
                                 <a href="https://github.com/hrushikeshrv" target="_blank" class="flexbox-row aic">
@@ -258,10 +258,10 @@
 
         <script>
             let gui;
-            function initMJXGUIDemo() {
-                const outputContainer = document.querySelector('#mjxgui-output-container');
-                const outputTable = document.querySelector('#mjxgui-output');
-                gui = new MJXGUI('.mjxgui-demo-button', function() {
+            function initGUIMathDemo() {
+                const outputContainer = document.querySelector('#guimath-output-container');
+                const outputTable = document.querySelector('#guimath-output');
+                gui = new GUIMath('.guimath-demo-button', function() {
                     outputContainer.classList.remove('hidden');
                     let tr = document.createElement('tr');
                     tr.innerHTML = `<td>$$ ${gui.getLatex()} $$</td><td>${gui.getLatex()}</td>`;
@@ -285,11 +285,11 @@
                 .then(json => {
                     const projectCardRenderer    = new CardRenderer(json, projectContainer);
                     projectCardRenderer.renderCard(json['money-warden']);
-                    projectCardRenderer.renderCard(json.mjxgui);
+                    projectCardRenderer.renderCard(json.guimath);
                     projectCardRenderer.renderCard(json.docxlatex);
                 })
                 .then(() => {
-                    initMJXGUIDemo();
+                    initGUIMathDemo();
                 });
 
             const workContainer = document.querySelector('#work-container');

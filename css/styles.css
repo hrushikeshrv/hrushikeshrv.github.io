@@ -723,11 +723,11 @@ tbody {
     font-size: 1.2rem;
 }
 
-.mjxgui-demo-button {
+.guimath-demo-button {
     cursor: pointer;
 }
 
-#mjxgui_editor_window {
+#guimath_editor_window {
     z-index: 5;
 }
 

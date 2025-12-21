@@ -25,7 +25,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Poppins&family=JetBrains+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/mjxgui.css">
+    <link rel="stylesheet" href="css/guimath.css">
     <link rel="icon" href="images/favicon.png" type="image/x-icon">
 
     <script>
@@ -48,7 +48,7 @@
         }
     </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-    <script src="js/mjxgui.min.js"></script>
+    <script src="js/guimath.min.js"></script>
     <script src="js/matter.js"></script>
     <script src="js/theme-selector.js"></script>
 
@@ -187,10 +187,10 @@
 
 <script>
     let gui;
-    function initMJXGUIDemo() {
-        const outputContainer = document.querySelector('#mjxgui-output-container');
-        const outputTable = document.querySelector('#mjxgui-output');
-        gui = new MJXGUI('.mjxgui-demo-button', function() {
+    function initGUIMathDemo() {
+        const outputContainer = document.querySelector('#guimath-output-container');
+        const outputTable = document.querySelector('#guimath-output');
+        gui = new GUIMath('.guimath-demo-button', function() {
             outputContainer.classList.remove('hidden');
             let tr = document.createElement('tr');
             tr.innerHTML = `<td>$$ ${gui.getLatex()} $$</td><td>${gui.getLatex()}</td>`;
@@ -214,7 +214,7 @@
             projectCardRenderer.render();
         })
         .then(() => {
-            initMJXGUIDemo();
+            initGUIMathDemo();
             initTimelineDemo();
         });
 </script>

@@ -26,6 +26,7 @@ class PageNavigator {
                 this.isThrottled = false;
             }, 500); // Throttle for 500 ms
         }, { passive: true });
+
         window.addEventListener('keyup', (e) => {
             if (e.key === 'ArrowDown' || e.key === 'PageDown') {
                 this.showNextSubsection();
@@ -96,7 +97,7 @@ class PageNavigator {
     showNextSubsection() {
         if (
             this.currentSubsection >= this.sections[this.currentSectionName].length - 1
-            && this.currentSection >= this.sectionNames.length
+            && this.currentSection >= this.sectionNames.length - 1
         ) return;
         if (this.currentSubsection >= this.sections[this.currentSectionName].length - 1) {
             this.currentSection++;
@@ -150,7 +151,7 @@ class PageNavigator {
     showSubsection(index) {
         if (index < 0 || index >= this.sections[this.currentSectionName].length) return;
         this.currentSubsectionNavElement?.classList.remove('active-nav-item');
-        this.currentSubsectionElement.classList.add('hidden');
+        this.currentSubsectionElement?.classList.add('hidden');
         this.currentSubsection = index;
         this.currentSubsectionElement.classList.remove('hidden');
         this.currentSubsectionNavElement?.classList.add('active-nav-item');

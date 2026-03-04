@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="light-theme hide-scrollbar">
+<html lang="en" class="light-theme">
     <head>
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-TGM5F6WJNV"></script>
@@ -139,7 +139,7 @@
                     </nav>
                 </header>
 
-                <section id="about" data-name="About">
+                <section id="about" data-name="About" style="border-top: none; padding-top: 20px;">
                     <h1 id="nametag" class="pageload-slide-up pageload-delay-1">Hrushikesh Vaidya</h1>
                     <div class="flexbox-row column-full section-content">
                         <div class="flexbox-column column-half pad-20">
@@ -168,15 +168,14 @@
                     </div>
                 </section>
 
-                <section class="hidden" id="study" data-name="Education">
+                <section id="study" data-name="Education">
                     <h1 class="section-heading pageload-fade-in">Education</h1>
                     <div class="section-card" id="education-usc" data-name="USC">
-                        <h2 class="section-title pageload-slide-up">University <span style="font-family: var(--fancy-font);">of</span> Southern California</h2>
+                        <h2 class="section-title pageload-slide-up"><img src="./images/education/usc.png" alt="USC Logo" style="height: 4rem; margin: 0;"> University <span style="font-family: var(--fancy-font);">of</span> Southern California</h2>
                         <div class="flexbox-row column-full mt-20 section-content">
                             <div class="flexbox-column column-half pageload-fade-in">
-                                <div class="section-image-container section-image-count-2">
-                                    <img src="./images/education/usc-3.jpg" class="section-image-1" alt="">
-                                    <img src="./images/education/usc-2.jpg" class="section-image-2" alt="">
+                                <div class="section-image-container">
+                                    <img src="./images/education/usc-3.jpg" alt="University of Southern California">
                                 </div>
                             </div>
                             <div class="flexbox-column column-half section-content-container pageload-fade-in pageload-delay-1">
@@ -190,17 +189,17 @@
                         </div>
                     </div>
                 </section>
-                <section class="hidden" id="work" data-name="Work">
+                <section id="work" data-name="Work">
                     <h1 class="section-heading pageload-fade-in">Work experience</h1>
                 </section>
-                <section class="hidden" id="cocurricular" data-name="Co-curricular">
+                <section id="cocurricular" data-name="Co-curricular">
                     <h1 class="section-heading pageload-fade-in">Co-curricular Work</h1>
                 </section>
-                <section class="hidden" id="projects" data-name="Projects">
+                <section id="projects" data-name="Projects">
                     <h1 class="section-heading pageload-fade-in">Projects</h1>
                 </section>
             </main>
-            <nav id="inter-section-nav" class="flexbox-column jcc aife hide-scrollbar"></nav>
+<!--            <nav id="inter-section-nav" class="flexbox-column jcc aife hide-scrollbar"></nav>-->
         </div>
         
         <script>
@@ -263,7 +262,7 @@
                 );
                 projectsCardRenderer.render();
 
-                pageNavigator = new PageNavigator();
+                // pageNavigator = new PageNavigator();
             }
             init();
         </script>

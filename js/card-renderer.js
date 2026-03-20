@@ -15,19 +15,6 @@ class CardRenderer {
 
     renderCard(name) {
         const data = this.data[name];
-        let workListItems = '';
-        if (this.cardType === 'work' && data.responsibilities) {
-            for (const responsibility of data.responsibilities) {
-                workListItems += `<li>${responsibility}</li>`;
-            }
-        }
-        let workStoryParagraphs = '';
-        if (this.cardType === 'work' && data.story) {
-            for (const paragraph of data.story) {
-                workStoryParagraphs += `<p>${paragraph}</p>`;
-            }
-        }
-
         const container = document.createElement('div');
         container.classList.add('section-card');
         container.dataset.name = data.heading;
@@ -38,25 +25,65 @@ class CardRenderer {
                 ${data.logo ? `<img src="${data.logo.path}" alt="${name} logo" height="${data.logo.height}" width="${data.logo.width}" class="${data.logo.classList || ''}">` : ''}
                 <span>${data.heading}</span>
             </h2>
-            <div class="flexbox-row column-full section-content">
+        `;
+
+        if (this.cardType === 'work') {
+            let workListItems = '';
+            if (data.responsibilities) {
+                for (const responsibility of data.responsibilities) {
+                    workListItems += `<li>${responsibility}</li>`;
+                }
+            }
+            let workStoryParagraphs = '';
+            if (data.story) {
+                for (const paragraph of data.story) {
+                    workStoryParagraphs += `<p>${paragraph}</p>`;
+                }
+            }
+            container.innerHTML += `
+            <div class="flexbox-row column-full section-content"> 
                 <div class="flexbox-column column-half section-content-container pageload-fade-in" style="padding-left: 0;">
-                    <strong class="work-role">${data.workRole}</strong>
-                    <span class="work-location-dates">${data.location ? data.location + '<span class="space-lr"></span> &centerdot; <span class="space-lr"></span>' : ''}  ${data.startDate} - ${data.endDate}</span>
-                    ${
-                    this.cardType === 'work'
-                        ? `<ul>${workListItems}</ul>`
-                        : ''
-                    }
+                    ${data.workRole ? `<strong class="work-role">${data.workRole}</strong>` : ''} 
+                    <span class="work-location-dates">
+                        ${data.location ? data.location + '<span class="space-lr"></span> &centerdot; <span class="space-lr"></span>' : ''}  
+                        ${data.startDate ? data.startDate + ' - ' : ''} ${data.endDate ? data.endDate : data.startDate ? 'Present' : ''}
+                    </span>
+                     <ul>${workListItems}</ul>
                 </div>
                 <div class="flexbox-column column-half section-content-container pageload-fade-in">
-                    ${
-                    this.cardType === 'work'
-                        ? workStoryParagraphs 
-                        : ''
-                    }
+                    ${workStoryParagraphs}
                 </div>
             </div>
-        `;
+            `;
+        }
+        else if (this.cardType === 'projects') {
+            let projectStoryParagraphs = '';
+            if (data.description) {
+                for (const description of data.description) {
+                    if (Array.isArray(description))
+                        projectStoryParagraphs += `<p class="${description.splice(1).join(' ')}">${description[0]}</p>`;
+                    else
+                        projectStoryParagraphs += `<p>${description}</p>`;
+                }
+            }
+            if (data.links) {
+                for (const link of data.links) {
+
+                }
+            }
+
+            container.innerHTML += `
+            <div class="flexbox-row column-full section-content"> 
+                <div class="flexbox-column column-full section-content-container pageload-fade-in" style="padding-left: 0;">
+                    ${projectStoryParagraphs}
+                </div>
+            </div>
+            
+            <div class="flexbox-row column-full section-content">
+                
+            </div>
+            `;
+        }
         this.container.appendChild(container);
     }
 

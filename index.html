@@ -129,8 +129,8 @@
                     <nav class="flexbox-row ajc">
                         <a href="#top" class="section-link">About</a>
                         <a href="#study" class="section-link">Study</a>
-                        <a href="#work" class="section-link">Work</a>
                         <a href="#projects" class="section-link">Projects</a>
+                        <a href="#work" class="section-link">Work</a>
                         <a href="/data/resume-hrushikesh-vaidya.pdf" target="_blank" class="section-link">Resume</a>
                         <button id="change-theme-button" class="flexbox-row aic" aria-label="Change Theme">
                             <span class="dark-theme-button material-symbols-outlined">moon_stars</span>
@@ -171,7 +171,7 @@
                 <section id="study" data-name="Education">
                     <h1 class="section-heading pageload-fade-in">Education</h1>
                     <div class="section-card" id="education-usc" data-name="USC">
-                        <h2 class="section-title pageload-slide-up"><img src="./images/education/usc.png" alt="USC Logo" style="height: 4rem; margin: 0;"> University <span style="font-family: var(--fancy-font);">of</span> Southern California</h2>
+                        <h2 class="section-title pageload-slide-up"><img src="./images/education/usc.png" class="dark-theme-invert" alt="USC Logo" style="height: 4rem; margin: 0;"> University <span style="font-family: var(--fancy-font);">of</span> Southern California</h2>
                         <div class="flexbox-row column-full mt-20 section-content">
                             <div class="flexbox-column column-half pageload-fade-in">
                                 <div class="section-image-container">
@@ -192,14 +192,13 @@
                 <section id="work" data-name="Work">
                     <h1 class="section-heading pageload-fade-in">Work experience</h1>
                 </section>
-                <section id="cocurricular" data-name="Co-curricular">
-                    <h1 class="section-heading pageload-fade-in">Co-curricular Work</h1>
-                </section>
                 <section id="projects" data-name="Projects">
                     <h1 class="section-heading pageload-fade-in">Projects</h1>
                 </section>
+                <section id="cocurricular" data-name="Co-curricular">
+                    <h1 class="section-heading pageload-fade-in">Co-curricular Work</h1>
+                </section>
             </main>
-<!--            <nav id="inter-section-nav" class="flexbox-column jcc aife hide-scrollbar"></nav>-->
         </div>
         
         <script>
@@ -234,7 +233,7 @@
                     workData,
                     workContainer,
                     'work',
-                    hiddenKeys=['coepweb', 'coepidealabs']
+                    hiddenKeys=['coepweb', 'coepidealabs', 'tugoz-co-op']
                 );
                 workCardRenderer.render();
 
@@ -246,7 +245,7 @@
                     coCurricularData,
                     coCurricularContainer,
                     'co-curricular',
-                    hiddenKeys=['deeplearning']
+                    hiddenKeys=['deeplearning', 'aceatusc', 'aoc']
                 );
                 coCurricularCardRenderer.render();
 
@@ -258,11 +257,9 @@
                     projectsData,
                     projectsContainer,
                     'projects',
-                    hiddenKeys=['trak', 'classberg', 'classberg-exed', 'chainrxn']
+                    hiddenKeys=['trak', 'classberg', 'classberg-exed', 'chainrxn', 'chessengine']
                 );
                 projectsCardRenderer.render();
-
-                // pageNavigator = new PageNavigator();
             }
             init();
         </script>

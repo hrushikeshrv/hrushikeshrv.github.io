@@ -175,7 +175,7 @@ button {
     outline: none;
     border: none;
     background-color: var(--background-color);
-    color: var(--default-font-color);
+    color: var(--default-font);
 }
 
 button.cta-button {
@@ -862,13 +862,16 @@ main {
 section {
     max-width: 1500px;
     min-width: min(100%, 1500px);
-    min-height: calc(100svh - 66px);
     margin: auto;
     padding: 30px 20px 40px 20px;
     display: flex;
     flex-flow: column nowrap;
     align-items: stretch;
     border-top: 2px solid var(--font-color);
+}
+
+section#about {
+    min-height: 100svh;
 }
 
 h1.section-heading {
@@ -1001,4 +1004,13 @@ h1.section-heading {
     #bio-container p {
         font-size: 1rem;
     }
+}
+
+#projects {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+}
+
+#projects h1.section-heading {
+    grid-column: 1 / span 2;
 }

@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en" class="light-theme">
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-TGM5F6WJNV"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-TGM5F6WJNV');
+        </script>
+
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta name="language" content="en">
+        <meta name="author" content="Hrushikesh Vaidya | @hrushikeshrv on GitHub">
+        <meta name="theme-color" content="rgb(46, 48, 51)">
+        <meta name="description" content="Hi, I'm Hrushikesh, a full-stack web developer based in Los Angeles.">
+        <meta name="keywords" content="web developer, fullstack developer, los angeles, pune, web developer in la, web developer in pune">
+        <meta name="robots" content="index, follow">
+
+        <meta property="og:title" content="Hrushikesh Vaidya">
+        <meta property="og:type" content="website">
+        <meta property="og:image" content="https://hrus.in/images/profile-photo-square.jpg">
+        <meta property="og:url" content="https://hrus.in">
+        <meta property="og:description" content="Hi, I'm Hrushikesh, a full-stack web developer based in Los Angeles.">
+
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="canonical" href="https://hrus.in">
+        <title>Hrushikesh Vaidya</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Felipa&family=Lexend:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <style>
+            .material-symbols-outlined {
+                font-variation-settings:
+                        'FILL' 0,
+                        'wght' 400,
+                        'GRAD' 0,
+                        'opsz' 24;
+                color: var(--font-color);
+            }
+        </style>
+        <link rel="stylesheet" href="css/styles.css">
+        <link rel="icon" href="images/favicon.png" type="image/x-icon">
+
+        <script>
+            MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']],
+                    displayMath: [['$$', '$$']],
+                },
+                svg: {
+                    fontCache: 'global',
+                },
+                options: {
+                    menuOptions: {
+                        settings: {
+                            zoom: 'NoZoom',
+                            zscale: '250%',
+                        }
+                    }
+                },
+            }
+        </script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/guimath@0.2.0/dist/guimath.umd.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/guimath@0.2.0/dist/guimath.min.css">
+        <script src="js/theme-selector.js"></script>
+        <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/42.0.2/ckeditor5.css" />
+        <link rel="stylesheet" href="css/ck-theme.css">
+    </head>
+    <body class="hide-scrollbar">
+        <div id="top"></div>
+        <div class="floating-popup-container hidden hide-scrollbar" id="contact-form-popup-container">
+            <div class="flexbox-column pad-30 floating-popup hide-scrollbar" id="contact-form-container">
+                <form action="" id="contact-form" class="flexbox-column pageload-slide-up">
+                    <div class="flexbox-row jcsb">
+                        <h1 class="pageload-fade-in mb-10" style="margin-top: 0;">Send a Message</h1>
+                        <button class="flexbox-row ajc close-popup-button" style="margin-left: 0; font-size: 1rem; cursor: pointer;">
+                            <span class="material-symbols-outlined">close</span>
+                            <span class="space-lr">Close</span>
+                        </button>
+                    </div>
+
+                    <div id="send-message-spinner" class="hidden flexbox-row ajc" style="height: min(90svh, 800px);">
+                        <span class="donutSpinner smallSpinner"></span>
+                        <span class="space-lr">Sending your message</span>
+                    </div>
+
+                    <span class="success-message mb-10 mt-20 hidden" id="message-sent-successfully">
+                        Thank you for your message, I'll get back to you soon!
+                    </span>
+                        <span class="error-message mb-10 mt-20 hidden" id="message-send-error">
+                        An error occurred while sending your message :/
+                    </span>
+
+                    <div class="flexbox-row">
+                        <div class="flexbox-column column-half" style="padding-right: 10px;">
+                            <label for="id_email">Your Email:</label>
+                            <input type="email" name="email" id="id_email" required>
+                        </div>
+                        <div class="flexbox-column column-half" style="padding-left: 10px;">
+                            <label for="id_name">Your Name (optional):</label>
+                            <input type="text" name="name" id="id_name">
+                        </div>
+                    </div>
+                    <label for="id_subject">Subject (optional):</label>
+                    <input type="text" name="subject" id="id_subject">
+
+                    <label for="id_message">Message:</label>
+                    <textarea name="message" id="id_message" cols="30" rows="10" required></textarea>
+
+                    <button class="cta-button mt-30 flexbox-row ajc" type="submit" id="submit">
+                        <span class="material-symbols-outlined">send</span>
+                        <strong>Send</strong>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div style="max-width: 1900px; margin: auto;">
+            <main class="flexbox-column hide-scrollbar">
+                <header class="flexbox-row ajc pad-20">
+                    <nav class="flexbox-row ajc">
+                        <a href="#top" class="section-link mobile-hide">About</a>
+                        <a href="#work" class="section-link">Work</a>
+                        <a href="#projects" class="section-link">Projects</a>
+                        <a href="/data/resume-hrushikesh-vaidya.pdf" target="_blank" class="section-link">Resume</a>
+                        <a href="" class="section-link contact-me-button" id="contact-link"><span class="mobile-element material-symbols-outlined">send</span><span class="mobile-hide">Contact</span></a>
+                    </nav>
+                </header>
+
+                <section id="about" data-name="About" style="border-top: none; padding-top: 20px;">
+                    <h1 id="nametag" class="pageload-slide-up pageload-delay-1">Hrushikesh Vaidya</h1>
+                    <div class="flexbox-row column-full section-content">
+                        <div class="flexbox-column column-half pad-20">
+                            <img src="/images/profile-photo-light.jpg" alt="Hrushikesh Vaidya" id="profile-photo" class="mt-10 center pageload-fade-in">
+                        </div>
+                        <div class="flexbox-column column-half pad-20 pageload-fade-in pageload-delay-1" id="bio-container">
+                            <p>
+                                Hi, I'm Hrushikesh, a Computer Engineering student at the University of Southern California.
+                                I wrote my first Python program in December 2019, and since then I've been in love with <a
+                                    href="https://hrus.in/ocw" class="a">learning more</a> about computer science and programming
+                                every day.
+                            </p>
+                            <p>
+                                I primarily work as a backend developer with a Python-Django-Postgres stack. I also have experience with fullstack development,
+                                including DevOps and AWS.
+                            </p>
+                            <p>
+                                In my free time, I'm currently working on a <a href="https://github.com/hrushikeshrv/money-warden" class="a" target="_blank">spreadsheet-based budgeting app</a>,
+                                a few other <a href="https://github.com/hrushikeshrv" class="a" target="_blank">open source projects</a> of my
+                                own, and contributing to <a href="#co-curricular-container" class="a">Django</a> from time to time.
+                            </p>
+                            <p>
+                                I'm also a tennis player and amateur powerlifter ️🏋🏻‍♂️
+                            </p>
+                            <div class="flexbox-row aifs jcfs">
+                                <span class="contact-link flexbox-row aic space-lr" style="margin-left: 0;">
+                                    <a href="https://github.com/hrushikeshrv" target="_blank" class="flexbox-row aic">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github space-lr" style="margin-left: 0;" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                          <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"></path>
+                                        </svg>
+                                        <span>github</span>
+                                    </a>
+                                </span>
+                                <span class="space-lr">&bull;</span>
+                                <span class="contact-link flexbox-row aic space-lr">
+                                    <a href="mailto:hrushikeshrv@gmail.com" target="_blank" class="flexbox-row aic">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail space-lr" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                          <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z"></path>
+                                          <path d="M3 7l9 6l9 -6"></path>
+                                        </svg>
+                                        <span>email</span>
+                                    </a>
+                                </span>
+                                <span class="space-lr">&bull;</span>
+                                <span class="contact-link flexbox-row aic space-lr">
+                                    <a href="https://linkedin.com/in/hrushikeshrv" target="_blank" class="flexbox-row aic">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-linkedin space-lr" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                          <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path>
+                                          <path d="M8 11l0 5"></path>
+                                          <path d="M8 8l0 .01"></path>
+                                          <path d="M12 16l0 -5"></path>
+                                          <path d="M16 16v-3a2 2 0 0 0 -4 0"></path>
+                                        </svg>
+                                        <span>linkedin</span>
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="work" data-name="Work">
+                    <div class="flexbox-column column-half center" id="work-container">
+                        <h1 class="section-heading pageload-fade-in">Work experience</h1>
+
+                        <template id="work-card-template">
+                            <div class="work-card card pageload-slide-up">
+                                <div class="flexbox-row column-full aic jcfs" style="flex-wrap: nowrap;">
+                                    <img src="" alt="" class="work-logo" style="margin-right: 20px;">
+                                    <div class="flexbox-column">
+                                        <h1 class="work-company"></h1>
+                                        <span class="work-job-title"></span>
+                                        <span class="work-date"></span>
+                                        <span class="work-location"></span>
+                                    </div>
+                                </div>
+                                <div style="padding: 0 20px;">
+                                    <ul class="work-description"></ul>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </section>
+                <section id="projects" data-name="Projects">
+                    <div class="flexbox-column column-half center" id="project-container">
+                        <h1 class="section-heading pageload-fade-in">Projects</h1>
+
+                        <template id="project-template">
+                            <div class="project-card card pageload-slide-up">
+                                <div class="flexbox-row column-full aic jcfs" style="flex-wrap: nowrap;">
+                                    <img src="" alt="" class="project-logo" style="margin-right: 20px;">
+                                    <h1 class="project-title"></h1>
+                                </div>
+                                <div style="padding: 0 20px;">
+                                    <ul class="project-description"></ul>
+                                </div>
+                                <div class="mt-20 project-links flexbox-row aifs jcfs"></div>
+                            </div>
+                        </template>
+                    </div>
+                </section>
+                <section id="cocurricular" data-name="Co-curricular">
+                    <div class="flexbox-column column-half center" id="co-curricular-container">
+                        <h1 class="section-heading pageload-fade-in">Co-curricular Work</h1>
+
+                        <template id="co-curricular-template">
+                            <div class="co-curricular-card card pageload-slide-up">
+                                <div class="flexbox-row column-full aic jcfs" style="flex-wrap: nowrap;">
+                                    <img src="" alt="" class="co-curricular-logo" style="margin-right: 20px;">
+                                    <h1 class="co-curricular-title"></h1>
+                                </div>
+                                <div style="padding: 0 20px;">
+                                    <ul class="co-curricular-description"></ul>
+                                </div>
+                                <div class="mt-20 co-curricular-links flexbox-row aifs jcfs"></div>
+                            </div>
+                        </template>
+                    </div>
+                </section>
+
+                <footer class="flexbox-row ajc pad-20">
+                    <span>&copy; <span class="copyright-year"></span> Hrushikesh Vaidya</span>
+                </footer>
+            </main>
+        </div>
+        <script>
+            let gui;
+            function initGUIMathDemo() {
+                const outputContainer = document.querySelector('#guimath-output-container');
+                const outputTable = document.querySelector('#guimath-output');
+                gui = new GUIMath('.guimath-demo-button', function() {
+                    outputContainer.classList.remove('hidden');
+                    let tr = document.createElement('tr');
+                    tr.innerHTML = `<td>$$ ${gui.getLatex()} $$</td><td>${gui.getLatex()}</td>`;
+                    outputTable.appendChild(tr);
+                    MathJax.typesetPromise([tr]).then(() => {})
+                }, {
+                    theme: 'light'
+                });
+            }
+            initGUIMathDemo();
+        </script>
+        <script src="https://unpkg.com/@popperjs/core@2"></script>
+        <script src="https://unpkg.com/tippy.js@6"></script>
+        <script>
+            tippy('[data-tippy-content]');
+        </script>
+        <script>
+            document.querySelectorAll('.copyright-year').forEach(el => { el.innerHTML = new Date().getFullYear().toString() })
+        </script>
+        <script type="importmap">
+            {
+                "imports": {
+                    "ckeditor5": "https://cdn.ckeditor.com/ckeditor5/42.0.2/ckeditor5.js",
+                    "ckeditor5/": "https://cdn.ckeditor.com/ckeditor5/42.0.2/"
+                }
+            }
+        </script>
+        <script>
+            // Global variable to get CKEditor instance for the contact message.
+            let messageEditor;
+        </script>
+        <script type="module">
+            import {
+                ClassicEditor,
+                Autoformat,
+                Bold,
+                Font,
+                Italic,
+                Underline,
+                BlockQuote,
+                Essentials,
+                Heading,
+                Indent,
+                IndentBlock,
+                Link,
+                List,
+                Mention,
+                Paragraph,
+                PasteFromOffice,
+                Table,
+                TableColumnResize,
+                TableToolbar,
+                TextTransformation,
+            } from 'ckeditor5';
+
+            ClassicEditor
+                .create( document.querySelector( '#id_message' ), {
+                    plugins: [
+                        Autoformat, BlockQuote, Heading, Indent, IndentBlock, Link, List,
+                        Essentials, Bold, Italic, Underline, Font, Paragraph, Mention, PasteFromOffice,
+                        Table, TableToolbar, TableColumnResize, TextTransformation
+                    ],
+                    toolbar: {
+                        items: [
+                            'undo', 'redo', '|', 'heading', 'bold', 'italic', 'underline', '|', 'link', 'insertTable', 'blockquote',
+                            '|', 'subscript', 'superscript', '|', 'fontSize', 'fontFamily', '|', 'bulletedList', 'numberedList', '|',
+                            'outdent', 'indent',
+                        ]
+                    },
+                    heading: {
+                        options: [
+                            {
+                                model: 'paragraph',
+                                title: 'Paragraph',
+                                class: 'ck-heading_paragraph',
+                            },
+                            {
+                                model: 'heading1',
+                                view: 'h1',
+                                title: 'Heading 1',
+                                class: 'ck-heading_heading1',
+                            },
+                            {
+                                model: 'heading2',
+                                view: 'h2',
+                                title: 'Heading 2',
+                                class: 'ck-heading_heading2',
+                            },
+                            {
+                                model: 'heading3',
+                                view: 'h3',
+                                title: 'Heading 3',
+                                class: 'ck-heading_heading3',
+                            },
+                            {
+                                model: 'heading4',
+                                view: 'h4',
+                                title: 'Heading 4',
+                                class: 'ck-heading_heading4',
+                            },
+                        ],
+                    },
+                    link: {
+                        addTargetToExternalLinks: true,
+                        defaultProtocol: 'https://',
+                    },
+                    table: {
+                        contentToolbar: ['tableColumn', 'tableRow', 'mergeTableCells'],
+                    },
+                } )
+                .then(editor => {messageEditor = editor;})
+                .catch(error => console.error(error));
+        </script>
+        <script src="js/contact.js"></script>
+    </body>
+</html>

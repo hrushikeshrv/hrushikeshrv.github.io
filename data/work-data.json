@@ -1,4 +1,18 @@
 {
+  "bloomberg": {
+    "logo": {
+      "path": "images/work/bloomberg.jpeg",
+      "width": 75,
+      "height": 75
+    },
+    "heading": "Bloomberg",
+    "workRole": "Software Engineer",
+    "location": "New York City",
+    "description": [
+      "Incoming software engineer at Bloomberg's New York City office"
+    ],
+    "startDate": "June 2026"
+  },
   "tugoz-co-op": {
     "logo": {
       "path": "images/work/tugoz.svg",
@@ -7,6 +21,7 @@
     },
     "heading": "Tugoz LLC",
     "workRole": "Software Engineering Co-op",
+    "location": "Los Angeles",
     "description":[
       "Created testing and production environment for Flutter applications, integrating Firebase Test Lab and AWS Device Farm",
       "Implemented CI/CD pipelines for automated building, testing, and publishing of Flutter apps to Play Store and App Store",
@@ -25,7 +40,7 @@
     "workRole": "Software Engineering Intern",
     "shortName": "Tugoz LLC",
     "location": "Los Angeles",
-    "responsibilities":[
+    "description":[
       "Independently developed a Flutter app for their web-based event management platform, Tugoz, owning the entire project development cycle from ideation to deployment on app stores",
       "Developed software architecture for the Flutter app, including corresponding backend architecture, supporting dynamic event maps, event scheduling, user management, and real-time notifications",
       "Published the app on Google Play Store and Apple App Store",
@@ -54,9 +69,9 @@
     "heading": "Wide Wings Media",
     "shortName": "Wide Wings",
     "location": "Pune",
-    "workRole": "Fullstack Developer, DevOps, UI/UX",
-    "responsibilities": [
-      "Fully redesigned and replaced the existing website for <a href=\\\"https://ticketkhidakee.com\\\" target=\\\"_blank\\\" class=\\\"a\\\">ticketkhidakee.com</a>, replacing the existing LAMP stack with a Django-Postgres stack, leading to a ∼100% increase in new user traffic and ∼30% increase in user retention over 6 months",
+    "workRole": "Fullstack Developer",
+    "description": [
+      "Fully redesigned and replaced the existing website for ticketkhidakee.com, replacing the existing LAMP stack with a Django-Postgres stack, leading to a ∼100% increase in new user traffic and ∼30% increase in user retention over 6 months",
       "Designed a robust cloud architecture on AWS, maintaining P95 latency below 100ms with ∼10,000 concurrent users",
       "Configured global CDN on AWS CloudFront and designed a caching policy successfully handling ∼500,000 daily users"
     ],
@@ -79,7 +94,7 @@
     "shortName": "Mastercard",
     "location": "Pune",
     "workRole": "Software Development Intern",
-    "responsibilities": [
+    "description": [
       "Wrote a serde protocol to translate between protocol buffers and AVRO-based schemas for event-driven applications",
       "Facilitated communication between heterogenous serialization format apps, reducing the data transformation delay by ∼15%",
       "Wrote a proof-of-concept Spring application for the implemented protocol, hosted on the internal Mastercard repository"
@@ -103,7 +118,7 @@
     "heading": "Student Researcher, COEP IDEA Labs",
     "shortName": "IDEA Labs",
     "workRole": "Data Acquisition & Robotics Team",
-    "responsibilities": [
+    "description": [
       "Worked in an interdisciplinary team to build data acquisition robots for collecting leaf and soil data for soyabean plants in Indian farms.",
       "Designed a rover-like robot to be driven between rows of crops, and a hand-held device to capture data for farms too dense for the rover."
     ],
@@ -126,7 +141,7 @@
     "heading": "COEP Webteam",
     "shortName": "Webteam",
     "workRole": "Student Contributor",
-    "responsibilities": [
+    "description": [
       "Maintained the college website and its on-prem servers. Managed a Drupal based CMS and coordinated with various other clubs, faculty, and staff to keep the website up to date."
     ],
     "story": [

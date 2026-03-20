@@ -220,22 +220,30 @@ code {
     padding: 1px 3px;
 }
 
-a.button-link {
-    padding: 10px 7px;
+.pill-link {
+    padding: 5px 7px;
     border: none;
-    border-radius: 6px;
-    font-family: var(--decorative-font);
-    font-weight: 600;
+    border-radius: 50px;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--monospace-font);
     background-color: var(--background-dark-1);
     transition: background-color ease 0.25s;
     font-size: 0.9rem;
+    margin: 5px 7px;
 }
 
-a.button-link:hover {
+.pill-link svg {
+    margin-right: 5px;
+}
+
+.pill-link:hover {
     background-color: var(--background-dark-2);
 }
 
-a.button-link:active {
+.pill-link:active {
     background-color: var(--background-color);
 }
 
@@ -807,10 +815,21 @@ main header {
     z-index: 5;
 }
 
+main footer {
+    border-top: 2px solid var(--font-color);
+    background-color: var(--background-color);
+}
+
 .section-link {
     margin: 0 20px;
     position: relative;
     font-family: var(--monospace-font);
+}
+
+@media (max-width: 500px) {
+    .section-link {
+        margin: 0 10px;
+    }
 }
 
 
@@ -868,10 +887,6 @@ section {
     flex-flow: column nowrap;
     align-items: stretch;
     border-top: 2px solid var(--font-color);
-}
-
-section#about {
-    min-height: 100svh;
 }
 
 h1.section-heading {
@@ -937,6 +952,18 @@ h1.section-heading {
     margin: 10px 0;
 }
 
+.card {
+    margin-bottom: 30px;
+}
+
+section ul li {
+    margin-bottom: 10px;
+}
+
+.work-company {
+    margin: 10px 0 0 0;
+}
+
 /*
     hero styles
 */
@@ -976,10 +1003,9 @@ h1.section-heading {
     }
 }
 
-@media(max-width: 800px) {
+@media(max-width: 900px) {
     #nametag {
-        font-size: 3.5rem;
-        margin-top: 10px;
+        display: none;
     }
 }
 
@@ -1004,13 +1030,4 @@ h1.section-heading {
     #bio-container p {
         font-size: 1rem;
     }
-}
-
-#projects {
-    display: grid;
-    grid-template-columns: repeat(2, 50%);
-}
-
-#projects h1.section-heading {
-    grid-column: 1 / span 2;
 }

@@ -1013,6 +1013,13 @@ section ul li {
     width: 100%;
     max-width: 90%;
     border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+@media(max-width: 900px) {
+    #profile-photo {
+        margin-bottom: 0;
+    }
 }
 
 #bio-container p {

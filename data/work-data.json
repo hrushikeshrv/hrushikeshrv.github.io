@@ -7,9 +7,9 @@
     },
     "heading": "Bloomberg",
     "workRole": "Software Engineer",
-    "location": "New York City",
+    "location": "New York, NY",
     "description": [
-      "Incoming software engineer at Bloomberg's New York City office"
+      "Software Engineer in the Network API & Communications team"
     ],
     "startDate": "June 2026"
   },
@@ -21,7 +21,7 @@
     },
     "heading": "Tugoz LLC",
     "workRole": "Software Engineering Co-op",
-    "location": "Los Angeles",
+    "location": "Los Angeles, CA",
     "description":[
       "Created testing and production environment for Flutter applications, integrating Firebase Test Lab and AWS Device Farm",
       "Implemented CI/CD pipelines for automated building, testing, and publishing of Flutter apps to Play Store and App Store",
@@ -39,7 +39,7 @@
     "heading": "Tugoz LLC",
     "workRole": "Software Engineering Intern",
     "shortName": "Tugoz LLC",
-    "location": "Los Angeles",
+    "location": "Los Angeles, CA",
     "description":[
       "Independently developed a Flutter app for their web-based event management platform, Tugoz, owning the entire project development cycle from ideation to deployment on app stores",
       "Developed software architecture for the Flutter app, including corresponding backend architecture, supporting dynamic event maps, event scheduling, user management, and real-time notifications",
@@ -68,7 +68,7 @@
     },
     "heading": "Wide Wings Media",
     "shortName": "Wide Wings",
-    "location": "Pune",
+    "location": "Pune, MH",
     "workRole": "Fullstack Developer",
     "description": [
       "Fully redesigned and replaced the existing website for ticketkhidakee.com, replacing the existing LAMP stack with a Django-Postgres stack, leading to a ∼100% increase in new user traffic and ∼30% increase in user retention over 6 months",
@@ -92,7 +92,7 @@
     },
     "heading": "Mastercard",
     "shortName": "Mastercard",
-    "location": "Pune",
+    "location": "Pune, MH",
     "workRole": "Software Development Intern",
     "description": [
       "Wrote a serde protocol to translate between protocol buffers and AVRO-based schemas for event-driven applications",

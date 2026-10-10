@@ -84,7 +84,7 @@
                         </button>
                     </div>
 
-                    <div id="send-message-spinner" class="hidden flexbox-row ajc" style="height: min(90svh, 800px);">
+                    <div id="send-message-spinner" class="hidden flexbox-row ajc" style="height: min(70svh, 600px);">
                         <span class="donutSpinner smallSpinner"></span>
                         <span class="space-lr">Sending your message</span>
                     </div>
@@ -96,26 +96,28 @@
                         An error occurred while sending your message :/
                     </span>
 
-                    <div class="flexbox-row">
-                        <div class="flexbox-column column-half" style="padding-right: 10px;">
-                            <label for="id_email">Your Email:</label>
-                            <input type="email" name="email" id="id_email" required="">
+                    <div id="contact-form-content" class="flexbox-column">
+                        <div class="flexbox-row">
+                            <div class="flexbox-column column-half" style="padding-right: 10px;">
+                                <label for="id_email">Your Email:</label>
+                                <input type="email" name="email" id="id_email" required="">
+                            </div>
+                            <div class="flexbox-column column-half" style="padding-left: 10px;">
+                                <label for="id_name">Your Name (optional):</label>
+                                <input type="text" name="name" id="id_name">
+                            </div>
                         </div>
-                        <div class="flexbox-column column-half" style="padding-left: 10px;">
-                            <label for="id_name">Your Name (optional):</label>
-                            <input type="text" name="name" id="id_name">
-                        </div>
+                        <label for="id_subject">Subject (optional):</label>
+                        <input type="text" name="subject" id="id_subject">
+
+                        <label for="id_message">Message:</label>
+                        <textarea name="message" id="id_message" cols="30" rows="10" required=""></textarea>
+
+                        <button class="cta-button mt-30 flexbox-row ajc" type="submit" id="submit">
+                            <span class="material-symbols-outlined">send</span>
+                            <strong>Send</strong>
+                        </button>
                     </div>
-                    <label for="id_subject">Subject (optional):</label>
-                    <input type="text" name="subject" id="id_subject">
-
-                    <label for="id_message">Message:</label>
-                    <textarea name="message" id="id_message" cols="30" rows="10" required=""></textarea>
-
-                    <button class="cta-button mt-30 flexbox-row ajc" type="submit" id="submit">
-                        <span class="material-symbols-outlined">send</span>
-                        <strong>Send</strong>
-                    </button>
                 </form>
             </div>
         </div>

@@ -11,6 +11,7 @@ function findGetParameter(parameterName) {
 }
 
 const contactForm = document.querySelector('#contact-form');
+const contactFormContent = contactForm.querySelector('#contact-form-content');
 const contactLinks = document.querySelectorAll('.contact-me-button');
 const contactFormContainer = document.querySelector('#contact-form-popup-container');
 const contactFormCloseButton = document.querySelector('#contact-form-popup-container .close-popup-button');
@@ -25,7 +26,7 @@ submitButton.addEventListener('click', (e) => {
     messageSendErrorMessage.classList.add('hidden');
     messageSendSuccessMessage.classList.add('hidden');
     sendMessageSpinner.classList.add('hidden');
-    contactForm.classList.remove('hidden');
+    contactFormContent.classList.remove('hidden');
 
     const messageInput = document.querySelector('#id_message');
     const nameInput = document.querySelector('#id_name');
@@ -35,7 +36,7 @@ submitButton.addEventListener('click', (e) => {
     contactForm.reportValidity();
     if (contactForm.checkValidity()) {
         sendMessageSpinner.classList.remove('hidden');
-        contactForm.classList.add('hidden');
+        contactFormContent.classList.add('hidden');
         const requestData = {
             name: nameInput.value,
             email: emailInput.value,
@@ -59,15 +60,17 @@ submitButton.addEventListener('click', (e) => {
                 messageEditor.setData('');
                 messageSendSuccessMessage.classList.remove('hidden');
                 messageSendSuccessMessage.scrollIntoView(true);
+                contactFormContent.classList.remove('hidden');
             })
             .catch(error => {
                 console.error(error);
                 messageSendErrorMessage.classList.remove('hidden');
                 messageSendErrorMessage.scrollIntoView(true);
+                contactFormContent.classList.remove('hidden');
             })
             .finally(() => {
                 sendMessageSpinner.classList.add('hidden');
-                contactForm.classList.remove('hidden');
+                contactFormContent.classList.remove('hidden');
             })
     }
 })

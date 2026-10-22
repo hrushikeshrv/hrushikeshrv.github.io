@@ -1,0 +1,1529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Purchase Financial & Comfortable Living Income Planner</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- SheetJS (xlsx) for Excel Export CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <!-- FontAwesome 6 CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#ecfdf5',
+              100: '#d1fae5',
+              500: '#10b981',
+              600: '#059669',
+              700: '#047857',
+              800: '#065f46',
+              900: '#064e3b'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      .print-only {
+        display: block !important;
+      }
+      body {
+        background: white !important;
+        color: black !important;
+      }
+      .chart-container {
+        page-break-inside: avoid;
+        height: 380px !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen antialiased flex flex-col selection:bg-emerald-500 selection:text-white">
+
+  <!-- Top Navigation Header -->
+  <header class="bg-white/95 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40 shadow-xs no-print">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 bg-emerald-600 rounded-xl text-white shadow-sm flex items-center justify-center font-bold text-lg">
+          <i class="fa-solid fa-house-chimney"></i>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 class="text-base sm:text-lg font-extrabold text-slate-900 tracking-tight">NestPlan<span class="text-emerald-600">.io</span></h1>
+            <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 hidden sm:inline-block">Pro Model</span>
+          </div>
+          <p class="text-[11px] text-slate-500 font-medium">Home Purchase & Comfortable Income Forecaster</p>
+        </div>
+      </div>
+
+      <!-- Action buttons & Storage Status -->
+      <div class="flex items-center space-x-2 sm:space-x-3">
+        <!-- Autosave Indicator Tag -->
+        <div id="saveStatusIndicator" class="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-slate-100 text-slate-600 border border-slate-200 transition-all duration-300">
+          <i class="fa-solid fa-cloud text-emerald-500 text-[10px]"></i>
+          <span id="saveStatusText">Saved locally</span>
+        </div>
+
+        <button id="exportCsvBtn" type="button" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-300 bg-white text-xs font-semibold text-slate-700 hover:bg-slate-50 active:bg-slate-100 transition shadow-xs">
+          <i class="fa-solid fa-file-csv text-slate-600"></i>
+          <span>CSV</span>
+        </button>
+        <button id="exportExcelBtn" type="button" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-emerald-300 bg-emerald-50 text-xs font-semibold text-emerald-800 hover:bg-emerald-100 active:bg-emerald-200 transition shadow-xs">
+          <i class="fa-solid fa-file-excel text-emerald-600"></i>
+          <span>Excel</span>
+        </button>
+        <button id="printPdfBtn" type="button" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 text-xs font-semibold text-white hover:bg-slate-800 active:bg-slate-950 transition shadow-xs">
+          <i class="fa-solid fa-print"></i>
+          <span class="hidden sm:inline">Print / </span>PDF
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Notification Toast Container -->
+  <div id="toastContainer" class="fixed bottom-4 right-4 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+  <!-- Main Container -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 w-full">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+      <!-- LEFT COLUMN: Input Parameters Form -->
+      <aside class="lg:col-span-4 bg-white rounded-2xl shadow-sm border border-slate-200/90 p-5 sm:p-6 space-y-6 no-print">
+        
+        <!-- Form Header with Reset & Save Notice -->
+        <div class="border-b border-slate-100 pb-4">
+          <div class="flex items-center justify-between">
+            <h2 class="text-sm font-bold text-slate-900 flex items-center gap-2">
+              <i class="fa-solid fa-sliders text-emerald-600"></i>
+              Financial Parameters
+            </h2>
+            <button id="resetDefaultsBtn" type="button" class="text-xs font-medium text-slate-400 hover:text-rose-600 transition flex items-center gap-1" title="Clear saved settings and restore factory benchmarks">
+              <i class="fa-solid fa-rotate-left text-[10px]"></i>
+              Reset Defaults
+            </button>
+          </div>
+          <div class="flex items-center justify-between mt-1.5">
+            <p class="text-[11px] text-slate-500">Inputs are automatically cached to your device.</p>
+            <span id="mobileSaveBadge" class="sm:hidden text-[10px] text-emerald-600 font-semibold"><i class="fa-solid fa-check"></i> Saved</span>
+          </div>
+        </div>
+
+        <form id="calcForm" class="space-y-4" onsubmit="event.preventDefault();">
+          
+          <!-- 1. Home Value -->
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1" for="homePrice">
+              1. Home Purchase Price ($)
+            </label>
+            <div class="relative rounded-lg shadow-xs">
+              <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                <span class="text-slate-400 text-sm font-medium">$</span>
+              </div>
+              <input type="number" id="homePrice" value="500000" min="20000" step="5000" class="block w-full rounded-lg border border-slate-300 pl-8 pr-3 py-2 text-sm text-slate-900 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none font-medium transition" required>
+            </div>
+          </div>
+
+          <!-- 2. Target Date -->
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1" for="targetDate">
+              2. Target Purchase Date (Month / Year)
+            </label>
+            <input type="month" id="targetDate" class="block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none font-medium transition" required>
+            <div class="flex justify-between items-center mt-1">
+              <p id="timelineMonthCount" class="text-[11px] text-emerald-600 font-medium"></p>
+              <span id="targetSummary" class="text-[10px] text-slate-400 font-mono"></span>
+            </div>
+          </div>
+
+          <!-- 5. Down Payment % -->
+          <div>
+            <div class="flex justify-between items-center mb-1">
+              <label class="text-xs font-semibold text-slate-700" for="downPaymentPercent">
+                5. Planned Down Payment (%)
+              </label>
+              <span id="downPaymentDisplay" class="text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-100 px-2 py-0.5 rounded">20% ($100,000)</span>
+            </div>
+            <input type="range" id="downPaymentPercent" min="3" max="50" step="1" value="20" class="w-full accent-emerald-600 cursor-pointer">
+            <div class="flex justify-between text-[10px] text-slate-400 font-medium">
+              <span>3% (Min Conv)</span>
+              <span>20% (No PMI)</span>
+              <span>50%</span>
+            </div>
+          </div>
+
+          <!-- 3. Post-Purchase Reserve Fund -->
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1" for="reserveFund">
+              3. Post-Purchase Reserve Fund ($)
+              <span class="font-normal text-slate-400 block text-[11px]">Interiors, renovation, moving, and emergency buffer</span>
+            </label>
+            <div class="relative rounded-lg shadow-xs">
+              <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                <span class="text-slate-400 text-sm font-medium">$</span>
+              </div>
+              <input type="number" id="reserveFund" value="25000" min="0" step="1000" class="block w-full rounded-lg border border-slate-300 pl-8 pr-3 py-2 text-sm text-slate-900 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none font-medium transition" required>
+            </div>
+          </div>
+
+          <!-- 6. Annual Savings Increase Rate -->
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1" for="savingsGrowthRate">
+              6. Annual Savings Escalation Rate (%)
+              <span class="font-normal text-slate-400 block text-[11px]">Percent by which monthly savings raise each year</span>
+            </label>
+            <div class="relative rounded-lg shadow-xs">
+              <input type="number" id="savingsGrowthRate" value="5.0" min="0" max="50" step="0.5" class="block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none font-medium transition" required>
+              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+                <span class="text-slate-400 text-sm font-medium">%</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 7. Investment Annual Growth Rate -->
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1" for="investmentReturnRate">
+              7. Expected Investment Annual Return (%)
+              <span class="font-normal text-slate-400 block text-[11px]">Compounded monthly on accumulated portfolio</span>
+            </label>
+            <div class="relative rounded-lg shadow-xs">
+              <input type="number" id="investmentReturnRate" value="6.5" min="0" max="25" step="0.1" class="block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none font-medium transition" required>
+              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+                <span class="text-slate-400 text-sm font-medium">%</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. Property Tax Rate -->
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1" for="propertyTaxRate">
+              4. Expected Property Tax Rate (% / year)
+            </label>
+            <div class="relative rounded-lg shadow-xs">
+              <input type="number" id="propertyTaxRate" value="1.2" min="0.1" max="5" step="0.05" class="block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none font-medium transition" required>
+              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+                <span class="text-slate-400 text-sm font-medium">%</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- COMFORTABLE LIVING & INCOME CONFIGURATION -->
+          <div class="pt-4 border-t border-slate-200">
+            <div class="flex items-center justify-between mb-3">
+              <h3 class="text-xs font-bold uppercase tracking-wider text-emerald-800 flex items-center gap-1.5">
+                <i class="fa-solid fa-shield-halved text-emerald-600"></i>
+                Comfortable Living Engine
+              </h3>
+              <span class="text-[10px] text-slate-400">Income benchmark</span>
+            </div>
+
+            <!-- Effective Tax Rate -->
+            <div class="mb-3">
+              <div class="flex justify-between items-center mb-1">
+                <label class="text-xs font-semibold text-slate-700" for="effectiveTaxRate">
+                  Effective Total Tax Rate (Fed + State + FICA)
+                </label>
+                <span id="taxRateDisplay" class="text-xs font-bold text-slate-800 bg-slate-100 px-1.5 py-0.5 rounded">30%</span>
+              </div>
+              <input type="range" id="effectiveTaxRate" min="10" max="50" step="1" value="30" class="w-full accent-emerald-600 cursor-pointer">
+              <div class="flex justify-between text-[10px] text-slate-400">
+                <span>10% (Low)</span>
+                <span>30% (Avg)</span>
+                <span>50% (High)</span>
+              </div>
+            </div>
+
+            <!-- Affordability Ratio Cap -->
+            <div class="mb-3">
+              <label class="block text-xs font-semibold text-slate-700 mb-1" for="affordabilityRatio">
+                Max Housing & Savings-to-Income Cap (%)
+                <span class="font-normal text-slate-400 block text-[11px]">Affordability threshold (standard: 28% to 35%)</span>
+              </label>
+              <div class="relative rounded-lg shadow-xs">
+                <input type="number" id="affordabilityRatio" value="33" min="15" max="50" step="1" class="block w-full rounded-lg border border-slate-300 px-3 py-1.5 text-xs text-slate-900 focus:border-emerald-500 outline-none font-medium" required>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+                  <span class="text-slate-400 text-xs font-medium">%</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pre-purchase baseline living expenses -->
+            <div class="mb-3">
+              <label class="block text-xs font-semibold text-slate-700 mb-1" for="preLivingExpenses">
+                Pre-Purchase Non-Housing Living Expenses ($/mo)
+                <span class="font-normal text-slate-400 block text-[11px]">Food, current rent, transport, healthcare & lifestyle</span>
+              </label>
+              <div class="relative rounded-lg shadow-xs">
+                <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                  <span class="text-slate-400 text-xs font-medium">$</span>
+                </div>
+                <input type="number" id="preLivingExpenses" value="3500" min="0" step="100" class="block w-full rounded-lg border border-slate-300 pl-7 pr-3 py-1.5 text-xs text-slate-900 focus:border-emerald-500 outline-none font-medium" required>
+              </div>
+            </div>
+
+            <!-- Post-purchase baseline living expenses -->
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1" for="postLivingExpenses">
+                Post-Purchase Non-Housing Living Expenses ($/mo)
+                <span class="font-normal text-slate-400 block text-[11px]">Groceries, utilities, cars, discretionary, family</span>
+              </label>
+              <div class="relative rounded-lg shadow-xs">
+                <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                  <span class="text-slate-400 text-xs font-medium">$</span>
+                </div>
+                <input type="number" id="postLivingExpenses" value="3200" min="0" step="100" class="block w-full rounded-lg border border-slate-300 pl-7 pr-3 py-1.5 text-xs text-slate-900 focus:border-emerald-500 outline-none font-medium" required>
+              </div>
+            </div>
+          </div>
+
+          <!-- Advanced Collapsible Assumptions -->
+          <div class="pt-3 border-t border-slate-200">
+            <button type="button" id="toggleAdvancedBtn" class="flex items-center justify-between w-full text-xs font-semibold text-slate-600 hover:text-emerald-700 py-1 transition">
+              <span class="flex items-center gap-1.5">
+                <i class="fa-solid fa-gears text-slate-400"></i>
+                Mortgage, Seed & Inflation Options
+              </span>
+              <i id="advChevron" class="fa-solid fa-chevron-down text-slate-400 text-[10px] transition-transform duration-200"></i>
+            </button>
+            <div id="advancedSettings" class="hidden space-y-3 pt-3">
+              <div>
+                <label class="block text-[11px] font-semibold text-slate-600 mb-1" for="mortgageRate">
+                  Mortgage Annual Interest Rate (%)
+                </label>
+                <input type="number" id="mortgageRate" value="6.5" min="1" max="15" step="0.1" class="block w-full rounded border border-slate-300 px-2 py-1.5 text-xs text-slate-900 focus:border-emerald-500 outline-none">
+              </div>
+              <div class="grid grid-cols-2 gap-2">
+                <div>
+                  <label class="block text-[11px] font-semibold text-slate-600 mb-1" for="loanTermYears">
+                    Loan Term
+                  </label>
+                  <select id="loanTermYears" class="block w-full rounded border border-slate-300 px-2 py-1.5 text-xs text-slate-900 focus:border-emerald-500 outline-none">
+                    <option value="30" selected>30 Years</option>
+                    <option value="20">20 Years</option>
+                    <option value="15">15 Years</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-[11px] font-semibold text-slate-600 mb-1" for="annualMaintenanceRate">
+                    Ins. & Maint. (%)
+                  </label>
+                  <input type="number" id="annualMaintenanceRate" value="1.0" min="0" max="5" step="0.1" class="block w-full rounded border border-slate-300 px-2 py-1.5 text-xs text-slate-900 focus:border-emerald-500 outline-none">
+                </div>
+              </div>
+              <div class="grid grid-cols-2 gap-2">
+                <div>
+                  <label class="block text-[11px] font-semibold text-slate-600 mb-1" for="existingSavings">
+                    Starting Savings ($)
+                  </label>
+                  <input type="number" id="existingSavings" value="10000" min="0" step="1000" class="block w-full rounded border border-slate-300 px-2 py-1.5 text-xs text-slate-900 focus:border-emerald-500 outline-none">
+                </div>
+                <div>
+                  <label class="block text-[11px] font-semibold text-slate-600 mb-1" for="inflationRate">
+                    Cost Inflation (%)
+                  </label>
+                  <input type="number" id="inflationRate" value="2.5" min="0" max="10" step="0.1" class="block w-full rounded border border-slate-300 px-2 py-1.5 text-xs text-slate-900 focus:border-emerald-500 outline-none">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Manual Force Recalculate Button -->
+          <div class="pt-2">
+            <button id="manualRecalcBtn" type="button" class="w-full py-2 px-3 rounded-lg bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white font-semibold text-xs transition shadow-xs flex items-center justify-center gap-2">
+              <i class="fa-solid fa-calculator"></i>
+              <span>Recalculate Plan</span>
+            </button>
+          </div>
+        </form>
+      </aside>
+
+      <!-- RIGHT COLUMN: Dashboard KPIs, Interactive Charts & Schedules -->
+      <section class="lg:col-span-8 space-y-6">
+
+        <!-- KPI SUMMARY CARDS -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+          <!-- Card 1: Total Cash Target -->
+          <div class="bg-white p-4 rounded-xl border border-slate-200/90 shadow-xs relative overflow-hidden">
+            <div class="text-[10px] sm:text-[11px] uppercase tracking-wider font-bold text-slate-500 flex items-center justify-between">
+              Total Target Cash
+              <i class="fa-solid fa-wallet text-emerald-600"></i>
+            </div>
+            <div id="kpiTotalCash" class="text-lg sm:text-2xl font-extrabold text-slate-900 mt-2">$125,000</div>
+            <p id="kpiCashSubtext" class="text-[10px] sm:text-[11px] text-slate-500 mt-1 truncate">Down + Reserve</p>
+          </div>
+
+          <!-- Card 2: Initial Monthly Savings -->
+          <div class="bg-white p-4 rounded-xl border border-emerald-200 shadow-xs bg-gradient-to-br from-emerald-50/40 to-white relative overflow-hidden">
+            <div class="text-[10px] sm:text-[11px] uppercase tracking-wider font-bold text-emerald-800 flex items-center justify-between">
+              Month 1 Savings
+              <i class="fa-solid fa-piggy-bank text-emerald-600"></i>
+            </div>
+            <div id="kpiInitialMonthlySavings" class="text-lg sm:text-2xl font-extrabold text-emerald-700 mt-2">$2,654</div>
+            <p id="kpiSavingsSubtext" class="text-[10px] sm:text-[11px] text-emerald-600 font-semibold mt-1">+5.0% every 12 mo.</p>
+          </div>
+
+          <!-- Card 3: Pre-Purchase Gross Income -->
+          <div class="bg-white p-4 rounded-xl border border-purple-200 shadow-xs bg-gradient-to-br from-purple-50/40 to-white relative overflow-hidden">
+            <div class="text-[10px] sm:text-[11px] uppercase tracking-wider font-bold text-purple-800 flex items-center justify-between">
+              Pre-Purchase Gross
+              <i class="fa-solid fa-briefcase text-purple-600"></i>
+            </div>
+            <div id="kpiPreGrossIncome" class="text-lg sm:text-2xl font-extrabold text-purple-700 mt-2">$132,400</div>
+            <p id="kpiPreNetSubtext" class="text-[10px] sm:text-[11px] text-purple-600 font-medium mt-1">Year 1 Required</p>
+          </div>
+
+          <!-- Card 4: Post-Purchase Gross Income -->
+          <div class="bg-white p-4 rounded-xl border border-blue-200 shadow-xs bg-gradient-to-br from-blue-50/40 to-white relative overflow-hidden">
+            <div class="text-[10px] sm:text-[11px] uppercase tracking-wider font-bold text-blue-800 flex items-center justify-between">
+              Post-Purchase Gross
+              <i class="fa-solid fa-coins text-blue-600"></i>
+            </div>
+            <div id="kpiPostGrossIncome" class="text-lg sm:text-2xl font-extrabold text-blue-700 mt-2">$145,200</div>
+            <p id="kpiPostHousingSubtext" class="text-[10px] sm:text-[11px] text-slate-500 mt-1">Housing + Living</p>
+          </div>
+        </div>
+
+        <!-- CHARTS SECTION WITH TABS -->
+        <div class="bg-white rounded-2xl border border-slate-200/90 shadow-xs p-5 space-y-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-3">
+            <div>
+              <h3 id="chartTitle" class="text-base font-bold text-slate-900">Yearly Comfortable Income Trajectory</h3>
+              <p id="chartSubtitle" class="text-xs text-slate-500">Gross (before-tax) vs Net (after-tax) yearly income needed before and after purchase.</p>
+            </div>
+            <!-- View Tabs -->
+            <div class="inline-flex rounded-lg bg-slate-100 p-1 text-xs font-semibold self-start sm:self-auto flex-wrap gap-1">
+              <button id="tabIncomeChart" type="button" class="px-3 py-1.5 rounded-md bg-white text-slate-900 shadow-xs transition">
+                Comfortable Income
+              </button>
+              <button id="tabSavingsChart" type="button" class="px-3 py-1.5 rounded-md text-slate-600 hover:text-slate-900 transition">
+                Savings Trajectory
+              </button>
+              <button id="tabHousingCostsChart" type="button" class="px-3 py-1.5 rounded-md text-slate-600 hover:text-slate-900 transition">
+                20-Yr Housing Costs
+              </button>
+            </div>
+          </div>
+
+          <!-- Chart Container -->
+          <div class="relative w-full h-72 sm:h-84 chart-container">
+            <canvas id="mainChart"></canvas>
+          </div>
+
+          <!-- Legend & Milestone Notes -->
+          <div class="flex flex-wrap items-center justify-between gap-2 text-xs text-slate-500 pt-2 border-t border-slate-100">
+            <div id="dynamicLegend" class="flex items-center gap-4 flex-wrap"></div>
+            <div id="chartMilestoneBadge" class="font-medium text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded text-[11px]">
+              Purchase Milestone Modeled
+            </div>
+          </div>
+        </div>
+
+        <!-- TABLES SECTION WITH TABS -->
+        <div class="bg-white rounded-2xl border border-slate-200/90 shadow-xs overflow-hidden">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-200 px-5 py-3.5 bg-slate-50/60 gap-2">
+            <div class="flex items-center space-x-2 flex-wrap">
+              <button id="viewSavingsTableBtn" type="button" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-white text-emerald-800 border border-slate-200 shadow-xs transition">
+                Pre-Purchase Monthly Schedule (<span id="totalMonthsBadge">36 mos</span>)
+              </button>
+              <button id="viewHousingTableBtn" type="button" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 transition">
+                20-Year Post-Purchase & Incomes
+              </button>
+            </div>
+            <div class="flex items-center gap-2 self-end sm:self-auto text-xs text-slate-500">
+              <span id="tableRecordCount"></span>
+            </div>
+          </div>
+
+          <!-- Table 1: Pre-Purchase Monthly Savings & Incomes -->
+          <div id="savingsTableContainer" class="overflow-x-auto max-h-[440px] overflow-y-auto">
+            <table class="w-full text-left border-collapse text-xs">
+              <thead class="sticky top-0 bg-slate-100/95 backdrop-blur-xs text-slate-700 font-semibold border-b border-slate-200 shadow-xs">
+                <tr>
+                  <th class="py-2.5 px-3">#</th>
+                  <th class="py-2.5 px-3">Date</th>
+                  <th class="py-2.5 px-3 text-right">Savings / Mo</th>
+                  <th class="py-2.5 px-3 text-right">Cumul. Saved</th>
+                  <th class="py-2.5 px-3 text-right">Inv. Return</th>
+                  <th class="py-2.5 px-3 text-right">Total Balance</th>
+                  <th class="py-2.5 px-3 text-right text-emerald-700 bg-emerald-50/50">Req. Net Mo.</th>
+                  <th class="py-2.5 px-3 text-right text-purple-700 bg-purple-50/50">Req. Gross Mo.</th>
+                  <th class="py-2.5 px-3 text-right text-purple-900 bg-purple-50/70">Req. Gross Yr.</th>
+                  <th class="py-2.5 px-3 text-center">% Goal</th>
+                </tr>
+              </thead>
+              <tbody id="savingsTableBody" class="divide-y divide-slate-100 text-slate-600">
+                <!-- Dynamically injected -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Table 2: 20-Year Post-Purchase Housing Costs & Incomes -->
+          <div id="housingTableContainer" class="hidden overflow-x-auto max-h-[440px] overflow-y-auto">
+            <table class="w-full text-left border-collapse text-xs">
+              <thead class="sticky top-0 bg-slate-100/95 backdrop-blur-xs text-slate-700 font-semibold border-b border-slate-200 shadow-xs">
+                <tr>
+                  <th class="py-2.5 px-3">Year</th>
+                  <th class="py-2.5 px-3">Loan Balance</th>
+                  <th class="py-2.5 px-3 text-right">Annual Housing</th>
+                  <th class="py-2.5 px-3 text-right">Housing / Mo</th>
+                  <th class="py-2.5 px-3 text-right">Living Exp / Mo</th>
+                  <th class="py-2.5 px-3 text-right text-emerald-700 bg-emerald-50/50">Req. Net Mo.</th>
+                  <th class="py-2.5 px-3 text-right text-purple-700 bg-purple-50/50">Req. Gross Mo.</th>
+                  <th class="py-2.5 px-3 text-right text-purple-900 bg-purple-50/70">Req. Gross Yr.</th>
+                </tr>
+              </thead>
+              <tbody id="housingTableBody" class="divide-y divide-slate-100 text-slate-600">
+                <!-- Dynamically injected -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Formula and Logic Notes -->
+        <div class="bg-slate-100/80 rounded-xl p-4 text-[11px] text-slate-600 leading-relaxed border border-slate-200/60 space-y-1">
+          <p class="font-bold text-slate-800 text-xs">Formulas & Methodology:</p>
+          <p>• <strong>Pre-Purchase Comfortable Income:</strong> Net Monthly = <span class="font-mono text-slate-800">Max(Monthly Savings / Affordability Cap, Monthly Savings + Living Expenses)</span>. Gross is derived via <span class="font-mono text-slate-800">Gross = Net / (1 - Effective Tax Rate)</span>.</p>
+          <p>• <strong>Post-Purchase Comfortable Income:</strong> Net Monthly = <span class="font-mono text-slate-800">Max(Housing Total / Affordability Cap, Housing Total + Post Living Expenses)</span>.</p>
+          <p>• <strong>Escalating Root Finder:</strong> Calculates Month 1 required savings <span class="font-mono text-slate-800">S₀</span> so that with <span class="font-mono text-slate-800">+g%</span> yearly raises and <span class="font-mono text-slate-800">r_monthly</span> compound returns, exact target cash is met at purchase.</p>
+        </div>
+
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-slate-200 mt-12 py-6 text-center text-xs text-slate-500 no-print">
+    <div class="max-w-7xl mx-auto px-4">
+      NestPlan Financial Model &bull; All configurations automatically preserved in browser storage.
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT APPLICATION LOGIC -->
+  <script>
+    // Storage Key
+    const STORAGE_KEY = 'house_financial_plan_params_v1';
+
+    // Application Default Presets
+    const DEFAULT_PRESETS = {
+      homePrice: 500000,
+      targetDate: '', // Will be set to 3 years from current date
+      reserveFund: 25000,
+      propertyTaxRate: 1.2,
+      downPaymentPercent: 20,
+      savingsGrowthRate: 5.0,
+      investmentReturnRate: 6.5,
+      effectiveTaxRate: 30,
+      affordabilityRatio: 33,
+      preLivingExpenses: 3500,
+      postLivingExpenses: 3200,
+      mortgageRate: 6.5,
+      loanTermYears: 30,
+      annualMaintenanceRate: 1.0,
+      existingSavings: 10000,
+      inflationRate: 2.5
+    };
+
+    // State Variables
+    let currentChart = null;
+    let currentChartMode = 'income'; // 'income' | 'savings' | 'housing'
+    let currentSavingsSchedule = [];
+    let currentHousingSchedule = [];
+    let currentIncomeSeries = null;
+    let saveTimeout = null;
+
+    // Currency & Number Formatters
+    const currencyFmt = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      maximumFractionDigits: 0
+    });
+
+    // Helper: Toast Notifications
+    function showToast(message, type = 'info') {
+      const container = document.getElementById('toastContainer');
+      const toast = document.createElement('div');
+      const bg = type === 'success' ? 'bg-emerald-600 text-white' : type === 'warning' ? 'bg-amber-600 text-white' : 'bg-slate-800 text-white';
+      const icon = type === 'success' ? 'fa-check' : type === 'warning' ? 'fa-triangle-exclamation' : 'fa-circle-info';
+      
+      toast.className = `${bg} px-4 py-2.5 rounded-lg shadow-lg text-xs font-medium transition-all duration-300 transform translate-y-2 opacity-0 pointer-events-auto flex items-center gap-2`;
+      toast.innerHTML = `<i class="fa-solid ${icon}"></i> <span>${message}</span>`;
+      container.appendChild(toast);
+      
+      requestAnimationFrame(() => {
+        toast.classList.remove('translate-y-2', 'opacity-0');
+      });
+      setTimeout(() => {
+        toast.classList.add('opacity-0', 'translate-y-2');
+        setTimeout(() => toast.remove(), 300);
+      }, 3000);
+    }
+
+    // Indicate autosave status
+    function setAutosaveIndicator(status = 'saved') {
+      const indicator = document.getElementById('saveStatusIndicator');
+      const text = document.getElementById('saveStatusText');
+      const mobileBadge = document.getElementById('mobileSaveBadge');
+      if (!indicator || !text) return;
+
+      if (status === 'saving') {
+        indicator.classList.remove('text-slate-600');
+        indicator.classList.add('text-amber-600');
+        indicator.innerHTML = `<i class="fa-solid fa-spinner fa-spin text-amber-500 text-[10px]"></i> <span>Saving...</span>`;
+        if (mobileBadge) mobileBadge.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Saving`;
+      } else {
+        indicator.classList.remove('text-amber-600');
+        indicator.classList.add('text-slate-600');
+        indicator.innerHTML = `<i class="fa-solid fa-cloud text-emerald-500 text-[10px]"></i> <span>Saved locally</span>`;
+        if (mobileBadge) mobileBadge.innerHTML = `<i class="fa-solid fa-check"></i> Saved`;
+      }
+    }
+
+    // Default target date: 3 years forward from current date
+    function computeDefaultTargetDate() {
+      const now = new Date();
+      const future = new Date(now.getFullYear() + 3, now.getMonth(), 1);
+      const yyyy = future.getFullYear();
+      const mm = String(future.getMonth() + 1).padStart(2, '0');
+      return `${yyyy}-${mm}`;
+    }
+
+    // STORAGE: Save all input values to localStorage
+    function saveStateToLocalStorage() {
+      try {
+        const state = {
+          homePrice: parseFloat(document.getElementById('homePrice').value),
+          targetDate: document.getElementById('targetDate').value,
+          reserveFund: parseFloat(document.getElementById('reserveFund').value),
+          propertyTaxRate: parseFloat(document.getElementById('propertyTaxRate').value),
+          downPaymentPercent: parseFloat(document.getElementById('downPaymentPercent').value),
+          savingsGrowthRate: parseFloat(document.getElementById('savingsGrowthRate').value),
+          investmentReturnRate: parseFloat(document.getElementById('investmentReturnRate').value),
+          effectiveTaxRate: parseFloat(document.getElementById('effectiveTaxRate').value),
+          affordabilityRatio: parseFloat(document.getElementById('affordabilityRatio').value),
+          preLivingExpenses: parseFloat(document.getElementById('preLivingExpenses').value),
+          postLivingExpenses: parseFloat(document.getElementById('postLivingExpenses').value),
+          mortgageRate: parseFloat(document.getElementById('mortgageRate').value),
+          loanTermYears: parseInt(document.getElementById('loanTermYears').value),
+          annualMaintenanceRate: parseFloat(document.getElementById('annualMaintenanceRate').value),
+          existingSavings: parseFloat(document.getElementById('existingSavings').value),
+          inflationRate: parseFloat(document.getElementById('inflationRate').value)
+        };
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+        setAutosaveIndicator('saved');
+      } catch (err) {
+        console.warn('LocalStorage save failed:', err);
+      }
+    }
+
+    // Debounced autosave
+    function triggerAutosave() {
+      setAutosaveIndicator('saving');
+      clearTimeout(saveTimeout);
+      saveTimeout = setTimeout(() => {
+        saveStateToLocalStorage();
+      }, 400);
+    }
+
+    // STORAGE: Restore from localStorage or apply defaults
+    function loadStateFromLocalStorage() {
+      const targetInput = document.getElementById('targetDate');
+      const now = new Date();
+      const nextMonth = new Date(now.getFullYear(), now.getMonth() + 1, 1);
+      const minYYYY = nextMonth.getFullYear();
+      const minMM = String(nextMonth.getMonth() + 1).padStart(2, '0');
+      targetInput.min = `${minYYYY}-${minMM}`;
+
+      let loaded = null;
+      try {
+        const stored = localStorage.getItem(STORAGE_KEY);
+        if (stored) {
+          loaded = JSON.parse(stored);
+        }
+      } catch (e) {
+        console.warn('Could not parse stored settings:', e);
+      }
+
+      const values = Object.assign({}, DEFAULT_PRESETS, loaded || {});
+      if (!values.targetDate) {
+        values.targetDate = computeDefaultTargetDate();
+      }
+
+      // Populate input controls
+      document.getElementById('homePrice').value = values.homePrice;
+      document.getElementById('targetDate').value = values.targetDate;
+      document.getElementById('reserveFund').value = values.reserveFund;
+      document.getElementById('propertyTaxRate').value = values.propertyTaxRate;
+      document.getElementById('downPaymentPercent').value = values.downPaymentPercent;
+      document.getElementById('savingsGrowthRate').value = values.savingsGrowthRate;
+      document.getElementById('investmentReturnRate').value = values.investmentReturnRate;
+      document.getElementById('effectiveTaxRate').value = values.effectiveTaxRate;
+      document.getElementById('affordabilityRatio').value = values.affordabilityRatio;
+      document.getElementById('preLivingExpenses').value = values.preLivingExpenses;
+      document.getElementById('postLivingExpenses').value = values.postLivingExpenses;
+      document.getElementById('mortgageRate').value = values.mortgageRate;
+      document.getElementById('loanTermYears').value = values.loanTermYears;
+      document.getElementById('annualMaintenanceRate').value = values.annualMaintenanceRate;
+      document.getElementById('existingSavings').value = values.existingSavings;
+      document.getElementById('inflationRate').value = values.inflationRate;
+    }
+
+    // Reset settings & clear localStorage
+    function resetToDefaults() {
+      try {
+        localStorage.removeItem(STORAGE_KEY);
+      } catch (e) {}
+
+      const defaults = Object.assign({}, DEFAULT_PRESETS, { targetDate: computeDefaultTargetDate() });
+
+      document.getElementById('homePrice').value = defaults.homePrice;
+      document.getElementById('targetDate').value = defaults.targetDate;
+      document.getElementById('reserveFund').value = defaults.reserveFund;
+      document.getElementById('propertyTaxRate').value = defaults.propertyTaxRate;
+      document.getElementById('downPaymentPercent').value = defaults.downPaymentPercent;
+      document.getElementById('savingsGrowthRate').value = defaults.savingsGrowthRate;
+      document.getElementById('investmentReturnRate').value = defaults.investmentReturnRate;
+      document.getElementById('effectiveTaxRate').value = defaults.effectiveTaxRate;
+      document.getElementById('affordabilityRatio').value = defaults.affordabilityRatio;
+      document.getElementById('preLivingExpenses').value = defaults.preLivingExpenses;
+      document.getElementById('postLivingExpenses').value = defaults.postLivingExpenses;
+      document.getElementById('mortgageRate').value = defaults.mortgageRate;
+      document.getElementById('loanTermYears').value = defaults.loanTermYears;
+      document.getElementById('annualMaintenanceRate').value = defaults.annualMaintenanceRate;
+      document.getElementById('existingSavings').value = defaults.existingSavings;
+      document.getElementById('inflationRate').value = defaults.inflationRate;
+
+      recalculate();
+      saveStateToLocalStorage();
+      showToast('All parameters reset to default benchmarks', 'warning');
+    }
+
+    // Numerical Root-Finder: Solve S0 where monthly savings escalate by g% every 12 months with monthly compound returns
+    function solveRequiredMonthlySavings(targetCash, initialBalance, numMonths, annualSavingsGrowth, annualInvReturn) {
+      if (numMonths <= 0) return 0;
+      
+      const r_month = Math.pow(1 + (annualInvReturn / 100), 1 / 12) - 1;
+      const g_annual = annualSavingsGrowth / 100;
+
+      function simulateEndBalance(s0) {
+        let balance = initialBalance;
+        for (let m = 0; m < numMonths; m++) {
+          const yearIndex = Math.floor(m / 12);
+          const monthlySavings = s0 * Math.pow(1 + g_annual, yearIndex);
+          const monthlyGain = balance * r_month;
+          balance = balance + monthlyGain + monthlySavings;
+        }
+        return balance;
+      }
+
+      // Check if starting balance alone reaches target
+      let balanceWithZero = initialBalance;
+      for (let m = 0; m < numMonths; m++) {
+        balanceWithZero += balanceWithZero * r_month;
+      }
+      if (balanceWithZero >= targetCash) {
+        return 0;
+      }
+
+      let low = 0;
+      let high = targetCash;
+      let bestS0 = 0;
+      for (let i = 0; i < 60; i++) {
+        const mid = (low + high) / 2;
+        const projected = simulateEndBalance(mid);
+        if (projected >= targetCash) {
+          bestS0 = mid;
+          high = mid;
+        } else {
+          low = mid;
+        }
+      }
+      return bestS0;
+    }
+
+    // Monthly Mortgage Amortization Calculation
+    function calculateMonthlyMortgage(loanAmount, annualRate, loanTermYears) {
+      if (loanAmount <= 0) return 0;
+      const monthlyRate = (annualRate / 100) / 12;
+      const totalPayments = loanTermYears * 12;
+      if (monthlyRate === 0) return loanAmount / totalPayments;
+      return loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, totalPayments)) / (Math.pow(1 + monthlyRate, totalPayments) - 1);
+    }
+
+    // Build the Month-by-Month Pre-Purchase Schedule
+    function generateSavingsSchedule(params, s0) {
+      const schedule = [];
+      const r_month = Math.pow(1 + (params.investmentReturnRate / 100), 1 / 12) - 1;
+      const g_annual = params.savingsGrowthRate / 100;
+      const taxRate = params.effectiveTaxRate / 100;
+      const affRatio = params.affordabilityRatio / 100;
+      const infRate = params.inflationRate / 100;
+
+      let balance = params.existingSavings;
+      let cumulativeContribution = params.existingSavings;
+      let cumulativeInvestmentGains = 0;
+
+      const startDate = new Date();
+      let currentDate = new Date(startDate.getFullYear(), startDate.getMonth() + 1, 1);
+
+      for (let m = 1; m <= params.totalMonths; m++) {
+        const yearIndex = Math.floor((m - 1) / 12);
+        const monthlySavings = s0 * Math.pow(1 + g_annual, yearIndex);
+        const monthlyGain = balance * r_month;
+        
+        cumulativeContribution += monthlySavings;
+        cumulativeInvestmentGains += monthlyGain;
+        balance = balance + monthlyGain + monthlySavings;
+
+        // Inflate pre-purchase living expenses
+        const inflatedLivingExpense = params.preLivingExpenses * Math.pow(1 + infRate, yearIndex);
+
+        // Required Net Monthly: Max of savings ratio cap or sum of savings + baseline living
+        const reqNetMonthlyByRatio = affRatio > 0 ? (monthlySavings / affRatio) : monthlySavings;
+        const reqNetMonthlyByExpense = monthlySavings + inflatedLivingExpense;
+        const reqNetMonthly = Math.max(reqNetMonthlyByRatio, reqNetMonthlyByExpense);
+
+        // Gross Income
+        const reqGrossMonthly = taxRate < 1 ? reqNetMonthly / (1 - taxRate) : reqNetMonthly;
+        const reqGrossAnnual = reqGrossMonthly * 12;
+
+        const dateStr = currentDate.toLocaleString('default', { month: 'short', year: 'numeric' });
+
+        schedule.push({
+          month: m,
+          dateStr: dateStr,
+          yearNum: yearIndex + 1,
+          monthlySavings: monthlySavings,
+          cumulativeSavings: cumulativeContribution,
+          monthlyGain: monthlyGain,
+          cumulativeGain: cumulativeInvestmentGains,
+          balance: balance,
+          percentGoal: Math.min(100, (balance / params.targetCash) * 100),
+          reqNetMonthly: reqNetMonthly,
+          reqGrossMonthly: reqGrossMonthly,
+          reqGrossAnnual: reqGrossAnnual
+        });
+
+        currentDate.setMonth(currentDate.getMonth() + 1);
+      }
+      return schedule;
+    }
+
+    // Build 20-Year Post-Purchase Housing Schedule
+    function generateHousingCostSchedule(params) {
+      const schedule = [];
+      const loanAmount = Math.max(0, params.homePrice - params.downPaymentDollar);
+      const monthlyPAndI = calculateMonthlyMortgage(loanAmount, params.mortgageRate, params.loanTermYears);
+      const monthlyRate = (params.mortgageRate / 100) / 12;
+      const taxRate = params.effectiveTaxRate / 100;
+      const affRatio = params.affordabilityRatio / 100;
+      const infRate = params.inflationRate / 100;
+
+      let balance = loanAmount;
+      const propertyTaxAnnual = params.homePrice * (params.propertyTaxRate / 100);
+      const maintenanceAnnual = params.homePrice * (params.annualMaintenanceRate / 100);
+
+      const prePurchaseYears = Math.ceil(params.totalMonths / 12);
+
+      for (let yr = 1; yr <= 20; yr++) {
+        let yearInterest = 0;
+        let yearPrincipal = 0;
+
+        for (let m = 0; m < 12; m++) {
+          if (balance > 0) {
+            const interestPayment = balance * monthlyRate;
+            let principalPayment = monthlyPAndI - interestPayment;
+            if (principalPayment > balance) {
+              principalPayment = balance;
+            }
+            balance -= principalPayment;
+            yearInterest += interestPayment;
+            yearPrincipal += principalPayment;
+          }
+        }
+
+        const effectiveMortgageYear = (yearInterest + yearPrincipal);
+        const inflationFactor = Math.pow(1 + infRate, prePurchaseYears + yr - 1);
+        const currentYearTax = propertyTaxAnnual * inflationFactor;
+        const currentYearMaint = maintenanceAnnual * inflationFactor;
+        const totalAnnualHousingCost = effectiveMortgageYear + currentYearTax + currentYearMaint;
+        const avgMonthlyHousingCost = totalAnnualHousingCost / 12;
+
+        const inflatedLivingExpense = params.postLivingExpenses * inflationFactor;
+
+        // Post-purchase comfortable Net monthly income
+        const reqNetMonthlyByRatio = affRatio > 0 ? (avgMonthlyHousingCost / affRatio) : avgMonthlyHousingCost;
+        const reqNetMonthlyByExpense = avgMonthlyHousingCost + inflatedLivingExpense;
+        const reqNetMonthly = Math.max(reqNetMonthlyByRatio, reqNetMonthlyByExpense);
+
+        const reqGrossMonthly = taxRate < 1 ? reqNetMonthly / (1 - taxRate) : reqNetMonthly;
+        const reqGrossAnnual = reqGrossMonthly * 12;
+        const reqNetAnnual = reqNetMonthly * 12;
+
+        schedule.push({
+          year: yr,
+          remainingBalance: Math.max(0, balance),
+          mortgagePayment: effectiveMortgageYear,
+          propertyTax: currentYearTax,
+          maintenance: currentYearMaint,
+          totalAnnualCost: totalAnnualHousingCost,
+          avgMonthlyCost: avgMonthlyHousingCost,
+          monthlyLivingExpense: inflatedLivingExpense,
+          reqNetMonthly: reqNetMonthly,
+          reqNetAnnual: reqNetAnnual,
+          reqGrossMonthly: reqGrossMonthly,
+          reqGrossAnnual: reqGrossAnnual
+        });
+      }
+      return { schedule, monthlyPAndI, loanAmount };
+    }
+
+    // Build unified income series for chart
+    function buildUnifiedIncomeTrajectory(savingsSchedule, housingSchedule) {
+      const labels = [];
+      const grossIncomes = [];
+      const netIncomes = [];
+      const phaseLabels = [];
+
+      const preYearsCount = Math.ceil(savingsSchedule.length / 12);
+      for (let y = 1; y <= preYearsCount; y++) {
+        const yearSlice = savingsSchedule.filter(s => s.yearNum === y);
+        const avgGross = yearSlice.reduce((sum, r) => sum + r.reqGrossAnnual, 0) / yearSlice.length;
+        const avgNet = (yearSlice.reduce((sum, r) => sum + r.reqNetMonthly, 0) / yearSlice.length) * 12;
+        
+        labels.push(`Save Yr ${y}`);
+        grossIncomes.push(Math.round(avgGross));
+        netIncomes.push(Math.round(avgNet));
+        phaseLabels.push('Pre-Purchase Saving');
+      }
+
+      housingSchedule.forEach(h => {
+        labels.push(`Own Yr ${h.year}`);
+        grossIncomes.push(Math.round(h.reqGrossAnnual));
+        netIncomes.push(Math.round(h.reqNetAnnual));
+        phaseLabels.push('Post-Purchase Ownership');
+      });
+
+      return {
+        labels,
+        grossIncomes,
+        netIncomes,
+        phaseLabels,
+        purchaseIndex: preYearsCount
+      };
+    }
+
+    // Read current form values
+    function getInputs() {
+      const homePrice = parseFloat(document.getElementById('homePrice').value) || 0;
+      const targetDateVal = document.getElementById('targetDate').value;
+      const reserveFund = parseFloat(document.getElementById('reserveFund').value) || 0;
+      const propertyTaxRate = parseFloat(document.getElementById('propertyTaxRate').value) || 0;
+      const downPaymentPercent = parseFloat(document.getElementById('downPaymentPercent').value) || 0;
+      const savingsGrowthRate = parseFloat(document.getElementById('savingsGrowthRate').value) || 0;
+      const investmentReturnRate = parseFloat(document.getElementById('investmentReturnRate').value) || 0;
+      const effectiveTaxRate = parseFloat(document.getElementById('effectiveTaxRate').value) || 30;
+      const affordabilityRatio = parseFloat(document.getElementById('affordabilityRatio').value) || 33;
+      const preLivingExpenses = parseFloat(document.getElementById('preLivingExpenses').value) || 3500;
+      const postLivingExpenses = parseFloat(document.getElementById('postLivingExpenses').value) || 3200;
+      const mortgageRate = parseFloat(document.getElementById('mortgageRate').value) || 6.5;
+      const loanTermYears = parseInt(document.getElementById('loanTermYears').value) || 30;
+      const annualMaintenanceRate = parseFloat(document.getElementById('annualMaintenanceRate').value) || 1.0;
+      const existingSavings = parseFloat(document.getElementById('existingSavings').value) || 0;
+      const inflationRate = parseFloat(document.getElementById('inflationRate').value) || 2.5;
+
+      const now = new Date();
+      const nextMonth = new Date(now.getFullYear(), now.getMonth() + 1, 1);
+      
+      let totalMonths = 1;
+      if (targetDateVal) {
+        const [tYear, tMonth] = targetDateVal.split('-').map(Number);
+        const targetDateObj = new Date(tYear, tMonth - 1, 1);
+        const diffMonths = (targetDateObj.getFullYear() - nextMonth.getFullYear()) * 12 + (targetDateObj.getMonth() - nextMonth.getMonth()) + 1;
+        totalMonths = Math.max(1, diffMonths);
+      }
+
+      const downPaymentDollar = homePrice * (downPaymentPercent / 100);
+      const targetCash = downPaymentDollar + reserveFund;
+
+      return {
+        homePrice,
+        targetDateVal,
+        totalMonths,
+        reserveFund,
+        propertyTaxRate,
+        downPaymentPercent,
+        downPaymentDollar,
+        targetCash,
+        savingsGrowthRate,
+        investmentReturnRate,
+        effectiveTaxRate,
+        affordabilityRatio,
+        preLivingExpenses,
+        postLivingExpenses,
+        mortgageRate,
+        loanTermYears,
+        annualMaintenanceRate,
+        existingSavings,
+        inflationRate
+      };
+    }
+
+    // MAIN RECALCULATE ENGINE
+    function recalculate() {
+      const params = getInputs();
+
+      // UI Subtexts
+      document.getElementById('downPaymentDisplay').textContent = `${params.downPaymentPercent}% (${currencyFmt.format(params.downPaymentDollar)})`;
+      document.getElementById('taxRateDisplay').textContent = `${params.effectiveTaxRate}%`;
+      document.getElementById('timelineMonthCount').textContent = `${params.totalMonths} months until purchase (${(params.totalMonths / 12).toFixed(1)} yrs)`;
+      document.getElementById('targetSummary').textContent = params.targetDateVal;
+      document.getElementById('totalMonthsBadge').textContent = `${params.totalMonths} mos`;
+
+      // Solve for Month 1 savings
+      const s0 = solveRequiredMonthlySavings(
+        params.targetCash,
+        params.existingSavings,
+        params.totalMonths,
+        params.savingsGrowthRate,
+        params.investmentReturnRate
+      );
+
+      // Schedules
+      currentSavingsSchedule = generateSavingsSchedule(params, s0);
+      const housingData = generateHousingCostSchedule(params);
+      currentHousingSchedule = housingData.schedule;
+
+      // Unified trajectory
+      currentIncomeSeries = buildUnifiedIncomeTrajectory(currentSavingsSchedule, currentHousingSchedule);
+
+      const yr1Pre = currentSavingsSchedule[0] || { reqGrossAnnual: 0 };
+      const yr1Post = currentHousingSchedule[0] || { reqGrossAnnual: 0, avgMonthlyCost: 0 };
+
+      // Update KPI Cards
+      document.getElementById('kpiTotalCash').textContent = currencyFmt.format(params.targetCash);
+      document.getElementById('kpiCashSubtext').textContent = `Down: ${currencyFmt.format(params.downPaymentDollar)} + Reserve: ${currencyFmt.format(params.reserveFund)}`;
+      
+      document.getElementById('kpiInitialMonthlySavings').textContent = currencyFmt.format(s0);
+      document.getElementById('kpiSavingsSubtext').textContent = `Escalates +${params.savingsGrowthRate}%/yr`;
+
+      document.getElementById('kpiPreGrossIncome').textContent = currencyFmt.format(yr1Pre.reqGrossAnnual);
+      document.getElementById('kpiPreNetSubtext').textContent = `Net: ${currencyFmt.format(yr1Pre.reqGrossAnnual * (1 - params.effectiveTaxRate / 100))}/yr`;
+
+      document.getElementById('kpiPostGrossIncome').textContent = currencyFmt.format(yr1Post.reqGrossAnnual);
+      document.getElementById('kpiPostHousingSubtext').textContent = `Housing ${currencyFmt.format(yr1Post.avgMonthlyCost)}/mo`;
+
+      // Render Tables
+      renderSavingsTable(currentSavingsSchedule);
+      renderHousingTable(currentHousingSchedule);
+
+      // Render Chart
+      renderChart();
+    }
+
+    // Populate Pre-Purchase Savings Table
+    function renderSavingsTable(schedule) {
+      const tbody = document.getElementById('savingsTableBody');
+      tbody.innerHTML = '';
+
+      schedule.forEach((row) => {
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-slate-50 transition border-b border-slate-100';
+
+        const isYearEnd = row.month % 12 === 0;
+        if (isYearEnd) {
+          tr.className += ' bg-emerald-50/20 font-medium';
+        }
+
+        tr.innerHTML = `
+          <td class="py-2.5 px-3 font-mono text-slate-500">${row.month}</td>
+          <td class="py-2.5 px-3 font-medium text-slate-800">${row.dateStr}</td>
+          <td class="py-2.5 px-3 text-right font-mono text-slate-700">${currencyFmt.format(row.monthlySavings)}</td>
+          <td class="py-2.5 px-3 text-right font-mono text-slate-600">${currencyFmt.format(row.cumulativeSavings)}</td>
+          <td class="py-2.5 px-3 text-right font-mono text-blue-600">+${currencyFmt.format(row.monthlyGain)}</td>
+          <td class="py-2.5 px-3 text-right font-mono font-semibold text-emerald-700">${currencyFmt.format(row.balance)}</td>
+          <td class="py-2.5 px-3 text-right font-mono font-semibold text-emerald-700 bg-emerald-50/30">${currencyFmt.format(row.reqNetMonthly)}</td>
+          <td class="py-2.5 px-3 text-right font-mono font-semibold text-purple-700 bg-purple-50/30">${currencyFmt.format(row.reqGrossMonthly)}</td>
+          <td class="py-2.5 px-3 text-right font-mono font-bold text-purple-900 bg-purple-50/50">${currencyFmt.format(row.reqGrossAnnual)}</td>
+          <td class="py-2.5 px-3 text-center">
+            <span class="inline-block px-1.5 py-0.5 rounded text-[10px] font-semibold ${row.percentGoal >= 100 ? 'bg-emerald-100 text-emerald-800' : 'bg-slate-100 text-slate-600'}">
+              ${row.percentGoal.toFixed(0)}%
+            </span>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      document.getElementById('tableRecordCount').textContent = `${schedule.length} months modeled`;
+    }
+
+    // Populate Housing Costs Table
+    function renderHousingTable(schedule) {
+      const tbody = document.getElementById('housingTableBody');
+      tbody.innerHTML = '';
+
+      schedule.forEach((row) => {
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-slate-50 transition border-b border-slate-100';
+
+        tr.innerHTML = `
+          <td class="py-2.5 px-3 font-bold text-slate-800">Year ${row.year}</td>
+          <td class="py-2.5 px-3 font-mono text-slate-600">${currencyFmt.format(row.remainingBalance)}</td>
+          <td class="py-2.5 px-3 text-right font-mono text-slate-700">${currencyFmt.format(row.totalAnnualCost)}</td>
+          <td class="py-2.5 px-3 text-right font-mono text-amber-700 font-semibold">${currencyFmt.format(row.avgMonthlyCost)}/mo</td>
+          <td class="py-2.5 px-3 text-right font-mono text-slate-600">${currencyFmt.format(row.monthlyLivingExpense)}/mo</td>
+          <td class="py-2.5 px-3 text-right font-mono font-semibold text-emerald-700 bg-emerald-50/30">${currencyFmt.format(row.reqNetMonthly)}/mo</td>
+          <td class="py-2.5 px-3 text-right font-mono font-semibold text-purple-700 bg-purple-50/30">${currencyFmt.format(row.reqGrossMonthly)}/mo</td>
+          <td class="py-2.5 px-3 text-right font-mono font-bold text-purple-900 bg-purple-50/50">${currencyFmt.format(row.reqGrossAnnual)}/yr</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    // Chart.js Rendering
+    function renderChart() {
+      const ctx = document.getElementById('mainChart').getContext('2d');
+      if (currentChart) {
+        currentChart.destroy();
+      }
+
+      const legendBox = document.getElementById('dynamicLegend');
+
+      if (currentChartMode === 'income') {
+        const traj = currentIncomeSeries;
+        legendBox.innerHTML = `
+          <span class="inline-flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-purple-600"></span> Req. Gross Income (Before Tax)</span>
+          <span class="inline-flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-emerald-500"></span> Req. Net Income (After Tax)</span>
+          <span class="inline-flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span> Home Purchase Transition</span>
+        `;
+
+        currentChart = new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: traj.labels,
+            datasets: [
+              {
+                label: 'Required Gross Yearly Income (Before Tax)',
+                data: traj.grossIncomes,
+                borderColor: '#9333ea',
+                backgroundColor: 'rgba(147, 51, 234, 0.08)',
+                borderWidth: 2.5,
+                fill: true,
+                tension: 0.25,
+                pointBackgroundColor: traj.labels.map((_, i) => i === traj.purchaseIndex ? '#f59e0b' : '#9333ea'),
+                pointBorderColor: '#ffffff',
+                pointBorderWidth: 1.5,
+                pointRadius: traj.labels.map((_, i) => i === traj.purchaseIndex ? 6 : 3),
+              },
+              {
+                label: 'Required Net Yearly Income (After Tax)',
+                data: traj.netIncomes,
+                borderColor: '#10b981',
+                backgroundColor: 'rgba(16, 185, 129, 0.06)',
+                borderWidth: 2,
+                fill: true,
+                tension: 0.25,
+                pointRadius: 2.5,
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            interaction: { mode: 'index', intersect: false },
+            plugins: {
+              legend: {
+                position: 'top',
+                labels: { boxWidth: 12, font: { family: 'Inter', size: 11, weight: '500' } }
+              },
+              tooltip: {
+                callbacks: {
+                  title: (items) => {
+                    const idx = items[0].dataIndex;
+                    const phase = traj.phaseLabels[idx];
+                    return `${items[0].label} (${phase})`;
+                  },
+                  label: (ctx) => `${ctx.dataset.label}: ${currencyFmt.format(ctx.parsed.y)}/yr (${currencyFmt.format(ctx.parsed.y / 12)}/mo)`
+                }
+              }
+            },
+            scales: {
+              x: {
+                grid: { display: false },
+                ticks: { font: { family: 'Inter', size: 10 } }
+              },
+              y: {
+                grid: { color: '#f1f5f9' },
+                ticks: {
+                  callback: (value) => '$' + (value >= 1000 ? (value / 1000).toFixed(0) + 'k' : value),
+                  font: { family: 'Inter', size: 10 }
+                }
+              }
+            }
+          }
+        });
+
+      } else if (currentChartMode === 'savings') {
+        legendBox.innerHTML = `
+          <span class="inline-flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-emerald-500"></span> Total Portfolio Balance</span>
+          <span class="inline-flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-slate-400"></span> Cumulative Contributions</span>
+          <span class="inline-flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-blue-500"></span> Investment Returns</span>
+        `;
+
+        const labels = currentSavingsSchedule.map(s => s.dateStr);
+        const balances = currentSavingsSchedule.map(s => Math.round(s.balance));
+        const contributions = currentSavingsSchedule.map(s => Math.round(s.cumulativeSavings));
+        const gains = currentSavingsSchedule.map(s => Math.round(s.cumulativeGain));
+
+        currentChart = new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: labels,
+            datasets: [
+              {
+                label: 'Total Balance (Cash Target)',
+                data: balances,
+                borderColor: '#10b981',
+                backgroundColor: 'rgba(16, 185, 129, 0.12)',
+                borderWidth: 2.5,
+                fill: true,
+                tension: 0.25,
+                pointRadius: labels.length > 48 ? 0 : 2.5,
+              },
+              {
+                label: 'Cumulative Contributed',
+                data: contributions,
+                borderColor: '#64748b',
+                backgroundColor: 'transparent',
+                borderWidth: 2,
+                borderDash: [4, 4],
+                fill: false,
+                tension: 0.2,
+                pointRadius: 0,
+              },
+              {
+                label: 'Cumulative Investment Gains',
+                data: gains,
+                borderColor: '#3b82f6',
+                backgroundColor: 'rgba(59, 130, 246, 0.08)',
+                borderWidth: 1.8,
+                fill: true,
+                tension: 0.2,
+                pointRadius: 0,
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            interaction: { mode: 'index', intersect: false },
+            plugins: {
+              legend: {
+                position: 'top',
+                labels: { boxWidth: 12, font: { family: 'Inter', size: 11, weight: '500' } }
+              },
+              tooltip: {
+                callbacks: {
+                  label: (c) => `${c.dataset.label}: ${currencyFmt.format(c.parsed.y)}`
+                }
+              }
+            },
+            scales: {
+              x: {
+                grid: { display: false },
+                ticks: { maxTicksLimit: 12, font: { family: 'Inter', size: 10 } }
+              },
+              y: {
+                grid: { color: '#f1f5f9' },
+                ticks: {
+                  callback: (value) => '$' + (value >= 1000 ? (value / 1000).toFixed(0) + 'k' : value),
+                  font: { family: 'Inter', size: 10 }
+                }
+              }
+            }
+          }
+        });
+
+      } else {
+        legendBox.innerHTML = `
+          <span class="inline-flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-blue-500"></span> Mortgage (P&I)</span>
+          <span class="inline-flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-amber-500"></span> Property Taxes</span>
+          <span class="inline-flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-emerald-500"></span> Maint & Insurance</span>
+        `;
+
+        const labels = currentHousingSchedule.map(h => `Yr ${h.year}`);
+        const mortgageData = currentHousingSchedule.map(h => Math.round(h.mortgagePayment));
+        const taxData = currentHousingSchedule.map(h => Math.round(h.propertyTax));
+        const maintData = currentHousingSchedule.map(h => Math.round(h.maintenance));
+
+        currentChart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: labels,
+            datasets: [
+              {
+                label: 'Mortgage Principal & Interest',
+                data: mortgageData,
+                backgroundColor: '#3b82f6',
+                borderRadius: 2
+              },
+              {
+                label: 'Property Taxes',
+                data: taxData,
+                backgroundColor: '#f59e0b',
+                borderRadius: 2
+              },
+              {
+                label: 'Maintenance & Insurance',
+                data: maintData,
+                backgroundColor: '#10b981',
+                borderRadius: 2
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                position: 'top',
+                labels: { boxWidth: 12, font: { family: 'Inter', size: 11, weight: '500' } }
+              },
+              tooltip: {
+                callbacks: {
+                  label: (c) => `${c.dataset.label}: ${currencyFmt.format(c.parsed.y)}/yr`
+                }
+              }
+            },
+            scales: {
+              x: {
+                stacked: true,
+                grid: { display: false },
+                ticks: { font: { family: 'Inter', size: 10 } }
+              },
+              y: {
+                stacked: true,
+                grid: { color: '#f1f5f9' },
+                ticks: {
+                  callback: (value) => '$' + (value >= 1000 ? (value / 1000).toFixed(0) + 'k' : value),
+                  font: { family: 'Inter', size: 10 }
+                }
+              }
+            }
+          }
+        });
+      }
+    }
+
+    // EXPORT: CSV
+    function exportToCSV() {
+      if (!currentSavingsSchedule.length) return;
+
+      let csv = 'PRE-PURCHASE SAVINGS & REQUIRED COMFORTABLE INCOME\n';
+      csv += 'Month,Date,Monthly Savings,Cumulative Saved,Investment Return,Total Balance,Req Net Monthly,Req Gross Monthly,Req Gross Annual,% Goal\n';
+
+      currentSavingsSchedule.forEach(r => {
+        csv += `${r.month},"${r.dateStr}",${r.monthlySavings.toFixed(2)},${r.cumulativeSavings.toFixed(2)},${r.monthlyGain.toFixed(2)},${r.balance.toFixed(2)},${r.reqNetMonthly.toFixed(2)},${r.reqGrossMonthly.toFixed(2)},${r.reqGrossAnnual.toFixed(2)},${r.percentGoal.toFixed(1)}%\n`;
+      });
+
+      csv += '\n20-YEAR POST-PURCHASE HOUSING COSTS & REQUIRED COMFORTABLE INCOME\n';
+      csv += 'Year,Remaining Balance,Annual Housing Cost,Monthly Housing Cost,Monthly Living Expenses,Req Net Monthly,Req Gross Monthly,Req Gross Annual\n';
+
+      currentHousingSchedule.forEach(h => {
+        csv += `${h.year},${h.remainingBalance.toFixed(2)},${h.totalAnnualCost.toFixed(2)},${h.avgMonthlyCost.toFixed(2)},${h.monthlyLivingExpense.toFixed(2)},${h.reqNetMonthly.toFixed(2)},${h.reqGrossMonthly.toFixed(2)},${h.reqGrossAnnual.toFixed(2)}\n`;
+      });
+
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.setAttribute('href', url);
+      link.setAttribute('download', `NestPlan_Financial_Plan_${new Date().toISOString().slice(0, 10)}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      showToast('CSV plan exported successfully', 'success');
+    }
+
+    // EXPORT: EXCEL (XLSX)
+    function exportToExcel() {
+      if (!window.XLSX) {
+        showToast('Excel library not loaded, fallback to CSV', 'warning');
+        exportToCSV();
+        return;
+      }
+
+      const wb = XLSX.utils.book_new();
+
+      const ws1Data = currentSavingsSchedule.map(r => ({
+        "Month #": r.month,
+        "Date": r.dateStr,
+        "Monthly Savings ($)": parseFloat(r.monthlySavings.toFixed(2)),
+        "Cumulative Saved ($)": parseFloat(r.cumulativeSavings.toFixed(2)),
+        "Investment Gain ($)": parseFloat(r.monthlyGain.toFixed(2)),
+        "Total Portfolio ($)": parseFloat(r.balance.toFixed(2)),
+        "Req Net Monthly ($)": parseFloat(r.reqNetMonthly.toFixed(2)),
+        "Req Gross Monthly ($)": parseFloat(r.reqGrossMonthly.toFixed(2)),
+        "Req Gross Annual ($)": parseFloat(r.reqGrossAnnual.toFixed(2)),
+        "Goal Progress (%)": parseFloat(r.percentGoal.toFixed(1))
+      }));
+      const ws1 = XLSX.utils.json_to_sheet(ws1Data);
+      XLSX.utils.book_append_sheet(wb, ws1, "Pre-Purchase & Income");
+
+      const ws2Data = currentHousingSchedule.map(h => ({
+        "Year": h.year,
+        "Remaining Balance ($)": parseFloat(h.remainingBalance.toFixed(2)),
+        "Annual Housing Cost ($)": parseFloat(h.totalAnnualCost.toFixed(2)),
+        "Monthly Housing ($)": parseFloat(h.avgMonthlyCost.toFixed(2)),
+        "Monthly Living Exp ($)": parseFloat(h.monthlyLivingExpense.toFixed(2)),
+        "Req Net Monthly ($)": parseFloat(h.reqNetMonthly.toFixed(2)),
+        "Req Gross Monthly ($)": parseFloat(h.reqGrossMonthly.toFixed(2)),
+        "Req Gross Annual ($)": parseFloat(h.reqGrossAnnual.toFixed(2))
+      }));
+      const ws2 = XLSX.utils.json_to_sheet(ws2Data);
+      XLSX.utils.book_append_sheet(wb, ws2, "20-Yr Housing & Income");
+
+      XLSX.writeFile(wb, `NestPlan_Full_Financial_Model_${new Date().toISOString().slice(0, 10)}.xlsx`);
+      showToast('Excel workbook exported successfully', 'success');
+    }
+
+    // BOOTSTRAP EVENT LISTENERS
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Restore persistent user state or load defaults
+      loadStateFromLocalStorage();
+
+      // 2. Compute initial model
+      recalculate();
+
+      // 3. Attach change / input listeners to all form controls for instant reactive recalculations and autosave
+      const inputs = document.querySelectorAll('#calcForm input, #calcForm select');
+      inputs.forEach(input => {
+        input.addEventListener('input', () => {
+          recalculate();
+          triggerAutosave();
+        });
+        input.addEventListener('change', () => {
+          recalculate();
+          triggerAutosave();
+        });
+      });
+
+      // Reset Defaults button
+      document.getElementById('resetDefaultsBtn').addEventListener('click', resetToDefaults);
+
+      // Manual recalculate button
+      document.getElementById('manualRecalcBtn').addEventListener('click', () => {
+        recalculate();
+        saveStateToLocalStorage();
+        showToast('Plan recalculation updated and saved', 'success');
+      });
+
+      // Chart Tab Buttons
+      const tabIncomeChart = document.getElementById('tabIncomeChart');
+      const tabSavingsChart = document.getElementById('tabSavingsChart');
+      const tabHousingCostsChart = document.getElementById('tabHousingCostsChart');
+      const chartTitle = document.getElementById('chartTitle');
+      const chartSubtitle = document.getElementById('chartSubtitle');
+
+      function resetTabStyles() {
+        tabIncomeChart.className = 'px-3 py-1.5 rounded-md text-slate-600 hover:text-slate-900 transition';
+        tabSavingsChart.className = 'px-3 py-1.5 rounded-md text-slate-600 hover:text-slate-900 transition';
+        tabHousingCostsChart.className = 'px-3 py-1.5 rounded-md text-slate-600 hover:text-slate-900 transition';
+      }
+
+      tabIncomeChart.addEventListener('click', () => {
+        currentChartMode = 'income';
+        resetTabStyles();
+        tabIncomeChart.className = 'px-3 py-1.5 rounded-md bg-white text-slate-900 shadow-xs transition';
+        chartTitle.textContent = 'Yearly Comfortable Income Trajectory (Before & After Purchase)';
+        chartSubtitle.textContent = 'Gross (before-tax) vs Net (after-tax) yearly income needed to save comfortably and maintain home ownership.';
+        renderChart();
+      });
+
+      tabSavingsChart.addEventListener('click', () => {
+        currentChartMode = 'savings';
+        resetTabStyles();
+        tabSavingsChart.className = 'px-3 py-1.5 rounded-md bg-white text-slate-900 shadow-xs transition';
+        chartTitle.textContent = 'Pre-Purchase Savings & Growth Trajectory';
+        chartSubtitle.textContent = 'Monthly breakdown of cumulative contributions vs compounded investment earnings.';
+        renderChart();
+      });
+
+      tabHousingCostsChart.addEventListener('click', () => {
+        currentChartMode = 'housing';
+        resetTabStyles();
+        tabHousingCostsChart.className = 'px-3 py-1.5 rounded-md bg-white text-slate-900 shadow-xs transition';
+        chartTitle.textContent = '20-Year Post-Purchase Housing Costs';
+        chartSubtitle.textContent = 'Annual projected mortgage principal & interest, property taxes, and maintenance.';
+        renderChart();
+      });
+
+      // Table View Toggle Buttons
+      const viewSavingsTableBtn = document.getElementById('viewSavingsTableBtn');
+      const viewHousingTableBtn = document.getElementById('viewHousingTableBtn');
+      const savingsTableContainer = document.getElementById('savingsTableContainer');
+      const housingTableContainer = document.getElementById('housingTableContainer');
+
+      viewSavingsTableBtn.addEventListener('click', () => {
+        viewSavingsTableBtn.className = 'px-3 py-1.5 rounded-lg text-xs font-bold bg-white text-emerald-800 border border-slate-200 shadow-xs transition';
+        viewHousingTableBtn.className = 'px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 transition';
+        savingsTableContainer.classList.remove('hidden');
+        housingTableContainer.classList.add('hidden');
+      });
+
+      viewHousingTableBtn.addEventListener('click', () => {
+        viewHousingTableBtn.className = 'px-3 py-1.5 rounded-lg text-xs font-bold bg-white text-emerald-800 border border-slate-200 shadow-xs transition';
+        viewSavingsTableBtn.className = 'px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 transition';
+        housingTableContainer.classList.remove('hidden');
+        savingsTableContainer.classList.add('hidden');
+      });
+
+      // Advanced collapsible toggle
+      const toggleAdvBtn = document.getElementById('toggleAdvancedBtn');
+      const advSettings = document.getElementById('advancedSettings');
+      const advChevron = document.getElementById('advChevron');
+      toggleAdvBtn.addEventListener('click', () => {
+        advSettings.classList.toggle('hidden');
+        advChevron.classList.toggle('rotate-180');
+      });
+
+      // Export Handlers
+      document.getElementById('exportCsvBtn').addEventListener('click', exportToCSV);
+      document.getElementById('exportExcelBtn').addEventListener('click', exportToExcel);
+      document.getElementById('printPdfBtn').addEventListener('click', () => {
+        window.print();
+      });
+    });
+  </script>
+</body>
+</html>
